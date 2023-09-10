@@ -3,7 +3,6 @@ package com.hajima.vip7009pro.doctiengviet
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -49,7 +48,7 @@ fun CommonSpace() {
 @Composable
 fun HomeScreen() {
     Column {
-        CustomRadioButton(title = "Nguyen Van Hung")
+        CustomRadioButton(title = "Nguyen Van Hung 3")
         CommonSpace()
         CustomRadioButton(title = "Nguyen Thi Ngoc Giang")
     }
