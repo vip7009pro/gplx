@@ -25,6 +25,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hajima.vip7009pro.doctiengviet.ui.theme.DocTiengVietTheme
+import com.hajima.vip7009pro.doctiengviet.Components.*;
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
             DocTiengVietTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = Color.Red) {
-                    HomeScreen()
+                   Components().LoginScreen()
                 }
             }
         }
@@ -45,42 +46,10 @@ fun CommonSpace() {
     Spacer(modifier = Modifier.height(24.dp))
 }
 
-@Composable
-fun HomeScreen() {
-    Column {
-        CustomRadioButton(title = "Nguyen Van Hung 3")
-        CommonSpace()
-        CustomRadioButton(title = "Nguyen Thi Ngoc Giang")
-    }
-}
-
-@Composable
-fun CustomRadioButton(title: String) {
-    var isSelected by remember {
-        mutableStateOf(false)
-    }
-    Row(
-        modifier = Modifier.selectable(
-            selected = isSelected, onClick = { isSelected = !isSelected }, role = Role.RadioButton
-        )
-    ) {
-        RadioButton(
-            selected = isSelected, onClick = null, colors = RadioButtonDefaults.colors(
-                selectedColor = Color.Red,
-                unselectedColor = Color.Gray,
-                disabledSelectedColor = Color.Magenta,
-                disabledUnselectedColor = Color.Green
-            )
-        )
-        Text(text = title, modifier = Modifier.padding(start = 16.dp))
-
-    }
-}
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     DocTiengVietTheme {
-        HomeScreen()
+        Components().LoginScreen()
     }
 }
