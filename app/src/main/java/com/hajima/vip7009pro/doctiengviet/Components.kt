@@ -65,11 +65,8 @@ class Components {
                 LoginHeader()
                 LoginField(username, password, onUserNameChange = {
                     username = it
-                    
-
                 }, onPasswordChange = {
                     password = it
-
                 })
                 LoginFooter()
             }
