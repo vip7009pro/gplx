@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi
 import com.cmsbando.erp.api.ErpInterface
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,12 +20,10 @@ interface ApiService {
   fun login(@Body loginRequest: ErpInterface.LoginInfo): Call<JsonObject>
 }
  class ApiHandler {
-  fun loginExcute() {
+  fun loginExcute(username: String, password: String) {
     val retrofit = Retrofit.Builder().baseUrl("http://cms.ddns.net:3007")
       .addConverterFactory(GsonConverterFactory.create()).build()
     val employeeService = retrofit.create(ApiService::class.java)
-    val username = "nhu1903"
-    val password = "123456789"
     val loginRequest = ErpInterface.LoginInfo("login", username, password)
     val call = employeeService.login(loginRequest)
     call.enqueue(object : Callback<JsonObject> {
@@ -34,15 +33,14 @@ interface ApiService {
           val employee = response.body()
           if (employee != null) {
             val tk_status: String = employee.get("tk_status").asString
-            if(tk_status !== "NG")
+            Log.d("xxx",employee.toString())
+            if(tk_status != "ng")
             {
-              val empl_info  = employee.get("userData")
-              val token = employee.get("token_content")
+              val empl_info  = employee.get("userData").asString
               val gson = Gson()
-              val ttnv: ErpInterface.Employee = gson.fromJson(empl_info, ErpInterface.Employee::class.java)
-
-              Log.d("xxx", "Trang thai: ${ttnv.FIRST_NAME}")
-              Log.d("xxx", "Trang thai: ${token}")
+              val EmployeeType = object : TypeToken<List<ErpInterface.Employee>>() {}.type
+              var persons: List<ErpInterface.Employee> = gson.fromJson(empl_info, EmployeeType)
+              Log.d("xxx", "Trang thai: ${persons.get(0).EMPL_NO}")
             }
             else
             {
@@ -57,7 +55,6 @@ interface ApiService {
           Log.d("xxx", "Có lỗi")
         }
       }
-
       override fun onFailure(call: Call<JsonObject>, t: Throwable) {
         // Xử lý lỗi kết nối ở đây
         Log.d("xxx", "Có lỗi 2 ${t.message}")

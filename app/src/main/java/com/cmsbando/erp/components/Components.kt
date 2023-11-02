@@ -96,7 +96,7 @@ class Components {
         })
         LoginFooter(onSignInClick = {
           val apiHandler = ApiHandler()
-          apiHandler.loginExcute()
+          apiHandler.loginExcute(username, password)
         }, onSignUpClick = {})
       }
 
