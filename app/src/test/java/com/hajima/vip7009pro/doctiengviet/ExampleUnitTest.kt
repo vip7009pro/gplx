@@ -1,4 +1,4 @@
-package com.hajima.vip7009pro.doctiengviet
+package com.cmsbando.erp
 
 import org.junit.Test
 

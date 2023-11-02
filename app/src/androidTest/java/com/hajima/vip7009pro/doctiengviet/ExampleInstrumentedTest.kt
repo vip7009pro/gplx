@@ -1,4 +1,4 @@
-package com.hajima.vip7009pro.doctiengviet
+package com.cmsbando.erp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.hajima.vip7009pro.doctiengviet", appContext.packageName)
+        assertEquals("com.cmsbando.erp", appContext.packageName)
     }
 }

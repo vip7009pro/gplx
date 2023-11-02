@@ -1,4 +1,4 @@
-package com.hajima.vip7009pro.doctiengviet.ui.theme
+package com.cmsbando.erp.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
