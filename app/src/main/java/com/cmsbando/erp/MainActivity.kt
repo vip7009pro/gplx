@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
     setContent {
       CMSVTheme {
         // A surface container using the 'background' color from the theme
-        Surface(modifier = Modifier.fillMaxSize(), color = Color.Red) {
+        Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
           val openAlertDialog = remember { mutableStateOf(true) }
           Components().LoginScreen()
 
@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 onDismissRequest = { openAlertDialog.value = false },
                 onConfirmation = {
                   openAlertDialog.value = false
-                  Log.d("xxx","Confirmation registered") // Add logic here to handle confirmation.
+                  Log.d("xxx", "Confirmation registered") // Add logic here to handle confirmation.
                 },
                 dialogTitle = "Alert dialog example ",
                 dialogText = "This is an example of an alert dialog with buttons.",
@@ -42,8 +42,6 @@ class MainActivity : ComponentActivity() {
               )
             }
           }
-
-
         }
       }
     }
