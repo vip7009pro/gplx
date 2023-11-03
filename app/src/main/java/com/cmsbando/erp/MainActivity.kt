@@ -25,23 +25,7 @@ class MainActivity : ComponentActivity() {
       CMSVTheme {
         // A surface container using the 'background' color from the theme
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-          val openAlertDialog = remember { mutableStateOf(true) }
           Components().LoginScreen()
-
-          when {
-            openAlertDialog.value -> {
-              MyDialog().MyAlertDialog(
-                onDismissRequest = { openAlertDialog.value = false },
-                onConfirmation = {
-                  openAlertDialog.value = false
-                  Log.d("xxx", "Confirmation registered") // Add logic here to handle confirmation.
-                },
-                dialogTitle = "Alert dialog example ",
-                dialogText = "This is an example of an alert dialog with buttons.",
-                icon = Icons.Default.Info
-              )
-            }
-          }
         }
       }
     }

@@ -1,6 +1,7 @@
 package com.cmsbando.erp.components
 
 
+import android.util.Log
 import com.cmsbando.erp.api.ApiHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,6 +17,7 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -57,6 +59,21 @@ class Components {
       mutableStateOf("")
     }
 
+    val openAlertDialog = remember { mutableStateOf(false) }
+    when {
+      openAlertDialog.value -> {
+        MyDialog().MyAlertDialog(
+          onDismissRequest = { openAlertDialog.value = false },
+          onConfirmation = {
+            openAlertDialog.value = false
+            Log.d("xxx", "Confirmation registered") // Add logic here to handle confirmation.
+          },
+          dialogTitle = "Alert dialog example ",
+          dialogText = "This is an example of an alert dialog with buttons.",
+          icon = Icons.Default.Info
+        )
+      }
+    }
     Box(modifier = Modifier.fillMaxSize()) {
       Image(
         painter = painterResource(id = R.drawable.cmsv_background),
@@ -88,6 +105,21 @@ class Components {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround
       ) {
+        val openAlertDialog = remember { mutableStateOf(false) }
+        when {
+          openAlertDialog.value -> {
+            MyDialog().MyAlertDialog(
+              onDismissRequest = { openAlertDialog.value = false },
+              onConfirmation = {
+                openAlertDialog.value = false
+                Log.d("xxx", "Confirmation registered") // Add logic here to handle confirmation.
+              },
+              dialogTitle = "Alert dialog example ",
+              dialogText = "This is an example of an alert dialog with buttons.",
+              icon = Icons.Default.Info
+            )
+          }
+        }
         LoginHeader()
         LoginField(username, password, onUserNameChange = {
           username = it
@@ -96,7 +128,8 @@ class Components {
         })
         LoginFooter(onSignInClick = {
           val apiHandler = ApiHandler()
-          apiHandler.loginExcute(username, password)
+         apiHandler.loginExcute(username, password)
+          openAlertDialog.value = true
         }, onSignUpClick = {
 
         })
@@ -204,7 +237,7 @@ class Components {
   @Composable
   fun GreetingPreview() {
     CMSVTheme {
-
+      LoginScreen()
     }
   }
 
