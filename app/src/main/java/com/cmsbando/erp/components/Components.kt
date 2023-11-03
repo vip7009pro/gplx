@@ -45,8 +45,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cmsbando.erp.R
 import com.cmsbando.erp.theme.CMSVTheme
-import io.github.farhanroy.composeawesomedialog.ComposeAwesomeDialog
-import io.github.farhanroy.composeawesomedialog.utils.ComposeAwesomeDialogType
 
 class Components {
 
@@ -57,15 +55,6 @@ class Components {
     }
     var password by remember {
       mutableStateOf("")
-    }
-    val openDialog = remember { mutableStateOf(false)  }
-    if (openDialog.value) {
-      ComposeAwesomeDialog(
-        type = ComposeAwesomeDialogType.Success,
-        title = "Success",
-        desc = "This is success dialog",
-        onDismiss = { openDialog.value = false }
-      )
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -109,7 +98,7 @@ class Components {
           val apiHandler = ApiHandler()
           apiHandler.loginExcute(username, password)
         }, onSignUpClick = {
-          openDialog.value = true
+
         })
       }
 
@@ -215,7 +204,7 @@ class Components {
   @Composable
   fun GreetingPreview() {
     CMSVTheme {
-      LoginScreen()
+
     }
   }
 
