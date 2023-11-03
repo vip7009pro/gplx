@@ -1,11 +1,11 @@
+package com.cmsbando.erp.api
+
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.cmsbando.erp.api.ErpInterface
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
-import org.json.JSONArray
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,7 +13,6 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.reflect.typeOf
 
 interface ApiService {
   @POST("api")
@@ -38,8 +37,8 @@ interface ApiService {
             {
               val empl_info  = employee.get("userData").asString
               val gson = Gson()
-              val EmployeeType = object : TypeToken<List<ErpInterface.Employee>>() {}.type
-              var persons: List<ErpInterface.Employee> = gson.fromJson(empl_info, EmployeeType)
+              val employeeType = object : TypeToken<List<ErpInterface.Employee>>() {}.type
+              val persons: List<ErpInterface.Employee> = gson.fromJson(empl_info, employeeType)
               Log.d("xxx", "Trang thai: ${persons.get(0).EMPL_NO}")
             }
             else

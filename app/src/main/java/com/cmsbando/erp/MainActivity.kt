@@ -14,7 +14,6 @@ import com.cmsbando.erp.theme.CMSVTheme
 
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
-
     super.onCreate(savedInstanceState)
     setContent {
       CMSVTheme {
@@ -31,6 +30,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
   CMSVTheme {
-
+    Components().LoginScreen()
   }
 }
