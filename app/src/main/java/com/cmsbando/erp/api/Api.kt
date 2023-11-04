@@ -3,6 +3,8 @@ package com.cmsbando.erp.api
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -13,17 +15,17 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 interface ApiService {
   @POST("api")
   fun login(@Body loginRequest: ErpInterface.LoginInfo): Call<JsonObject>
 }
 
 class ApiHandler {
+  val retrofit = Retrofit.Builder().baseUrl("http://cms.ddns.net:3007")
+    .addConverterFactory(GsonConverterFactory.create()).build()
+  val employeeService = retrofit.create(ApiService::class.java)
+
   fun loginExcute(username: String, password: String) {
-    val retrofit = Retrofit.Builder().baseUrl("http://cms.ddns.net:3007")
-      .addConverterFactory(GsonConverterFactory.create()).build()
-    val employeeService = retrofit.create(ApiService::class.java)
     val loginRequest = ErpInterface.LoginInfo("login", username, password)
     val call = employeeService.login(loginRequest)
     call.enqueue(object : Callback<JsonObject> {
