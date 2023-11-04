@@ -74,11 +74,5 @@ class ApiHandler {
 
   }
 
-  suspend fun fetchData():Result<JsonObject> {
-    return withContext(Dispatchers.IO) {
-      try {
-        val response = apiService.fetchData()
-      }
-    }
-  }
+
 }
