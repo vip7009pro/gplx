@@ -8,6 +8,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,19 +17,22 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 interface ApiService {
   @POST("api")
   fun login(@Body loginRequest: ErpInterface.LoginInfo): Call<JsonObject>
+  @POST("api")
+  suspend fun fetchData(): JsonObject
 }
 
 class ApiHandler {
   val retrofit = Retrofit.Builder().baseUrl("http://cms.ddns.net:3007")
     .addConverterFactory(GsonConverterFactory.create()).build()
-  val employeeService = retrofit.create(ApiService::class.java)
+  val apiService = retrofit.create(ApiService::class.java)
 
-  fun loginExcute(username: String, password: String) {
+  fun loginExcute(username: String, password: String, globalVar: GlobalVariable) {
     val loginRequest = ErpInterface.LoginInfo("login", username, password)
-    val call = employeeService.login(loginRequest)
+    val call = apiService.login(loginRequest)
     call.enqueue(object : Callback<JsonObject> {
       @RequiresApi(Build.VERSION_CODES.O)
       override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
@@ -42,6 +47,7 @@ class ApiHandler {
               val employeeType = object : TypeToken<List<ErpInterface.Employee>>() {}.type
               val persons: List<ErpInterface.Employee> = gson.fromJson(empl_info, employeeType)
               Log.d("xxx", "Trang thai: ${persons.get(0).EMPL_NO}")
+              globalVar.globalDialogState = true
             } else {
               Log.d("xxx", "Login thất bại")
             }
@@ -66,5 +72,13 @@ class ApiHandler {
     })
 
 
+  }
+
+  suspend fun fetchData():Result<JsonObject> {
+    return withContext(Dispatchers.IO) {
+      try {
+        val response = apiService.fetchData()
+      }
+    }
   }
 }

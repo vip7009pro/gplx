@@ -113,8 +113,8 @@ class Components {
         Text(text = "Gia tri la: ${globalVar.globalDialogState.toString()}")
         LoginFooter(onSignInClick = {
           val apiHandler = ApiHandler()
-          apiHandler.loginExcute(username, password)
-          globalVar.globalDialogState = true
+          apiHandler.loginExcute(username, password, globalVar = globalVar)
+//          globalVar.globalDialogState = true
         }, onSignUpClick = {
 
         })
