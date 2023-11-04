@@ -45,35 +45,34 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.cmsbando.erp.R
+import com.cmsbando.erp.api.GlobalVariable
 import com.cmsbando.erp.theme.CMSVTheme
 
 class Components {
 
   @Composable
   fun LoginScreen() {
+    val globalVar = viewModel<GlobalVariable>()
     var username by remember {
-      mutableStateOf("")
+      mutableStateOf("NHU1903")
     }
     var password by remember {
-      mutableStateOf("")
+      mutableStateOf("123456789")
     }
 
-    val openAlertDialog = remember { mutableStateOf(false) }
-    when {
-      openAlertDialog.value -> {
-        MyDialog().MyAlertDialog(
-          onDismissRequest = { openAlertDialog.value = false },
-          onConfirmation = {
-            openAlertDialog.value = false
-            Log.d("xxx", "Confirmation registered") // Add logic here to handle confirmation.
-          },
-          dialogTitle = "Alert dialog example ",
-          dialogText = "This is an example of an alert dialog with buttons.",
-          icon = Icons.Default.Info
-        )
-      }
-    }
+    MyDialog().MyAlertDialog(isShown = globalVar.globalDialogState,
+      onDismissRequest = { globalVar.globalDialogState = false },
+      onConfirmation = {
+        globalVar.globalDialogState = false
+        Log.d("xxx", "Đã bấm OK") // Add logic here to handle confirmation.
+      },
+      dialogTitle = "Alert dialog example ",
+      dialogText = "This is an example of an alert dialog with buttons.",
+      icon = Icons.Default.Info
+    )
+
     Box(modifier = Modifier.fillMaxSize()) {
       Image(
         painter = painterResource(id = R.drawable.cmsv_background),
@@ -105,37 +104,23 @@ class Components {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround
       ) {
-        val openAlertDialog = remember { mutableStateOf(false) }
-        when {
-          openAlertDialog.value -> {
-            MyDialog().MyAlertDialog(
-              onDismissRequest = { openAlertDialog.value = false },
-              onConfirmation = {
-                openAlertDialog.value = false
-                Log.d("xxx", "Confirmation registered") // Add logic here to handle confirmation.
-              },
-              dialogTitle = "Alert dialog example ",
-              dialogText = "This is an example of an alert dialog with buttons.",
-              icon = Icons.Default.Info
-            )
-          }
-        }
         LoginHeader()
         LoginField(username, password, onUserNameChange = {
           username = it
         }, onPasswordChange = {
           password = it
         })
+        Text(text = "Gia tri la: ${globalVar.globalDialogState.toString()}")
         LoginFooter(onSignInClick = {
           val apiHandler = ApiHandler()
-         apiHandler.loginExcute(username, password)
-          openAlertDialog.value = true
+          apiHandler.loginExcute(username, password)
+          globalVar.globalDialogState = true
         }, onSignUpClick = {
 
         })
       }
-
     }
+
   }
 
   @Composable
@@ -232,7 +217,6 @@ class Components {
     )
   }
 
-
   @Preview(showBackground = true, showSystemUi = true)
   @Composable
   fun GreetingPreview() {
@@ -240,5 +224,4 @@ class Components {
       LoginScreen()
     }
   }
-
 }

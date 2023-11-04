@@ -23,8 +23,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,130 +43,60 @@ import io.github.farhanroy.composeawesomedialog.ComposeAwesomeDialog
 import io.github.farhanroy.composeawesomedialog.utils.ComposeAwesomeDialogType
 
 class MyDialog {
-  @OptIn(ExperimentalMaterial3Api::class)
-  @Composable
-  fun RetroDialog(
-    alertType: String,
-    title: String,
-    message: String,
-    titleBackGroundColor: Color = Color(0xFFCCCCCC),
-    backgroundColor: Color = Color(0xFFCCCCCC),
-    onDismissRequest: () -> Unit
-  ) {
 
-    Dialog(onDismissRequest = onDismissRequest) {
-      Box(
-        Modifier
-          .clip(RectangleShape)
-          .fillMaxWidth()
-          .background(backgroundColor)
-      ) {
-        Column {
-          Row(
-            Modifier
-              .fillMaxWidth()
-              .background(titleBackGroundColor)
-              .padding(start = 8.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-          ) {
-            Text(title, color = Color.White, fontFamily = FontFamily.Default)
-            Surface(
-              onClick = onDismissRequest, shape = RectangleShape,
-              modifier = Modifier.padding(2.dp),
-              color = backgroundColor,
-            ) {
-              Icon(Icons.Default.Close, contentDescription = "Close")
-            }
-          }
+  var showDialog by mutableStateOf(false)
 
-          Row(
-            modifier = Modifier.padding(
-              horizontal = 16.dp, vertical = 20.dp
-            ),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-          ) {
-
-            if (alertType == "error") {
-              Icon(Icons.Default.Close, contentDescription = "Close")
-            } else if (alertType == "success") {
-              Icon(Icons.Filled.CheckCircle, contentDescription = "Thành công", tint = Color.Green)
-            }
-            Text(message, fontFamily = FontFamily.Monospace)
-          }
-          Surface(
-            modifier = Modifier
-              .align(Alignment.CenterHorizontally)
-              .border(width = 1.dp, color = Color.DarkGray, shape = RoundedCornerShape(5.dp)),
-            onClick = onDismissRequest,
-            shape = RectangleShape,
-            color = backgroundColor,
-          ) {
-            Text(
-              "OK",
-              fontFamily = FontFamily.Monospace,
-              modifier = Modifier
-                .widthIn(100.dp)
-                .padding(vertical = 6.dp),
-              textAlign = TextAlign.Center
-            )
-          }
-        }
-      }
-    }
-  }
 
   @Composable
   fun MyAlertDialog(
+    isShown: Boolean,
     onDismissRequest: () -> Unit,
     onConfirmation: () -> Unit,
     dialogTitle: String,
     dialogText: String,
     icon: ImageVector,
   ) {
-    AlertDialog(icon = {
-      Icon(icon, contentDescription = "Example Icon")
-    }, title = {
-      Text(text = dialogTitle)
-    }, text = {
-      Text(text = dialogText)
-    }, onDismissRequest = {
-      onDismissRequest()
-    }, confirmButton = {
-      TextButton(onClick = {
-        onConfirmation()
-      }) {
-        Text("Confirm")
-      }
-    }, dismissButton = {
-      TextButton(onClick = {
+    if(isShown) {
+      AlertDialog(icon = {
+        Icon(icon, contentDescription = "Example Icon")
+      }, title = {
+        Text(text = dialogTitle)
+      }, text = {
+        Text(text = dialogText)
+      }, onDismissRequest = {
         onDismissRequest()
-      }) {
-        Text("Dismiss")
-      }
-    })
-  }
-
-  @Composable
-  fun showAwesomeDialog() {
-    val openDialog = remember { mutableStateOf(true) }
-    if (openDialog.value) {
-      ComposeAwesomeDialog(type = ComposeAwesomeDialogType.Success,
-        title = "Success",
-        desc = "This is success dialog",
-        onDismiss = { openDialog.value = false })
+      }, confirmButton = {
+        TextButton(onClick = {
+          onConfirmation()
+        }) {
+          Text("Confirm")
+        }
+      }, dismissButton = {
+        TextButton(onClick = {
+          onDismissRequest()
+        }) {
+          Text("Dismiss")
+        }
+      })
     }
-
   }
 
+  /*  @Composable
+    fun showAwesomeDialog() {
+      val openDialog = remember { mutableStateOf(true) }
+      if (openDialog.value) {
+        ComposeAwesomeDialog(type = ComposeAwesomeDialogType.Success,
+          title = "Success",
+          desc = "This is success dialog",
+          onDismiss = { openDialog.value = false })
+      }
+    }*/
 
 
   @Preview(showBackground = true, showSystemUi = true)
   @Composable
   fun GreetingPreview() {
     CMSVTheme {
-
 
     }
   }
