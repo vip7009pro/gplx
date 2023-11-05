@@ -1,7 +1,9 @@
 package com.cmsbando.erp.components
 
-
+import android.net.http.HttpException
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresExtension
 import com.cmsbando.erp.api.ApiHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -47,11 +49,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.cmsbando.erp.R
+import com.cmsbando.erp.api.ErpInterface
 import com.cmsbando.erp.api.GlobalVariable
 import com.cmsbando.erp.theme.CMSVTheme
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class Components {
 
+  @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   @Composable
   fun LoginScreen() {
     val globalVar = viewModel<GlobalVariable>()
@@ -62,7 +72,8 @@ class Components {
       mutableStateOf("123456789")
     }
 
-    MyDialog().MyAlertDialog(isShown = globalVar.globalDialogState,
+    MyDialog().MyAlertDialog(
+      isShown = globalVar.globalDialogState,
       onDismissRequest = { globalVar.globalDialogState = false },
       onConfirmation = {
         globalVar.globalDialogState = false
@@ -116,7 +127,30 @@ class Components {
           apiHandler.loginExcute(username, password, globalVar = globalVar)
 //          globalVar.globalDialogState = true
         }, onSignUpClick = {
+          val scope1 = GlobalScope.launch(Dispatchers.IO) {
+            try {
+              val apiHandler = ApiHandler()
+              val result: JsonObject = apiHandler.generalQuery("checklogin", JsonObject())
+              val tk_status: String = result.get("tk_status").asString
+              if(tk_status != "ng")
+              {
+                val data: JsonObject = result.get("data").asJsonObject
+                Log.d("xxx", "Kết quả trả về: EMPL_NO = ${data.get("EMPL_NO")}")
+                val myData = Gson().fromJson(data,ErpInterface.Employee::class.java)
+                println("Data xxx: ${myData.EMPL_NO}")
+              }
+              else
+              {
+                print("xxx: Có lỗi: ${result.get("message").toString()}")
+              }
 
+            } catch (e: HttpException) {
+              Log.d("xxx", "Lỗi http")
+            } catch (e: Exception) {
+              Log.d("xxx", "Lỗi khác: ${e.message.toString()}")
+            }
+          }
+          Log.d("xxx", "Cai nay phai hien sau")
         })
       }
     }
@@ -185,7 +219,6 @@ class Components {
 
     }
 
-
   }
 
   @OptIn(ExperimentalMaterial3Api::class)
@@ -221,7 +254,7 @@ class Components {
   @Composable
   fun GreetingPreview() {
     CMSVTheme {
-      LoginScreen()
+
     }
   }
 }
