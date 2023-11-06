@@ -1,10 +1,10 @@
 package com.cmsbando.erp.components
 
+import android.content.Context
 import android.net.http.HttpException
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresExtension
-import com.cmsbando.erp.api.ApiHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +19,6 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -48,13 +47,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.cmsbando.erp.MainActivity
 import com.cmsbando.erp.R
+import com.cmsbando.erp.api.ApiHandler
 import com.cmsbando.erp.api.ErpInterface
 import com.cmsbando.erp.api.GlobalVariable
 import com.cmsbando.erp.theme.CMSVTheme
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -71,18 +71,6 @@ class Components {
     var password by remember {
       mutableStateOf("123456789")
     }
-
-    MyDialog().MyAlertDialog(
-      isShown = globalVar.globalDialogState,
-      onDismissRequest = { globalVar.globalDialogState = false },
-      onConfirmation = {
-        globalVar.globalDialogState = false
-        Log.d("xxx", "Đã bấm OK") // Add logic here to handle confirmation.
-      },
-      dialogTitle = "Alert dialog example ",
-      dialogText = "This is an example of an alert dialog with buttons.",
-      icon = Icons.Default.Info
-    )
 
     Box(modifier = Modifier.fillMaxSize()) {
       Image(
@@ -124,6 +112,7 @@ class Components {
         Text(text = "Gia tri la: ${globalVar.globalDialogState.toString()}")
         LoginFooter(onSignInClick = {
           val apiHandler = ApiHandler()
+          val ct: Context
           apiHandler.loginExcute(username, password, globalVar = globalVar)
 //          globalVar.globalDialogState = true
         }, onSignUpClick = {
@@ -132,29 +121,47 @@ class Components {
               val apiHandler = ApiHandler()
               val result: JsonObject = apiHandler.generalQuery("checklogin", JsonObject())
               val tk_status: String = result.get("tk_status").asString
-              if(tk_status != "ng")
-              {
+              if (tk_status != "ng") {
                 val data: JsonObject = result.get("data").asJsonObject
-                Log.d("xxx", "Kết quả trả về: EMPL_NO = ${data.get("EMPL_NO")}")
-                val myData = Gson().fromJson(data,ErpInterface.Employee::class.java)
+                val myData = Gson().fromJson(data, ErpInterface.Employee::class.java)
+
+                globalVar.showDialog("success",
+                  "Thông báo",
+                  "Đăng nhập thành công ${myData.MIDLAST_NAME} ${myData.FIRST_NAME}",
+                  {
+                    Log.d("xxx", "Day la hanh dong xay ra 1 ${data.get("EMPL_NO")}")
+                  },
+                  { Log.d("xxx", "Day la hanh dong xay ra 2 ${data.get("EMPL_NO")}") })
                 println("Data xxx: ${myData.EMPL_NO}")
-              }
-              else
-              {
-                print("xxx: Có lỗi: ${result.get("message").toString()}")
+              } else {
+                print("xxx: Có lỗi: ${result.get("message")}")
+                globalVar.showDialog("error",
+                  "Thông báo",
+                  "Đăng nhập thất bại, kiểm tra lại tài khoản và mật khẩu",
+                  { },
+                  { })
               }
 
             } catch (e: HttpException) {
               Log.d("xxx", "Lỗi http")
+              globalVar.showDialog("error",
+                "Thông báo",
+                "Đăng nhập thất bại, kiểm tra lại mạng mẹo",
+                { },
+                { })
             } catch (e: Exception) {
-              Log.d("xxx", "Lỗi khác: ${e.message.toString()}")
+              globalVar.showDialog("error",
+                "Thông báo",
+                "Đăng nhập thất bại,${e.message.toString()}",
+                { },
+                { })
+              //Log.d("xxx", "Lỗi khác: ${e.message.toString()}")
             }
           }
           Log.d("xxx", "Cai nay phai hien sau")
         })
       }
     }
-
   }
 
   @Composable

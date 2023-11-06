@@ -1,5 +1,17 @@
 package com.cmsbando.erp.api
 
-class LocalData {
+import android.content.SharedPreferences
+import android.content.Context
 
+class LocalData {
+  fun saveData(context: Context, key: String, value: String) {
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
+    val editor: SharedPreferences.Editor = sharedPreferences.edit()
+    editor.putString(key, value)
+    editor.apply()
+  }
+  fun getData(context: Context, key: String): String {
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences("my_prefs", Context.MODE_PRIVATE)
+    return sharedPreferences.getString(key, "") ?: ""
+  }
 }
