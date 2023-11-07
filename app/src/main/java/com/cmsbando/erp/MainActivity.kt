@@ -19,6 +19,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.cmsbando.erp.api.GlobalVariable
 import com.cmsbando.erp.components.Components
 import com.cmsbando.erp.components.MyDialog
+import com.cmsbando.erp.pages.Home
 import com.cmsbando.erp.theme.CMSVTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +31,8 @@ class MainActivity : ComponentActivity() {
       CMSVTheme {
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
           val globalVar = viewModel<GlobalVariable>()
-          Components().LoginScreen()
+//          Components().LoginScreen()
+          Home().MyHome()
           MyDialog().MyAlertDialog(isShown = globalVar.globalDialogState,
             onDismissRequest = {
               globalVar.onDialogCancel?.invoke()
