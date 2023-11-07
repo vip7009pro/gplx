@@ -1,5 +1,6 @@
 package com.cmsbando.erp
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -24,12 +25,12 @@ class MainActivity : ComponentActivity() {
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    val ct: Context = applicationContext
     setContent {
       CMSVTheme {
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
           val globalVar = viewModel<GlobalVariable>()
           Components().LoginScreen()
-
           MyDialog().MyAlertDialog(isShown = globalVar.globalDialogState,
             onDismissRequest = {
               globalVar.onDialogCancel?.invoke()

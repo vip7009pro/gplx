@@ -7,10 +7,6 @@ class ErpInterface
         var user: String,
         var pass: String
     )
-    data class LoginResult(
-        var user: String,
-        var token: String
-    )
 
     data class Employee(
         var EMPL_IMAGE: String,

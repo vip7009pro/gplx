@@ -38,6 +38,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -47,20 +48,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.cmsbando.erp.MainActivity
 import com.cmsbando.erp.R
 import com.cmsbando.erp.api.ApiHandler
 import com.cmsbando.erp.api.ErpInterface
 import com.cmsbando.erp.api.GlobalVariable
+import com.cmsbando.erp.api.LocalData
 import com.cmsbando.erp.theme.CMSVTheme
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class Components {
-
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   @Composable
   fun LoginScreen() {
@@ -70,6 +71,108 @@ class Components {
     }
     var password by remember {
       mutableStateOf("123456789")
+    }
+    val boxCt: Context = LocalContext.current
+    fun loginfunc() {
+      val scopeLogin = GlobalScope.launch(Dispatchers.IO) {
+        try {
+          val apiHandler = ApiHandler()
+          val result: JsonObject = apiHandler.login(username, password)
+          if (result != null) {
+            val tk_status: String = result.get("tk_status").asString
+            if (tk_status != "ng") {
+              val empl_info = result.get("userData").asString
+              val gson = Gson()
+              val employeeType = object : TypeToken<List<ErpInterface.Employee>>() {}.type
+              val persons: List<ErpInterface.Employee> = gson.fromJson(empl_info, employeeType)
+              globalVar.token = result.get("token_content").asString
+              LocalData().saveData(boxCt, "token", result.get("token_content").asString)
+              globalVar.showDialog("success",
+                "Thông báo",
+                "Đăng nhập thành công, xin chào:  ${persons.get(0).MIDLAST_NAME} ${persons.get(0).FIRST_NAME}",
+                {
+                  Log.d("xxx", "Day la hanh dong xay ra 1 ${persons.get(0).FIRST_NAME}")
+                },
+                {
+                  Log.d("xxx", "Day la hanh dong xay ra 2 ${persons.get(0).FIRST_NAME}")
+                })
+            } else {
+              globalVar.showDialog("error",
+                "Thông báo",
+                "Đăng nhập thất bại, kiểm tra lại tài khoản và mật khẩu",
+                {},
+                {})
+            }
+          } else {
+            globalVar.showDialog("error",
+              "Thông báo",
+              "Đăng nhập thất bại, kiểm tra lại tài khoản và mật khẩu",
+              {},
+              {})
+          }
+
+        } catch (e: HttpException) {
+          Log.d("xxx", "Lỗi http")
+          globalVar.showDialog("error",
+            "Thông báo",
+            "Đăng nhập thất bại, kiểm tra lại mạng mẹo",
+            { },
+            { })
+        } catch (e: Exception) {
+          globalVar.showDialog("error",
+            "Thông báo",
+            "Đăng nhập thất bại,${e.message.toString()}",
+            { },
+            { })
+          //Log.d("xxx", "Lỗi khác: ${e.message.toString()}")
+        }
+      }
+    }
+
+    fun checkLogin() {
+      val scopeSignUp = GlobalScope.launch(Dispatchers.IO) {
+        try {
+          val apiHandler = ApiHandler()
+          val result: JsonObject =
+            apiHandler.generalQuery("checklogin", JsonObject(), globalVar.token)
+          val tk_status: String = result.get("tk_status").asString
+          if (tk_status != "ng") {
+            val data: JsonObject = result.get("data").asJsonObject
+            val myData = Gson().fromJson(data, ErpInterface.Employee::class.java)
+
+            globalVar.showDialog("success",
+              "Thông báo",
+              "Đăng nhập thành công ${myData.MIDLAST_NAME} ${myData.FIRST_NAME}",
+              {
+                Log.d("xxx", "Day la hanh dong xay ra 1 ${data.get("EMPL_NO")}")
+              },
+              { Log.d("xxx", "Day la hanh dong xay ra 2 ${data.get("EMPL_NO")}") })
+            println("Data xxx: ${myData.EMPL_NO}")
+          } else {
+            print("xxx: Có lỗi: ${result.get("message")}")
+            globalVar.showDialog("error",
+              "Thông báo",
+              "Đăng nhập thất bại, kiểm tra lại tài khoản và mật khẩu",
+              { },
+              { })
+          }
+
+        } catch (e: HttpException) {
+          Log.d("xxx", "Lỗi http")
+          globalVar.showDialog("error",
+            "Thông báo",
+            "Đăng nhập thất bại, kiểm tra lại mạng mẹo",
+            { },
+            { })
+        } catch (e: Exception) {
+          globalVar.showDialog("error",
+            "Thông báo",
+            "Đăng nhập thất bại,${e.message.toString()}",
+            { },
+            { })
+          //Log.d("xxx", "Lỗi khác: ${e.message.toString()}")
+        }
+      }
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -95,7 +198,6 @@ class Components {
           )
         )
     ) {
-
       Column(
         modifier = Modifier
           .fillMaxSize()
@@ -104,62 +206,11 @@ class Components {
         verticalArrangement = Arrangement.SpaceAround
       ) {
         LoginHeader()
-        LoginField(username, password, onUserNameChange = {
-          username = it
-        }, onPasswordChange = {
-          password = it
-        })
-        Text(text = "Gia tri la: ${globalVar.globalDialogState.toString()}")
-        LoginFooter(onSignInClick = {
-          val apiHandler = ApiHandler()
-          val ct: Context
-          apiHandler.loginExcute(username, password, globalVar = globalVar)
-//          globalVar.globalDialogState = true
-        }, onSignUpClick = {
-          val scope1 = GlobalScope.launch(Dispatchers.IO) {
-            try {
-              val apiHandler = ApiHandler()
-              val result: JsonObject = apiHandler.generalQuery("checklogin", JsonObject())
-              val tk_status: String = result.get("tk_status").asString
-              if (tk_status != "ng") {
-                val data: JsonObject = result.get("data").asJsonObject
-                val myData = Gson().fromJson(data, ErpInterface.Employee::class.java)
-
-                globalVar.showDialog("success",
-                  "Thông báo",
-                  "Đăng nhập thành công ${myData.MIDLAST_NAME} ${myData.FIRST_NAME}",
-                  {
-                    Log.d("xxx", "Day la hanh dong xay ra 1 ${data.get("EMPL_NO")}")
-                  },
-                  { Log.d("xxx", "Day la hanh dong xay ra 2 ${data.get("EMPL_NO")}") })
-                println("Data xxx: ${myData.EMPL_NO}")
-              } else {
-                print("xxx: Có lỗi: ${result.get("message")}")
-                globalVar.showDialog("error",
-                  "Thông báo",
-                  "Đăng nhập thất bại, kiểm tra lại tài khoản và mật khẩu",
-                  { },
-                  { })
-              }
-
-            } catch (e: HttpException) {
-              Log.d("xxx", "Lỗi http")
-              globalVar.showDialog("error",
-                "Thông báo",
-                "Đăng nhập thất bại, kiểm tra lại mạng mẹo",
-                { },
-                { })
-            } catch (e: Exception) {
-              globalVar.showDialog("error",
-                "Thông báo",
-                "Đăng nhập thất bại,${e.message.toString()}",
-                { },
-                { })
-              //Log.d("xxx", "Lỗi khác: ${e.message.toString()}")
-            }
-          }
-          Log.d("xxx", "Cai nay phai hien sau")
-        })
+        LoginField(username,
+          password,
+          onUserNameChange = { username = it },
+          onPasswordChange = { password = it })
+        LoginFooter(onSignInClick = { loginfunc() }, onSignUpClick = { checkLogin() })
       }
     }
   }
@@ -223,7 +274,6 @@ class Components {
       TextButton(onClick = onSignUpClick) {
         Text(text = "Don't have an account, click here")
       }
-
     }
 
   }
