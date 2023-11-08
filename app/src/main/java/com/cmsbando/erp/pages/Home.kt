@@ -1,8 +1,11 @@
 package com.cmsbando.erp.pages
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -24,6 +27,7 @@ import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
@@ -33,8 +37,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,131 +61,100 @@ class Home {
           Text("Drawer title", modifier = Modifier.padding(16.dp))
           Divider()
           Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-            NavigationDrawerItem(
-              icon = {
+            NavigationDrawerItem(icon = {
 
-              },
-              label = { Text(text = "Drawer Item") },
+            }, label = { Text(text = "Drawer Item") }, selected = false, onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
+              onClick = { /*TODO*/ })
+            NavigationDrawerItem(label = { Text(text = "Drawer Item") },
               selected = false,
-              onClick = { /*TODO*/ }
-            )
-            NavigationDrawerItem(
-              label = { Text(text = "Drawer Item") },
-              selected = false,
-              onClick = { /*TODO*/ }
-            )
+              onClick = { /*TODO*/ })
 
           }
-
 
         }
       },
     ) {
       Scaffold(topBar = {
-        TopAppBar(colors = androidx.compose.material3.TopAppBarDefaults.centerAlignedTopAppBarColors(
-          containerColor = MaterialTheme.colorScheme.primaryContainer,
-          titleContentColor = MaterialTheme.colorScheme.primary,
-        ), title = {
-          Text("CMS VINA")
-        })
+        TopAppBar(modifier = Modifier.height(40.dp),
+          colors = androidx.compose.material3.TopAppBarDefaults.centerAlignedTopAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            titleContentColor = MaterialTheme.colorScheme.primary,
+          ),
+          title = {
+            FloatingActionButton(onClick = {
+              scope.launch {
+                drawerState.apply {
+                  if (isClosed) open() else close()
+                }
+              }
+            }, modifier = Modifier
+              .size(40.dp)
+              .background(Color.Transparent)) {
+              Icon(
+                Icons.Default.Menu, contentDescription = "Menu", modifier = Modifier.size(30.dp)
+              )
+            }
+          })
 
       }, bottomBar = {
         BottomAppBar(
+          modifier = Modifier.height(40.dp),
           containerColor = MaterialTheme.colorScheme.primaryContainer,
           contentColor = MaterialTheme.colorScheme.primary,
         ) {
@@ -190,12 +165,14 @@ class Home {
           )
         }
       }, floatingActionButton = {
-        FloatingActionButton(onClick = { scope.launch {
-          drawerState.apply {
-            if (isClosed) open() else close()
+        FloatingActionButton(onClick = {
+          scope.launch {
+            drawerState.apply {
+              if (isClosed) open() else close()
+            }
           }
-        } }, ) {
-          Icon(Icons.Default.Menu, contentDescription = "Menu")
+        }, modifier = Modifier.size(40.dp)) {
+          Icon(Icons.Default.Menu, contentDescription = "Menu", modifier = Modifier.size(30.dp))
         }
 
       }, floatingActionButtonPosition = FabPosition.End
