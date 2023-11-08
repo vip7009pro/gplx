@@ -56,6 +56,9 @@ class Home {
           Divider()
           Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
             NavigationDrawerItem(
+              icon = {
+
+              },
               label = { Text(text = "Drawer Item") },
               selected = false,
               onClick = { /*TODO*/ }

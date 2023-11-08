@@ -58,6 +58,7 @@ dependencies {
   implementation ("com.github.farhanroy:compose-awesome-dialog:1.0.1")
   implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
   implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+  implementation ("com.google.accompanist:accompanist-fontawesome:0.33.2-alpha")
   debugImplementation("androidx.compose.ui:ui-tooling")
   debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
