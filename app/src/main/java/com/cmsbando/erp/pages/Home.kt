@@ -192,7 +192,6 @@ class Home {
             title = "Nhân sự bộ phận",
             icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
             onClick = { Log.d("xxx", "click 3") }),
-
           )
       ),
       ErpInterface.MenuData(

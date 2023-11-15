@@ -212,11 +212,10 @@ class Components {
           password,
           onUserNameChange = { username = it },
           onPasswordChange = { password = it })
-        LoginFooter(onSignInClick = { loginfunc() },
-          onSignUpClick = {
-            Log.d("xxx", "globalDialogState = ${globalVar.globalDialogState}")
-            globalVar.globalDialogState = !globalVar.globalDialogState
-          })
+        LoginFooter(onSignInClick = { loginfunc() }, onSignUpClick = {
+          Log.d("xxx", "globalDialogState = ${globalVar.globalDialogState}")
+          globalVar.globalDialogState = !globalVar.globalDialogState
+        })
       }
     }
   }
