@@ -218,6 +218,7 @@ class Components {
         })
       }
     }
+    globalVar.dialogWindow
   }
 
   @Composable

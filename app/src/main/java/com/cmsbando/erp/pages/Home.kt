@@ -3,10 +3,12 @@ package com.cmsbando.erp.pages
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
@@ -38,8 +40,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,6 +53,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import com.cmsbando.erp.R
 import com.cmsbando.erp.api.ErpInterface
 import com.cmsbando.erp.api.GlobalVariable
 import com.cmsbando.erp.components.NavigationDrawerMenu
@@ -261,12 +267,10 @@ class Home {
         ModalDrawerSheet {
           Column(modifier = Modifier.background(Color.White)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-              AsyncImage(
-                model = "http://cms.ddns.net/logocmsvina.png",
-                contentDescription = "cms logo image",
-                modifier = Modifier
-                  .width(200.dp)
-                  .height(50.dp)
+              Image(
+                painter = painterResource(id = R.drawable.logocmsvina),
+                contentDescription = "CMS Logo",
+                contentScale = ContentScale.Crop
               )
             }
             Spacer(modifier = Modifier.height(10.dp))
@@ -275,6 +279,7 @@ class Home {
             ) {
               Row(verticalAlignment = Alignment.CenterVertically) {
                 Log.d("xxx", "ma nhan vien: ${globalVar.userData.EMPL_NO}")
+
                 AsyncImage(
                   model = "http://14.160.33.94/Picture_NS/NS_${globalVar.userData.EMPL_NO}.jpg",
                   contentDescription = "employee image",

@@ -8,6 +8,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresExtension
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
@@ -36,26 +37,31 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     setContent {
       CMSVTheme {
+        val globalVar = viewModel<GlobalVariable>()
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-          val globalVar = viewModel<GlobalVariable>()
+
 //          Home().MyHome()
+
           MainApp()
+
 //          TestApp()
-          MyDialog().MyAlertDialog(
-            isShown = globalVar.globalDialogState,
-            onDismissRequest = {
-              globalVar.onDialogCancel?.invoke()
-              globalVar.globalDialogState = false
-            },
-            onConfirmation = {
-              globalVar.onDialogConfirm?.invoke()
-              globalVar.globalDialogState = false
-            },
-            dialogTitle = globalVar.globalDialogTitle,
-            dialogText = globalVar.globalDialogText,
-            dialogCat = globalVar.globalDialogCat,
-          )
+
         }
+
+        MyDialog().MyAlertDialog(
+          isShown = globalVar.globalDialogState,
+          onDismissRequest = {
+            globalVar.onDialogCancel?.invoke()
+            globalVar.globalDialogState = false
+          },
+          onConfirmation = {
+            globalVar.onDialogConfirm?.invoke()
+            globalVar.globalDialogState = false
+          },
+          dialogTitle = globalVar.globalDialogTitle,
+          dialogText = globalVar.globalDialogText,
+          dialogCat = globalVar.globalDialogCat,
+        )
       }
     }
   }
@@ -75,9 +81,8 @@ fun TestApp() {
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun MainApp() {
-  val globalVar = viewModel<GlobalVariable>()
   val navController = rememberNavController()
-  NavHost(navController = navController, startDestination = "home") {
+  NavHost(navController = navController, startDestination = "login") {
     composable("login") {
       Components().LoginScreen()
     }
