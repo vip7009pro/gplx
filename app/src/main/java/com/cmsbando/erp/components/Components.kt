@@ -87,6 +87,8 @@ class Components {
               val persons: List<ErpInterface.Employee> = gson.fromJson(empl_info, employeeType)
               globalVar.token = result.get("token_content").asString
               LocalData().saveData(boxCt, "token", result.get("token_content").asString)
+              globalVar.userData = persons[0]
+              Log.d("xxx", "Đăng nhập thành công")
               globalVar.showDialog("success",
                 "Thông báo",
                 "Đăng nhập thành công, xin chào:  ${persons.get(0).MIDLAST_NAME} ${persons.get(0).FIRST_NAME}",
@@ -139,7 +141,7 @@ class Components {
           if (tk_status != "ng") {
             val data: JsonObject = result.get("data").asJsonObject
             val myData = Gson().fromJson(data, ErpInterface.Employee::class.java)
-
+            globalVar.userData = myData
             globalVar.showDialog("success",
               "Thông báo",
               "Đăng nhập thành công ${myData.MIDLAST_NAME} ${myData.FIRST_NAME}",
@@ -210,7 +212,11 @@ class Components {
           password,
           onUserNameChange = { username = it },
           onPasswordChange = { password = it })
-        LoginFooter(onSignInClick = { loginfunc() }, onSignUpClick = { checkLogin() })
+        LoginFooter(onSignInClick = { loginfunc() },
+          onSignUpClick = {
+            Log.d("xxx", "globalDialogState = ${globalVar.globalDialogState}")
+            globalVar.globalDialogState = !globalVar.globalDialogState
+          })
       }
     }
   }

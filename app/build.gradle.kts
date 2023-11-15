@@ -20,7 +20,7 @@ android {
 
   buildTypes {
     release {
-      isMinifyEnabled = false
+      isMinifyEnabled = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
   }
@@ -58,6 +58,9 @@ dependencies {
   implementation ("com.github.farhanroy:compose-awesome-dialog:1.0.1")
   implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
   implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+  implementation("androidx.navigation:navigation-compose:2.7.5")
+  implementation ("com.github.Gurupreet:FontAwesomeCompose:1.1.0")
+  implementation("io.coil-kt:coil-compose:2.5.0")
   debugImplementation("androidx.compose.ui:ui-tooling")
   debugImplementation("androidx.compose.ui:ui-test-manifest")
 }

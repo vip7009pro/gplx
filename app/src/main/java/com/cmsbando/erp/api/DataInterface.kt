@@ -1,5 +1,9 @@
 package com.cmsbando.erp.api
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.guru.fontawesomecomposelib.FaIcons
+
 class ErpInterface
 {
     data class LoginInfo(
@@ -7,7 +11,6 @@ class ErpInterface
         var user: String,
         var pass: String
     )
-
     data class Employee(
         var EMPL_IMAGE: String,
         var ADD_COMMUNE: String,
@@ -34,7 +37,7 @@ class ErpInterface
         var MIDLAST_NAME: String,
         var ONLINE_DATETIME: String,
         var PASSWORD: String,
-        var PHONE_Int: String,
+        var PHONE_NUMBER: String,
         var POSITION_CODE: Int,
         var POSITION_NAME: String,
         var POSITION_NAME_KR: String,
@@ -56,5 +59,19 @@ class ErpInterface
         var WORK_STATUS_NAME: String,
         var WORK_STATUS_NAME_KR: String,
     )
+
+    data class SubMenuData (
+        var route: String,
+        var title: String,
+        var icon: @Composable () -> Unit,
+        var onClick: ()->Unit
+    )
+    data class MenuData (
+        var route: String,
+        var title: String,
+        var icon: @Composable () -> Unit,
+        var subMenu: List<SubMenuData>?
+    )
+
 
 }
