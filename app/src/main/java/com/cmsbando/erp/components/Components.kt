@@ -7,20 +7,30 @@ import android.util.Log
 import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -28,26 +38,33 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.graphics.toColorInt
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.cmsbando.erp.R
 import com.cmsbando.erp.api.ApiHandler
 import com.cmsbando.erp.api.ErpInterface
@@ -57,6 +74,8 @@ import com.cmsbando.erp.theme.CMSVTheme
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import com.guru.fontawesomecomposelib.FaIcon
+import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -64,7 +83,7 @@ import kotlinx.coroutines.launch
 class Components {
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   @Composable
-  fun LoginScreen() {
+  fun LoginScreen(navController: NavController) {
     val globalVar = viewModel<GlobalVariable>()
     var username by remember {
       mutableStateOf("NHU1903")
@@ -74,7 +93,7 @@ class Components {
     }
     val boxCt: Context = LocalContext.current
     fun loginfunc() {
-      val scopeLogin = GlobalScope.launch(Dispatchers.IO) {
+      val scopeLogin = GlobalScope.launch(Dispatchers.Main) {
         try {
           val apiHandler = ApiHandler()
           val result: JsonObject = apiHandler.login(username, password)
@@ -89,7 +108,7 @@ class Components {
               LocalData().saveData(boxCt, "token", result.get("token_content").asString)
               globalVar.userData = persons[0]
               Log.d("xxx", "Đăng nhập thành công")
-              globalVar.showDialog("success",
+              navController.navigate("home")/*globalVar.showDialog("success",
                 "Thông báo",
                 "Đăng nhập thành công, xin chào:  ${persons.get(0).MIDLAST_NAME} ${persons.get(0).FIRST_NAME}",
                 {
@@ -97,7 +116,7 @@ class Components {
                 },
                 {
                   Log.d("xxx", "Day la hanh dong xay ra 2 ${persons.get(0).FIRST_NAME}")
-                })
+                })*/
             } else {
               globalVar.showDialog("error",
                 "Thông báo",
@@ -132,33 +151,37 @@ class Components {
     }
 
     fun checkLogin() {
-      val scopeSignUp = GlobalScope.launch(Dispatchers.IO) {
+      val scopeCheckLogin = GlobalScope.launch(Dispatchers.Main) {
         try {
+          val savedToken: String = LocalData().getData(boxCt, "token")
           val apiHandler = ApiHandler()
-          val result: JsonObject =
-            apiHandler.generalQuery("checklogin", JsonObject(), globalVar.token)
+          val result: JsonObject = apiHandler.generalQuery("checklogin", JsonObject(), savedToken)
           val tk_status: String = result.get("tk_status").asString
           if (tk_status != "ng") {
             val data: JsonObject = result.get("data").asJsonObject
             val myData = Gson().fromJson(data, ErpInterface.Employee::class.java)
             globalVar.userData = myData
-            globalVar.showDialog("success",
+            navController.navigate("home") {
+              popUpTo("home") {
+                saveState = true
+              }
+              launchSingleTop = true
+              restoreState = true
+            }/*globalVar.showDialog("success",
               "Thông báo",
               "Đăng nhập thành công ${myData.MIDLAST_NAME} ${myData.FIRST_NAME}",
               {
                 Log.d("xxx", "Day la hanh dong xay ra 1 ${data.get("EMPL_NO")}")
               },
               { Log.d("xxx", "Day la hanh dong xay ra 2 ${data.get("EMPL_NO")}") })
-            println("Data xxx: ${myData.EMPL_NO}")
+            println("Data xxx: ${myData.EMPL_NO}")*/
           } else {
-            print("xxx: Có lỗi: ${result.get("message")}")
-            globalVar.showDialog("error",
-              "Thông báo",
-              "Đăng nhập thất bại, kiểm tra lại tài khoản và mật khẩu",
-              { },
-              { })
+            print("xxx: Có lỗi: ${result.get("message")}")/* globalVar.showDialog("error",
+               "Thông báo",
+               "Đăng nhập thất bại, kiểm tra lại tài khoản và mật khẩu",
+               { },
+               { })*/
           }
-
         } catch (e: HttpException) {
           Log.d("xxx", "Lỗi http")
           globalVar.showDialog("error",
@@ -177,21 +200,12 @@ class Components {
       }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-      Image(
-        painter = painterResource(id = R.drawable.cmsv_background),
-        contentDescription = "CMS Logo",
-        modifier = Modifier
-          .fillMaxSize()
-          .blur(6.dp),
-        contentScale = ContentScale.Crop
-      )
+    LaunchedEffect(true) {
+      checkLogin()
     }
-
     Box(
       modifier = Modifier
         .fillMaxSize()
-        .alpha(0.6f)
         .background(MaterialTheme.colorScheme.background)
         .padding(10.dp)
         .clip(
@@ -205,34 +219,42 @@ class Components {
           .fillMaxSize()
           .padding(28.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceAround
+        verticalArrangement = Arrangement.Center
       ) {
         LoginHeader()
+        Spacer(modifier = Modifier.height(40.dp))
+
         LoginField(username,
           password,
           onUserNameChange = { username = it },
           onPasswordChange = { password = it })
+        Spacer(modifier = Modifier.height(20.dp))
         LoginFooter(onSignInClick = { loginfunc() }, onSignUpClick = {
-          Log.d("xxx", "globalDialogState = ${globalVar.globalDialogState}")
-          globalVar.globalDialogState = !globalVar.globalDialogState
+          globalVar.testVar.value = "Gia tri 1"
         })
+        Row(verticalAlignment = Alignment.CenterVertically,) {
+          Text(text = "Chọn server:", fontSize = 15.sp)
+          ServerSelectMenu()
+        }
+        MyDialog().FNDialog()
       }
     }
-    globalVar.dialogWindow
   }
 
   @Composable
   fun LoginHeader() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-      Text(
-        text = "Welcome Back",
-        fontSize = 36.sp,
-        fontWeight = FontWeight.ExtraBold,
-        textAlign = TextAlign.Center
+      Image(
+        painter = painterResource(id = R.drawable.logocmsvina),
+        contentDescription = "CMS Logo",
+        contentScale = ContentScale.Crop,
+        modifier = Modifier
+          .width(280.dp)
+          .height(50.dp)
+          .fillMaxWidth()
+          .fillMaxHeight()
       )
-      Text(text = "Login to use ERP", fontSize = 25.sp, fontWeight = FontWeight.ExtraBold)
     }
-
   }
 
   @Composable
@@ -261,24 +283,84 @@ class Components {
         },
         visualTransformation = PasswordVisualTransformation()
       )
-      TextButton(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.End)) {
-        Text(text = "Forgot password")
-      }
 
     }
 
   }
 
+  @OptIn(ExperimentalComposeUiApi::class)
+  @Composable
+  fun ServerSelectMenu() {
+    var selectedOption by remember { mutableStateOf("MAIN_SERVER") }
+    var expanded by remember { mutableStateOf(false) }
+    // Example of using KeyboardOptions and KeyboardActions
+    val keyboardOptions = KeyboardOptions.Default.copy(
+      keyboardType = KeyboardType.Text, imeAction = ImeAction.Done
+    )
+
+    val keyboardController = LocalSoftwareKeyboardController.current
+
+    Box(
+      modifier = Modifier
+        .padding(5.dp)
+        .background(color = Color.White),
+      contentAlignment = Alignment.CenterStart,
+    ) {
+      // Clickable text to show dropdown
+      Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+          text = selectedOption,
+          modifier = Modifier
+            .padding(16.dp)
+            .clickable { expanded = true },
+          color = Color.Black,
+          fontSize = 13.sp
+        )
+        Spacer(modifier = Modifier.width(2.dp))
+        FaIcon(faIcon = FaIcons.Desktop, tint = Color("#79AAFA".toColorInt()))
+      }
+
+      // Dropdown menu
+      DropdownMenu(
+        expanded = expanded,
+        onDismissRequest = { expanded = false },
+      ) {
+        // Dropdown menu items
+        DropdownMenuItem(text = {
+          Text(text = "MAIN_SERVER", fontSize = 12.sp)
+        }, onClick = {
+          selectedOption = "MAIN_SERVER"
+          expanded = false
+        }, leadingIcon =  {FaIcon(faIcon = FaIcons.Desktop, tint = Color("#79AAFA".toColorInt()))})
+        DropdownMenuItem(text = {
+          Text(text = "SUB_SERVER", fontSize = 12.sp)
+        }, onClick = {
+          selectedOption = "SUB_SERVER"
+          expanded = false
+        }, leadingIcon =  {FaIcon(faIcon = FaIcons.Desktop, tint = Color("#79AAFA".toColorInt()))})
+
+      }
+    }
+  }
+
+  @OptIn(ExperimentalComposeUiApi::class)
   @Composable
   fun LoginFooter(
     onSignInClick: () -> Unit, onSignUpClick: () -> Unit
   ) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-      Button(onClick = onSignInClick, modifier = Modifier.fillMaxWidth()) {
+      Button(
+        onClick = onSignInClick,
+        modifier = Modifier
+          .padding(16.dp)
+          .height(50.dp)
+          .fillMaxWidth(),
+        shape = RoundedCornerShape(5.dp),
+        colors = ButtonDefaults.buttonColors(
+          containerColor = Color("#357AEA".toColorInt()), contentColor = Color.White
+        )
+      ) {
         Text(text = "Login")
-      }
-      TextButton(onClick = onSignUpClick) {
-        Text(text = "Don't have an account, click here")
       }
     }
 

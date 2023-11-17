@@ -1,14 +1,17 @@
 package com.cmsbando.erp.api
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.cmsbando.erp.components.MyDialog
 
 class GlobalVariable() : ViewModel() {
-  var dialogWindow: @Composable () -> Unit by mutableStateOf({
+    var dialogWindow: @Composable () -> Unit by mutableStateOf({
     MyDialog().MyAlertDialog(
       isShown = globalDialogState,
       onDismissRequest = { onDialogCancel?.invoke() },
@@ -17,6 +20,8 @@ class GlobalVariable() : ViewModel() {
       dialogText = globalDialogText
     )
   })
+
+  var testVar: MutableState<String> = mutableStateOf("Khoi Tao")
   var globalDialogState: Boolean by mutableStateOf(false)
   var globalDialogTitle: String by mutableStateOf("")
   var globalDialogText: String by mutableStateOf("")
@@ -24,6 +29,7 @@ class GlobalVariable() : ViewModel() {
   var onDialogConfirm: (() -> Unit)? = null
   var onDialogCancel: (() -> Unit)? = null
   var token: String by mutableStateOf("reset")
+
   var userData: ErpInterface.Employee by mutableStateOf(ErpInterface.Employee(
     ADD_COMMUNE= "Đông Xuân",
     ADD_DISTRICT= "Sóc Sơn",

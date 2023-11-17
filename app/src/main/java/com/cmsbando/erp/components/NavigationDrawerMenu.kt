@@ -130,7 +130,7 @@ class NavigationDrawerMenu {
               .fillMaxWidth()
               .clickable(onClick = { subItem.onClick.invoke() })
               .padding(10.dp)
-              .background(color = Color.White),
+              .background(color = Color.Transparent),
             verticalAlignment = Alignment.CenterVertically
           ) {
             subItem.icon.invoke()

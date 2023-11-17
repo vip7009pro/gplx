@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -20,9 +21,29 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.cmsbando.erp.api.GlobalVariable
 import com.cmsbando.erp.theme.CMSVTheme
 
 class MyDialog {
+  @Composable
+  fun FNDialog() {
+    val globalVar = viewModel<GlobalVariable>()
+    MyAlertDialog(
+      isShown = globalVar.globalDialogState,
+      onDismissRequest = {
+        globalVar.onDialogCancel?.invoke()
+        globalVar.globalDialogState = false
+      },
+      onConfirmation = {
+        globalVar.onDialogConfirm?.invoke()
+        globalVar.globalDialogState = false
+      },
+      dialogTitle = globalVar.globalDialogTitle,
+      dialogText = globalVar.globalDialogText,
+      dialogCat = globalVar.globalDialogCat,
+    )
+  }
   @Composable
   fun MyAlertDialog(
     dialogCat: String = "success",
@@ -73,6 +94,49 @@ class MyDialog {
         }
       })
     }
+  }
+
+  @OptIn(ExperimentalMaterial3Api::class)
+  @Composable
+  fun NativeAlertDialog(
+    onDismissRequest: () -> Unit,
+    onConfirmation: () -> Unit,
+    dialogTitle: String,
+    dialogText: String,
+    icon: ImageVector,
+  ) {
+    AlertDialog(
+      icon = {
+        Icon(icon, contentDescription = "Example Icon")
+      },
+      title = {
+        Text(text = dialogTitle)
+      },
+      text = {
+        Text(text = dialogText)
+      },
+      onDismissRequest = {
+        onDismissRequest()
+      },
+      confirmButton = {
+        TextButton(
+          onClick = {
+            onConfirmation()
+          }
+        ) {
+          Text("Confirm")
+        }
+      },
+      dismissButton = {
+        TextButton(
+          onClick = {
+            onDismissRequest()
+          }
+        ) {
+          Text("Dismiss")
+        }
+      }
+    )
   }
 
   @Composable

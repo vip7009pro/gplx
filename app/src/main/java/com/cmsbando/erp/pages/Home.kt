@@ -8,9 +8,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,6 +23,7 @@ import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -40,10 +41,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -52,10 +53,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.cmsbando.erp.R
 import com.cmsbando.erp.api.ErpInterface
 import com.cmsbando.erp.api.GlobalVariable
+import com.cmsbando.erp.api.LocalData
+import com.cmsbando.erp.components.MyDialog
 import com.cmsbando.erp.components.NavigationDrawerMenu
 import com.cmsbando.erp.theme.CMSVTheme
 import com.guru.fontawesomecomposelib.FaIcon
@@ -63,16 +67,15 @@ import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.launch
 
 class Home {
-
   @RequiresApi(Build.VERSION_CODES.O)
   @OptIn(ExperimentalMaterial3Api::class)
   @Composable
-  fun MyHome() {
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Open)
+  fun MyHome(navController: NavController) {
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val globalVar = viewModel<GlobalVariable>()
-
-    val menuData = listOf<ErpInterface.MenuData>(
+    val currentContext = LocalContext.current
+    val menuData = listOf(
       ErpInterface.MenuData(route = "nhansubophan",
         title = "Nhân sự bộ phận",
         icon = {
@@ -198,7 +201,7 @@ class Home {
             title = "Nhân sự bộ phận",
             icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
             onClick = { Log.d("xxx", "click 3") }),
-          )
+        )
       ),
       ErpInterface.MenuData(
         route = "nhansubophan",
@@ -261,6 +264,7 @@ class Home {
           )
       ),
     )
+
     ModalNavigationDrawer(
       drawerState = drawerState,
       drawerContent = {
@@ -278,8 +282,6 @@ class Home {
               verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()
             ) {
               Row(verticalAlignment = Alignment.CenterVertically) {
-                Log.d("xxx", "ma nhan vien: ${globalVar.userData.EMPL_NO}")
-
                 AsyncImage(
                   model = "http://14.160.33.94/Picture_NS/NS_${globalVar.userData.EMPL_NO}.jpg",
                   contentDescription = "employee image",
@@ -318,6 +320,22 @@ class Home {
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
                   )
+                  Button(
+                    onClick = {
+                      globalVar.showDialog("warning", "Thông báo", "Chắc chắn muốn logout?", {
+                        navController.navigate("login") {
+                          popUpTo("login") {
+                            inclusive = true
+                          }
+                        }
+                        LocalData().saveData(currentContext, "token", "reset")
+                      }, {})
+                    }, modifier = Modifier
+                      .width(90.dp)
+                      .height(40.dp)
+                  ) {
+                    Text(text = "Logout", fontSize = 12.sp)
+                  }
                 }
               }
             }
@@ -366,14 +384,71 @@ class Home {
         },
         floatingActionButtonPosition = FabPosition.End,
       ) { paddingValues ->
-        Column {
+
+        Column(modifier = Modifier.padding(top = 40.dp)) {
+          Text(text = globalVar.userData.EMPL_NO)
+          Text(text = globalVar.testVar.value)
+          Button(onClick = {
+            globalVar.userData = ErpInterface.Employee(
+              ADD_COMMUNE = "Đông Xuân",
+              ADD_DISTRICT = "Sóc Sơn",
+              ADD_PROVINCE = "Hà Nội",
+              ADD_VILLAGE = "Thôn Phú Thọ",
+              ATT_GROUP_CODE = 1,
+              CMS_ID = "CMS1179",
+              CTR_CD = "002",
+              DOB = "1993-10-18T00=00=00.000Z",
+              EMAIL = "nvh1903@cmsbando.com",
+              EMPL_NO = "NVD1201",
+              FACTORY_CODE = 1,
+              FACTORY_NAME = "Nhà máy 1",
+              FACTORY_NAME_KR = "1공장",
+              FIRST_NAME = "DŨNG",
+              HOMETOWN = "Phụ Thọ - Đông Xuân - Sóc Sơn - Hà Nội",
+              JOB_CODE = 1,
+              JOB_NAME = "Dept Staff",
+              JOB_NAME_KR = "부서담당자",
+              MAINDEPTCODE = 1,
+              MAINDEPTNAME = "QC",
+              MAINDEPTNAME_KR = "품질",
+              MIDLAST_NAME = "NGÔ VĂN",
+              ONLINE_DATETIME = "2022-07-12T20=49=52.600Z",
+              PASSWORD = "",
+              PHONE_NUMBER = "0971092454",
+              POSITION_CODE = 3,
+              POSITION_NAME = "Staff",
+              POSITION_NAME_KR = "사원",
+              REMARK = "",
+              SEX_CODE = 1,
+              SEX_NAME = "Nam",
+              SEX_NAME_KR = "남자",
+              SUBDEPTCODE = 2,
+              SUBDEPTNAME = "PD",
+              SUBDEPTNAME_KR = "통역",
+              WORK_POSITION_CODE = 2,
+              WORK_POSITION_NAME = "PD",
+              WORK_POSITION_NAME_KR = "PD",
+              WORK_SHIFT_CODE = 0,
+              WORK_SHIF_NAME = "Hành Chính",
+              WORK_SHIF_NAME_KR = "정규",
+              WORK_START_DATE = "2019-03-11T00=00=00.000Z",
+              WORK_STATUS_CODE = 1,
+              WORK_STATUS_NAME = "Đang làm",
+              WORK_STATUS_NAME_KR = "근무중",
+              EMPL_IMAGE = "N",
+            )
+
+          }) {
+            Text(text = "Change User")
+
+          }
           paddingValues
         }
 
       }
 
     }
-
+    MyDialog().FNDialog()
   }
 
   @RequiresApi(Build.VERSION_CODES.O)
@@ -381,7 +456,7 @@ class Home {
   @Composable
   fun GreetingPreview() {
     CMSVTheme {
-      MyHome()
+
     }
   }
 
