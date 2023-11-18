@@ -5,14 +5,22 @@ import android.net.http.HttpException
 import android.os.Build
 import android.os.ext.SdkExtensions
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresExtension
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
@@ -26,16 +34,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.graphics.toColorInt
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.cmsbando.erp.api.ApiHandler
 import com.cmsbando.erp.api.ErpInterface
 import com.cmsbando.erp.api.GlobalVariable
 import com.cmsbando.erp.api.LocalData
 import com.cmsbando.erp.components.MyDialog
+import com.cmsbando.erp.theme.CMSVTheme
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -46,18 +63,18 @@ import kotlinx.coroutines.launch
 class DiemDanhNhom {
 
   @OptIn(ExperimentalMaterial3Api::class)
+  @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   @Composable
   fun DiemDanhNhomScreen(navController: NavController, globalVar: GlobalVariable) {
     val Boxct: Context = LocalContext.current
     var listDiemDanh by remember { mutableStateOf<List<ErpInterface.DiemDanhNhomData>>(emptyList()) }
 
-    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+
+
     fun loadDiemDanhNhom() {
-      val scopeCheckLogin = GlobalScope.launch(Dispatchers.Main) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && SdkExtensions.getExtensionVersion(
-            Build.VERSION_CODES.S
-          ) >= 7
-        ) {
+
+      val scopeCheckLogin = GlobalScope.launch(Dispatchers.IO) {
+
           try {
             val savedToken: String = LocalData().getData(Boxct, "token")
             val apiHandler = ApiHandler(globalVar)
@@ -99,13 +116,12 @@ class DiemDanhNhom {
               { },
               { })
           }
-        }
+
       }
     }
     LaunchedEffect(true) {
       loadDiemDanhNhom()
     }
-
     Scaffold(
       topBar = {
         TopAppBar(modifier = Modifier.height(40.dp),
@@ -114,7 +130,6 @@ class DiemDanhNhom {
             titleContentColor = MaterialTheme.colorScheme.primary,
           ),
           title = {})
-
       },
       bottomBar = {
         BottomAppBar(
@@ -138,19 +153,82 @@ class DiemDanhNhom {
       },
       floatingActionButtonPosition = FabPosition.End,
     ) { paddingValues ->
-      Column(modifier = Modifier.padding(top = 40.dp)) {
+      Column(modifier = Modifier.padding(top = 40.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "Điểm danh nhóm screen")
-        LazyColumn() {
-          this.items(listDiemDanh) { ele ->
-            Text(text = ele.MIDLAST_NAME + " " + ele.FIRST_NAME)
+        LazyColumn(modifier = Modifier
+          .fillMaxSize()
+          .background(
+            brush = Brush.verticalGradient(
+              listOf(
+                Color("#f18de1".toColorInt()),
+                Color("#afd3d1".toColorInt())
+              )
+            )
+          )) {
+
+          this.itemsIndexed(listDiemDanh) { index, ele ->
+            DiemDanhNhomElement(diemdanhDataRow = ele, index = index)
           }
         }
         paddingValues
       }
-
     }
-
     MyDialog().FNDialog(globalVar = globalVar)
+  }
+
+  @Composable
+  fun DiemDanhNhomElement(diemdanhDataRow: ErpInterface.DiemDanhNhomData, index: Int) {
+    Row(
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(top = 5.dp, bottom = 5.dp)
+    ) {
+      AsyncImage(
+        model = "http://14.160.33.94/Picture_NS/NS_${diemdanhDataRow.EMPL_NO}.jpg",
+        contentDescription = "employee image",
+        modifier = Modifier
+          .width(50.dp)
+          .height(50.dp)
+          .clip(
+            RoundedCornerShape(50.dp)
+          ),
+        contentScale = ContentScale.FillBounds
+      )
+      Text(text = (index + 1).toString() + "." + diemdanhDataRow.MIDLAST_NAME + " " + diemdanhDataRow.FIRST_NAME)
+    }
+    Divider()
+    Spacer(modifier = Modifier.height(20.dp))
+  }
+
+  @RequiresApi(Build.VERSION_CODES.O)
+  @Preview(showBackground = true, showSystemUi = true)
+  @Composable
+  fun GreetingPreview() {
+    CMSVTheme {
+      DiemDanhNhomElement(diemdanhDataRow = ErpInterface.DiemDanhNhomData( APPLY_DATE= "2023-11-18",
+        APPROVAL_STATUS= 3,
+        CA_NGHI= 3,
+        CMS_ID= "CMS1179",
+        EMPL_NO= "NHU1903",
+        FACTORY_NAME= "NM1",
+        FIRST_NAME= "Hùng3",
+        JOB_NAME= "Dept Staff",
+        MAINDEPTNAME= "QC",
+        MIDLAST_NAME= "Nguyễn Văn",
+        OFF_ID= 4,
+        ON_OFF= 1,
+        OVERTIME= 0,
+        OVERTIME_INFO= "1700-2000",
+        PHONE_Int= "0971092454",
+        REASON_NAME= "",
+        REQUEST_DATE= "",
+        SEX_NAME= "Nam",
+        SUBDEPTNAME= "PD",
+        WORK_POSITION_NAME= "Phiên Dịch",
+        WORK_SHIF_NAME= "Hành Chính",
+        WORK_STATUS_NAME= "Đang làm việc",
+        REMARK= "",),0)
+    }
   }
 
 }
