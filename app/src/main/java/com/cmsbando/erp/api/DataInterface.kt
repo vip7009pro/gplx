@@ -73,5 +73,30 @@ class ErpInterface
         var subMenu: List<SubMenuData>?
     )
 
+    data class DiemDanhNhomData (
+        var APPLY_DATE: String,
+        var APPROVAL_STATUS: Int,
+        var CA_NGHI: Int,
+        var CMS_ID: String,
+        var EMPL_NO: String,
+        var FACTORY_NAME: String,
+        var FIRST_NAME: String,
+        var JOB_NAME: String,
+        var MAINDEPTNAME: String,
+        var MIDLAST_NAME: String,
+        var OFF_ID: Int,
+        var ON_OFF: Int,
+        var OVERTIME: Int,
+        var OVERTIME_INFO: String,
+        var PHONE_Int: String,
+        var REASON_NAME: String,
+        var REQUEST_DATE: String,
+        var SEX_NAME: String,
+        var SUBDEPTNAME: String,
+        var WORK_POSITION_NAME: String,
+        var WORK_SHIF_NAME: String,
+        var WORK_STATUS_NAME: String,
+        var REMARK: String,
+    )
 
 }

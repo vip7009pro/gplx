@@ -12,13 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.cmsbando.erp.api.GlobalVariable
 import com.cmsbando.erp.components.Components
 import com.cmsbando.erp.pages.Home
+import com.cmsbando.erp.pages.nhansu.DiemDanhNhom
 import com.cmsbando.erp.theme.CMSVTheme
-
 
 class MainActivity : ComponentActivity() {
   @RequiresApi(Build.VERSION_CODES.O)
@@ -40,12 +42,16 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainApp() {
   val navController = rememberNavController()
+  val globalVar = viewModel<GlobalVariable>()
   NavHost(navController = navController, startDestination = "login") {
     composable("login") {
-      Components().LoginScreen(navController)
+      Components().LoginScreen(navController = navController, globalVar = globalVar)
     }
     composable("home") {
-      Home().MyHome(navController)
+      Home().MyHome(navController = navController, globalVar = globalVar)
+    }
+    composable("diemdanhnhom") {
+      DiemDanhNhom().DiemDanhNhomScreen(navController = navController, globalVar = globalVar)
     }
   }
 

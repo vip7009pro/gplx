@@ -68,7 +68,7 @@ class NavigationDrawerMenu {
     coroutineScope: CoroutineScope
   ) {
     val colors = MaterialTheme.colorScheme
-    val background = if (isSelected) colors.primary else colors.surface
+    val background = MaterialTheme.colorScheme.background
     var isSubMenuVisible by remember { mutableStateOf(false) }
     Column(
       modifier = Modifier
@@ -119,7 +119,7 @@ class NavigationDrawerMenu {
     Column(
       modifier = Modifier
         .fillMaxWidth()
-        .background(Color.White)
+        .background(MaterialTheme.colorScheme.background)
         .padding(horizontal = 10.dp)
     ) {
 

@@ -27,8 +27,8 @@ import com.cmsbando.erp.theme.CMSVTheme
 
 class MyDialog {
   @Composable
-  fun FNDialog() {
-    val globalVar = viewModel<GlobalVariable>()
+  fun FNDialog(globalVar: GlobalVariable) {
+//    val globalVar = viewModel<GlobalVariable>()
     MyAlertDialog(
       isShown = globalVar.globalDialogState,
       onDismissRequest = {

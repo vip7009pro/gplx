@@ -18,14 +18,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -33,10 +31,8 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -47,14 +43,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -63,7 +56,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.cmsbando.erp.R
 import com.cmsbando.erp.api.ApiHandler
@@ -83,19 +75,25 @@ import kotlinx.coroutines.launch
 class Components {
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   @Composable
-  fun LoginScreen(navController: NavController) {
-    val globalVar = viewModel<GlobalVariable>()
+  fun LoginScreen(navController: NavController, globalVar: GlobalVariable) {
+    val boxCt: Context = LocalContext.current
+    val savedUser: String = LocalData().getData(boxCt, "user")
+    val savedPass: String = LocalData().getData(boxCt, "pass")
+    val savedServer: String = LocalData().getData(boxCt, "server")
+    if (savedServer !== "") {
+      globalVar.currentServer = savedServer
+    }
     var username by remember {
-      mutableStateOf("NHU1903")
+      mutableStateOf(savedUser)
     }
     var password by remember {
-      mutableStateOf("123456789")
+      mutableStateOf(savedPass)
     }
-    val boxCt: Context = LocalContext.current
+
     fun loginfunc() {
       val scopeLogin = GlobalScope.launch(Dispatchers.Main) {
         try {
-          val apiHandler = ApiHandler()
+          val apiHandler = ApiHandler(globalVar)
           val result: JsonObject = apiHandler.login(username, password)
           if (result != null) {
             val tk_status: String = result.get("tk_status").asString
@@ -107,8 +105,15 @@ class Components {
               globalVar.token = result.get("token_content").asString
               LocalData().saveData(boxCt, "token", result.get("token_content").asString)
               globalVar.userData = persons[0]
-              Log.d("xxx", "Đăng nhập thành công")
-              navController.navigate("home")/*globalVar.showDialog("success",
+              //save local account
+              LocalData().saveData(boxCt, "user", username)
+              LocalData().saveData(boxCt, "pass", password)
+//              Log.d("xxx", "Đăng nhập thành công")
+              navController.navigate("home") {
+                popUpTo("home") {
+                  inclusive = true
+                }
+              }/*globalVar.showDialog("success",
                 "Thông báo",
                 "Đăng nhập thành công, xin chào:  ${persons.get(0).MIDLAST_NAME} ${persons.get(0).FIRST_NAME}",
                 {
@@ -154,7 +159,7 @@ class Components {
       val scopeCheckLogin = GlobalScope.launch(Dispatchers.Main) {
         try {
           val savedToken: String = LocalData().getData(boxCt, "token")
-          val apiHandler = ApiHandler()
+          val apiHandler = ApiHandler(globalVar)
           val result: JsonObject = apiHandler.generalQuery("checklogin", JsonObject(), savedToken)
           val tk_status: String = result.get("tk_status").asString
           if (tk_status != "ng") {
@@ -168,13 +173,13 @@ class Components {
               launchSingleTop = true
               restoreState = true
             }/*globalVar.showDialog("success",
-              "Thông báo",
-              "Đăng nhập thành công ${myData.MIDLAST_NAME} ${myData.FIRST_NAME}",
-              {
-                Log.d("xxx", "Day la hanh dong xay ra 1 ${data.get("EMPL_NO")}")
-              },
-              { Log.d("xxx", "Day la hanh dong xay ra 2 ${data.get("EMPL_NO")}") })
-            println("Data xxx: ${myData.EMPL_NO}")*/
+                "Thông báo",
+                "Đăng nhập thành công ${myData.MIDLAST_NAME} ${myData.FIRST_NAME}",
+                {
+                  Log.d("xxx", "Day la hanh dong xay ra 1 ${data.get("EMPL_NO")}")
+                },
+                { Log.d("xxx", "Day la hanh dong xay ra 2 ${data.get("EMPL_NO")}") })
+              */
           } else {
             print("xxx: Có lỗi: ${result.get("message")}")/* globalVar.showDialog("error",
                "Thông báo",
@@ -206,7 +211,7 @@ class Components {
     Box(
       modifier = Modifier
         .fillMaxSize()
-        .background(MaterialTheme.colorScheme.background)
+        .background(Color.White)
         .padding(10.dp)
         .clip(
           CutCornerShape(
@@ -230,13 +235,13 @@ class Components {
           onPasswordChange = { password = it })
         Spacer(modifier = Modifier.height(20.dp))
         LoginFooter(onSignInClick = { loginfunc() }, onSignUpClick = {
-          globalVar.testVar.value = "Gia tri 1"
+
         })
-        Row(verticalAlignment = Alignment.CenterVertically,) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
           Text(text = "Chọn server:", fontSize = 15.sp)
-          ServerSelectMenu()
+          ServerSelectMenu(globalVar = globalVar)
         }
-        MyDialog().FNDialog()
+        MyDialog().FNDialog(globalVar = globalVar)
       }
     }
   }
@@ -283,15 +288,14 @@ class Components {
         },
         visualTransformation = PasswordVisualTransformation()
       )
-
     }
 
   }
 
   @OptIn(ExperimentalComposeUiApi::class)
   @Composable
-  fun ServerSelectMenu() {
-    var selectedOption by remember { mutableStateOf("MAIN_SERVER") }
+  fun ServerSelectMenu(globalVar: GlobalVariable) {
+    val Boxct: Context = LocalContext.current
     var expanded by remember { mutableStateOf(false) }
     // Example of using KeyboardOptions and KeyboardActions
     val keyboardOptions = KeyboardOptions.Default.copy(
@@ -309,7 +313,7 @@ class Components {
       // Clickable text to show dropdown
       Row(verticalAlignment = Alignment.CenterVertically) {
         Text(
-          text = selectedOption,
+          text = globalVar.currentServer,
           modifier = Modifier
             .padding(16.dp)
             .clickable { expanded = true },
@@ -329,15 +333,17 @@ class Components {
         DropdownMenuItem(text = {
           Text(text = "MAIN_SERVER", fontSize = 12.sp)
         }, onClick = {
-          selectedOption = "MAIN_SERVER"
+          globalVar.currentServer = "MAIN_SERVER"
+          LocalData().saveData(Boxct, "server", "MAIN_SERVER")
           expanded = false
-        }, leadingIcon =  {FaIcon(faIcon = FaIcons.Desktop, tint = Color("#79AAFA".toColorInt()))})
+        }, leadingIcon = { FaIcon(faIcon = FaIcons.Desktop, tint = Color("#79AAFA".toColorInt())) })
         DropdownMenuItem(text = {
           Text(text = "SUB_SERVER", fontSize = 12.sp)
         }, onClick = {
-          selectedOption = "SUB_SERVER"
+          globalVar.currentServer = "SUB_SERVER"
+          LocalData().saveData(Boxct, "server", "SUB_SERVER")
           expanded = false
-        }, leadingIcon =  {FaIcon(faIcon = FaIcons.Desktop, tint = Color("#79AAFA".toColorInt()))})
+        }, leadingIcon = { FaIcon(faIcon = FaIcons.Desktop, tint = Color("#79AAFA".toColorInt())) })
 
       }
     }

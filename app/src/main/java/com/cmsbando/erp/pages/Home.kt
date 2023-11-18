@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -70,10 +71,11 @@ class Home {
   @RequiresApi(Build.VERSION_CODES.O)
   @OptIn(ExperimentalMaterial3Api::class)
   @Composable
-  fun MyHome(navController: NavController) {
+  fun MyHome(navController: NavController, globalVar: GlobalVariable) {
+
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-    val globalVar = viewModel<GlobalVariable>()
+    //val globalVar = viewModel<GlobalVariable>()
     val currentContext = LocalContext.current
     val menuData = listOf(
       ErpInterface.MenuData(route = "nhansubophan",
@@ -87,10 +89,16 @@ class Home {
           )
         },
         subMenu = listOf(
-          ErpInterface.SubMenuData(route = "nhansubophan", title = "Điểm danh nhóm", icon = {
+          ErpInterface.SubMenuData(route = "diemdanhnhom", title = "Điểm danh nhóm", icon = {
             Spacer(modifier = Modifier.width(5.dp))
             FaIcon(faIcon = FaIcons.Check, size = 20.dp, tint = Color.Green)
-          }, onClick = { Log.d("xxx", "click 1") }),
+          }, onClick = {
+            navController.navigate("diemdanhnhom") {
+              popUpTo("diemdanhnhom") {
+                inclusive = true
+              }
+            }
+          }),
           ErpInterface.SubMenuData(route = "dieuchuyenteam", title = "Điều chuyển team", icon = {
             Icon(
               Icons.Default.Refresh,
@@ -220,7 +228,6 @@ class Home {
             title = "Nhân sự bộ phận",
             icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
             onClick = { Log.d("xxx", "click 3") }),
-
           )
       ),
       ErpInterface.MenuData(
@@ -264,12 +271,13 @@ class Home {
           )
       ),
     )
+    val isDarkMode = isSystemInDarkTheme()
 
     ModalNavigationDrawer(
       drawerState = drawerState,
       drawerContent = {
         ModalDrawerSheet {
-          Column(modifier = Modifier.background(Color.White)) {
+          Column(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
               Image(
                 painter = painterResource(id = R.drawable.logocmsvina),
@@ -290,7 +298,8 @@ class Home {
                     .height(100.dp)
                     .clip(
                       RoundedCornerShape(50.dp)
-                    )
+                    ),
+                  contentScale = ContentScale.FillBounds
                 )
               }
               Spacer(modifier = Modifier.width(10.dp))
@@ -298,7 +307,7 @@ class Home {
                 Column {
                   Text(
                     text = "Họ tên: ${globalVar.userData.MIDLAST_NAME + " " + globalVar.userData.FIRST_NAME} ",
-                    color = Color("#0937CD".toColorInt()),
+                    color = if(isDarkMode)  Color.Yellow else Color("#0937CD".toColorInt()),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
                   )
@@ -316,7 +325,7 @@ class Home {
                   )
                   Text(
                     text = "Mã NV: ${globalVar.userData.EMPL_NO} ",
-                    color = Color.Gray,
+                    color = if(isDarkMode) Color.White else Color.Gray,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
                   )
@@ -387,7 +396,7 @@ class Home {
 
         Column(modifier = Modifier.padding(top = 40.dp)) {
           Text(text = globalVar.userData.EMPL_NO)
-          Text(text = globalVar.testVar.value)
+          Text(text = globalVar.currentServer)
           Button(onClick = {
             globalVar.userData = ErpInterface.Employee(
               ADD_COMMUNE = "Đông Xuân",
@@ -440,7 +449,6 @@ class Home {
 
           }) {
             Text(text = "Change User")
-
           }
           paddingValues
         }
@@ -448,7 +456,7 @@ class Home {
       }
 
     }
-    MyDialog().FNDialog()
+    MyDialog().FNDialog(globalVar = globalVar)
   }
 
   @RequiresApi(Build.VERSION_CODES.O)

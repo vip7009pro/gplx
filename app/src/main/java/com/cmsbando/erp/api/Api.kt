@@ -1,5 +1,6 @@
 package com.cmsbando.erp.api
 
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.gson.JsonObject
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -15,8 +16,9 @@ interface ApiService {
   suspend fun fetchData(@Body data: JsonObject): Response<JsonObject>
 }
 
-class ApiHandler {
-  val retrofit = Retrofit.Builder().baseUrl("http://cms.ddns.net:3007")
+class ApiHandler(private val globalVar : GlobalVariable) {
+
+  val retrofit = Retrofit.Builder().baseUrl(globalVar.getServer())
     .addConverterFactory(GsonConverterFactory.create()).build()
   val apiService = retrofit.create(ApiService::class.java)
 

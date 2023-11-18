@@ -2,6 +2,7 @@ package com.cmsbando.erp.api
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -9,19 +10,12 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cmsbando.erp.components.MyDialog
+import com.cmsbando.erp.statemanager.AppAction
+import com.cmsbando.erp.statemanager.AppState
+import com.cmsbando.erp.statemanager.reduce
 
-class GlobalVariable() : ViewModel() {
-    var dialogWindow: @Composable () -> Unit by mutableStateOf({
-    MyDialog().MyAlertDialog(
-      isShown = globalDialogState,
-      onDismissRequest = { onDialogCancel?.invoke() },
-      onConfirmation = { onDialogConfirm?.invoke() },
-      dialogTitle = globalDialogTitle,
-      dialogText = globalDialogText
-    )
-  })
-
-  var testVar: MutableState<String> = mutableStateOf("Khoi Tao")
+class GlobalVariable: ViewModel() {
+  var currentServer: String by mutableStateOf("MAIN_SERVER")
   var globalDialogState: Boolean by mutableStateOf(false)
   var globalDialogTitle: String by mutableStateOf("")
   var globalDialogText: String by mutableStateOf("")
@@ -78,6 +72,14 @@ class GlobalVariable() : ViewModel() {
     WORK_STATUS_NAME_KR= "근무중",
     EMPL_IMAGE= "N",
   ))
+  fun getServer(): String {
+    var sv: String = ""
+    when(currentServer) {
+      "MAIN_SERVER"-> sv = "http:14.160.33.94:5013"
+      "SUB_SERVER"-> sv = "http:14.160.33.94:3007"
+    }
+    return sv
+  }
   fun showDialog(
     dialogCat: String = "success",
     dialogTitle: String = "Title",
