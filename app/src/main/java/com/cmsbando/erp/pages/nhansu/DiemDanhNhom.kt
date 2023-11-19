@@ -3,11 +3,16 @@ package com.cmsbando.erp.pages.nhansu
 import android.content.Context
 import android.net.http.HttpException
 import android.os.Build
+import android.os.Build.VERSION_CODES.Q
 import android.os.ext.SdkExtensions
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,12 +25,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -37,13 +45,22 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
@@ -61,61 +78,55 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class DiemDanhNhom {
-
   @OptIn(ExperimentalMaterial3Api::class)
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   @Composable
   fun DiemDanhNhomScreen(navController: NavController, globalVar: GlobalVariable) {
     val Boxct: Context = LocalContext.current
     var listDiemDanh by remember { mutableStateOf<List<ErpInterface.DiemDanhNhomData>>(emptyList()) }
-
-
-
     fun loadDiemDanhNhom() {
-
       val scopeCheckLogin = GlobalScope.launch(Dispatchers.IO) {
 
-          try {
-            val savedToken: String = LocalData().getData(Boxct, "token")
-            val apiHandler = ApiHandler(globalVar)
-            var apiData = JsonObject()
-            apiData.addProperty("team_name_list", 5)
-            val result: JsonObject = apiHandler.generalQuery("diemdanhnhom", apiData, savedToken)
-            val tk_status: String = result.get("tk_status").asString
+        try {
+          val savedToken: String = LocalData().getData(Boxct, "token")
+          val apiHandler = ApiHandler(globalVar)
+          var apiData = JsonObject()
+          apiData.addProperty("team_name_list", 5)
+          val result: JsonObject = apiHandler.generalQuery("diemdanhnhom", apiData, savedToken)
+          val tk_status: String = result.get("tk_status").asString
 
-            if (tk_status != "ng") {
-              val data = result.get("data").asJsonArray
-              val DiemDanhNhomType =
-                object : TypeToken<List<ErpInterface.DiemDanhNhomData>>() {}.type
-              val dataList: List<ErpInterface.DiemDanhNhomData> =
-                Gson().fromJson(data, DiemDanhNhomType)
-              listDiemDanh = dataList
-              globalVar.showDialog("success",
-                "Thông báo",
-                "Load thành công ${dataList.size} dòng",
-                {},
-                {})
-            } else {
-              globalVar.showDialog("error",
-                "Thông báo",
-                "Có lỗi: ${result.get("message").asString}",
-                { },
-                { })
-            }
-          } catch (e: HttpException) {
-            Log.d("xxx", "Lỗi http")
+          if (tk_status != "ng") {
+            val data = result.get("data").asJsonArray
+            val DiemDanhNhomType = object : TypeToken<List<ErpInterface.DiemDanhNhomData>>() {}.type
+            val dataList: List<ErpInterface.DiemDanhNhomData> =
+              Gson().fromJson(data, DiemDanhNhomType)
+            listDiemDanh = dataList
+            globalVar.showDialog("success",
+              "Thông báo",
+              "Load thành công ${dataList.size} dòng",
+              {},
+              {})
+          } else {
             globalVar.showDialog("error",
               "Thông báo",
-              "Tải data thất bại, kiểm tra lại mạng mẹo",
-              { },
-              { })
-          } catch (e: Exception) {
-            globalVar.showDialog("error",
-              "Thông báo",
-              "Tải data thất bại: ,${e.message.toString()}",
+              "Có lỗi: ${result.get("message").asString}",
               { },
               { })
           }
+        } catch (e: HttpException) {
+          Log.d("xxx", "Lỗi http")
+          globalVar.showDialog("error",
+            "Thông báo",
+            "Tải data thất bại, kiểm tra lại mạng mẹo",
+            { },
+            { })
+        } catch (e: Exception) {
+          globalVar.showDialog("error",
+            "Thông báo",
+            "Tải data thất bại: ,${e.message.toString()}",
+            { },
+            { })
+        }
 
       }
     }
@@ -129,10 +140,12 @@ class DiemDanhNhom {
             containerColor = MaterialTheme.colorScheme.primaryContainer,
             titleContentColor = MaterialTheme.colorScheme.primary,
           ),
-          title = {})
+          title = {
+            Text("Điểm danh nhóm")
+          })
       },
       bottomBar = {
-        BottomAppBar(
+        /*BottomAppBar(
           modifier = Modifier.height(40.dp),
           containerColor = MaterialTheme.colorScheme.primaryContainer,
           contentColor = MaterialTheme.colorScheme.primary,
@@ -142,7 +155,7 @@ class DiemDanhNhom {
             textAlign = TextAlign.Center,
             text = "Bottom app bar",
           )
-        }
+        }*/
       },
       floatingActionButton = {
         /*FloatingActionButton(onClick = {
@@ -153,24 +166,24 @@ class DiemDanhNhom {
       },
       floatingActionButtonPosition = FabPosition.End,
     ) { paddingValues ->
-      Column(modifier = Modifier.padding(top = 40.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Điểm danh nhóm screen")
-        LazyColumn(modifier = Modifier
-          .fillMaxSize()
-          .background(
-            brush = Brush.verticalGradient(
-              listOf(
-                Color("#f18de1".toColorInt()),
-                Color("#afd3d1".toColorInt())
-              )
-            )
-          )) {
+      Column(
+        modifier = Modifier
+          .padding(paddingValues)
+          .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+      ) {
+
+        LazyColumn(
+          modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 5.dp), verticalArrangement = Arrangement.Center
+        ) {
 
           this.itemsIndexed(listDiemDanh) { index, ele ->
             DiemDanhNhomElement(diemdanhDataRow = ele, index = index)
           }
         }
-        paddingValues
       }
     }
     MyDialog().FNDialog(globalVar = globalVar)
@@ -178,56 +191,116 @@ class DiemDanhNhom {
 
   @Composable
   fun DiemDanhNhomElement(diemdanhDataRow: ErpInterface.DiemDanhNhomData, index: Int) {
-    Row(
+    Box(
       modifier = Modifier
         .fillMaxWidth()
-        .padding(top = 5.dp, bottom = 5.dp)
+        .padding(bottom = 5.dp, start = 5.dp, end = 5.dp)
+        .clip(shape = RoundedCornerShape(5.dp))
+        .background(
+          brush = Brush.verticalGradient(
+            listOf(
+              Color("#BEEDA6".toColorInt()), Color("#A3CFF7".toColorInt())
+            )
+          )
+        )
     ) {
-      AsyncImage(
-        model = "http://14.160.33.94/Picture_NS/NS_${diemdanhDataRow.EMPL_NO}.jpg",
-        contentDescription = "employee image",
+      Row(
         modifier = Modifier
-          .width(50.dp)
-          .height(50.dp)
-          .clip(
-            RoundedCornerShape(50.dp)
-          ),
-        contentScale = ContentScale.FillBounds
-      )
-      Text(text = (index + 1).toString() + "." + diemdanhDataRow.MIDLAST_NAME + " " + diemdanhDataRow.FIRST_NAME)
+          .fillMaxWidth()
+          .padding(top = 5.dp, bottom = 2.dp, start = 5.dp, end = 5.dp)
+          .height(130.dp),
+      ) {
+        Column {
+          AsyncImage(
+            model = "http://14.160.33.94/Picture_NS/NS_${diemdanhDataRow.EMPL_NO}.jpg",
+            contentDescription = "employee image",
+            modifier = Modifier
+              .width(50.dp)
+              .height(50.dp)
+              .clip(
+                RoundedCornerShape(50.dp)
+              ),
+            contentScale = ContentScale.FillBounds
+          )
+          Text(text = "${diemdanhDataRow.EMPL_NO}\n${diemdanhDataRow.CMS_ID} OK", fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+        }
+        /*Column {
+          Row(modifier = Modifier.fillMaxWidth()) {
+            Text(text = "${ (index + 1).toString()}. ${diemdanhDataRow.MIDLAST_NAME} ${diemdanhDataRow.FIRST_NAME} ", fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+          }
+          Row(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.fillMaxWidth(0.5f)) {
+              Row {
+                Text(text = "Điểm danh1")
+              }
+              Row(modifier = Modifier.fillMaxWidth()) {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                  Text(text = "Làm ngày", fontSize = 13.sp, color = Color("#359204".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
+                  Text(text = "Làm đêm", fontSize = 13.sp, color = Color("#6D6959".toColorInt()), modifier = Modifier.clickable {   }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
+                  Text(text = "Nghỉ 50%", fontSize = 13.sp, color = Color("#CA9D04".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
+                  Text(text = "Nghỉ làm", fontSize = 13.sp, color = Color("#FF0000".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
+                }
+
+              }
+            }
+            Column(modifier = Modifier.fillMaxWidth(0.5f)) {
+              Row(modifier = Modifier.fillMaxWidth()) {
+                Text(text = "Tăng ca")
+              }
+              Row(modifier = Modifier.fillMaxWidth()) {
+                Column(modifier = Modifier.fillMaxWidth(0.5f)) {
+                  Text(text = "KTC", fontSize = 13.sp, color = Color("#359204".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
+                  Text(text = "02-06", fontSize = 13.sp, color = Color("#6D6959".toColorInt()), modifier = Modifier.clickable {   }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
+                  Text(text = "17-20", fontSize = 13.sp, color = Color("#CA9D04".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)                 
+                }
+                Column(modifier = Modifier.fillMaxWidth(0.5f)) {
+                  Text(text = "KTC", fontSize = 13.sp, color = Color("#359204".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
+                  Text(text = "02-06", fontSize = 13.sp, color = Color("#6D6959".toColorInt()), modifier = Modifier.clickable {   }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
+                  Text(text = "17-20", fontSize = 13.sp, color = Color("#CA9D04".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
+                }
+              }
+            }
+          }
+          
+
+        }*/
+
+      }
     }
-    Divider()
-    Spacer(modifier = Modifier.height(20.dp))
+
   }
 
-  @RequiresApi(Build.VERSION_CODES.O)
   @Preview(showBackground = true, showSystemUi = true)
   @Composable
   fun GreetingPreview() {
     CMSVTheme {
-      DiemDanhNhomElement(diemdanhDataRow = ErpInterface.DiemDanhNhomData( APPLY_DATE= "2023-11-18",
-        APPROVAL_STATUS= 3,
-        CA_NGHI= 3,
-        CMS_ID= "CMS1179",
-        EMPL_NO= "NHU1903",
-        FACTORY_NAME= "NM1",
-        FIRST_NAME= "Hùng3",
-        JOB_NAME= "Dept Staff",
-        MAINDEPTNAME= "QC",
-        MIDLAST_NAME= "Nguyễn Văn",
-        OFF_ID= 4,
-        ON_OFF= 1,
-        OVERTIME= 0,
-        OVERTIME_INFO= "1700-2000",
-        PHONE_Int= "0971092454",
-        REASON_NAME= "",
-        REQUEST_DATE= "",
-        SEX_NAME= "Nam",
-        SUBDEPTNAME= "PD",
-        WORK_POSITION_NAME= "Phiên Dịch",
-        WORK_SHIF_NAME= "Hành Chính",
-        WORK_STATUS_NAME= "Đang làm việc",
-        REMARK= "",),0)
+      DiemDanhNhomElement(
+        diemdanhDataRow = ErpInterface.DiemDanhNhomData(
+          APPLY_DATE = "2023-11-18",
+          APPROVAL_STATUS = 3,
+          CA_NGHI = 3,
+          CMS_ID = "CMS1179",
+          EMPL_NO = "NHU1903",
+          FACTORY_NAME = "NM1",
+          FIRST_NAME = "Hùng3",
+          JOB_NAME = "Dept Staff",
+          MAINDEPTNAME = "QC",
+          MIDLAST_NAME = "Nguyễn Văn",
+          OFF_ID = 4,
+          ON_OFF = 1,
+          OVERTIME = 0,
+          OVERTIME_INFO = "1700-2000",
+          PHONE_Int = "0971092454",
+          REASON_NAME = "",
+          REQUEST_DATE = "",
+          SEX_NAME = "Nam",
+          SUBDEPTNAME = "PD",
+          WORK_POSITION_NAME = "Phiên Dịch",
+          WORK_SHIF_NAME = "Hành Chính",
+          WORK_STATUS_NAME = "Đang làm việc",
+          REMARK = "",
+        ), 0
+      )
     }
   }
 

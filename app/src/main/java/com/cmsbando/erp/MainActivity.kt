@@ -23,7 +23,8 @@ import com.cmsbando.erp.pages.nhansu.DiemDanhNhom
 import com.cmsbando.erp.theme.CMSVTheme
 
 class MainActivity : ComponentActivity() {
-  @RequiresApi(Build.VERSION_CODES.O)
+
+  @RequiresApi(Build.VERSION_CODES.Q)
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -37,13 +38,14 @@ class MainActivity : ComponentActivity() {
   }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
+
+@RequiresApi(Build.VERSION_CODES.Q)
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun MainApp() {
   val navController = rememberNavController()
   val globalVar = viewModel<GlobalVariable>()
-  NavHost(navController = navController, startDestination = "login") {
+  NavHost(navController = navController, startDestination = "diemdanhnhom") {
     composable("login") {
       Components().LoginScreen(navController = navController, globalVar = globalVar)
     }
