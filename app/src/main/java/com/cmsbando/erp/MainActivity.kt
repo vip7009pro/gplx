@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 fun MainApp() {
   val navController = rememberNavController()
   val globalVar = viewModel<GlobalVariable>()
-  NavHost(navController = navController, startDestination = "diemdanhnhom") {
+  NavHost(navController = navController, startDestination = "login") {
     composable("login") {
       Components().LoginScreen(navController = navController, globalVar = globalVar)
     }

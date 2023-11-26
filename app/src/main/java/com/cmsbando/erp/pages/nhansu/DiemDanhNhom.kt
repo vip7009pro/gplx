@@ -3,19 +3,14 @@ package com.cmsbando.erp.pages.nhansu
 import android.content.Context
 import android.net.http.HttpException
 import android.os.Build
-import android.os.Build.VERSION_CODES.Q
-import android.os.ext.SdkExtensions
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -24,16 +19,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -45,20 +35,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Paint
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
@@ -86,7 +69,6 @@ class DiemDanhNhom {
     var listDiemDanh by remember { mutableStateOf<List<ErpInterface.DiemDanhNhomData>>(emptyList()) }
     fun loadDiemDanhNhom() {
       val scopeCheckLogin = GlobalScope.launch(Dispatchers.IO) {
-
         try {
           val savedToken: String = LocalData().getData(Boxct, "token")
           val apiHandler = ApiHandler(globalVar)
@@ -166,31 +148,26 @@ class DiemDanhNhom {
       },
       floatingActionButtonPosition = FabPosition.End,
     ) { paddingValues ->
-      Column(
-        modifier = Modifier
-          .padding(paddingValues)
-          .fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-      ) {
-
         LazyColumn(
           modifier = Modifier
             .fillMaxSize()
-            .padding(top = 5.dp), verticalArrangement = Arrangement.Center
+            .padding(top = 5.dp)
+            .fillMaxSize(),
+          verticalArrangement = Arrangement.Center
         ) {
-
           this.itemsIndexed(listDiemDanh) { index, ele ->
             DiemDanhNhomElement(diemdanhDataRow = ele, index = index)
           }
         }
-      }
+      paddingValues
+
     }
     MyDialog().FNDialog(globalVar = globalVar)
   }
-
   @Composable
   fun DiemDanhNhomElement(diemdanhDataRow: ErpInterface.DiemDanhNhomData, index: Int) {
+    val ROW_HEIGHT = 60.dp
+    val TEXT_BUTTON_MARGIN = 15.dp
     Box(
       modifier = Modifier
         .fillMaxWidth()
@@ -203,12 +180,13 @@ class DiemDanhNhom {
             )
           )
         )
+        .height(ROW_HEIGHT)
     ) {
       Row(
         modifier = Modifier
           .fillMaxWidth()
           .padding(top = 5.dp, bottom = 2.dp, start = 5.dp, end = 5.dp)
-          .height(130.dp),
+          .height(ROW_HEIGHT),
       ) {
         Column {
           AsyncImage(
@@ -222,48 +200,128 @@ class DiemDanhNhom {
               ),
             contentScale = ContentScale.FillBounds
           )
-          Text(text = "${diemdanhDataRow.EMPL_NO}\n${diemdanhDataRow.CMS_ID} OK", fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
         }
-        /*Column {
+        Column {
           Row(modifier = Modifier.fillMaxWidth()) {
-            Text(text = "${ (index + 1).toString()}. ${diemdanhDataRow.MIDLAST_NAME} ${diemdanhDataRow.FIRST_NAME} ", fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+            Text(
+              text = "${(index + 1).toString()}. ${diemdanhDataRow.MIDLAST_NAME} ${diemdanhDataRow.FIRST_NAME}/${diemdanhDataRow.EMPL_NO} / ${diemdanhDataRow.CMS_ID} ",
+              fontSize = 12.sp,
+              fontWeight = FontWeight.SemiBold
+            )
           }
-          Row(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.fillMaxWidth(0.5f)) {
-              Row {
-                Text(text = "Điểm danh1")
-              }
-              Row(modifier = Modifier.fillMaxWidth()) {
-                Column(modifier = Modifier.fillMaxWidth()) {
-                  Text(text = "Làm ngày", fontSize = 13.sp, color = Color("#359204".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
-                  Text(text = "Làm đêm", fontSize = 13.sp, color = Color("#6D6959".toColorInt()), modifier = Modifier.clickable {   }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
-                  Text(text = "Nghỉ 50%", fontSize = 13.sp, color = Color("#CA9D04".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
-                  Text(text = "Nghỉ làm", fontSize = 13.sp, color = Color("#FF0000".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
-                }
-
-              }
-            }
-            Column(modifier = Modifier.fillMaxWidth(0.5f)) {
-              Row(modifier = Modifier.fillMaxWidth()) {
-                Text(text = "Tăng ca")
-              }
-              Row(modifier = Modifier.fillMaxWidth()) {
-                Column(modifier = Modifier.fillMaxWidth(0.5f)) {
-                  Text(text = "KTC", fontSize = 13.sp, color = Color("#359204".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
-                  Text(text = "02-06", fontSize = 13.sp, color = Color("#6D6959".toColorInt()), modifier = Modifier.clickable {   }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
-                  Text(text = "17-20", fontSize = 13.sp, color = Color("#CA9D04".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)                 
-                }
-                Column(modifier = Modifier.fillMaxWidth(0.5f)) {
-                  Text(text = "KTC", fontSize = 13.sp, color = Color("#359204".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
-                  Text(text = "02-06", fontSize = 13.sp, color = Color("#6D6959".toColorInt()), modifier = Modifier.clickable {   }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
-                  Text(text = "17-20", fontSize = 13.sp, color = Color("#CA9D04".toColorInt()), modifier = Modifier.clickable {  }.padding(bottom = 5.dp), fontStyle = FontStyle.Italic)
-                }
-              }
+          if(diemdanhDataRow.ON_OFF == 1)
+          {
+            Text(text = "Đi làm",
+              fontSize = 13.sp,
+              color = Color("#359204".toColorInt()),
+              modifier = Modifier
+                .clickable { }
+                .padding(end = TEXT_BUTTON_MARGIN),
+              fontStyle = FontStyle.Italic)
+          }
+          else if(diemdanhDataRow.ON_OFF == 0)
+          {
+            Text(text = "Nghỉ làm",
+              fontSize = 13.sp,
+              color = Color("#FF0000".toColorInt()),
+              modifier = Modifier
+                .clickable { }
+                .padding(end = TEXT_BUTTON_MARGIN),
+              fontStyle = FontStyle.Italic)
+          }
+          else {
+            Row(modifier = Modifier.fillMaxWidth()) {
+              Text(text = "Làm ngày",
+                fontSize = 13.sp,
+                color = Color("#359204".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+              Text(text = "Làm đêm",
+                fontSize = 13.sp,
+                color = Color("#6D6959".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+              Text(text = "Nghỉ 50%",
+                fontSize = 13.sp,
+                color = Color("#CA9D04".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+              Text(text = "Nghỉ làm",
+                fontSize = 13.sp,
+                color = Color("#FF0000".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
             }
           }
-          
+          if(diemdanhDataRow.OVERTIME == 1 || diemdanhDataRow.OVERTIME == 0)
+          {
+            diemdanhDataRow.OVERTIME_INFO?.let {
+              Text(text = diemdanhDataRow.OVERTIME_INFO ,
+                fontSize = 13.sp,
+                color = Color("#FF0000".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+            }
 
-        }*/
+          }
+          else
+          {
+            Row(modifier = Modifier.fillMaxWidth()) {
+              Text(text = "KTC",
+                fontSize = 13.sp,
+                color = Color("#359204".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+              Text(text = "17-20",
+                fontSize = 13.sp,
+                color = Color("#6D6959".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+              Text(text = "02-06",
+                fontSize = 13.sp,
+                color = Color("#CA9D04".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+              Text(text = "17-18",
+                fontSize = 13.sp,
+                color = Color("#FF0000".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+              Text(text = "05-08",
+                fontSize = 13.sp,
+                color = Color("#FF0000".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+              Text(text = "16-20",
+                fontSize = 13.sp,
+                color = Color("#FF0000".toColorInt()),
+                modifier = Modifier
+                  .clickable { }
+                  .padding(end = TEXT_BUTTON_MARGIN),
+                fontStyle = FontStyle.Italic)
+            }
+          }
+        }
 
       }
     }
