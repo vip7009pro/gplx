@@ -153,7 +153,7 @@ class DiemDanhNhom {
             .fillMaxSize()
             .padding(top = 5.dp)
             .fillMaxSize(),
-          verticalArrangement = Arrangement.Center
+          verticalArrangement = Arrangement.Top
         ) {
           this.itemsIndexed(listDiemDanh) { index, ele ->
             DiemDanhNhomElement(diemdanhDataRow = ele, index = index)
@@ -332,33 +332,8 @@ class DiemDanhNhom {
   @Composable
   fun GreetingPreview() {
     CMSVTheme {
-      DiemDanhNhomElement(
-        diemdanhDataRow = ErpInterface.DiemDanhNhomData(
-          APPLY_DATE = "2023-11-18",
-          APPROVAL_STATUS = 3,
-          CA_NGHI = 3,
-          CMS_ID = "CMS1179",
-          EMPL_NO = "NHU1903",
-          FACTORY_NAME = "NM1",
-          FIRST_NAME = "Hùng3",
-          JOB_NAME = "Dept Staff",
-          MAINDEPTNAME = "QC",
-          MIDLAST_NAME = "Nguyễn Văn",
-          OFF_ID = 4,
-          ON_OFF = 1,
-          OVERTIME = 0,
-          OVERTIME_INFO = "1700-2000",
-          PHONE_Int = "0971092454",
-          REASON_NAME = "",
-          REQUEST_DATE = "",
-          SEX_NAME = "Nam",
-          SUBDEPTNAME = "PD",
-          WORK_POSITION_NAME = "Phiên Dịch",
-          WORK_SHIF_NAME = "Hành Chính",
-          WORK_STATUS_NAME = "Đang làm việc",
-          REMARK = "",
-        ), 0
-      )
+
+
     }
   }
 
