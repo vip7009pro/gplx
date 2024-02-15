@@ -1,19 +1,29 @@
-package com.cmsbando.erp.pages
+package com.hnp.gplx600.pages
 
+import android.graphics.drawable.GradientDrawable.Orientation
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.PagerDefaults
+import androidx.compose.foundation.pager.PagerScope
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
@@ -31,6 +41,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -39,7 +50,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -53,16 +68,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.cmsbando.erp.R
-import com.cmsbando.erp.api.ErpInterface
-import com.cmsbando.erp.api.GlobalVariable
-import com.cmsbando.erp.api.LocalData
-import com.cmsbando.erp.components.MyDialog
-import com.cmsbando.erp.components.NavigationDrawerMenu
-import com.cmsbando.erp.theme.CMSVTheme
+import com.hnp.gplx600.R
+import com.hnp.gplx600.api.ErpInterface
+import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.LocalData
+import com.hnp.gplx600.components.MyDialog
+import com.hnp.gplx600.components.NavigationDrawerMenu
+import com.hnp.gplx600.theme.CMSVTheme
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.launch
@@ -78,7 +92,8 @@ class Home {
     //val globalVar = viewModel<GlobalVariable>()
     val currentContext = LocalContext.current
     val menuData = listOf(
-      ErpInterface.MenuData(route = "nhansubophan",
+      ErpInterface.MenuData(
+        route = "nhansubophan",
         title = "Nhân sự bộ phận",
         icon = {
           Icon(
@@ -172,104 +187,6 @@ class Home {
             onClick = { Log.d("xxx", "click 3") }),
         )
       ),
-      ErpInterface.MenuData(
-        route = "nhansubophan",
-        title = "Nhân sự bộ phận",
-        icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-        subMenu = listOf(
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 1") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 2") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 3") }),
-
-          )
-      ),
-      ErpInterface.MenuData(
-        route = "nhansubophan",
-        title = "Nhân sự bộ phận",
-        icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-        subMenu = listOf(
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 1") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 2") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 3") }),
-        )
-      ),
-      ErpInterface.MenuData(
-        route = "nhansubophan",
-        title = "Nhân sự bộ phận",
-        icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-        subMenu = listOf(
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 1") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 2") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 3") }),
-          )
-      ),
-      ErpInterface.MenuData(
-        route = "nhansubophan",
-        title = "Nhân sự bộ phận",
-        icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-        subMenu = listOf(
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 1") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 2") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 3") }),
-
-          )
-      ),
-      ErpInterface.MenuData(
-        route = "nhansubophan",
-        title = "Nhân sự bộ phận",
-        icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-        subMenu = listOf(
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 1") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 2") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 3") }),
-
-          )
-      ),
     )
     val isDarkMode = isSystemInDarkTheme()
 
@@ -278,10 +195,18 @@ class Home {
       drawerContent = {
         ModalDrawerSheet {
           Column(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+              modifier = Modifier
+                .size(300.dp, 40.dp) // Set your desired width and height
+                .clip(RoundedCornerShape(16.dp))
+            ) {
               Image(
-                painter = painterResource(id = R.drawable.logocmsvina),
-                contentDescription = "CMS Logo",
+                painter = painterResource(id = R.drawable.gplx_600_dai),
+                contentDescription = null,
+                modifier = Modifier
+                  .fillMaxSize()
+                  .clip(RoundedCornerShape(16.dp))
+                  .size(300.dp, 50.dp), // Set the same width and height as the Box
                 contentScale = ContentScale.Crop
               )
             }
@@ -307,7 +232,7 @@ class Home {
                 Column {
                   Text(
                     text = "Họ tên: ${globalVar.userData.MIDLAST_NAME + " " + globalVar.userData.FIRST_NAME} ",
-                    color = if(isDarkMode)  Color.Yellow else Color("#0937CD".toColorInt()),
+                    color = if (isDarkMode) Color.Yellow else Color("#0937CD".toColorInt()),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
                   )
@@ -325,7 +250,7 @@ class Home {
                   )
                   Text(
                     text = "Mã NV: ${globalVar.userData.EMPL_NO} ",
-                    color = if(isDarkMode) Color.White else Color.Gray,
+                    color = if (isDarkMode) Color.White else Color.Gray,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold
                   )
@@ -367,7 +292,7 @@ class Home {
             title = {})
 
         },
-        bottomBar = {
+        /*bottomBar = {
           BottomAppBar(
             modifier = Modifier.height(40.dp),
             containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -379,7 +304,7 @@ class Home {
               text = "Bottom app bar",
             )
           }
-        },
+        },*/
         floatingActionButton = {
           FloatingActionButton(onClick = {
             scope.launch {
@@ -395,61 +320,7 @@ class Home {
       ) { paddingValues ->
 
         Column(modifier = Modifier.padding(top = 40.dp)) {
-          Text(text = globalVar.userData.EMPL_NO)
-          Text(text = globalVar.currentServer)
-          Button(onClick = {
-            globalVar.userData = ErpInterface.Employee(
-              ADD_COMMUNE = "Đông Xuân",
-              ADD_DISTRICT = "Sóc Sơn",
-              ADD_PROVINCE = "Hà Nội",
-              ADD_VILLAGE = "Thôn Phú Thọ",
-              ATT_GROUP_CODE = 1,
-              CMS_ID = "CMS1179",
-              CTR_CD = "002",
-              DOB = "1993-10-18T00=00=00.000Z",
-              EMAIL = "nvh1903@cmsbando.com",
-              EMPL_NO = "NVD1201",
-              FACTORY_CODE = 1,
-              FACTORY_NAME = "Nhà máy 1",
-              FACTORY_NAME_KR = "1공장",
-              FIRST_NAME = "DŨNG",
-              HOMETOWN = "Phụ Thọ - Đông Xuân - Sóc Sơn - Hà Nội",
-              JOB_CODE = 1,
-              JOB_NAME = "Dept Staff",
-              JOB_NAME_KR = "부서담당자",
-              MAINDEPTCODE = 1,
-              MAINDEPTNAME = "QC",
-              MAINDEPTNAME_KR = "품질",
-              MIDLAST_NAME = "NGÔ VĂN",
-              ONLINE_DATETIME = "2022-07-12T20=49=52.600Z",
-              PASSWORD = "",
-              PHONE_NUMBER = "0971092454",
-              POSITION_CODE = 3,
-              POSITION_NAME = "Staff",
-              POSITION_NAME_KR = "사원",
-              REMARK = "",
-              SEX_CODE = 1,
-              SEX_NAME = "Nam",
-              SEX_NAME_KR = "남자",
-              SUBDEPTCODE = 2,
-              SUBDEPTNAME = "PD",
-              SUBDEPTNAME_KR = "통역",
-              WORK_POSITION_CODE = 2,
-              WORK_POSITION_NAME = "PD",
-              WORK_POSITION_NAME_KR = "PD",
-              WORK_SHIFT_CODE = 0,
-              WORK_SHIF_NAME = "Hành Chính",
-              WORK_SHIF_NAME_KR = "정규",
-              WORK_START_DATE = "2019-03-11T00=00=00.000Z",
-              WORK_STATUS_CODE = 1,
-              WORK_STATUS_NAME = "Đang làm",
-              WORK_STATUS_NAME_KR = "근무중",
-              EMPL_IMAGE = "N",
-            )
 
-          }) {
-            Text(text = "Change User12345")
-          }
           paddingValues
         }
 
@@ -459,6 +330,21 @@ class Home {
     MyDialog().FNDialog(globalVar = globalVar)
   }
 
+
+  @OptIn(ExperimentalFoundationApi::class)
+  @Composable
+  fun HorizontalViewPager() {
+    val page = 10
+    val pagerState = rememberPagerState(
+      initialPage = 3,
+      initialPageOffsetFraction = .25f
+    ) {
+      page
+            // provide pageCount
+    }
+
+
+  }
   @RequiresApi(Build.VERSION_CODES.O)
   @Preview(showBackground = true, showSystemUi = true)
   @Composable

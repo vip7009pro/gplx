@@ -1,4 +1,4 @@
-package com.cmsbando.erp.pages.nhansu
+package com.hnp.gplx600.pages.nhansu
 
 import android.content.Context
 import android.net.http.HttpException
@@ -32,7 +32,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -47,12 +46,12 @@ import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.cmsbando.erp.api.ApiHandler
-import com.cmsbando.erp.api.ErpInterface
-import com.cmsbando.erp.api.GlobalVariable
-import com.cmsbando.erp.api.LocalData
-import com.cmsbando.erp.components.MyDialog
-import com.cmsbando.erp.theme.CMSVTheme
+import com.hnp.gplx600.api.ApiHandler
+import com.hnp.gplx600.api.ErpInterface
+import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.LocalData
+import com.hnp.gplx600.components.MyDialog
+import com.hnp.gplx600.theme.CMSVTheme
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken

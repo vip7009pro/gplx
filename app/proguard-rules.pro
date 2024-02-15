@@ -19,5 +19,5 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keep public class com.cmsbando.erp.components.Components { *; }
+-keep public class com.hnp.gplx600.components.Components { *; }
 -keepattributes Signature

@@ -1,4 +1,4 @@
-package com.cmsbando.erp.theme
+package com.hnp.gplx600.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

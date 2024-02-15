@@ -1,4 +1,4 @@
-package com.cmsbando.erp.theme
+package com.hnp.gplx600.theme
 
 import android.app.Activity
 import android.os.Build

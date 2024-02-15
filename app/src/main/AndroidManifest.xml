@@ -15,9 +15,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.cmsbando.erp.MainActivity"
+            android:name="com.hnp.gplx600.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.CMSVTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

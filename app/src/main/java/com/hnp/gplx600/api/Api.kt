@@ -1,6 +1,5 @@
-package com.cmsbando.erp.api
+package com.hnp.gplx600.api
 
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.gson.JsonObject
 import retrofit2.Response
 import retrofit2.Retrofit

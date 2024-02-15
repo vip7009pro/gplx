@@ -1,18 +1,9 @@
-package com.cmsbando.erp.api
+package com.hnp.gplx600.api
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.cmsbando.erp.components.MyDialog
-import com.cmsbando.erp.statemanager.AppAction
-import com.cmsbando.erp.statemanager.AppState
-import com.cmsbando.erp.statemanager.reduce
 
 class GlobalVariable: ViewModel() {
   var currentServer: String by mutableStateOf("MAIN_SERVER")

@@ -1,4 +1,4 @@
-package com.cmsbando.erp.navigation
+package com.hnp.gplx600.navigation
 
 sealed class Screen(val route: String) {
   object Home : Screen(route = "home")

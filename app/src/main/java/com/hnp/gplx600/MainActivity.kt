@@ -1,4 +1,4 @@
-package com.cmsbando.erp
+package com.hnp.gplx600
 
 import android.os.Build
 import android.os.Bundle
@@ -16,11 +16,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.cmsbando.erp.api.GlobalVariable
-import com.cmsbando.erp.components.Components
-import com.cmsbando.erp.pages.Home
-import com.cmsbando.erp.pages.nhansu.DiemDanhNhom
-import com.cmsbando.erp.theme.CMSVTheme
+import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.components.Components
+import com.hnp.gplx600.pages.Home
+import com.hnp.gplx600.pages.nhansu.DiemDanhNhom
+import com.hnp.gplx600.theme.CMSVTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 fun MainApp() {
   val navController = rememberNavController()
   val globalVar = viewModel<GlobalVariable>()
-  NavHost(navController = navController, startDestination = "login") {
+  NavHost(navController = navController, startDestination = "home") {
     composable("login") {
       Components().LoginScreen(navController = navController, globalVar = globalVar)
     }

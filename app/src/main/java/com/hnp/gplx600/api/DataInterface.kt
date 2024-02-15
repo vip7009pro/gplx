@@ -1,8 +1,6 @@
-package com.cmsbando.erp.api
+package com.hnp.gplx600.api
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.vector.ImageVector
-import com.guru.fontawesomecomposelib.FaIcons
 
 class ErpInterface
 {

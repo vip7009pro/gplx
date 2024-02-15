@@ -1,4 +1,4 @@
-package com.cmsbando.erp.components
+package com.hnp.gplx600.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -21,9 +21,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.cmsbando.erp.api.GlobalVariable
-import com.cmsbando.erp.theme.CMSVTheme
+import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.theme.CMSVTheme
 
 class MyDialog {
   @Composable

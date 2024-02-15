@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-  namespace = "com.cmsbando.erp"
+  namespace = "com.hnp.gplx600"
   compileSdk = 34
 
   defaultConfig {
-    applicationId = "com.cmsbando.erp"
+    applicationId = "com.hnp.gplx600"
     minSdk = 24
     targetSdk = 34
     versionCode = 1

@@ -1,4 +1,4 @@
-package com.cmsbando.erp.statemanager
+package com.hnp.gplx600.statemanager
 
 data class AppState(
   val counter: Int = 0
