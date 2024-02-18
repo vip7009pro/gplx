@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.hnp.gplx600.api.GlobalVariable
-import com.hnp.gplx600.theme.CMSVTheme
+import com.hnp.gplx600.theme.GPLXTheme
 
 class MyDialog {
   @Composable
@@ -175,7 +175,7 @@ class MyDialog {
   @Preview(showBackground = true, showSystemUi = true)
   @Composable
   fun GreetingPreview() {
-    CMSVTheme {
+    GPLXTheme {
 
     }
   }

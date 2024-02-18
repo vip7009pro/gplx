@@ -51,7 +51,7 @@ import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.api.LocalData
 import com.hnp.gplx600.components.MyDialog
-import com.hnp.gplx600.theme.CMSVTheme
+import com.hnp.gplx600.theme.GPLXTheme
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -327,10 +327,10 @@ class DiemDanhNhom {
 
   }
 
-  @Preview(showBackground = true, showSystemUi = true)
+  @Preview(showBackground = true, showSystemUi = true, apiLevel = 33)
   @Composable
   fun GreetingPreview() {
-    CMSVTheme {
+    GPLXTheme {
 
 
     }

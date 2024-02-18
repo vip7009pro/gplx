@@ -1,4 +1,4 @@
-package com.hnp.gplx600.pages
+package com.hnp.gplx600.pages.gplxhome
 
 import android.graphics.drawable.GradientDrawable.Orientation
 import android.os.Build
@@ -8,6 +8,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,6 +20,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.PagerDefaults
@@ -81,7 +84,7 @@ import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.launch
 
-class Home {
+class GplxHome {
   @RequiresApi(Build.VERSION_CODES.O)
   @OptIn(ExperimentalMaterial3Api::class)
   @Composable
@@ -318,8 +321,16 @@ class Home {
         },
         floatingActionButtonPosition = FabPosition.End,
       ) { paddingValues ->
-
-        Column(modifier = Modifier.padding(top = 40.dp)) {
+        LazyColumn(
+          modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 5.dp)
+            .fillMaxSize(),
+          verticalArrangement = Arrangement.Top
+        ) {
+          items(10) {
+            index ->  GplxHomeCard().HomeCard()
+          }
 
           paddingValues
         }
@@ -346,10 +357,11 @@ class Home {
 
   }
   @RequiresApi(Build.VERSION_CODES.O)
-  @Preview(showBackground = true, showSystemUi = true)
+  @Preview(showBackground = true, showSystemUi = true, apiLevel = 33)
   @Composable
   fun GreetingPreview() {
     GPLXTheme {
+
 
     }
   }
