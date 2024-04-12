@@ -19,6 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.components.Components
 import com.hnp.gplx600.pages.Home
+import com.hnp.gplx600.pages.gplxhome.GplxHome
 import com.hnp.gplx600.pages.nhansu.DiemDanhNhom
 import com.hnp.gplx600.theme.GPLXTheme
 
@@ -50,7 +51,7 @@ fun MainApp() {
       Components().LoginScreen(navController = navController, globalVar = globalVar)
     }
     composable("home") {
-      Home().MyHome(navController = navController, globalVar = globalVar)
+      GplxHome().MyHome(navController = navController, globalVar = globalVar)
     }
     composable("diemdanhnhom") {
       DiemDanhNhom().DiemDanhNhomScreen(navController = navController, globalVar = globalVar)
@@ -60,7 +61,7 @@ fun MainApp() {
 }
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true, showSystemUi = true, apiLevel = 33)
 @Composable
 fun GreetingPreview() {
   GPLXTheme {
