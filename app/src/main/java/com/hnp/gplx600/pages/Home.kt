@@ -276,8 +276,6 @@ class Home {
       page
             // provide pageCount
     }
-
-
   }
   @RequiresApi(Build.VERSION_CODES.O)
   @Preview(showBackground = true, showSystemUi = true)
