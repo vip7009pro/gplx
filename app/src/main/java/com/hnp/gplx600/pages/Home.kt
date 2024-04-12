@@ -40,6 +40,7 @@ import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -76,7 +77,7 @@ import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.api.LocalData
 import com.hnp.gplx600.components.MyDialog
 import com.hnp.gplx600.components.NavigationDrawerMenu
-import com.hnp.gplx600.theme.CMSVTheme
+import com.hnp.gplx600.theme.GPLXTheme
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.launch
@@ -86,7 +87,6 @@ class Home {
   @OptIn(ExperimentalMaterial3Api::class)
   @Composable
   fun MyHome(navController: NavController, globalVar: GlobalVariable) {
-
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     //val globalVar = viewModel<GlobalVariable>()
@@ -108,11 +108,11 @@ class Home {
             Spacer(modifier = Modifier.width(5.dp))
             FaIcon(faIcon = FaIcons.Check, size = 20.dp, tint = Color.Green)
           }, onClick = {
-            navController.navigate("diemdanhnhom") {
+            /*navController.navigate("diemdanhnhom") {
               popUpTo("diemdanhnhom") {
                 inclusive = true
               }
-            }
+            }*/
           }),
           ErpInterface.SubMenuData(route = "dieuchuyenteam", title = "Điều chuyển team", icon = {
             Icon(
@@ -210,71 +210,7 @@ class Home {
                 contentScale = ContentScale.Crop
               )
             }
-            Spacer(modifier = Modifier.height(10.dp))
-            Row(
-              verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()
-            ) {
-              Row(verticalAlignment = Alignment.CenterVertically) {
-                AsyncImage(
-                  model = "http://14.160.33.94/Picture_NS/NS_${globalVar.userData.EMPL_NO}.jpg",
-                  contentDescription = "employee image",
-                  modifier = Modifier
-                    .width(100.dp)
-                    .height(100.dp)
-                    .clip(
-                      RoundedCornerShape(50.dp)
-                    ),
-                  contentScale = ContentScale.FillBounds
-                )
-              }
-              Spacer(modifier = Modifier.width(10.dp))
-              Row(verticalAlignment = Alignment.CenterVertically) {
-                Column {
-                  Text(
-                    text = "Họ tên: ${globalVar.userData.MIDLAST_NAME + " " + globalVar.userData.FIRST_NAME} ",
-                    color = if (isDarkMode) Color.Yellow else Color("#0937CD".toColorInt()),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold
-                  )
-                  Text(
-                    text = "Bộ phận: ${globalVar.userData.MAINDEPTNAME} ",
-                    color = Color.Red,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold
-                  )
-                  Text(
-                    text = "Chức vụ: ${globalVar.userData.JOB_NAME} ",
-                    color = Color("#059A15".toColorInt()),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold
-                  )
-                  Text(
-                    text = "Mã NV: ${globalVar.userData.EMPL_NO} ",
-                    color = if (isDarkMode) Color.White else Color.Gray,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold
-                  )
-                  Button(
-                    onClick = {
-                      globalVar.showDialog("warning", "Thông báo", "Chắc chắn muốn logout?", {
-                        navController.navigate("login") {
-                          popUpTo("login") {
-                            inclusive = true
-                          }
-                        }
-                        LocalData().saveData(currentContext, "token", "reset")
-                      }, {})
-                    }, modifier = Modifier
-                      .width(90.dp)
-                      .height(40.dp)
-                  ) {
-                    Text(text = "Logout", fontSize = 12.sp)
-                  }
-                }
-              }
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-            Divider()
+            HorizontalDivider()
             NavigationDrawerMenu().NavMenu(
               items = menuData, scaffoldState = drawerState, coroutineScope = scope
             )
@@ -329,8 +265,6 @@ class Home {
     }
     MyDialog().FNDialog(globalVar = globalVar)
   }
-
-
   @OptIn(ExperimentalFoundationApi::class)
   @Composable
   fun HorizontalViewPager() {
@@ -349,7 +283,7 @@ class Home {
   @Preview(showBackground = true, showSystemUi = true)
   @Composable
   fun GreetingPreview() {
-    CMSVTheme {
+    GPLXTheme {
 
     }
   }

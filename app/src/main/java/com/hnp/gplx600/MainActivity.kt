@@ -20,7 +20,7 @@ import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.components.Components
 import com.hnp.gplx600.pages.Home
 import com.hnp.gplx600.pages.nhansu.DiemDanhNhom
-import com.hnp.gplx600.theme.CMSVTheme
+import com.hnp.gplx600.theme.GPLXTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
-      CMSVTheme {
+      GPLXTheme {
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
           MainApp()
         }
@@ -63,7 +63,7 @@ fun MainApp() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
-  CMSVTheme {
+  GPLXTheme {
 
   }
 }

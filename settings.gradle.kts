@@ -14,6 +14,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CMSVERP"
+rootProject.name = "GPLX 600"
 include(":app")
  
