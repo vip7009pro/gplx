@@ -1,6 +1,8 @@
 package com.hnp.gplx600.api
 
 import androidx.compose.runtime.Composable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 class ErpInterface
 {
@@ -95,6 +97,21 @@ class ErpInterface
         var WORK_SHIF_NAME: String,
         var WORK_STATUS_NAME: String,
         var REMARK: String,
+    )
+
+    @Entity(tableName = "question_table")
+    data class Question(
+        @PrimaryKey(autoGenerate = false)
+        val index: Int,
+        val text: String,
+        val tip: String,
+        val required: Int,
+        val topic: Int,
+        val a1: Int,
+        val a2: Int,
+        val a3: Int,
+        val a4: Int,
+        val b1: Int,
     )
 
 }

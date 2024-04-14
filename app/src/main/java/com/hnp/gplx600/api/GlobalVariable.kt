@@ -14,6 +14,11 @@ class GlobalVariable: ViewModel() {
   var onDialogConfirm: (() -> Unit)? = null
   var onDialogCancel: (() -> Unit)? = null
   var token: String by mutableStateOf("reset")
+  var currentLicense: String by mutableStateOf("B2")
+
+  fun changeLicense(newLicense: String) {
+    currentLicense = newLicense
+  }
 
   var userData: ErpInterface.Employee by mutableStateOf(ErpInterface.Employee(
     ADD_COMMUNE= "Đông Xuân",
