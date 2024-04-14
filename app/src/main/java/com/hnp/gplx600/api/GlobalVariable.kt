@@ -3,7 +3,11 @@ package com.hnp.gplx600.api
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class GlobalVariable: ViewModel() {
   var currentServer: String by mutableStateOf("MAIN_SERVER")
@@ -15,7 +19,6 @@ class GlobalVariable: ViewModel() {
   var onDialogCancel: (() -> Unit)? = null
   var token: String by mutableStateOf("reset")
   var currentLicense: String by mutableStateOf("B2")
-
   fun changeLicense(newLicense: String) {
     currentLicense = newLicense
   }

@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -31,9 +32,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import com.hnp.gplx600.R
+import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
 
 class GplxComponents {
@@ -93,10 +97,19 @@ class GplxComponents {
       }
     }
   }
+
+  private fun insertQuesttion(){
+    val question = ErpInterface.Question(0,"Nội dung câu hỏi số 1","tip1",1,1,1,1,1,1,1)
+
+  }
   @Composable
   fun DetailScreen(navController: NavController, globalVar: GlobalVariable) {
     Text(text = "Selected License ${globalVar.currentLicense}")
-
+    Button(onClick = {
+      Log.d("gplx","Click add question")
+    }, modifier = Modifier.height(20.dp)) {
+      Text(text = "Add question")
+    }
   }
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   @Preview(showBackground = true, showSystemUi = true, apiLevel = 33)
