@@ -69,7 +69,6 @@ class GplxHome {
   @OptIn(ExperimentalMaterial3Api::class)
   @Composable
   fun MyHome(navController: NavController, globalVar: GlobalVariable) {
-
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     //val globalVar = viewModel<GlobalVariable>()
@@ -277,19 +276,16 @@ class GplxHome {
             GplxComponents().HomeCard("B2", "600 câu", Color(0xFFC1FFEC), Color(0xFFFFEB3B), R.drawable.b22, onClick = {
               navController.navigate("detailscreen") {}
               globalVar.changeLicense("B2")
-
             })
           }
           Row(modifier = Modifier.height(140.dp).fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
             GplxComponents().HomeCard("C","600 câu", Color(0xFFE76CA5), Color(0xFFC2C7C4), R.drawable.c, onClick = {
               navController.navigate("detailscreen") {}
               globalVar.changeLicense("C")
-
             })
             GplxComponents().HomeCard("D", "600 câu", Color(0xFFFFB15E), Color(0xFFFEFFFE), R.drawable.d, onClick = {
               navController.navigate("detailscreen") {}
               globalVar.changeLicense("D")
-
             })
           }
           Row(modifier = Modifier.height(140.dp).fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
@@ -301,7 +297,6 @@ class GplxHome {
             GplxComponents().HomeCard("F", "600 câu", Color(0xFF76DA8D), Color(0xFF40DA6B), R.drawable.f, onClick = {
               navController.navigate("detailscreen") {}
               globalVar.changeLicense("F")
-
             })
           }
         }
@@ -319,10 +314,7 @@ class GplxHome {
               GplxComponents().HomeCard("A1","200 câu")
               GplxComponents().HomeCard("A2", "200 câu")
             }
-
           }
-
-
         }*/
         paddingValues
 

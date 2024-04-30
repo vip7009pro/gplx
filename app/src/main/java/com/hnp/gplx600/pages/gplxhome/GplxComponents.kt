@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -22,6 +23,9 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -32,17 +36,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import com.hnp.gplx600.R
+import com.hnp.gplx600.api.AppDataBase
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.api.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class GplxComponents {
   @Composable
-  fun HomeCard(mainTitle: String, subTitle: String, backgroundStartColor: Color, backgroundStopColor: Color, icon: Int, onClick: () -> Unit){
+  fun HomeCard(
+    mainTitle: String,
+    subTitle: String,
+    backgroundStartColor: Color,
+    backgroundStopColor: Color,
+    icon: Int,
+    onClick: () -> Unit,
+  ) {
     Card(
       modifier = Modifier
         .width(200.dp)
@@ -58,11 +74,10 @@ class GplxComponents {
         disabledContentColor = Color.Gray
       ),
       onClick = {
-        Log.d("gplx","con cac")
+        Log.d("gplx", "con cac")
         onClick.invoke()
       }
     ) {
-
       Surface(modifier = Modifier.fillMaxSize()) {
         Box(
           modifier = Modifier
@@ -77,9 +92,13 @@ class GplxComponents {
               )
             )
         ) {
-          Column(modifier= Modifier
-            .fillMaxSize()
-            .padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Top,) {
+          Column(
+            modifier = Modifier
+              .fillMaxSize()
+              .padding(10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top,
+          ) {
             Text(text = mainTitle, fontSize = 30.sp, fontWeight = FontWeight.Bold)
             Text(text = subTitle, fontSize = 15.sp)
             Image(
@@ -98,25 +117,35 @@ class GplxComponents {
     }
   }
 
-  private fun insertQuesttion(){
-    val question = ErpInterface.Question(0,"Nội dung câu hỏi số 1","tip1",1,1,1,1,1,1,1)
-
+  suspend fun insertQuesttion(db: AppDataBase, question: ErpInterface.Question) {
+    db.questionDao().addQuestion(question)
   }
+
   @Composable
-  fun DetailScreen(navController: NavController, globalVar: GlobalVariable) {
+  fun DetailScreen(navController: NavController, globalVar: GlobalVariable, db: AppDataBase) {
+    val questions: LiveData<List<ErpInterface.Question>>
+
+
     Text(text = "Selected License ${globalVar.currentLicense}")
     Button(onClick = {
-      Log.d("gplx","Click add question")
+      Log.d("gplx", "Click add question")
+
+      GlobalScope.launch(Dispatchers.IO) {
+        val question = ErpInterface.Question(0, "Nội dung câu hỏi số 1", "tip1", 1, 1, 1, 1, 1, 1, 1)
+        insertQuesttion(db,question)
+      }
     }, modifier = Modifier.height(20.dp)) {
       Text(text = "Add question")
     }
+
   }
+
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   @Preview(showBackground = true, showSystemUi = true, apiLevel = 33)
   @Composable
   fun GreetingPreview() {
     GPLXTheme {
-      HomeCard("A1","200 câu",Color(0xFFB7D7F1),Color(0xFF40DA6B), R.drawable.a1, onClick = {})
+      HomeCard("A1", "200 câu", Color(0xFFB7D7F1), Color(0xFF40DA6B), R.drawable.a1, onClick = {})
     }
   }
 }

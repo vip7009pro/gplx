@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
     setContent {
       GPLXTheme {
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-          MainApp()
+          MainApp(db = db)
         }
       }
     }
@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
 @RequiresApi(Build.VERSION_CODES.Q)
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
-fun MainApp() {
+fun MainApp(db: AppDataBase) {
   val navController = rememberNavController()
   val globalVar = viewModel<GlobalVariable>()
   NavHost(navController = navController, startDestination = "home") {
@@ -55,7 +55,7 @@ fun MainApp() {
       GplxHome().MyHome(navController = navController, globalVar = globalVar)
     }
     composable("detailscreen") {
-      GplxComponents().DetailScreen(navController = navController, globalVar = globalVar)
+      GplxComponents().DetailScreen(navController = navController, globalVar = globalVar, db = db)
     }
   }
 
