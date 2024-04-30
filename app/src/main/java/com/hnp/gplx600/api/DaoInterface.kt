@@ -14,5 +14,4 @@ interface DaoInterface {
   @Query("SELECT * FROM question_table ORDER BY `index` ASC")
   fun loadQuestion():LiveData<List<ErpInterface.Question>>
 
-
 }
