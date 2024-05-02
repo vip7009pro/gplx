@@ -130,10 +130,6 @@ class GplxComponents {
     val context = LocalContext.current
     val questionDao = AppDataBase.getDatabase(context).questionDao()
 
-
-
-
-
     Text(text = "Selected License ${globalVar.currentLicense}")
     Column {
       questions.map { value -> Text(text = value.text) }
@@ -142,7 +138,8 @@ class GplxComponents {
     Button(onClick = {
       Log.d("gplx", "Click add question")
       GlobalScope.launch(Dispatchers.IO) {
-        val question = ErpInterface.Question(0, "Nội dung câu hỏi số 1", "tip1", 1, 1, 1, 1, 1, 1, 1)
+        val question =
+          ErpInterface.Question(0, "Nội dung câu hỏi số 1", "tip1", 1, 1, 1, 1, 1, 1, 1)
         /*questionDao.addQuestion(question)*/
         /*insertQuestion(db,question)*/
 
@@ -150,7 +147,6 @@ class GplxComponents {
     }, modifier = Modifier.height(20.dp)) {
       Text(text = "Add question")
     }
-
   }
 
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)

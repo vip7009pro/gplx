@@ -1,8 +1,8 @@
 package com.hnp.gplx600.api
 
-import androidx.lifecycle.LiveData
+
 class AppRepositories(private val questionDao: DaoInterface) {
-  val loadAllQuestion: List<ErpInterface.Question> = questionDao.loadQuestion()
+  val loadAllQuestion: List<ErpInterface.Question> = questionDao.getAllQuestion()
   suspend fun addQuestion(question: ErpInterface.Question) {
     questionDao.addQuestion(question)
   }
