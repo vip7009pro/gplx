@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class QuestionViewModel(application: Application): AndroidViewModel(application) {
-  private val loadAllQuestion: LiveData<List<ErpInterface.Question>>
+  private val loadAllQuestion: List<ErpInterface.Question>
   private val repositories: AppRepositories
   init {
     val questionDao = AppDataBase.getDatabase(application).questionDao()
@@ -20,4 +20,24 @@ class QuestionViewModel(application: Application): AndroidViewModel(application)
       repositories.addQuestion(question)
     }
   }
+  fun updateQuestion(question: ErpInterface.Question){
+    viewModelScope.launch(Dispatchers.IO) {
+      repositories.updateQuestion(question)
+    }
+  }
+  fun deleteQuestion(question: ErpInterface.Question){
+    viewModelScope.launch(Dispatchers.IO) {
+      repositories.deleteQuestion(question)
+    }
+  }
+  fun deleteAllQuestion(){
+    viewModelScope.launch(Dispatchers.IO) {
+      repositories.deleteAllQuestion()
+    }
+  }
+  fun loadAllQuestion(): List<ErpInterface.Question>{
+    return loadAllQuestion
+  }
+
+
 }
