@@ -1,8 +1,10 @@
-package com.hnp.gplx600.api
+package com.hnp.gplx600.roomdb
 
+import com.hnp.gplx600.api.ErpInterface
+import kotlinx.coroutines.flow.Flow
 
 class AppRepositories(private val questionDao: DaoInterface) {
-  val loadAllQuestion: List<ErpInterface.Question> = questionDao.getAllQuestion()
+  val loadAllQuestion: Flow<List<ErpInterface.Question>> = questionDao.getAllQuestion()
   suspend fun addQuestion(question: ErpInterface.Question) {
     questionDao.addQuestion(question)
   }

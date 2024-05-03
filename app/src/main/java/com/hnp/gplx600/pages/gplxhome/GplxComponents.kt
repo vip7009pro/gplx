@@ -8,12 +8,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -22,7 +25,9 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -37,14 +42,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import com.hnp.gplx600.R
-import com.hnp.gplx600.api.AppDataBase
-import com.hnp.gplx600.api.DaoInterface
+import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
-import com.hnp.gplx600.api.QuestionViewModel
+import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -120,33 +124,47 @@ class GplxComponents {
   }
 
   private suspend fun insertQuestion(db: AppDataBase, question: ErpInterface.Question) {
-    db.questionDao().addQuestion(question)
+    /*db.questionDao().addQuestion(question)*/
   }
-
   @OptIn(DelicateCoroutinesApi::class)
   @Composable
-  fun DetailScreen(navController: NavController, globalVar: GlobalVariable, db: AppDataBase) {
+  fun DetailScreen(navController: NavController, globalVar: GlobalVariable, db: AppDataBase, vm: QuestionViewModel) {
     var questions by remember { mutableStateOf(emptyList<ErpInterface.Question>()) }
-    val context = LocalContext.current
-    val questionDao = AppDataBase.getDatabase(context).questionDao()
+    val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
+    var index by remember {
+      mutableIntStateOf(0)
+    };
+
 
     Text(text = "Selected License ${globalVar.currentLicense}")
-    Column {
-      questions.map { value -> Text(text = value.text) }
-    }
-
-    Button(onClick = {
-      Log.d("gplx", "Click add question")
-      GlobalScope.launch(Dispatchers.IO) {
-        val question =
-          ErpInterface.Question(0, "Nội dung câu hỏi số 1", "tip1", 1, 1, 1, 1, 1, 1, 1)
-        /*questionDao.addQuestion(question)*/
-        /*insertQuestion(db,question)*/
-
+    Row(modifier = Modifier.height(10.dp)) {
+      Button(onClick = {
+        Log.d("gplx", "Click add question")
+        GlobalScope.launch(Dispatchers.IO) {
+          var question = ErpInterface.Question(index, "Nội dung câu hỏi số 1", "tip1", 1, 1, 1, 1, 1, 1, 1)
+          index ++;
+          vm.addQuestion(question)
+        }
+      }, modifier = Modifier.height(20.dp)) {
+        Text(text = "Add question")
       }
-    }, modifier = Modifier.height(20.dp)) {
-      Text(text = "Add question")
+
     }
+    LazyColumn(
+      modifier = Modifier
+        .fillMaxSize()
+        .padding(all = 16.dp)
+    ) {
+      items(dataList.value){
+        item -> 
+        Row {
+          Text(text = item.text)
+        }
+      }
+    }
+
+
+
   }
 
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)

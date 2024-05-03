@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,30 +13,51 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
-import com.hnp.gplx600.api.AppDataBase
+import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.components.Components
 import com.hnp.gplx600.pages.gplxhome.GplxComponents
 import com.hnp.gplx600.pages.gplxhome.GplxHome
+import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
 
+@Suppress("UNCHECKED_CAST")
 class MainActivity : ComponentActivity() {
 
-  private lateinit var db: AppDataBase
+
+   private val db by lazy {
+    Room.databaseBuilder(
+      context = applicationContext,
+      klass = AppDataBase::class.java,
+      name = "gplx_database.db"
+    ).build()
+  }
+   private val viewModel by viewModels<QuestionViewModel>(
+    factoryProducer = {
+      object : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+          return QuestionViewModel(db.questionDao) as T
+        }
+      }
+    }
+  )
+
   @RequiresApi(Build.VERSION_CODES.Q)
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    db = Room.databaseBuilder(applicationContext, AppDataBase::class.java,"gplx_database").build()
+    /*db = Room.databaseBuilder(applicationContext, AppDataBase::class.java,"gplx_database").build()*/
     setContent {
       GPLXTheme {
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-          MainApp(db = db)
+          MainApp(db = db, vm = viewModel)
         }
       }
     }
@@ -44,7 +66,7 @@ class MainActivity : ComponentActivity() {
 @RequiresApi(Build.VERSION_CODES.Q)
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
-fun MainApp(db: AppDataBase) {
+fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
   val navController = rememberNavController()
   val globalVar = viewModel<GlobalVariable>()
   NavHost(navController = navController, startDestination = "home") {
@@ -55,7 +77,7 @@ fun MainApp(db: AppDataBase) {
       GplxHome().MyHome(navController = navController, globalVar = globalVar)
     }
     composable("detailscreen") {
-      GplxComponents().DetailScreen(navController = navController, globalVar = globalVar, db = db)
+      GplxComponents().DetailScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)
     }
   }
 

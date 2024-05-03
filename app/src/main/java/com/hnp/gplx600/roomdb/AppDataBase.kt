@@ -1,13 +1,15 @@
-package com.hnp.gplx600.api
+package com.hnp.gplx600.roomdb
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.hnp.gplx600.api.ErpInterface
 
 @Database(entities = [ErpInterface.Question::class],version = 1, exportSchema = false)
 abstract class AppDataBase: RoomDatabase() {
-  abstract fun  questionDao(): DaoInterface
+abstract val questionDao: DaoInterface
+  /*abstract fun  questionDao(): DaoInterface
   companion object {
     @Volatile
     private var INSTANCE: AppDataBase? = null
@@ -25,5 +27,5 @@ abstract class AppDataBase: RoomDatabase() {
         return instance
       }
     }
-  }
+  }*/
 }
