@@ -65,10 +65,9 @@ class GplxComponents {
     icon: Int,
     onClick: () -> Unit,
   ) {
-    Card(
-      modifier = Modifier
-        .width(200.dp)
-        .padding(all = 8.dp),
+    Card(modifier = Modifier
+      .width(200.dp)
+      .padding(all = 8.dp),
       shape = RoundedCornerShape(20.dp),
       elevation = CardDefaults.cardElevation(
         defaultElevation = 20.dp
@@ -80,10 +79,8 @@ class GplxComponents {
         disabledContentColor = Color.Gray
       ),
       onClick = {
-        Log.d("gplx", "con cac")
         onClick.invoke()
-      }
-    ) {
+      }) {
       Surface(modifier = Modifier.fillMaxSize()) {
         Box(
           modifier = Modifier
@@ -123,47 +120,46 @@ class GplxComponents {
     }
   }
 
-  private suspend fun insertQuestion(db: AppDataBase, question: ErpInterface.Question) {
-    /*db.questionDao().addQuestion(question)*/
-  }
   @OptIn(DelicateCoroutinesApi::class)
   @Composable
-  fun DetailScreen(navController: NavController, globalVar: GlobalVariable, db: AppDataBase, vm: QuestionViewModel) {
-    var questions by remember { mutableStateOf(emptyList<ErpInterface.Question>()) }
+  fun DetailScreen(
+    navController: NavController,
+    globalVar: GlobalVariable,
+    db: AppDataBase,
+    vm: QuestionViewModel,
+  ) {
     val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
     var index by remember {
       mutableIntStateOf(0)
     };
-
-
-    Text(text = "Selected License ${globalVar.currentLicense}")
-    Row(modifier = Modifier.height(10.dp)) {
-      Button(onClick = {
-        Log.d("gplx", "Click add question")
-        GlobalScope.launch(Dispatchers.IO) {
-          var question = ErpInterface.Question(index, "Nội dung câu hỏi số 1", "tip1", 1, 1, 1, 1, 1, 1, 1)
-          index ++;
-          vm.addQuestion(question)
+    Column(modifier = Modifier.fillMaxSize()) {
+      Text(text = "Selected License ${globalVar.currentLicense}| ${dataList.value.size}")
+      Row(modifier = Modifier.height(50.dp).align(Alignment.CenterHorizontally)) {
+        Button(onClick = {
+          GlobalScope.launch(Dispatchers.IO) {
+            val question =
+              ErpInterface.Question((dataList.value.size), "Nội dung câu hỏi số ${dataList.value.size}", "tip1", 1, 1, 1, 1, 1, 1, 1)
+            index++;
+            vm.addQuestion(question)
+          }
+        }, modifier = Modifier.height(50.dp)) {
+          Text(text = "Add question")
         }
-      }, modifier = Modifier.height(20.dp)) {
-        Text(text = "Add question")
+      }
+      LazyColumn(
+        modifier = Modifier
+          .fillMaxSize()
+          .padding(all = 16.dp)
+          .height(200.dp)
+      ) {
+        items(dataList.value) { item ->
+          Row {
+            Text(text = item.text)
+          }
+        }
       }
 
     }
-    LazyColumn(
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(all = 16.dp)
-    ) {
-      items(dataList.value){
-        item -> 
-        Row {
-          Text(text = item.text)
-        }
-      }
-    }
-
-
 
   }
 
