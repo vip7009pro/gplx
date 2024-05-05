@@ -76,9 +76,9 @@ class ErpInterface
     @Entity(tableName = "question_table")
     data class Question(
         @PrimaryKey(autoGenerate = false)
+        val index: Int,
         val image: String,
         val no: Int,
-        val index: Int,
         val text: String,
         val tip: String,
         val answers: String,
