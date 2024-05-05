@@ -22,7 +22,7 @@ interface DaoInterface {
   @Query("DELETE FROM question_table WHERE `index`=:index")
   fun deleteByIndex(index: Int)
   @Query("DELETE FROM question_table")
-  fun deleteAllQuestion()
+  suspend fun deleteAllQuestion()
   @Update
   fun updateQuestion(question: ErpInterface.Question)
   @Delete

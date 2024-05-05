@@ -47,6 +47,7 @@ import androidx.navigation.NavController
 import com.hnp.gplx600.R
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.api.ErpInterface
+import com.hnp.gplx600.api.GlobalFunction
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
@@ -132,19 +133,25 @@ class GplxComponents {
     var index by remember {
       mutableIntStateOf(0)
     };
+    val lct = LocalContext.current
     Column(modifier = Modifier.fillMaxSize()) {
       Text(text = "Selected License ${globalVar.currentLicense}| ${dataList.value.size}")
       Row(modifier = Modifier.height(50.dp).align(Alignment.CenterHorizontally)) {
         Button(onClick = {
           GlobalScope.launch(Dispatchers.IO) {
-            val question =
-              ErpInterface.Question((dataList.value.size), "Nội dung câu hỏi số ${dataList.value.size}", "tip1", 1, 1, 1, 1, 1, 1, 1)
-            index++;
-            vm.addQuestion(question)
+            GlobalFunction().initDatabase(lct, vm)
           }
         }, modifier = Modifier.height(50.dp)) {
           Text(text = "Add question")
         }
+        Button(onClick = {
+          GlobalScope.launch(Dispatchers.IO) {
+            vm.deleteAllQuestion()
+          }
+        }, modifier = Modifier.height(50.dp)) {
+          Text(text = "Delete question")
+        }
+
       }
       LazyColumn(
         modifier = Modifier

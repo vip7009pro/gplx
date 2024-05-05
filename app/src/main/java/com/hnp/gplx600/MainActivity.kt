@@ -1,5 +1,7 @@
 package com.hnp.gplx600
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,6 +14,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -20,18 +23,22 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
-import com.hnp.gplx600.roomdb.AppDataBase
+import com.hnp.gplx600.api.ErpInterface
+import com.hnp.gplx600.api.GlobalFunction
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.JsonFileReader
 import com.hnp.gplx600.components.Components
 import com.hnp.gplx600.pages.gplxhome.GplxComponents
 import com.hnp.gplx600.pages.gplxhome.GplxHome
+import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
 
 @Suppress("UNCHECKED_CAST")
 class MainActivity : ComponentActivity() {
-
-
    private val db by lazy {
     Room.databaseBuilder(
       context = applicationContext,
@@ -63,12 +70,18 @@ class MainActivity : ComponentActivity() {
     }
   }
 }
+
+
 @RequiresApi(Build.VERSION_CODES.Q)
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
   val navController = rememberNavController()
   val globalVar = viewModel<GlobalVariable>()
+  val lct = LocalContext.current
+  GlobalFunction().initDatabase(lct, vm)
+
+
   NavHost(navController = navController, startDestination = "home") {
     composable("login") {
       Components().LoginScreen(navController = navController, globalVar = globalVar)
