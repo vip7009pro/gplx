@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -286,11 +287,13 @@ class GplxComponents {
     ) {
       Text(
         text = "Câu ${question.index} ",
+        fontSize = 25.sp,
         modifier = Modifier.padding(16.dp),
         style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
       )
       Text(
         text = question.text,
+        fontSize = 20.sp,
         modifier = Modifier.padding(16.dp),
         style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
       )
@@ -304,6 +307,7 @@ class GplxComponents {
           //show answer
           Text(
             text = "$index. ${answer.getString("text")}",
+            fontSize = 18.sp,
             style = TextStyle(color = if (showCorrect) if (correct) Color.Green else Color.Red else Color.Black),
             modifier = Modifier
               .padding(8.dp)
@@ -317,10 +321,13 @@ class GplxComponents {
 
       if (showTip && question.tip.isNotEmpty()) Text(
         text = question.tip,
+        fontSize = 18.sp,
         modifier = Modifier.padding(16.dp),
         style = TextStyle(color = Color.Blue, fontStyle = FontStyle.Italic),
       )
-      if (question.tip.isNotEmpty()) Text(text = "Show Tip",
+      if (question.tip.isNotEmpty())
+        Text(
+        text = "Show Tip", fontSize = 15.sp,
         modifier = Modifier
           .padding(0.dp)
           .clickable {
@@ -328,11 +335,13 @@ class GplxComponents {
           },
         style = TextStyle(fontStyle = FontStyle.Italic)
       )
+      Spacer(modifier = Modifier.height(30.dp))
 
       val context = LocalContext.current
       val res = context.resources
       val packageName = context.packageName
-      val drawableName = question.image
+      //val drawableName = question.image
+      val drawableName = question.image.split(".").first()
       val resourceId = res.getIdentifier(drawableName, "drawable", packageName)
 
       if (question.image.isNotEmpty())
@@ -340,9 +349,11 @@ class GplxComponents {
         painter = painterResource(id = resourceId),
         contentDescription = null,
         modifier = Modifier
-          .fillMaxSize()
-          .clip(RoundedCornerShape(16.dp))
-          .size(300.dp, 50.dp), // Set the same width and height as the Box
+          .fillMaxWidth()
+          .height(300.dp)
+          .padding(all=8.dp)
+          .clip(RoundedCornerShape(5.dp))
+        ,
         contentScale = ContentScale.Crop
       )
 //      if (question.image.isNotEmpty()) ImageFromUrl(imageUrl = "https://gplx.app/images/questions/" + question.image)
