@@ -1,7 +1,6 @@
 package com.hnp.gplx600
 
-import android.annotation.SuppressLint
-import android.content.Context
+
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -23,19 +22,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
-import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalFunction
 import com.hnp.gplx600.api.GlobalVariable
-import com.hnp.gplx600.api.JsonFileReader
 import com.hnp.gplx600.components.Components
 import com.hnp.gplx600.pages.gplxhome.GplxComponents
 import com.hnp.gplx600.pages.gplxhome.GplxHome
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
 
 @Suppress("UNCHECKED_CAST")
 class MainActivity : ComponentActivity() {
@@ -60,9 +54,8 @@ class MainActivity : ComponentActivity() {
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    /*db = Room.databaseBuilder(applicationContext, AppDataBase::class.java,"gplx_database").build()*/
     setContent {
-      GPLXTheme {
+      GPLXTheme(darkTheme = false) {
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
           MainApp(db = db, vm = viewModel)
         }
@@ -70,7 +63,6 @@ class MainActivity : ComponentActivity() {
     }
   }
 }
-
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
@@ -80,8 +72,6 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
   val globalVar = viewModel<GlobalVariable>()
   val lct = LocalContext.current
   GlobalFunction().initDatabase(lct, vm)
-
-
   NavHost(navController = navController, startDestination = "home") {
     composable("login") {
       Components().LoginScreen(navController = navController, globalVar = globalVar)
@@ -93,7 +83,6 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
       GplxComponents().DetailScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)
     }
   }
-
 }
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)

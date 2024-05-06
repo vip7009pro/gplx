@@ -1,38 +1,28 @@
 package com.hnp.gplx600.pages.gplxhome
 
+import android.annotation.SuppressLint
 import android.os.Build
-import android.provider.CalendarContract
-import android.util.Log
 import androidx.annotation.RequiresExtension
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.MutatePriority
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.PagerState
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.Button
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -53,42 +43,33 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.guru.fontawesomecomposelib.FaIcons.Icons
-import com.guru.fontawesomecomposelib.FaIcons.Pager
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.rememberPagerState
 import com.hnp.gplx600.R
-import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.api.ErpInterface
-import com.hnp.gplx600.api.GlobalFunction
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
-import kotlinx.coroutines.withContext
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
-import com.guru.fontawesomecomposelib.FaIcon
-import com.guru.fontawesomecomposelib.FaIcons
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -169,8 +150,7 @@ class GplxComponents {
     var index by remember {
       mutableIntStateOf(0)
     };
-    val lct = LocalContext.current
-    /*Column(modifier = Modifier.fillMaxSize()) {
+    val lct = LocalContext.current/*Column(modifier = Modifier.fillMaxSize()) {
       Text(text = "Selected License ${globalVar.currentLicense}| ${dataList.value.size}")
       Row(
         modifier = Modifier
@@ -218,24 +198,14 @@ class GplxComponents {
     }
   }
 
-
-
-  @OptIn(ExperimentalFoundationApi::class, ExperimentalPagerApi::class,
-    DelicateCoroutinesApi::class
+  @OptIn(
+    ExperimentalFoundationApi::class, ExperimentalPagerApi::class, DelicateCoroutinesApi::class
   )
   @Composable
   fun HorizontalPagerWithBottomNavigation(questionList: List<ErpInterface.Question>) {
-    val questions = listOf(
-      "Question 10",
-      "Question 2",
-      "Question 3",
-      "Question 4",
-      "Question 5"
-    )
-
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
-    var currentPageIndex by remember { mutableStateOf(0) }
+    var currentPageIndex by remember { mutableIntStateOf(0) }
 
     LaunchedEffect(pagerState) {
       snapshotFlow { pagerState.currentPage }.collect { page ->
@@ -243,29 +213,27 @@ class GplxComponents {
       }
     }
 
-    Scaffold(
-      bottomBar = {
-        /*Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
+    Scaffold(bottomBar = {
+      BottomNavigation(currentPageIndex = currentPageIndex, onPreviousClick = {
+        scope.launch {
+          if (currentPageIndex > 0) {
+            pagerState.animateScrollToPage(currentPageIndex - 1)
+          } else {
+            pagerState.animateScrollToPage(questionList.size - 1)
+          }
+        }
+      }, onNextClick = {
+        scope.launch {
+          if (currentPageIndex < questionList.size - 1) {
+            pagerState.animateScrollToPage(currentPageIndex + 1)
+          } else {
+            pagerState.animateScrollToPage(0)
+          }
+        }
+      }, pageSize = questionList.size
 
-          Text(text = "Page ${currentPageIndex + 1} of ${questions.size}")
-        }*/
-        BottomNavigation(
-          currentPageIndex = currentPageIndex,
-          onPreviousClick = {
-            scope.launch {
-              pagerState.animateScrollToPage(currentPageIndex - 1)
-            }
-          }          ,
-          onNextClick = {
-            scope.launch {
-              pagerState.animateScrollToPage(currentPageIndex + 1)
-            }
-          },
-          pageSize = questionList.size
-
-        )
-      }
-    ) { paddingValues ->
+      )
+    }) { paddingValues ->
       HorizontalPager(
         count = questionList.size,
         state = pagerState,
@@ -279,6 +247,25 @@ class GplxComponents {
   }
 
   @Composable
+  fun ImageFromUrl(imageUrl: String) {
+    val painter = // You can customize image loading options here if needed
+      rememberAsyncImagePainter(
+        ImageRequest.Builder(LocalContext.current).data(data = imageUrl)
+          .apply(block = fun ImageRequest.Builder.() {
+            // You can customize image loading options here if needed
+          }).build()
+      )
+
+    Image(
+      painter = painter,
+      contentDescription = null, // You can provide a content description here if needed
+      modifier = Modifier.fillMaxSize(),
+      // You can specify other parameters for the Image composable here
+    )
+  }
+
+  @SuppressLint("DiscouragedApi")
+  @Composable
   fun QuestionPage(question: ErpInterface.Question) {
     //create jsonarray from answer array string
     val jsonArray = JSONArray(question.answers)
@@ -288,61 +275,125 @@ class GplxComponents {
       answerList.add(jsonArray.getJSONObject(i))
     }
     var showCorrect by remember { mutableStateOf(false) }
+    var showTip by remember { mutableStateOf(false) }
 
     Column(
-      modifier = Modifier.fillMaxSize().background(color = Color.White),
+      modifier = Modifier
+        .fillMaxSize()
+        .background(color = Color.White),
       verticalArrangement = Arrangement.Top,
       horizontalAlignment = Alignment.CenterHorizontally
     ) {
-      Text(text = "Câu ${question.index}: ", modifier = Modifier.padding(16.dp), style = TextStyle(color = Color.Black))
-      Text(text = question.text, modifier = Modifier.padding(16.dp), style = TextStyle(color = Color.Black))
-      Text(text = "TIP:" + question.tip, modifier = Modifier.padding(16.dp), style = TextStyle(color = Color.Black))
-     //show answer
+      Text(
+        text = "Câu ${question.index} ",
+        modifier = Modifier.padding(16.dp),
+        style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
+      )
+      Text(
+        text = question.text,
+        modifier = Modifier.padding(16.dp),
+        style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
+      )
+
+      //show answer
       LazyColumn(modifier = Modifier.fillMaxWidth()) {
         items(answerList) { answer ->
           //get answer index
-          val index = answerList.indexOf(answer)+1
+          val index = answerList.indexOf(answer) + 1
           val correct = answer.getBoolean("correct")
           //show answer
-          Text(text = "$index ${answer.getString("text")}",
-            style = TextStyle(color = if (showCorrect) if (correct) Color.Green else Color.Red else Color.Black) ,
+          Text(
+            text = "$index. ${answer.getString("text")}",
+            style = TextStyle(color = if (showCorrect) if (correct) Color.Green else Color.Red else Color.Black),
             modifier = Modifier
-            .padding(8.dp)
-            .clickable {
-              //change Text above's color to green when answers.correct is true and red when answers.correct is false
-              showCorrect = true
-            },
-
-
+              .padding(8.dp)
+              .clickable {
+                //change Text above's color to green when answers.correct is true and red when answers.correct is false
+                showCorrect = true
+              },
           )
-
         }
       }
 
+      if (showTip && question.tip.isNotEmpty()) Text(
+        text = question.tip,
+        modifier = Modifier.padding(16.dp),
+        style = TextStyle(color = Color.Blue, fontStyle = FontStyle.Italic),
+      )
+      if (question.tip.isNotEmpty()) Text(text = "Show Tip",
+        modifier = Modifier
+          .padding(0.dp)
+          .clickable {
+            showTip = true
+          },
+        style = TextStyle(fontStyle = FontStyle.Italic)
+      )
+
+      val context = LocalContext.current
+      val res = context.resources
+      val packageName = context.packageName
+      val drawableName = question.image
+      val resourceId = res.getIdentifier(drawableName, "drawable", packageName)
+
+      if (question.image.isNotEmpty())
+      Image(
+        painter = painterResource(id = resourceId),
+        contentDescription = null,
+        modifier = Modifier
+          .fillMaxSize()
+          .clip(RoundedCornerShape(16.dp))
+          .size(300.dp, 50.dp), // Set the same width and height as the Box
+        contentScale = ContentScale.Crop
+      )
+//      if (question.image.isNotEmpty()) ImageFromUrl(imageUrl = "https://gplx.app/images/questions/" + question.image)
 
     }
   }
+  @SuppressLint("DiscouragedApi")
+  @Composable
+  fun getPainterFromDrawableName(drawableName: String): Painter {
+    val context = LocalContext.current
+    val res = context.resources
+    val packageName = context.packageName
+
+    // Get the identifier of the drawable
+    val drawableId = res.getIdentifier(drawableName, "drawable", packageName)
+
+    // Check if the drawable exists
+    return painterResource(id = drawableId)
+    }
+
+
+
 
   @Composable
   fun BottomNavigation(
     currentPageIndex: Int,
-    onPreviousClick:  () -> Unit,
-    onNextClick:  () -> Unit,
-    pageSize: Int
+    onPreviousClick: () -> Unit,
+    onNextClick: () -> Unit,
+    pageSize: Int,
   ) {
-    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center, modifier = Modifier.fillMaxWidth()) {
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.Center,
+      modifier = Modifier.fillMaxWidth()
+    ) {
       IconButton(
-        onClick = onPreviousClick,
-        enabled = currentPageIndex > 0
+        onClick = onPreviousClick, enabled = true //currentPageIndex > 0
       ) {
-        Icon(imageVector = androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack , contentDescription = null)
+        Icon(
+          imageVector = androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack,
+          contentDescription = null
+        )
       }
       Text(text = "Câu ${currentPageIndex + 1}/${pageSize}")
       IconButton(
-        onClick = onNextClick,
-        enabled = currentPageIndex < pageSize - 1
+        onClick = onNextClick, enabled = true //currentPageIndex < pageSize - 1
       ) {
-        Icon(imageVector = androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowForward , contentDescription = null)
+        Icon(
+          imageVector = androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowForward,
+          contentDescription = null
+        )
       }
     }
   }
