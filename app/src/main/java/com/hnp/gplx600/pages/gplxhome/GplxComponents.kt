@@ -17,7 +17,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -37,7 +36,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -71,7 +69,6 @@ import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
 import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
@@ -140,7 +137,6 @@ class GplxComponents {
       }
     }
   }
-
   @OptIn(DelicateCoroutinesApi::class)
   @Composable
   fun DetailScreen(
@@ -151,34 +147,35 @@ class GplxComponents {
   ) {
     val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
     var filteredList : List<ErpInterface.Question> = emptyList()
-    if(globalVar.currentLicense=="A1") {
-      filteredList = dataList.value.filter {
-        it.a1 != 0
+    when (globalVar.currentLicense) {
+      "A1" -> {
+        filteredList = dataList.value.filter {
+          it.a1 != 0
+        }
       }
-    }
-    else if(globalVar.currentLicense=="A2") {
-      filteredList = dataList.value.filter {
-        it.a2 != 0
+      "A2" -> {
+        filteredList = dataList.value.filter {
+          it.a2 != 0
+        }
       }
-
-    }
-    else if(globalVar.currentLicense=="A3") {
-      filteredList = dataList.value.filter {
-        it.a3 != 0
+      "A3" -> {
+        filteredList = dataList.value.filter {
+          it.a3 != 0
+        }
       }
-    }
-    else if(globalVar.currentLicense=="A4") {
-      filteredList = dataList.value.filter {
-        it.a4 != 0
+      "A4" -> {
+        filteredList = dataList.value.filter {
+          it.a4 != 0
+        }
       }
-    }
-    else if(globalVar.currentLicense=="B1") {
-      filteredList = dataList.value.filter {
-        it.b1 != 0
+      "B1" -> {
+        filteredList = dataList.value.filter {
+          it.b1 != 0
+        }
       }
-    }
-    else {
-      filteredList = dataList.value
+      else -> {
+        filteredList = dataList.value
+      }
     }
     HorizontalPagerWithBottomNavigation(filteredList)
   }
