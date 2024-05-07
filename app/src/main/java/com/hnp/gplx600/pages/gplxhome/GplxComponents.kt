@@ -37,6 +37,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -70,6 +71,7 @@ import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
@@ -148,46 +150,37 @@ class GplxComponents {
     vm: QuestionViewModel,
   ) {
     val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
-    var index by remember {
-      mutableIntStateOf(0)
-    };
-    val lct = LocalContext.current/*Column(modifier = Modifier.fillMaxSize()) {
-      Text(text = "Selected License ${globalVar.currentLicense}| ${dataList.value.size}")
-      Row(
-        modifier = Modifier
-          .height(50.dp)
-          .align(Alignment.CenterHorizontally)
-      ) {
-        Button(onClick = {
-          GlobalScope.launch(Dispatchers.IO) {
-            GlobalFunction().initDatabase(lct, vm)
-          }
-        }, modifier = Modifier.height(50.dp)) {
-          Text(text = "Add question")
-        }
-        Button(onClick = {
-          GlobalScope.launch(Dispatchers.IO) {
-            vm.deleteAllQuestion()
-          }
-        }, modifier = Modifier.height(50.dp)) {
-          Text(text = "Delete question")
-        }
+    var filteredList : List<ErpInterface.Question> = emptyList()
+    if(globalVar.currentLicense=="A1") {
+      filteredList = dataList.value.filter {
+        it.a1 != 0
+      }
+    }
+    else if(globalVar.currentLicense=="A2") {
+      filteredList = dataList.value.filter {
+        it.a2 != 0
+      }
 
+    }
+    else if(globalVar.currentLicense=="A3") {
+      filteredList = dataList.value.filter {
+        it.a3 != 0
       }
-      LazyColumn(
-        modifier = Modifier
-          .fillMaxSize()
-          .padding(all = 16.dp)
-          .height(200.dp)
-      ) {
-        items(dataList.value) { item ->
-          Row {
-            Text(text = item.text)
-          }
-        }
+    }
+    else if(globalVar.currentLicense=="A4") {
+      filteredList = dataList.value.filter {
+        it.a4 != 0
       }
-    }*/
-    HorizontalPagerWithBottomNavigation(dataList.value)
+    }
+    else if(globalVar.currentLicense=="B1") {
+      filteredList = dataList.value.filter {
+        it.b1 != 0
+      }
+    }
+    else {
+      filteredList = dataList.value
+    }
+    HorizontalPagerWithBottomNavigation(filteredList)
   }
 
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
@@ -199,9 +192,7 @@ class GplxComponents {
     }
   }
 
-  @OptIn(
-    ExperimentalFoundationApi::class, ExperimentalPagerApi::class, DelicateCoroutinesApi::class
-  )
+  @OptIn(ExperimentalPagerApi::class)
   @Composable
   fun HorizontalPagerWithBottomNavigation(questionList: List<ErpInterface.Question>) {
     val pagerState = rememberPagerState()
@@ -318,7 +309,6 @@ class GplxComponents {
           )
         }
       }
-
       if (showTip && question.tip.isNotEmpty()) Text(
         text = question.tip,
         fontSize = 18.sp,
@@ -350,8 +340,7 @@ class GplxComponents {
         contentDescription = null,
         modifier = Modifier
           .fillMaxWidth()
-          .height(300.dp)
-          .padding(all=8.dp)
+          .padding(all = 8.dp)
           .clip(RoundedCornerShape(5.dp))
         ,
         contentScale = ContentScale.Crop
@@ -369,14 +358,9 @@ class GplxComponents {
 
     // Get the identifier of the drawable
     val drawableId = res.getIdentifier(drawableName, "drawable", packageName)
-
     // Check if the drawable exists
     return painterResource(id = drawableId)
     }
-
-
-
-
   @Composable
   fun BottomNavigation(
     currentPageIndex: Int,

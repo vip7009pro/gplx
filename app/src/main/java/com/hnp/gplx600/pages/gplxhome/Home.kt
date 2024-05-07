@@ -171,7 +171,6 @@ class GplxHome {
       ),
     )
     val isDarkMode = isSystemInDarkTheme()
-
     ModalNavigationDrawer(
       drawerState = drawerState,
       drawerContent = {
@@ -268,7 +267,7 @@ class GplxHome {
             })
           }
           Row(modifier = Modifier.height(140.dp).fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            GplxComponents().HomeCard("B1","600 câu", Color(0xFFF2F9FF), Color(0xFF00BCD4), R.drawable.b1, onClick = {
+            GplxComponents().HomeCard("B1","574 câu", Color(0xFFF2F9FF), Color(0xFF00BCD4), R.drawable.b1, onClick = {
               navController.navigate("detailscreen") {}
               globalVar.changeLicense("B1")
 
