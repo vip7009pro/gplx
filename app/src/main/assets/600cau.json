@@ -7241,7 +7241,7 @@
 	"no": 308,
 	"index": 308,
 	"text": "Biển nào báo hiệu cấm xe mô tô ba bánh đi vào?",
-	"tip": "Biển 1: P.104 “Cấm mô tô” thì cấm cả mô tô 3 bánh.<br/>Biển 2: P.103a “Cấm ô tô” cấm ô tô và và cả phương tiện 3 bánh đi vào.",
+	"tip": "Biển 1: P.104 “Cấm mô tô” thì cấm cả mô tô 3 bánh.Biển 2: P.103a “Cấm ô tô” cấm ô tô và và cả phương tiện 3 bánh đi vào.",
 	"answers": [{
 		"text": "Biển 1 và 2.",
 		"correct": true
@@ -7454,7 +7454,7 @@
 	"no": 317,
 	"index": 317,
 	"text": "Biển nào cấm quay xe?",
-	"tip": "Biển 1: P.123a “Cấm rẽ trái” không cấm quay đầu xe; Biển 2: P.124a “Cấm quay xe” không cấm rẽ trái.<br/>Nên Biển 2 là đáp án đúng.",
+	"tip": "Biển 1: P.123a “Cấm rẽ trái” không cấm quay đầu xe; Biển 2: P.124a “Cấm quay xe” không cấm rẽ trái.Nên Biển 2 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -7480,7 +7480,7 @@
 	"no": 318,
 	"index": 318,
 	"text": "Biển nào cấm xe rẽ trái?",
-	"tip": "Biển 1: P.123a “Cấm rẽ trái” không cấm quay đầu xe; Biển 2: P.124a “Cấm quay xe” không cấm rẽ trái.<br/>Nên Biển 1 là đáp án đúng.",
+	"tip": "Biển 1: P.123a “Cấm rẽ trái” không cấm quay đầu xe; Biển 2: P.124a “Cấm quay xe” không cấm rẽ trái.Nên Biển 1 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -7503,7 +7503,7 @@
 	"no": 319,
 	"index": 319,
 	"text": "Khi gặp biển nào xe được rẽ trái?",
-	"tip": "Biển 1: P.123a “Cấm rẽ trái” không cấm quay đầu xe; Biển 2: P.124a “Cấm quay xe” không cấm rẽ trái.<br/>Nên Biển 2 là đáp án đúng.",
+	"tip": "Biển 1: P.123a “Cấm rẽ trái” không cấm quay đầu xe; Biển 2: P.124a “Cấm quay xe” không cấm rẽ trái.Nên Biển 2 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -7549,7 +7549,7 @@
 	"no": 321,
 	"index": 321,
 	"text": "Biển nào cấm các phương tiện giao thông đường bộ rẽ phải?",
-	"tip": "Biển 1: 123b “Cấm rẽ phải”; Biển 2: 124d “Cấm rẽ phải và quay xe”; Biển 3: 124f “Cấm ô tô rẽ phải và quay xe”.<br/>Nên biển 3 chỉ cấm xe ô tô, còn biển 1 và biển 2 cấm toàn bộ phương tiện rẽ phải.",
+	"tip": "Biển 1: 123b “Cấm rẽ phải”; Biển 2: 124d “Cấm rẽ phải và quay xe”; Biển 3: 124f “Cấm ô tô rẽ phải và quay xe”.Nên biển 3 chỉ cấm xe ô tô, còn biển 1 và biển 2 cấm toàn bộ phương tiện rẽ phải.",
 	"answers": [{
 		"text": "Biển 1 và 2.",
 		"correct": true
@@ -7575,7 +7575,7 @@
 	"no": 322,
 	"index": 322,
 	"text": "Biển nào cấm các phương tiện giao thông đường bộ rẽ trái?",
-	"tip": "Biển 1: 123a “Cấm rẽ trái”; Biển 2: 124c “Cấm rẽ trái và quay xe”; Biển 3: 124e “Cấm ô tô rẽ trái và quay xe”.<br/>Nên biển 3 chỉ cấm xe ô tô, còn biển 1 và biển 2 cấm toàn bộ phương tiện rẽ trái.",
+	"tip": "Biển 1: 123a “Cấm rẽ trái”; Biển 2: 124c “Cấm rẽ trái và quay xe”; Biển 3: 124e “Cấm ô tô rẽ trái và quay xe”.Nên biển 3 chỉ cấm xe ô tô, còn biển 1 và biển 2 cấm toàn bộ phương tiện rẽ trái.",
 	"answers": [{
 		"text": "Biển 1 và 2.",
 		"correct": true
@@ -7722,7 +7722,7 @@
 	"no": 328,
 	"index": 328,
 	"text": "Biển nào xe được phép quay đầu nhưng không được rẽ trái?",
-	"tip": "Biển 1: 123a “Cấm rẽ trái” nhưng không cấm quay đầu xe.<br/>Biển 2: R.301e đặt trước ngã ba ngã tư chỉ được rẽ trái ở phạm vi ngã ba, ngã tư phía sau mặt biển nên không thể quay đầu xe.",
+	"tip": "Biển 1: 123a “Cấm rẽ trái” nhưng không cấm quay đầu xe.Biển 2: R.301e đặt trước ngã ba ngã tư chỉ được rẽ trái ở phạm vi ngã ba, ngã tư phía sau mặt biển nên không thể quay đầu xe.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -7768,7 +7768,7 @@
 	"no": 330,
 	"index": 330,
 	"text": "Biển nào dưới đây các phương tiện không được phép đi vào?",
-	"tip": "Biển 1: P.101 “Đường cấm”;<br/>Biển 2: P.102 “Cấm đi ngược chiều” cấm đi vào theo chiều đặt biển;<br/>Biển 3: P.301a “Cấm đỗ xe”.<br/>Nên biển 1 và biển 2 là cấm các phương tiện không được phép đi vào.",
+	"tip": "Biển 1: P.101 “Đường cấm”;Biển 2: P.102 “Cấm đi ngược chiều” cấm đi vào theo chiều đặt biển;Biển 3: P.301a “Cấm đỗ xe”.Nên biển 1 và biển 2 là cấm các phương tiện không được phép đi vào.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -7843,7 +7843,7 @@
 	"no": 333,
 	"index": 333,
 	"text": "Khi gặp biển nào xe ưu tiên theo luật định vẫn phải dừng lại?",
-	"tip": "Biển 1: P.101 “Đường cấm” không cấm xe ưu tiên;<br/>Biển 2: R.122 “Dừng lại” áp dụng với cả xe ưu tiên;<br/>Biển 3: P.102 “Cấm đi ngược chiều” không áp dụng với xe ưu tiên;<br/>Nên Biển 2 là đáp án đúng, áp dụng với cả xe ưu tiên.",
+	"tip": "Biển 1: P.101 “Đường cấm” không cấm xe ưu tiên;Biển 2: R.122 “Dừng lại” áp dụng với cả xe ưu tiên;Biển 3: P.102 “Cấm đi ngược chiều” không áp dụng với xe ưu tiên;Nên Biển 2 là đáp án đúng, áp dụng với cả xe ưu tiên.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -7866,7 +7866,7 @@
 	"no": 334,
 	"index": 334,
 	"text": "Biển nào cấm tất cả các loại xe cơ giới và thô sơ đi lại trên đường, trừ xe ưu tiên theo luật định (nếu đường vẫn cho xe chạy được)?",
-	"tip": "Biển 1: P.101 “Đường cấm” không cấm xe ưu tiên;<br/>Biển 2: R.122 “Dừng lại” áp dụng với cả xe ưu tiên;<br/>Nên Biển 1 là đáp án đúng.",
+	"tip": "Biển 1: P.101 “Đường cấm” không cấm xe ưu tiên;Biển 2: R.122 “Dừng lại” áp dụng với cả xe ưu tiên;Nên Biển 1 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -8357,7 +8357,7 @@
 	"no": 356,
 	"index": 356,
 	"text": "Biển nào báo hiệu chiều dài đoạn đường phải giữ cự ly tối thiểu giữa hai xe?",
-	"tip": "Biển phụ 1: S.501 “Phạm vi tác dụng của biển”;<br/>Biển phụ 2: S.502 “Khoảng cách đến đối tượng báo hiệu”.<br/>Nên Biển phụ 1 là đáp án đúng.",
+	"tip": "Biển phụ 1: S.501 “Phạm vi tác dụng của biển”;Biển phụ 2: S.502 “Khoảng cách đến đối tượng báo hiệu”.Nên Biển phụ 1 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -8380,7 +8380,7 @@
 	"no": 357,
 	"index": 357,
 	"text": "Biển nào báo hiệu khoảng cách thực tế từ nơi đặt biển đến nơi cần cự ly tối thiểu giữa hai xe?",
-	"tip": "Biển phụ 1: S.501 “Phạm vi tác dụng của biển”;<br/>Biển phụ 2: S.502 “Khoảng cách đến đối tượng báo hiệu”.<br/>Nên Biển phụ 2 là đáp án đúng.",
+	"tip": "Biển phụ 1: S.501 “Phạm vi tác dụng của biển”;Biển phụ 2: S.502 “Khoảng cách đến đối tượng báo hiệu”.Nên Biển phụ 2 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -8681,7 +8681,7 @@
 	"no": 371,
 	"index": 371,
 	"text": "Gặp biển nào người lái xe phải nhường đường cho người đi bộ?",
-	"tip": "Biển 1: W.224 “Đường người đi bộ cắt ngang”; Biển 2: P.112 “Cấm người đi bộ”; Biển 3: R.305 “Đường dành cho người đi bộ”.<br/>Biển 1 báo ưu tiên cho người đi bộ nên phải nhường đường.",
+	"tip": "Biển 1: W.224 “Đường người đi bộ cắt ngang”; Biển 2: P.112 “Cấm người đi bộ”; Biển 3: R.305 “Đường dành cho người đi bộ”.Biển 1 báo ưu tiên cho người đi bộ nên phải nhường đường.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -8707,7 +8707,7 @@
 	"no": 372,
 	"index": 372,
 	"text": "Biển nào chỉ đường dành cho người đi bộ, các loại xe không được đi vào khi gặp biển này?",
-	"tip": "Biển 1: W.224 “Đường người đi bộ cắt ngang”; Biển 2: P.112 “Cấm người đi bộ”; Biển 3: R.305 “Đường dành cho người đi bộ”.<br/>Biển 3 báo đường dành cho người đi bộ nên phương tiện khác không được đi vào.",
+	"tip": "Biển 1: W.224 “Đường người đi bộ cắt ngang”; Biển 2: P.112 “Cấm người đi bộ”; Biển 3: R.305 “Đường dành cho người đi bộ”.Biển 3 báo đường dành cho người đi bộ nên phương tiện khác không được đi vào.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -8883,7 +8883,7 @@
 	"no": 379,
 	"index": 379,
 	"text": "Biển nào báo hiệu sắp đến chỗ giao nhau giữa đường bộ và đường sắt?",
-	"tip": "Biển 1: Biển 211a Giao nhau với đường sắt không có rào chắn.<br/>Biển 2: Biển 208 Giao nhau với đường ưu tiên.<br/>Biển 3: Biển 211b Giao nhau với tàu điện.",
+	"tip": "Biển 1: Biển 211a Giao nhau với đường sắt không có rào chắn.Biển 2: Biển 208 Giao nhau với đường ưu tiên.Biển 3: Biển 211b Giao nhau với tàu điện.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -8955,7 +8955,7 @@
 	"no": 382,
 	"index": 382,
 	"text": "Biển nào báo hiệu “Nơi đường sắt giao vuông góc với đường bộ”?",
-	"tip": "Biển 1 và Biển 2 là 242a và 242b “Nơi đường sắt giao nhau vuông góc với đường bộ” bổ sung cho biển 211 “Giao nhau với đường sắt không có rào chắn”.<br/> Biển 3 là 243a “Nơi giao nhau không vuông góc với đường bộ”.",
+	"tip": "Biển 1 và Biển 2 là 242a và 242b “Nơi đường sắt giao nhau vuông góc với đường bộ” bổ sung cho biển 211 “Giao nhau với đường sắt không có rào chắn”. Biển 3 là 243a “Nơi giao nhau không vuông góc với đường bộ”.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -9004,7 +9004,7 @@
 	"no": 384,
 	"index": 384,
 	"text": "Biển nào báo hiệu “Hết đoạn đường ưu tiên”?",
-	"tip": "Biển 1: W.207a “Giao nhau với đường không ưu tiên”;<br/>Biển 2: W.208 “Giao nhau với đường ưu tiên”;<br/>Biển 3: I.402 “Hết đường ưu tiên”.",
+	"tip": "Biển 1: W.207a “Giao nhau với đường không ưu tiên”;Biển 2: W.208 “Giao nhau với đường ưu tiên”;Biển 3: I.402 “Hết đường ưu tiên”.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -9027,7 +9027,7 @@
 	"no": 385,
 	"index": 385,
 	"text": "Biển nào báo hiệu, chỉ dẫn xe đi trên đường này được quyền ưu tiên qua nơi giao nhau?",
-	"tip": "Biển 1: W.207a “Giao nhau với đường không ưu tiên”;<br/>Biển 2: W.208 “Giao nhau với đường ưu tiên”;<br/>Biển 3: I.401 “Bắt đầu đường ưu tiên”. Nên Biển 1 và Biển 3 là đáp án đúng.",
+	"tip": "Biển 1: W.207a “Giao nhau với đường không ưu tiên”;Biển 2: W.208 “Giao nhau với đường ưu tiên”;Biển 3: I.401 “Bắt đầu đường ưu tiên”. Nên Biển 1 và Biển 3 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1 và 2.",
 		"correct": false
@@ -9053,7 +9053,7 @@
 	"no": 386,
 	"index": 386,
 	"text": "Biển nào báo hiệu “Giao nhau với đường không ưu tiên”?",
-	"tip": "Biển 1: W.207a “Giao nhau với đường không ưu tiên”;<br/>Biển 2: W.208 “Giao nhau với đường ưu tiên”;<br/>Biển 3: I.401 “Bắt đầu đường ưu tiên”.",
+	"tip": "Biển 1: W.207a “Giao nhau với đường không ưu tiên”;Biển 2: W.208 “Giao nhau với đường ưu tiên”;Biển 3: I.401 “Bắt đầu đường ưu tiên”.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -9079,7 +9079,7 @@
 	"no": 387,
 	"index": 387,
 	"text": "Biển nào báo hiệu “Giao nhau với đường ưu tiên”?",
-	"tip": "Biển 1: W.207a “Giao nhau với đường không ưu tiên”;<br/>Biển 2: W.208 “Giao nhau với đường ưu tiên”;<br/>Biển 3: I.401 “Bắt đầu đường ưu tiên”.",
+	"tip": "Biển 1: W.207a “Giao nhau với đường không ưu tiên”;Biển 2: W.208 “Giao nhau với đường ưu tiên”;Biển 3: I.401 “Bắt đầu đường ưu tiên”.",
 	"answers": [{
 		"text": "Biển 1 và 3.",
 		"correct": false
@@ -9128,7 +9128,7 @@
 	"no": 389,
 	"index": 389,
 	"text": "Khi gặp biển nào, người lái xe phải giảm tốc độ, chú ý xe đi ngược chiều, xe đi ở phía đường bị hẹp phải nhường đường cho xe đi ngược chiều?",
-	"tip": "Biển 1: W.236 “Hết đường đôi”; Biển 2: Biển 2: W203b “Đường bị hẹp về phía trái”; Biển 3:  Biển 3: W203c “Đường bị hẹp về phía phải”.<br/>Câu này hỏi về việc đường bị thu hẹp nên câu trả lời đúng là Biển 2 và Biển 3.",
+	"tip": "Biển 1: W.236 “Hết đường đôi”; Biển 2: Biển 2: W203b “Đường bị hẹp về phía trái”; Biển 3:  Biển 3: W203c “Đường bị hẹp về phía phải”.Câu này hỏi về việc đường bị thu hẹp nên câu trả lời đúng là Biển 2 và Biển 3.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -9226,7 +9226,7 @@
 	"no": 393,
 	"index": 393,
 	"text": "Biển nào báo hiệu “Đường hai chiều”?",
-	"tip": "Biển 1: W.204 “Đường hai chiều”;<br/>Biển 2: P.132 “Nhường đường cho xe cơ giới đi ngược chiều qua đường hẹp”;<br/>Biển 3: I.406 “Được ưu tiên qua đường hẹp”.",
+	"tip": "Biển 1: W.204 “Đường hai chiều”;Biển 2: P.132 “Nhường đường cho xe cơ giới đi ngược chiều qua đường hẹp”;Biển 3: I.406 “Được ưu tiên qua đường hẹp”.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -9249,7 +9249,7 @@
 	"no": 394,
 	"index": 394,
 	"text": "Biển nào báo hiệu phải giảm tốc độ, nhường đường cho xe cơ giới đi ngược chiều qua đường hẹp?",
-	"tip": "Biển 1: W.204 “Đường hai chiều”;<br/>Biển 2: P.132 “Nhường đường cho xe cơ giới đi ngược chiều qua đường hẹp”;<br/>Biển 3: I.406 “Được ưu tiên qua đường hẹp”.",
+	"tip": "Biển 1: W.204 “Đường hai chiều”;Biển 2: P.132 “Nhường đường cho xe cơ giới đi ngược chiều qua đường hẹp”;Biển 3: I.406 “Được ưu tiên qua đường hẹp”.",
 	"answers": [{
 		"text": "Biển 1",
 		"correct": false
@@ -9272,7 +9272,7 @@
 	"no": 395,
 	"index": 395,
 	"text": "Biển nào chỉ dẫn “Được ưu tiên qua đường hẹp”?",
-	"tip": "Biển 1: W.204 “Đường hai chiều”;<br/>Biển 2: P.132 “Nhường đường cho xe cơ giới đi ngược chiều qua đường hẹp”;<br/>Biển 3: I.406 “Được ưu tiên qua đường hẹp”.",
+	"tip": "Biển 1: W.204 “Đường hai chiều”;Biển 2: P.132 “Nhường đường cho xe cơ giới đi ngược chiều qua đường hẹp”;Biển 3: I.406 “Được ưu tiên qua đường hẹp”.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -9551,7 +9551,7 @@
 	"no": 407,
 	"index": 407,
 	"text": "Biển nào dưới đây là biển “Kè, vực sâu phía trước”?",
-	"tip": "Biển 1: W.215a “Kè, vực sâu phía trước”;<br/>Biển 2: W.215b “Kè, vực sâu bên đường phía bên phải”;<br/>Biển 3: W.215c “Kè, vực sâu bên đường phía bên trái”.",
+	"tip": "Biển 1: W.215a “Kè, vực sâu phía trước”;Biển 2: W.215b “Kè, vực sâu bên đường phía bên phải”;Biển 3: W.215c “Kè, vực sâu bên đường phía bên trái”.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -9574,7 +9574,7 @@
 	"no": 408,
 	"index": 408,
 	"text": "Biển nào sau đây là biển “Kè, vực sâu bên đường phía bên trái”?",
-	"tip": "Biển 1: W.215a “Kè, vực sâu phía trước”;<br/>Biển 2: W.215b “Kè, vực sâu bên đường phía bên phải”;<br/>Biển 3: W.215c “Kè, vực sâu bên đường phía bên trái”.",
+	"tip": "Biển 1: W.215a “Kè, vực sâu phía trước”;Biển 2: W.215b “Kè, vực sâu bên đường phía bên phải”;Biển 3: W.215c “Kè, vực sâu bên đường phía bên trái”.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -9600,7 +9600,7 @@
 	"no": 409,
 	"index": 409,
 	"text": "Biển nào sau đây là biển “Kè, vực sâu bên đường phía bên phải”?",
-	"tip": "Biển 1: W.215a “Kè, vực sâu phía trước”;<br/>Biển 2: W.215b “Kè, vực sâu bên đường phía bên phải”;<br/>Biển 3: W.215c “Kè, vực sâu bên đường phía bên trái”.",
+	"tip": "Biển 1: W.215a “Kè, vực sâu phía trước”;Biển 2: W.215b “Kè, vực sâu bên đường phía bên phải”;Biển 3: W.215c “Kè, vực sâu bên đường phía bên trái”.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -10197,7 +10197,7 @@
 	"no": 436,
 	"index": 436,
 	"text": "Biển nào (đặt trước ngã ba, ngã tư) cho phép xe được rẽ sang hướng khác?",
-	"tip": "Biển 1: R.301a “Hướng đi phải theo” chỉ được đi thẳng đặt trước ngã ba, ngã tư;<br/>Biển 2: R.301h “Hướng đi phải theo” chỉ được rẽ trái hoặc rẽ phải đặt sau ngã ba, ngã tư;<br/>Nên đáp án đúng là không có biển nào.",
+	"tip": "Biển 1: R.301a “Hướng đi phải theo” chỉ được đi thẳng đặt trước ngã ba, ngã tư;Biển 2: R.301h “Hướng đi phải theo” chỉ được rẽ trái hoặc rẽ phải đặt sau ngã ba, ngã tư;Nên đáp án đúng là không có biển nào.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -10220,7 +10220,7 @@
 	"no": 437,
 	"index": 437,
 	"text": "Biển nào báo hiệu “Hướng đi thẳng phải theo”?",
-	"tip": "Biển 1: R.301a “Hướng đi phải theo” chỉ được đi thẳng đặt trước ngã ba, ngã tư;<br/>Biển 2: I.407a “Đường một chiều” không liên quan hướng đi phải theo.<br/>Nên Biển 1 là đáp án đúng.",
+	"tip": "Biển 1: R.301a “Hướng đi phải theo” chỉ được đi thẳng đặt trước ngã ba, ngã tư;Biển 2: I.407a “Đường một chiều” không liên quan hướng đi phải theo.Nên Biển 1 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -10240,7 +10240,7 @@
 	"no": 438,
 	"index": 438,
 	"text": "Biển nào báo hiệu “Đường một chiều”?",
-	"tip": "Biển 1: R.301a “Hướng đi phải theo” chỉ được đi thẳng đặt trước ngã ba, ngã tư;<br/>Biển 2: I.407a “Đường một chiều”;<br/>Nên Biển 2 là đáp án đúng.",
+	"tip": "Biển 1: R.301a “Hướng đi phải theo” chỉ được đi thẳng đặt trước ngã ba, ngã tư;Biển 2: I.407a “Đường một chiều”;Nên Biển 2 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -10263,7 +10263,7 @@
 	"no": 439,
 	"index": 439,
 	"text": "Trong các biển dưới đây biển nào là biển “Hết tốc độ tối đa cho phép”?",
-	"tip": "Biển 1: DP134 “Hết hạn chế tốc độ tối đa”; Biển 2: DP135 “Hết mọi lệnh cấm”; Biển 3: R307 “Hết hạn chế tốc độ tối thiểu”. Nên Biển 1 là biển “Hết hạn chế tốc độ tối đa”.<br/>Chú ý câu này hỏi ý nghĩa của biển.",
+	"tip": "Biển 1: DP134 “Hết hạn chế tốc độ tối đa”; Biển 2: DP135 “Hết mọi lệnh cấm”; Biển 3: R307 “Hết hạn chế tốc độ tối thiểu”. Nên Biển 1 là biển “Hết hạn chế tốc độ tối đa”.Chú ý câu này hỏi ý nghĩa của biển.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -10289,7 +10289,7 @@
 	"no": 440,
 	"index": 440,
 	"text": "Hiệu lực của biển “Tốc độ tối đa cho phép” hết tác dụng khi gặp biển nào dưới đây?",
-	"tip": "Biển 1: DP134 “Hết hạn chế tốc độ tối đa”; Biển 2: DP135 “Hết mọi lệnh cấm”; Biển 3: R307 “Hết hạn chế tốc độ tối thiểu”. Nên Biển 1 và Biển 2 là đều hết hạn chế tốc độ tối đa.<br/>Chú ý câu hỏi các biển hết hạn chế, không phải ý nghĩa của biển.",
+	"tip": "Biển 1: DP134 “Hết hạn chế tốc độ tối đa”; Biển 2: DP135 “Hết mọi lệnh cấm”; Biển 3: R307 “Hết hạn chế tốc độ tối thiểu”. Nên Biển 1 và Biển 2 là đều hết hạn chế tốc độ tối đa.Chú ý câu hỏi các biển hết hạn chế, không phải ý nghĩa của biển.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -10315,7 +10315,7 @@
 	"no": 441,
 	"index": 441,
 	"text": "Trong các biển dưới đây biển nào là biển “Hết tốc độ tối thiểu”?",
-	"tip": "Biển 1: DP134 “Hết hạn chế tốc độ tối đa”; Biển 2: DP135 “Hết mọi lệnh cấm”; Biển 3: R307 “Hết hạn chế tốc độ tối thiểu”. Nên Biển 3 là biển “Hết hạn chế tốc độ tối thiểu”.<br/>Chú ý câu này hỏi ý nghĩa của biển.",
+	"tip": "Biển 1: DP134 “Hết hạn chế tốc độ tối đa”; Biển 2: DP135 “Hết mọi lệnh cấm”; Biển 3: R307 “Hết hạn chế tốc độ tối thiểu”. Nên Biển 3 là biển “Hết hạn chế tốc độ tối thiểu”.Chú ý câu này hỏi ý nghĩa của biển.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -10341,7 +10341,7 @@
 	"no": 442,
 	"index": 442,
 	"text": "Biển nào dưới đây báo hiệu hết cấm vượt?",
-	"tip": "Biển 1: DP.134 “Hết hạn chế tốc độ tối đa”; Biển 2: DP.135 “Hết tất cả các lệnh cấm”; Biển 3: DP.133 “Hết cấm vượt”;<br/>Nên đáp án đúng phải là Biển 2 và Biển 3.",
+	"tip": "Biển 1: DP.134 “Hết hạn chế tốc độ tối đa”; Biển 2: DP.135 “Hết tất cả các lệnh cấm”; Biển 3: DP.133 “Hết cấm vượt”;Nên đáp án đúng phải là Biển 2 và Biển 3.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -10393,7 +10393,7 @@
 	"no": 444,
 	"index": 444,
 	"text": "Biển nào cho phép được quay đầu xe đi theo hướng ngược lại khi đặt biển trước ngã ba, ngã tư?",
-	"tip": "R.301 (a, b, c,d, e, f,g, h ) “Hướng đi phải theo”;<br/>Biển 1: R.301e đặt trước ngã ba, ngã tư, chỉ được rẽ trái ở phạm vi ngã ba, ngã tư đằng sau mặt biển.<br/>Biển 2: R.301h đặt sau ngã ba, ngã tư, chỉ được phép rẽ trái, quay đầu hoặc rẽ phải ở khu vực ngã ba, ngã tư trước mặt biển.<br/>Biển 3: R.301g đặt trước ngã ba, ngã tư, chỉ được phép đi thẳng hay rẽ trái ở khu vực sau mặt biển và được phép quay đầu xe để đi theo hướng ngược lại.<br/>Biển 3 là đáp án đúng.",
+	"tip": "R.301 (a, b, c,d, e, f,g, h ) “Hướng đi phải theo”;Biển 1: R.301e đặt trước ngã ba, ngã tư, chỉ được rẽ trái ở phạm vi ngã ba, ngã tư đằng sau mặt biển.Biển 2: R.301h đặt sau ngã ba, ngã tư, chỉ được phép rẽ trái, quay đầu hoặc rẽ phải ở khu vực ngã ba, ngã tư trước mặt biển.Biển 3: R.301g đặt trước ngã ba, ngã tư, chỉ được phép đi thẳng hay rẽ trái ở khu vực sau mặt biển và được phép quay đầu xe để đi theo hướng ngược lại.Biển 3 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": false
@@ -10419,7 +10419,7 @@
 	"no": 445,
 	"index": 445,
 	"text": "Biển nào không cho phép rẽ phải?",
-	"tip": "R.301 (a, b, c,d, e, f,g, h ) “Hướng đi phải theo”;<br/>Biển 1: R.301e đặt trước ngã ba, ngã tư, chỉ được rẽ trái ở phạm vi ngã ba, ngã tư đằng sau mặt biển.<br/>Biển 2: R.301h đặt sau ngã ba, ngã tư, chỉ được phép rẽ trái, quay đầu hoặc rẽ phải ở khu vực ngã ba, ngã tư trước mặt biển.<br/>Biển 3: R.301g đặt trước ngã ba, ngã tư, chỉ được phép đi thẳng hay rẽ trái ở khu vực sau mặt biển và được phép quay đầu xe để đi theo hướng ngược lại.<br/>Biển 1 không cho phép rẽ phải là đáp án đúng.",
+	"tip": "R.301 (a, b, c,d, e, f,g, h ) “Hướng đi phải theo”;Biển 1: R.301e đặt trước ngã ba, ngã tư, chỉ được rẽ trái ở phạm vi ngã ba, ngã tư đằng sau mặt biển.Biển 2: R.301h đặt sau ngã ba, ngã tư, chỉ được phép rẽ trái, quay đầu hoặc rẽ phải ở khu vực ngã ba, ngã tư trước mặt biển.Biển 3: R.301g đặt trước ngã ba, ngã tư, chỉ được phép đi thẳng hay rẽ trái ở khu vực sau mặt biển và được phép quay đầu xe để đi theo hướng ngược lại.Biển 1 không cho phép rẽ phải là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1.",
 		"correct": true
@@ -10445,7 +10445,7 @@
 	"no": 446,
 	"index": 446,
 	"text": "Khi đến chỗ giao nhau, gặp biển nào thì người lái xe không được cho xe đi thẳng, phải rẽ sang hướng khác?",
-	"tip": "R.301 (a, b, c,d, e, f,g, h ) “Hướng đi phải theo”;<br/>Biển 1: R.301e đặt trước ngã ba, ngã tư, chỉ được rẽ trái ở phạm vi ngã ba, ngã tư đằng sau mặt biển.<br/>Biển 2: R.301h đặt sau ngã ba, ngã tư, chỉ được phép rẽ trái, quay đầu hoặc rẽ phải ở khu vực ngã ba, ngã tư trước mặt biển.<br/>Biển 3: R.301g đặt trước ngã ba, ngã tư, chỉ được phép đi thẳng hay rẽ trái ở khu vực sau mặt biển và được phép quay đầu xe để đi theo hướng ngược lại.<br/>Biển 1 và Biển 2 là đáp án đúng.",
+	"tip": "R.301 (a, b, c,d, e, f,g, h ) “Hướng đi phải theo”;Biển 1: R.301e đặt trước ngã ba, ngã tư, chỉ được rẽ trái ở phạm vi ngã ba, ngã tư đằng sau mặt biển.Biển 2: R.301h đặt sau ngã ba, ngã tư, chỉ được phép rẽ trái, quay đầu hoặc rẽ phải ở khu vực ngã ba, ngã tư trước mặt biển.Biển 3: R.301g đặt trước ngã ba, ngã tư, chỉ được phép đi thẳng hay rẽ trái ở khu vực sau mặt biển và được phép quay đầu xe để đi theo hướng ngược lại.Biển 1 và Biển 2 là đáp án đúng.",
 	"answers": [{
 		"text": "Biển 1 và 2.",
 		"correct": true
@@ -11412,7 +11412,7 @@
 	"no": 487,
 	"index": 487,
 	"text": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.<br/>1. Xe tải: Đường ưu tiên và đi thẳng;<br/>2. Mô tô: Đường ưu tiên và rẽ trái;<br/>3. Xe khách: Đường không ưu tiên, đi thẳng.<br/>4. Xe con: Đường không ưu tiên, rẽ trái.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.1. Xe tải: Đường ưu tiên và đi thẳng;2. Mô tô: Đường ưu tiên và rẽ trái;3. Xe khách: Đường không ưu tiên, đi thẳng.4. Xe con: Đường không ưu tiên, rẽ trái.",
 	"answers": [{
 		"text": "Xe tải, xe khách, xe con, mô tô.",
 		"correct": false
@@ -11438,7 +11438,7 @@
 	"no": 488,
 	"index": 488,
 	"text": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.<br/>1. Xe công an: Xe ưu tiên.<br/>2. Xe con: Đường ưu tiên.<br/>3. Xe tải: Đường không ưu tiên, đi thẳng.<br/>4. Xe khách: Đường không ưu tiên, rẽ trái.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.1. Xe công an: Xe ưu tiên.2. Xe con: Đường ưu tiên.3. Xe tải: Đường không ưu tiên, đi thẳng.4. Xe khách: Đường không ưu tiên, rẽ trái.",
 	"answers": [{
 		"text": "Xe công an, xe con, xe tải, xe khách.",
 		"correct": true
@@ -11464,7 +11464,7 @@
 	"no": 489,
 	"index": 489,
 	"text": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.<br/>1. Xe công an: Xe ưu tiên; <br/>2. Xe tải: Đường ưu tiên;<br/>3. Xe khách: Đường không ưu tiên, bên phải trống;<br/>4. Xe con: Đường không ưu tiên, bên phải vướng xe khách nên phải nhường.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.1. Xe công an: Xe ưu tiên; 2. Xe tải: Đường ưu tiên;3. Xe khách: Đường không ưu tiên, bên phải trống;4. Xe con: Đường không ưu tiên, bên phải vướng xe khách nên phải nhường.",
 	"answers": [{
 		"text": "Xe tải, xe công an, xe khách, xe con.",
 		"correct": false
@@ -11490,7 +11490,7 @@
 	"no": 490,
 	"index": 490,
 	"text": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.<br/>1. Xe mô tô: Bên phải trống;<br/>2. Xe con: Đi thẳng;<br/>3. Xe tải: Rẽ trái;",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.1. Xe mô tô: Bên phải trống;2. Xe con: Đi thẳng;3. Xe tải: Rẽ trái;",
 	"answers": [{
 		"text": "Xe tải, xe con, mô tô.",
 		"correct": false
@@ -11516,7 +11516,7 @@
 	"no": 491,
 	"index": 491,
 	"text": "Xe nào phải nhường đường trong trường hợp này?",
-	"tip": "Giao nhau cùng cấp có vòng xuyến: Chưa vào vòng xuyến thì ưu tiên xe bên phải; đã vào vòng xuyến ưu tiên xe từ bên trái tới.<br/>Xe con nhường vì thấy xe tải từ bên trái tới đã nằm trong vòng xuyến.",
+	"tip": "Giao nhau cùng cấp có vòng xuyến: Chưa vào vòng xuyến thì ưu tiên xe bên phải; đã vào vòng xuyến ưu tiên xe từ bên trái tới.Xe con nhường vì thấy xe tải từ bên trái tới đã nằm trong vòng xuyến.",
 	"answers": [{
 		"text": "Xe con.",
 		"correct": true
@@ -11556,7 +11556,7 @@
 	"no": 493,
 	"index": 493,
 	"text": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe vào ngã ba, ngã tư trước - Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái..<br/>1. Xe con (A): Đã vào ngã tư trước;<br/>2. Xe cứu thương: Xe ưu tiên;<br/>3. Xe con (B);",
+	"tip": "Thứ tự ưu tiên: Xe vào ngã ba, ngã tư trước - Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái..1. Xe con (A): Đã vào ngã tư trước;2. Xe cứu thương: Xe ưu tiên;3. Xe con (B);",
 	"answers": [{
 		"text": "Xe con (A), xe cứu thương, xe con (B).",
 		"correct": true
@@ -11622,7 +11622,7 @@
 	"no": 496,
 	"index": 496,
 	"text": "Xe nào phải nhường đường đi cuối cùng qua nơi giao nhau này?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.<br/>1. Xe con: Đường ưu tiên;<br/>2. Xe tải: Đường không ưu tiên, rẽ phải;<br/>3. Xe khách: Đường không ưu tiên, rẽ trái (Đáp án đúng).",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.1. Xe con: Đường ưu tiên;2. Xe tải: Đường không ưu tiên, rẽ phải;3. Xe khách: Đường không ưu tiên, rẽ trái (Đáp án đúng).",
 	"answers": [{
 		"text": "Xe khách.",
 		"correct": true
@@ -11645,7 +11645,7 @@
 	"no": 497,
 	"index": 497,
 	"text": "Xe nào phải nhường đường là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.<br/>Xe tải bên phải trống nên đi trước;<br/>Đáp án đúng là Xe con phải nhường đường: Bên phải vướng xe tải.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.Xe tải bên phải trống nên đi trước;Đáp án đúng là Xe con phải nhường đường: Bên phải vướng xe tải.",
 	"answers": [{
 		"text": "Xe con.",
 		"correct": true
@@ -11728,7 +11728,7 @@
 	"no": 501,
 	"index": 501,
 	"text": "Trong trường hợp này xe nào được quyền đi trước?",
-	"tip": "Xe ưu tiên cùng cấp nên áp dụng thứ tự đường cùng cấp: Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>Xe quân sự được ưu tiên trước do bên phải trống.",
+	"tip": "Xe ưu tiên cùng cấp nên áp dụng thứ tự đường cùng cấp: Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.Xe quân sự được ưu tiên trước do bên phải trống.",
 	"answers": [{
 		"text": "Xe công an.",
 		"correct": false
@@ -11774,7 +11774,7 @@
 	"no": 503,
 	"index": 503,
 	"text": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-	"tip": "1. Xe khách: Sai làn, Đi thẳng đèn đang đỏ;<br/>2. Xe tải: Sai làn: Đi trên làn đi thẳng trong khi thực hiện rẽ trái.<br/>3. Xe mô tô: Sai làn: Đi trên làn rẽ trái trong khi thực hiện rẽ phải,<br/>Nên đáp án đúng là xe khách, xe tải và xe mô tô đều vi phạm quy tắc giao thông.",
+	"tip": "1. Xe khách: Sai làn, Đi thẳng đèn đang đỏ;2. Xe tải: Sai làn: Đi trên làn đi thẳng trong khi thực hiện rẽ trái.3. Xe mô tô: Sai làn: Đi trên làn rẽ trái trong khi thực hiện rẽ phải,Nên đáp án đúng là xe khách, xe tải và xe mô tô đều vi phạm quy tắc giao thông.",
 	"answers": [{
 		"text": "Xe khách, xe tải, mô tô.",
 		"correct": true
@@ -11797,7 +11797,7 @@
 	"no": 504,
 	"index": 504,
 	"text": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Giao nhau cùng cấp có vòng xuyến: Chưa vào vòng xuyến thì ưu tiên xe bên phải; đã vào vòng xuyến ưu tiên xe từ bên trái tới.<br/>Toàn bộ các xe chưa vào phòng xuyến nên ưu tiên xe bên phải.<br/>Thứ tự sẽ là Mô tô, xe tải, xe khách, xe con.",
+	"tip": "Giao nhau cùng cấp có vòng xuyến: Chưa vào vòng xuyến thì ưu tiên xe bên phải; đã vào vòng xuyến ưu tiên xe từ bên trái tới.Toàn bộ các xe chưa vào phòng xuyến nên ưu tiên xe bên phải.Thứ tự sẽ là Mô tô, xe tải, xe khách, xe con.",
 	"answers": [{
 		"text": "Xe khách, xe tải, mô tô, xe con.",
 		"correct": false
@@ -11849,7 +11849,7 @@
 	"no": 506,
 	"index": 506,
 	"text": "Xe nào được quyền đi trước?",
-	"tip": "Thứ tự ưu tiên không vòng xuyến: Xe vào ngã ba, ngã tư trước - Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.<br/>Đáp án đúng là Xe con (B): Đường ưu tiên;",
+	"tip": "Thứ tự ưu tiên không vòng xuyến: Xe vào ngã ba, ngã tư trước - Xe ưu tiên - Đường ưu tiên - Đường cùng cấp theo thứ tự bên phải trống - rẽ phải - đi thẳng - rẽ trái.Đáp án đúng là Xe con (B): Đường ưu tiên;",
 	"answers": [{
 		"text": "Xe tải.",
 		"correct": false
@@ -11872,7 +11872,7 @@
 	"no": 507,
 	"index": 507,
 	"text": "Theo hướng mũi tên, những hướng nào xe gắn máy đi được?",
-	"tip": "Bạn lưu ý câu hỏi này hỏi về hướng đi của xe <b>GẮN MÁY</b>. Hướng 1 và 3 chắc chắn là đi được rồi.<br/>Với hướng 2, biển báo cấm mô tô đi vào chỉ có tác dụng với xe MÔ TÔ nên xe gắn máy không có hiệu lực. Do đó vẫn đi vào bình thường.",
+	"tip": "Bạn lưu ý câu hỏi này hỏi về hướng đi của xe <b>GẮN MÁY</b>. Hướng 1 và 3 chắc chắn là đi được rồi.Với hướng 2, biển báo cấm mô tô đi vào chỉ có tác dụng với xe MÔ TÔ nên xe gắn máy không có hiệu lực. Do đó vẫn đi vào bình thường.",
 	"answers": [{
 		"text": "Cả ba hướng.",
 		"correct": true
@@ -12036,7 +12036,7 @@
 	"no": 514,
 	"index": 514,
 	"text": "Theo hướng mũi tên, gặp biển hướng đi phải theo đặt trước ngã tư, những hướng nào xe được phép đi?",
-	"tip": "Biển số R.301g được đặt trước ngã ba, ngã tư. Các xe chỉ được phép đi thẳng hay rẽ trái ở khu vực sau mặt biển và được phép quay đầu xe để đi theo hướng ngược lại.<br/>Đáp án đúng là hướng 2 và hướng 3.",
+	"tip": "Biển số R.301g được đặt trước ngã ba, ngã tư. Các xe chỉ được phép đi thẳng hay rẽ trái ở khu vực sau mặt biển và được phép quay đầu xe để đi theo hướng ngược lại.Đáp án đúng là hướng 2 và hướng 3.",
 	"answers": [{
 		"text": "Hướng 2 và 3.",
 		"correct": true
@@ -12079,7 +12079,7 @@
 	"no": 516,
 	"index": 516,
 	"text": "Xe nào phải nhường đường trong trường hợp này?",
-	"tip": "Phía trước xe tải có biển báo được ưu tiên qua đường hẹp nên được đi trước.<br/>Hoặc phía trước xe khách có biển báo nhường cho xe ngược chiều qua đường hẹp.",
+	"tip": "Phía trước xe tải có biển báo được ưu tiên qua đường hẹp nên được đi trước.Hoặc phía trước xe khách có biển báo nhường cho xe ngược chiều qua đường hẹp.",
 	"answers": [{
 		"text": "Xe khách.",
 		"correct": true
@@ -12099,7 +12099,7 @@
 	"no": 517,
 	"index": 517,
 	"text": "Xe nào được quyền đi trước trong trường hợp này?",
-	"tip": "Đèn xanh nên áp dụng quy tắc Đường cùng cấp: Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>Nên đáp án đúng là Xe xích lô rẽ phải đi trước.",
+	"tip": "Đèn xanh nên áp dụng quy tắc Đường cùng cấp: Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.Nên đáp án đúng là Xe xích lô rẽ phải đi trước.",
 	"answers": [{
 		"text": "Xe con.",
 		"correct": false
@@ -12139,7 +12139,7 @@
 	"no": 519,
 	"index": 519,
 	"text": "Theo hướng mũi tên, những hướng nào ô tô con được phép đi?",
-	"tip": "Biển số R.301d “Chỉ được rẽ phải” chỉ áp dụng với xe tải (biển phụ) nên không áp dụng với xe con.<br/>Hướng 2 cấm xe con không được đi vào, còn hướng 1, 3 và 4 xe con đều được phép đi.",
+	"tip": "Biển số R.301d “Chỉ được rẽ phải” chỉ áp dụng với xe tải (biển phụ) nên không áp dụng với xe con.Hướng 2 cấm xe con không được đi vào, còn hướng 1, 3 và 4 xe con đều được phép đi.",
 	"answers": [{
 		"text": "Hướng 1.",
 		"correct": false
@@ -12165,7 +12165,7 @@
 	"no": 520,
 	"index": 520,
 	"text": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên đường cùng cấp: Xe ưu tiên - Đường ưu tiên - Bên phải trống - rẽ phải - đi thẳng - rẽ trái.<br/>1. Mô tô và xe đạp: Bên phải trống;<br/>2. Xe con (A): Đi thẳng;<br/>3. Xe con (B): Rẽ trái.",
+	"tip": "Thứ tự ưu tiên đường cùng cấp: Xe ưu tiên - Đường ưu tiên - Bên phải trống - rẽ phải - đi thẳng - rẽ trái.1. Mô tô và xe đạp: Bên phải trống;2. Xe con (A): Đi thẳng;3. Xe con (B): Rẽ trái.",
 	"answers": [{
 		"text": "Xe con (A), mô tô, xe con (B), xe đạp.",
 		"correct": false
@@ -12191,7 +12191,7 @@
 	"no": 521,
 	"index": 521,
 	"text": "Theo hướng mũi tên, những hướng nào xe tải được phép đi?",
-	"tip": "Biển số R.301d “Chỉ được rẽ phải” áp dụng với xe tải (biển phụ) nên hướng 3, 4 rẽ trái bị cấm.<br/>Hướng 2 có biển cấm xe tải đi vào.<br/>Nên xe tải chỉ có thể chạy theo hướng 1 là đáp án đúng.",
+	"tip": "Biển số R.301d “Chỉ được rẽ phải” áp dụng với xe tải (biển phụ) nên hướng 3, 4 rẽ trái bị cấm.Hướng 2 có biển cấm xe tải đi vào.Nên xe tải chỉ có thể chạy theo hướng 1 là đáp án đúng.",
 	"answers": [{
 		"text": "Chỉ hướng 1.",
 		"correct": true
@@ -12237,7 +12237,7 @@
 	"no": 523,
 	"index": 523,
 	"text": "Những hướng nào ô tô tải được phép đi?",
-	"tip": "Hướng 2,3,4 bị cấm do có biển cấm xe ô tô đi vào.<br/>Hướng 1 và 5 xe tải đi được bình thường.",
+	"tip": "Hướng 2,3,4 bị cấm do có biển cấm xe ô tô đi vào.Hướng 1 và 5 xe tải đi được bình thường.",
 	"answers": [{
 		"text": "Chỉ hướng 1.",
 		"correct": false
@@ -12289,7 +12289,7 @@
 	"no": 525,
 	"index": 525,
 	"text": "Xe nào được quyền đi trước trong trường hợp này?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>Xe mô tô rẽ trái từ đường ưu tiên vào đường ưu tiên (theo biển báo và biển phụ) nên được quyền đi trước.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.Xe mô tô rẽ trái từ đường ưu tiên vào đường ưu tiên (theo biển báo và biển phụ) nên được quyền đi trước.",
 	"answers": [{
 		"text": "Mô tô.",
 		"correct": true
@@ -12355,7 +12355,7 @@
 	"no": 528,
 	"index": 528,
 	"text": "Các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Giơ tay thẳng đứng: Tất cả dừng, trừ xe đã ở trong ngã tư được phép đi;<br/>Giang ngang tay: Trái phải đi; Trước sau dừng;<br/>Tay phải giơ trước: Sau, phải dừng, trước rẽ phải, trái đi các hướng, người đi bộ qua đường đi sau người điều khiển.",
+	"tip": "Giơ tay thẳng đứng: Tất cả dừng, trừ xe đã ở trong ngã tư được phép đi;Giang ngang tay: Trái phải đi; Trước sau dừng;Tay phải giơ trước: Sau, phải dừng, trước rẽ phải, trái đi các hướng, người đi bộ qua đường đi sau người điều khiển.",
 	"answers": [{
 		"text": "Các xe ở phía tay phải và tay trái của người điều khiển được phép đi thẳng.",
 		"correct": false
@@ -12378,7 +12378,7 @@
 	"no": 529,
 	"index": 529,
 	"text": "Theo hướng mũi tên, xe nào được phép đi?",
-	"tip": "Giang ngang tay: Trái phải đi; Trước sau dừng.<br/>Xe mô tô và xe tải được phép đi là đáp án đúng.",
+	"tip": "Giang ngang tay: Trái phải đi; Trước sau dừng.Xe mô tô và xe tải được phép đi là đáp án đúng.",
 	"answers": [{
 		"text": "Mô tô, xe con.",
 		"correct": false
@@ -12424,7 +12424,7 @@
 	"no": 531,
 	"index": 531,
 	"text": "Xe nào vượt đúng quy tắc giao thông?",
-	"tip": "Theo hướng xe tải, vượt xe khách đè vạch liền nên vi phạm.<br/> Theo hướng xe con, xe con vượt xe tải đè vạch đứt nên không vi phạm quy tắc giao thông là đáp án đúng.",
+	"tip": "Theo hướng xe tải, vượt xe khách đè vạch liền nên vi phạm. Theo hướng xe con, xe con vượt xe tải đè vạch đứt nên không vi phạm quy tắc giao thông là đáp án đúng.",
 	"answers": [{
 		"text": "Xe tải.",
 		"correct": false
@@ -12447,7 +12447,7 @@
 	"no": 532,
 	"index": 532,
 	"text": "Đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-	"tip": "Biển cấm xe ngược chiều không có tác dụng với xe chữa cháy (xe ưu tiên) nên không vi phạm.<br/>Trước mặt xe tải có biển cấm rẽ trái và quay đầu nên vi phạm là đáp án đúng.",
+	"tip": "Biển cấm xe ngược chiều không có tác dụng với xe chữa cháy (xe ưu tiên) nên không vi phạm.Trước mặt xe tải có biển cấm rẽ trái và quay đầu nên vi phạm là đáp án đúng.",
 	"answers": [{
 		"text": "Xe chữa cháy.",
 		"correct": false
@@ -12470,7 +12470,7 @@
 	"no": 533,
 	"index": 533,
 	"text": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe tải: Rẽ phải; 2. Xe khách: Đi thẳng; 3. Xe con: Rẽ trái.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe tải: Rẽ phải; 2. Xe khách: Đi thẳng; 3. Xe con: Rẽ trái.",
 	"answers": [{
 		"text": "Xe khách, xe tải, xe con.",
 		"correct": false
@@ -12493,7 +12493,7 @@
 	"no": 534,
 	"index": 534,
 	"text": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe khách và xe tải cùng rẽ phải nên cùng nhau đi trước. Hãy nhìn đáp án có chữ <b>“VÀ”</b>.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe khách và xe tải cùng rẽ phải nên cùng nhau đi trước. Hãy nhìn đáp án có chữ <b>“VÀ”</b>.",
 	"answers": [{
 		"text": "Xe khách và xe tải, xe con.",
 		"correct": true
@@ -12539,7 +12539,7 @@
 	"no": 536,
 	"index": 536,
 	"text": "Theo hướng mũi tên, thứ tự các xe đi như thế nào là đúng?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe công an: Xe ưu tiên;<br/>2. Xe con: Đường ưu tiên, bên phải trống;<br/>3. Xe tải: Đường ưu tiên, bên phải vướng xe con nếu đi trước;<br/>4. Xe khách: Đường không ưu tiên.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe công an: Xe ưu tiên;2. Xe con: Đường ưu tiên, bên phải trống;3. Xe tải: Đường ưu tiên, bên phải vướng xe con nếu đi trước;4. Xe khách: Đường không ưu tiên.",
 	"answers": [{
 		"text": "Xe công an, xe con, xe tải, xe khách.",
 		"correct": true
@@ -12565,7 +12565,7 @@
 	"no": 537,
 	"index": 537,
 	"text": "Những hướng nào ô tô tải được phép đi?",
-	"tip": "Trước mặt xe tải là Biển số P.123a “Cấm rẽ trái” không cấm quay đầu (hướng 3).<br/>Hướng 4 là Biển số P.109 “Cấm máy kéo” không cấm xe tải.<br/>Nên các hướng 1, 3 và 4 là câu trả lời đúng.",
+	"tip": "Trước mặt xe tải là Biển số P.123a “Cấm rẽ trái” không cấm quay đầu (hướng 3).Hướng 4 là Biển số P.109 “Cấm máy kéo” không cấm xe tải.Nên các hướng 1, 3 và 4 là câu trả lời đúng.",
 	"answers": [{
 		"text": "Cả bốn hướng.",
 		"correct": false
@@ -12640,7 +12640,7 @@
 	"no": 540,
 	"index": 540,
 	"text": "Trong trường hợp này, thứ tự xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe quân sự: Xe ưu tiên cùng cấp xe công an nhưng đi thẳng;<br/>2. Xe công an: Xe ưu tiên; rẽ trái;<br/>3. Xe con và xe mô tô: Cùng đi thẳng.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe quân sự: Xe ưu tiên cùng cấp xe công an nhưng đi thẳng;2. Xe công an: Xe ưu tiên; rẽ trái;3. Xe con và xe mô tô: Cùng đi thẳng.",
 	"answers": [{
 		"text": "Xe công an, xe quân sự, xe con + mô tô.",
 		"correct": false
@@ -12749,7 +12749,7 @@
 	"no": 545,
 	"index": 545,
 	"text": "Người lái xe điều khiển xe chạy theo hướng nào là đúng quy tắc giao thông?",
-	"tip": "Hướng 4: Biển số P.123b “Cấm rẽ phải”; Hướng 3: Biển số P.102 “Cấm đi ngược chiều”;<br/>Nên chỉ có thể đi theo hướng 1 và hướng 2 là câu trả lời đúng.",
+	"tip": "Hướng 4: Biển số P.123b “Cấm rẽ phải”; Hướng 3: Biển số P.102 “Cấm đi ngược chiều”;Nên chỉ có thể đi theo hướng 1 và hướng 2 là câu trả lời đúng.",
 	"answers": [{
 		"text": "Chỉ hướng 2.",
 		"correct": false
@@ -12887,7 +12887,7 @@
 	"no": 551,
 	"index": 551,
 	"text": "Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>Xe bạn đang trên đường ưu tiên nên được đi trước.<br/>Xe con rẽ phải không giao nhau với xe bạn nên được đi đồng thời với xe bạn.<br/>Xe tải rẽ trái từ đường không ưu tiên phải nhường đi sau cùng.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.Xe bạn đang trên đường ưu tiên nên được đi trước.Xe con rẽ phải không giao nhau với xe bạn nên được đi đồng thời với xe bạn.Xe tải rẽ trái từ đường không ưu tiên phải nhường đi sau cùng.",
 	"answers": [{
 		"text": "Xe con và xe tải, xe của bạn.",
 		"correct": false
@@ -12959,7 +12959,7 @@
 	"no": 554,
 	"index": 554,
 	"text": "Xe nào phải nhường đường là đúng quy tắc giao thông?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe tải đi thẳng không phải nhường đường vì không vướng xe nào cả; 2. Xe con: Rẽ phải; 3. Xe khách: Đi thẳng nên phải nhường xe con là câu trả lời đúng.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe tải đi thẳng không phải nhường đường vì không vướng xe nào cả; 2. Xe con: Rẽ phải; 3. Xe khách: Đi thẳng nên phải nhường xe con là câu trả lời đúng.",
 	"answers": [{
 		"text": "Xe tải.",
 		"correct": false
@@ -13022,7 +13022,7 @@
 	"no": 557,
 	"index": 557,
 	"text": "Người lái xe dừng tại vị trí nào là đúng quy tắc giao thông?",
-	"tip": "Vị trí A vi phạm do dừng bên trái đường.<br/>Biển số P.131a “Cấm đỗ xe” không cấm dừng xe. Do đó vị trí dừng tại B và C là câu trả lời đúng.",
+	"tip": "Vị trí A vi phạm do dừng bên trái đường.Biển số P.131a “Cấm đỗ xe” không cấm dừng xe. Do đó vị trí dừng tại B và C là câu trả lời đúng.",
 	"answers": [{
 		"text": "Vị trí A và B.",
 		"correct": false
@@ -13100,7 +13100,7 @@
 	"no": 560,
 	"index": 560,
 	"text": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-	"tip": "Xe con trong cả hai phía đều đang ở đúng làn đường và đi theo hướng mà đèn xanh đang bật nên đúng quy tắc.<br/>Xe tải trong cả hai phía đều ở sai làn đường so với hướng rẽ nên vi phạm quy tắc giao thông.",
+	"tip": "Xe con trong cả hai phía đều đang ở đúng làn đường và đi theo hướng mà đèn xanh đang bật nên đúng quy tắc.Xe tải trong cả hai phía đều ở sai làn đường so với hướng rẽ nên vi phạm quy tắc giao thông.",
 	"answers": [{
 		"text": "Xe con.",
 		"correct": false
@@ -13123,7 +13123,7 @@
 	"no": 561,
 	"index": 561,
 	"text": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-	"tip": "Xe con và xe mô tô đang ở đúng làn đường, đúng hướng rẽ với tín hiệu đèn xanh nên đúng quy tắc giao thông.<br/>Xe khách và xe tải đang ở sai làn đường so với hướng rẽ nên đều vi phạm.",
+	"tip": "Xe con và xe mô tô đang ở đúng làn đường, đúng hướng rẽ với tín hiệu đèn xanh nên đúng quy tắc giao thông.Xe khách và xe tải đang ở sai làn đường so với hướng rẽ nên đều vi phạm.",
 	"answers": [{
 		"text": "Xe tải, xe con.",
 		"correct": false
@@ -13146,7 +13146,7 @@
 	"no": 562,
 	"index": 562,
 	"text": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-	"tip": "Xe con đi đúng làn đường theo hướng rẽ và tín hiệu đèn.<br/>Xe khách: Sai làn đường và tín hiệu đèn.<br/>Xe tải: Đi thẳng vi phạm đèn đỏ.<br/>Xe mô tô: Đi thẳng vi phạm đèn đỏ.",
+	"tip": "Xe con đi đúng làn đường theo hướng rẽ và tín hiệu đèn.Xe khách: Sai làn đường và tín hiệu đèn.Xe tải: Đi thẳng vi phạm đèn đỏ.Xe mô tô: Đi thẳng vi phạm đèn đỏ.",
 	"answers": [{
 		"text": "Xe con, xe tải, xe khách.",
 		"correct": false
@@ -13172,7 +13172,7 @@
 	"no": 563,
 	"index": 563,
 	"text": "Các xe đi theo hướng mũi tên, xe nào vi phạm quy tắc giao thông?",
-	"tip": "Xe con đúng làn đường và tín hiệu đèn.<br/>Xe khách: Sai làn đường; Xe tải: Sai làn đường và tín hiệu đèn.",
+	"tip": "Xe con đúng làn đường và tín hiệu đèn.Xe khách: Sai làn đường; Xe tải: Sai làn đường và tín hiệu đèn.",
 	"answers": [{
 		"text": "Xe khách, xe tải.",
 		"correct": true
@@ -13221,7 +13221,7 @@
 	"no": 565,
 	"index": 565,
 	"text": "Các xe đi theo hướng mũi tên, xe nào chấp hành đúng quy tắc giao thông?",
-	"tip": "Xe con và xe tải: Vi phạm tín hiệu đèn;<br/>Xe khách và xe mô tô: Đúng làn đường và đúng tín hiệu đèn.",
+	"tip": "Xe con và xe tải: Vi phạm tín hiệu đèn;Xe khách và xe mô tô: Đúng làn đường và đúng tín hiệu đèn.",
 	"answers": [{
 		"text": "Xe tải, mô tô.",
 		"correct": false
@@ -13273,7 +13273,7 @@
 	"no": 567,
 	"index": 567,
 	"text": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>Biển báo phía trước là đường ưu tiên và biển phụ báo hướng di chuyển của xe mô tô là hướng ưu tiên.<br/>1. Xe mô tô: Đường ưu tiên;<br/>2. Xe con: Đường không ưu tiên, bên phải trống;<br/>3. Xe của bạn: Đường không ưu tiên, bên phải vướng xe con.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.Biển báo phía trước là đường ưu tiên và biển phụ báo hướng di chuyển của xe mô tô là hướng ưu tiên.1. Xe mô tô: Đường ưu tiên;2. Xe con: Đường không ưu tiên, bên phải trống;3. Xe của bạn: Đường không ưu tiên, bên phải vướng xe con.",
 	"answers": [{
 		"text": "Xe của bạn, mô tô, xe con.",
 		"correct": false
@@ -13296,7 +13296,7 @@
 	"no": 568,
 	"index": 568,
 	"text": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp: Bên phải trống, rẽ phải, đi thẳng, rẽ trái.<br/>1. Xe con: Rẽ phải; 2. Xe của bạn: Đi thẳng; 3. Mô tô: Rẽ trái.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Đường cùng cấp: Bên phải trống, rẽ phải, đi thẳng, rẽ trái.1. Xe con: Rẽ phải; 2. Xe của bạn: Đi thẳng; 3. Mô tô: Rẽ trái.",
 	"answers": [{
 		"text": "Xe của bạn, mô tô, xe con.",
 		"correct": false
@@ -13414,7 +13414,7 @@
 	"no": 573,
 	"index": 573,
 	"text": "Bạn xử lý như thế nào trong trường hợp này?",
-	"tip": "Ở vạch kẻ đường dành cho người đi bộ có người chuẩn bị sang đường nên phải nhường đường và không được phép vượt.<br/>Nên bạn phải nhường đường cho người đi bộ và rẽ phải sau xe con màu xanh.",
+	"tip": "Ở vạch kẻ đường dành cho người đi bộ có người chuẩn bị sang đường nên phải nhường đường và không được phép vượt.Nên bạn phải nhường đường cho người đi bộ và rẽ phải sau xe con màu xanh.",
 	"answers": [{
 		"text": "Tăng tốc độ, rẽ phải trước xe con màu xanh phía trước và người đi bộ.",
 		"correct": false
@@ -13641,7 +13641,7 @@
 	"no": 583,
 	"index": 583,
 	"text": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe đạp: Bên phải trống; 2. Xe mô tô: Đi thẳng; 3. Xe của bạn: Rẽ trái.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe đạp: Bên phải trống; 2. Xe mô tô: Đi thẳng; 3. Xe của bạn: Rẽ trái.",
 	"answers": [{
 		"text": "Xe của bạn, mô tô, xe đạp.",
 		"correct": false
@@ -13664,7 +13664,7 @@
 	"no": 584,
 	"index": 584,
 	"text": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe của bạn: Đường ưu tiên; 2. Xe con: Đi không ưu tiên, đi thẳng; 3. Xe tải: Đường không ưu tiên, rẽ trái.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe của bạn: Đường ưu tiên; 2. Xe con: Đi không ưu tiên, đi thẳng; 3. Xe tải: Đường không ưu tiên, rẽ trái.",
 	"answers": [{
 		"text": "Xe của bạn, xe tải, xe con.",
 		"correct": false
@@ -13690,7 +13690,7 @@
 	"no": 585,
 	"index": 585,
 	"text": "Xe nào phải nhường đường trong trường hợp này?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe con: Đường ưu tiên; 2. Xe của bạn: Đường không ưu tiên nên phải nhường đường.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe con: Đường ưu tiên; 2. Xe của bạn: Đường không ưu tiên nên phải nhường đường.",
 	"answers": [{
 		"text": "Xe của bạn.",
 		"correct": true
@@ -13753,7 +13753,7 @@
 	"no": 588,
 	"index": 588,
 	"text": "Xe nào được đi trước trong trường hợp này?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>Xe của bạn trên đường ưu tiên (theo biển báo) nên được đi trước.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.Xe của bạn trên đường ưu tiên (theo biển báo) nên được đi trước.",
 	"answers": [{
 		"text": "Xe con.",
 		"correct": false
@@ -13773,7 +13773,7 @@
 	"no": 589,
 	"index": 589,
 	"text": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe tải: Bên phải trống; 2. Xe con: Đi thẳng; 3. Xe của bạn: Rẽ trái.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe tải: Bên phải trống; 2. Xe con: Đi thẳng; 3. Xe của bạn: Rẽ trái.",
 	"answers": [{
 		"text": "Xe con, xe tải, xe của bạn.",
 		"correct": false
@@ -13819,7 +13819,7 @@
 	"no": 591,
 	"index": 591,
 	"text": "Xe nào được đi trước trong trường hợp này?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe tải: Đi thẳng; 2. Xe của bạn: Rẽ trái.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe tải: Đi thẳng; 2. Xe của bạn: Rẽ trái.",
 	"answers": [{
 		"text": "Xe tải.",
 		"correct": true
@@ -13862,7 +13862,7 @@
 	"no": 593,
 	"index": 593,
 	"text": "Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?",
-	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.<br/>1. Xe của bạn: Bên phải trống, đi thẳng; 2. Xe tải: Rẽ trái, bên phải trống (khi xe bạn đã đi rồi); 3. Xe đạp: Rẽ trái.",
+	"tip": "Thứ tự ưu tiên: Xe ưu tiên - Đường ưu tiên - Bên phải trống - Rẽ phải - Đi thẳng - Rẽ trái.1. Xe của bạn: Bên phải trống, đi thẳng; 2. Xe tải: Rẽ trái, bên phải trống (khi xe bạn đã đi rồi); 3. Xe đạp: Rẽ trái.",
 	"answers": [{
 		"text": "Xe tải, xe đạp, xe của bạn.",
 		"correct": false
