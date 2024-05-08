@@ -3,7 +3,6 @@ package com.hnp.gplx600.pages.gplxhome
 import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresExtension
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -293,7 +292,6 @@ class GplxComponents {
         modifier = Modifier.padding(16.dp),
         style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
       )
-
       //show answer
       LazyColumn(modifier = Modifier.fillMaxWidth()) {
         items(answerList) { answer ->
@@ -301,24 +299,22 @@ class GplxComponents {
           val index = answerList.indexOf(answer) + 1
           val correct = answer.getBoolean("correct")
           //show answer
-          Box(modifier = Modifier
-            .padding(8.dp)
-            .background(color = Color.White)
-            .fillMaxSize()
-            .border(width = 1.dp, color = Color.White,shape = RoundedCornerShape(8.dp))
-
-            .clickable {
-              showCorrect = true
-            }
-            .shadow(1.dp),
-
+          Box(
+            modifier = Modifier
+              .padding(5.dp)
+              .background(color = Color.White)
+              .fillMaxSize()
+              .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
+              .clickable {
+                showCorrect = true
+              }
+              .shadow(1.dp),
           ) {
             Text(
               text = "$index. ${answer.getString("text")}",
               fontSize = 18.sp,
-              style = TextStyle(color = if (showCorrect) if (correct)Color(0xFF0A9204) else Color.Red else Color.Black),
-              modifier = Modifier
-                .padding(8.dp)
+              style = TextStyle(color = if (showCorrect) if (correct) Color(0xFF0A9204) else Color.Red else Color.Black),
+              modifier = Modifier.padding(8.dp)
 
             )
           }
@@ -338,14 +334,12 @@ class GplxComponents {
           }, style = TextStyle(fontStyle = FontStyle.Italic)
       )
       Spacer(modifier = Modifier.height(30.dp))
-
       val context = LocalContext.current
       val res = context.resources
       val packageName = context.packageName
       //val drawableName = question.image
       val drawableName = question.image.split(".").first()
       val resourceId = res.getIdentifier(drawableName, "drawable", packageName)
-
       if (question.image.isNotEmpty()) Image(
         painter = painterResource(id = resourceId),
         contentDescription = null,
@@ -359,20 +353,6 @@ class GplxComponents {
 
     }
   }
-
-  @SuppressLint("DiscouragedApi")
-  @Composable
-  fun getPainterFromDrawableName(drawableName: String): Painter {
-    val context = LocalContext.current
-    val res = context.resources
-    val packageName = context.packageName
-
-    // Get the identifier of the drawable
-    val drawableId = res.getIdentifier(drawableName, "drawable", packageName)
-    // Check if the drawable exists
-    return painterResource(id = drawableId)
-  }
-
   @Composable
   fun BottomNavigation(
     currentPageIndex: Int,
