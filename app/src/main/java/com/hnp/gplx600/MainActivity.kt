@@ -82,6 +82,9 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
     composable("detailscreen") {
       GplxComponents().DetailScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)
     }
+    composable("optionscreen") {
+      GplxComponents().GPLXOptionScreen(navController = navController, globalVar = globalVar)
+    }
   }
 }
 

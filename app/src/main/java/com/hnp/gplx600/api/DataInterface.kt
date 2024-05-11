@@ -6,6 +6,11 @@ import androidx.room.PrimaryKey
 
 class ErpInterface
 {
+    data class OptionScreenData(
+        var id: Int,
+        var title: String,
+        var icon: @Composable () -> Unit
+    )
     data class LoginInfo(
         var command: String,
         var user: String,

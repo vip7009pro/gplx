@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -51,6 +52,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
 import androidx.navigation.NavController
 import com.hnp.gplx600.R
@@ -62,6 +64,8 @@ import com.hnp.gplx600.theme.GPLXTheme
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.launch
+import androidx.compose.ui.text.*;
+import androidx.compose.ui.text.font.FontWeight
 
 @Suppress("UNUSED_EXPRESSION")
 class GplxHome {
@@ -74,8 +78,7 @@ class GplxHome {
     //val globalVar = viewModel<GlobalVariable>()
     val currentContext = LocalContext.current
     val menuData = listOf(
-      ErpInterface.MenuData(
-        route = "nhansubophan",
+      ErpInterface.MenuData(route = "nhansubophan",
         title = "Nhân sự bộ phận",
         icon = {
           Icon(
@@ -203,28 +206,17 @@ class GplxHome {
     ) {
       Scaffold(
         topBar = {
-          TopAppBar(modifier = Modifier.height(40.dp),
-            colors = androidx.compose.material3.TopAppBarDefaults.centerAlignedTopAppBarColors(
-              containerColor = MaterialTheme.colorScheme.primaryContainer,
-              titleContentColor = MaterialTheme.colorScheme.primary,
-            ),
-            title = {
-              Text(text = "Chọn bằng lái")
-            })
-        },
-        /*bottomBar = {
-          BottomAppBar(
-            modifier = Modifier.height(40.dp),
-            containerColor = MaterialTheme.colorScheme.primaryContainer,
-            contentColor = MaterialTheme.colorScheme.primary,
+          Row(
+            modifier = Modifier
+              .fillMaxWidth()
+              .height(40.dp)
+              .background(color = Color(0xFFE5EDF7)),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
           ) {
-            Text(
-              modifier = Modifier.fillMaxWidth(),
-              textAlign = TextAlign.Center,
-              text = "Bottom app bar",
-            )
+            Text(text = "Chọn bằng lái", color = Color(0xFF5DBACA), fontWeight = FontWeight.Bold)
           }
-        },*/
+        },
         floatingActionButton = {
           FloatingActionButton(onClick = {
             scope.launch {
@@ -236,85 +228,144 @@ class GplxHome {
             Icon(Icons.Default.Menu, contentDescription = "Menu", modifier = Modifier.size(30.dp))
           }
         },
-        floatingActionButtonPosition = FabPosition.End,
+//        floatingActionButtonPosition = FabPosition.End,
       ) { paddingValues ->
 
         Column(
           modifier = Modifier
             .fillMaxSize()
             .padding(top = 40.dp),
-            verticalArrangement = Arrangement.SpaceEvenly,
+          verticalArrangement = Arrangement.SpaceEvenly,
           horizontalAlignment = Alignment.CenterHorizontally
         ) {
-          Row(modifier = Modifier.height(140.dp).fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            GplxComponents().HomeCard("A1","200 câu", Color(0xFFB7D7F1), Color(0xFF40DA6B), R.drawable.a1, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("A1")
-            })
-            GplxComponents().HomeCard("A2", "450 câu", Color(0xFFB7D7F1), Color(0xFF416AFF), R.drawable.a2, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("A2")
-            })
+          Row(
+            modifier = Modifier
+              .height(140.dp)
+              .fillMaxSize(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+          ) {
+            GplxComponents().HomeCard("A1",
+              "200 câu",
+              Color(0xFFB7D7F1),
+              Color(0xFF40DA6B),
+              R.drawable.a1,
+              onClick = {
+//                navController.navigate("detailscreen") {}
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("A1")
+              })
+            GplxComponents().HomeCard("A2",
+              "450 câu",
+              Color(0xFFB7D7F1),
+              Color(0xFF416AFF),
+              R.drawable.a2,
+              onClick = {
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("A2")
+              })
           }
-          Row(modifier = Modifier.height(140.dp).fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            GplxComponents().HomeCard("A3","500 câu", Color(0xFFF7CB44), Color(0xFFF9FFFB), R.drawable.a3, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("A3")
-            })
-            GplxComponents().HomeCard("A4", "500 câu", Color(0xFFFFFFFF), Color(0xFFFD4848), R.drawable.a4, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("A4")
-            })
+          Row(
+            modifier = Modifier
+              .height(140.dp)
+              .fillMaxSize(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+          ) {
+            GplxComponents().HomeCard("A3",
+              "500 câu",
+              Color(0xFFF7CB44),
+              Color(0xFFF9FFFB),
+              R.drawable.a3,
+              onClick = {
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("A3")
+              })
+            GplxComponents().HomeCard("A4",
+              "500 câu",
+              Color(0xFFFFFFFF),
+              Color(0xFFFD4848),
+              R.drawable.a4,
+              onClick = {
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("A4")
+              })
           }
-          Row(modifier = Modifier.height(140.dp).fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            GplxComponents().HomeCard("B1","574 câu", Color(0xFFF2F9FF), Color(0xFF00BCD4), R.drawable.b1, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("B1")
+          Row(
+            modifier = Modifier
+              .height(140.dp)
+              .fillMaxSize(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+          ) {
+            GplxComponents().HomeCard("B1",
+              "574 câu",
+              Color(0xFFF2F9FF),
+              Color(0xFF00BCD4),
+              R.drawable.b1,
+              onClick = {
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("B1")
 
-            })
-            GplxComponents().HomeCard("B2", "600 câu", Color(0xFFC1FFEC), Color(0xFFFFEB3B), R.drawable.b22, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("B2")
-            })
+              })
+            GplxComponents().HomeCard("B2",
+              "600 câu",
+              Color(0xFFC1FFEC),
+              Color(0xFFFFEB3B),
+              R.drawable.b22,
+              onClick = {
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("B2")
+              })
           }
-          Row(modifier = Modifier.height(140.dp).fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            GplxComponents().HomeCard("C","600 câu", Color(0xFFE76CA5), Color(0xFFC2C7C4), R.drawable.c, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("C")
-            })
-            GplxComponents().HomeCard("D", "600 câu", Color(0xFFFFB15E), Color(0xFFFEFFFE), R.drawable.d, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("D")
-            })
+          Row(
+            modifier = Modifier
+              .height(140.dp)
+              .fillMaxSize(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+          ) {
+            GplxComponents().HomeCard("C",
+              "600 câu",
+              Color(0xFFE76CA5),
+              Color(0xFFC2C7C4),
+              R.drawable.c,
+              onClick = {
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("C")
+              })
+            GplxComponents().HomeCard("D",
+              "600 câu",
+              Color(0xFFFFB15E),
+              Color(0xFFFEFFFE),
+              R.drawable.d,
+              onClick = {
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("D")
+              })
           }
-          Row(modifier = Modifier.height(140.dp).fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            GplxComponents().HomeCard("E","600 câu", Color(0xFF2341FF), Color(0xFFE9E9E9), R.drawable.e, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("E")
-
-            })
-            GplxComponents().HomeCard("F", "600 câu", Color(0xFF76DA8D), Color(0xFF40DA6B), R.drawable.f, onClick = {
-              navController.navigate("detailscreen") {}
-              globalVar.changeLicense("F")
-            })
+          Row(
+            modifier = Modifier
+              .height(140.dp)
+              .fillMaxSize(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+          ) {
+            GplxComponents().HomeCard("E",
+              "600 câu",
+              Color(0xFF2341FF),
+              Color(0xFFE9E9E9),
+              R.drawable.e,
+              onClick = {
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("E")
+              })
+            GplxComponents().HomeCard("F",
+              "600 câu",
+              Color(0xFF76DA8D),
+              Color(0xFF40DA6B),
+              R.drawable.f,
+              onClick = {
+                navController.navigate("optionscreen") {}
+                globalVar.changeLicense("F")
+              })
           }
         }
-
-       /* LazyColumn(
-          modifier = Modifier
-            .fillMaxSize()
-            .padding(top = 40.dp)
-            .fillMaxSize(),
-          verticalArrangement = Arrangement.Top
-        ) {
-          items(10) {
-            index ->
-            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-              GplxComponents().HomeCard("A1","200 câu")
-              GplxComponents().HomeCard("A2", "200 câu")
-            }
-          }
-        }*/
         paddingValues
 
       }
@@ -323,27 +374,11 @@ class GplxHome {
     MyDialog().FNDialog(globalVar = globalVar)
   }
 
-
-  @OptIn(ExperimentalFoundationApi::class)
-  @Composable
-  fun HorizontalViewPager() {
-    val page = 10
-    val pagerState = rememberPagerState(
-      initialPage = 3,
-      initialPageOffsetFraction = .25f
-    ) {
-      page
-            // provide pageCount
-    }
-
-
-  }
   @RequiresApi(Build.VERSION_CODES.O)
   @Preview(showBackground = true, showSystemUi = true, apiLevel = 33)
   @Composable
   fun GreetingPreview() {
     GPLXTheme {
-
 
     }
   }

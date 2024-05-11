@@ -21,16 +21,20 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -63,6 +67,8 @@ import coil.request.ImageRequest
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.guru.fontawesomecomposelib.FaIcon
+import com.guru.fontawesomecomposelib.FaIcons
 import com.hnp.gplx600.R
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
@@ -71,6 +77,7 @@ import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -139,7 +146,7 @@ class GplxComponents {
     }
   }
 
-  @OptIn(DelicateCoroutinesApi::class)
+  @OptIn(DelicateCoroutinesApi::class, ExperimentalMaterial3Api::class)
   @Composable
   fun DetailScreen(
     navController: NavController,
@@ -184,7 +191,53 @@ class GplxComponents {
         filteredList = dataList.value
       }
     }
-    HorizontalPagerWithBottomNavigation(filteredList)
+    Scaffold(
+      topBar = {
+        TopAppBar(
+          modifier = Modifier
+            .height(35.dp)
+            .background(color = Color.Green),
+          title = {
+            Row(
+              modifier = Modifier
+                .fillMaxWidth()
+                .height(40.dp)
+                .background(color = Color.White),
+              horizontalArrangement = Arrangement.Start,
+              verticalAlignment = Alignment.CenterVertically
+            ){
+              Text(text = "Bài thi chi tiết")
+            }
+        },
+          navigationIcon = {
+            IconButton(onClick = { navController.navigateUp() }) {
+              Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+            }
+          })
+       /* Row(
+          modifier = Modifier
+            .fillMaxWidth()
+            .height(40.dp)
+            .background(color = Color.White),
+          horizontalArrangement = Arrangement.Center,
+          verticalAlignment = Alignment.CenterVertically
+        ){
+          Text(text = "Bài thi chi tiết")
+        }*/
+
+      }
+    ) {
+      paddingValues ->
+      Column(
+        modifier = Modifier
+          .fillMaxSize()
+          .padding(paddingValues)
+      ) {
+        HorizontalPagerWithBottomNavigation(filteredList)        
+      }
+      
+    }
+    
   }
 
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
@@ -378,12 +431,172 @@ class GplxComponents {
         onClick = onNextClick, enabled = true //currentPageIndex < pageSize - 1
       ) {
         Icon(
-          imageVector = androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowForward,
+          imageVector = Icons.AutoMirrored.Filled.ArrowForward,
           contentDescription = null
         )
       }
     }
   }
+  @Composable
+  fun GPLXOptionScreen(navController: NavController, globalVar: GlobalVariable) {
+    //Add a list of options using Lazy Colum
+    val options = listOf(
+      ErpInterface.OptionScreenData(
+        id = 0,
+        title = "Tất cả câu hỏi",
+        icon = { FaIcon(faIcon = FaIcons.Question, size = 24.dp, tint = Color.Blue) },
+      ),
+      ErpInterface.OptionScreenData(
+        id = 1,
+        title = "Các câu điểm liệt",
+        icon = { FaIcon(faIcon = FaIcons.Ban, size = 24.dp, tint = Color.Red) },
+      ),
+      ErpInterface.OptionScreenData(
+        id = 2,
+        title = "Chương 1: Khái niệm vào quy tắc",
+        icon = { FaIcon(faIcon = FaIcons.Atom, size = 24.dp, tint = Color.Black) },
+      ),
+      ErpInterface.OptionScreenData(
+        id = 3,
+        title = "Chương 2: Nghiệp vụ vận tải",
+        icon = { FaIcon(faIcon = FaIcons.Truck, size = 24.dp, tint = Color(0xFF0AB334)) },
+      ),
+      ErpInterface.OptionScreenData(
+        id = 4,
+        title = "Chương 3: Văn hóa và đạo đức lái xe",
+        icon = { FaIcon(faIcon = FaIcons.ThumbsUp, size = 24.dp, tint = Color(0xFFF71993)) },
+      ),
+      ErpInterface.OptionScreenData(
+        id = 5,
+        title = "Chương 4: Kỹ thuật lái xe",
+        icon = { FaIcon(faIcon = FaIcons.CarSide, size = 24.dp, tint = Color(0xFF8F4040)) },
+      ),
+      ErpInterface.OptionScreenData(
+        id = 6,
+        title = "Chương 5: Cấu tạo và sửa chữa",
+        icon = { FaIcon(faIcon = FaIcons.FirstAid, size = 24.dp, tint = Color(0xFF9B20E7)) },
+      ),
+      ErpInterface.OptionScreenData(
+        id = 7,
+        title = "Chương 6: Biển báo đường bộ",
+        icon = { FaIcon(faIcon = FaIcons.Sign, size = 24.dp, tint = Color(0xFFF75F19)) },
+      ),
+      ErpInterface.OptionScreenData(
+        id = 8,
+        title = "Chương 7: Sa hình",
+        icon = { FaIcon(faIcon = FaIcons.Cross, size = 24.dp, tint = Color(0xFF2D47D8)) },
+      ),
+    )
+    LazyColumn(
+      modifier = Modifier
+        .fillMaxSize()
+        .padding(5.dp),
+      verticalArrangement = Arrangement.Top,
+      horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+      items(options) { option ->
+        Row(
+          horizontalArrangement= Arrangement.Start,
+          verticalAlignment = Alignment.CenterVertically,
+          modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 2.dp, vertical = 3.dp)
+            .height(80.dp)
+            .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
+            //border radius
+            .clip(RoundedCornerShape(10.dp))
+            .background(
+              brush = Brush.verticalGradient(
+                colors = listOf(
+                  Color(0xFFE7F375), // Start color
+                  Color(0xFFB7D7F1)  // End color
+                )
+              )
+            )
+            .clickable {
+              when(option.id) {
+                0 -> {
+                  navController.navigate("detailscreen") {
+                    popUpTo("detailscreen") {
+                      inclusive = true
+                    }
+                  }
+
+                }
+                1 -> {
+                  navController.navigate("wrongquestions") {
+                    popUpTo("wrongquestions") {
+                      inclusive = true
+                    }
+                  }
+                }
+                2 -> {
+                  navController.navigate("chapter1") {
+                    popUpTo("chapter1") {
+                      inclusive = true
+                    }
+                  }
+                }
+                 3 -> {
+                  navController.navigate("chapter1") {
+                    popUpTo("chapter1") {
+                      inclusive = true
+                    }
+                  }
+                }
+                 4 -> {
+                  navController.navigate("chapter1") {
+                    popUpTo("chapter1") {
+                      inclusive = true
+                    }
+                  }
+                }
+                 5 -> {
+                  navController.navigate("chapter1") {
+                    popUpTo("chapter1") {
+                      inclusive = true
+                    }
+                  }
+                }
+                 6 -> {
+                  navController.navigate("chapter1") {
+                    popUpTo("chapter1") {
+                      inclusive = true
+                    }
+                  }
+                }
+                 7 -> {
+                  navController.navigate("chapter1") {
+                    popUpTo("chapter1") {
+                      inclusive = true
+                    }
+                  }
+                }
+                 8 -> {
+                  navController.navigate("chapter1") {
+                    popUpTo("chapter1") {
+                      inclusive = true
+                    }
+                  }
+                }
+
+              }
+            }
+        ) {
+          //show icon and title
+          Spacer(modifier = Modifier.width(10.dp))
+          option.icon()
+          Text(text = option.title, fontSize = 20.sp, modifier = Modifier
+            .padding(16.dp), color = Color(0xFF1380B9)
+          )
+        }
+
+      }
+    }
+  }
+
+
+
 }
 
 
