@@ -159,36 +159,38 @@ class GplxComponents {
     when (globalVar.currentLicense) {
       "A1" -> {
         filteredList = dataList.value.filter {
-          it.a1 != 0
+          if (globalVar.currentTopic == -1) (it.a1 != 0) else  (it.a1 != 0 && it.topic == globalVar.currentTopic)
         }
       }
 
       "A2" -> {
         filteredList = dataList.value.filter {
-          it.a2 != 0
+          it.a2 != 0 &&  (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
         }
       }
 
       "A3" -> {
         filteredList = dataList.value.filter {
-          it.a3 != 0
+          it.a3 != 0 &&  (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
         }
       }
 
       "A4" -> {
         filteredList = dataList.value.filter {
-          it.a4 != 0
+          it.a4 != 0 &&  (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
         }
       }
 
       "B1" -> {
         filteredList = dataList.value.filter {
-          it.b1 != 0
+          it.b1 != 0 &&  (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
         }
       }
 
       else -> {
-        filteredList = dataList.value
+        filteredList = dataList.value.filter {
+          (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
+        }
       }
     }
     Scaffold(
@@ -214,17 +216,6 @@ class GplxComponents {
               Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
             }
           })
-       /* Row(
-          modifier = Modifier
-            .fillMaxWidth()
-            .height(40.dp)
-            .background(color = Color.White),
-          horizontalArrangement = Arrangement.Center,
-          verticalAlignment = Alignment.CenterVertically
-        ){
-          Text(text = "Bài thi chi tiết")
-        }*/
-
       }
     ) {
       paddingValues ->
@@ -233,11 +224,9 @@ class GplxComponents {
           .fillMaxSize()
           .padding(paddingValues)
       ) {
-        HorizontalPagerWithBottomNavigation(filteredList)        
+        if(filteredList.size != 0) HorizontalPagerWithBottomNavigation(filteredList) else Text(text = "Không có câu hỏi nào")
       }
-      
     }
-    
   }
 
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
@@ -447,42 +436,42 @@ class GplxComponents {
         icon = { FaIcon(faIcon = FaIcons.Question, size = 24.dp, tint = Color.Blue) },
       ),
       ErpInterface.OptionScreenData(
-        id = 1,
+        id = -1,
         title = "Các câu điểm liệt",
         icon = { FaIcon(faIcon = FaIcons.Ban, size = 24.dp, tint = Color.Red) },
       ),
       ErpInterface.OptionScreenData(
-        id = 2,
+        id = 1,
         title = "Chương 1: Khái niệm vào quy tắc",
         icon = { FaIcon(faIcon = FaIcons.Atom, size = 24.dp, tint = Color.Black) },
       ),
       ErpInterface.OptionScreenData(
-        id = 3,
+        id = 2,
         title = "Chương 2: Nghiệp vụ vận tải",
         icon = { FaIcon(faIcon = FaIcons.Truck, size = 24.dp, tint = Color(0xFF0AB334)) },
       ),
       ErpInterface.OptionScreenData(
-        id = 4,
+        id = 3,
         title = "Chương 3: Văn hóa và đạo đức lái xe",
         icon = { FaIcon(faIcon = FaIcons.ThumbsUp, size = 24.dp, tint = Color(0xFFF71993)) },
       ),
       ErpInterface.OptionScreenData(
-        id = 5,
+        id = 4,
         title = "Chương 4: Kỹ thuật lái xe",
         icon = { FaIcon(faIcon = FaIcons.CarSide, size = 24.dp, tint = Color(0xFF8F4040)) },
       ),
       ErpInterface.OptionScreenData(
-        id = 6,
+        id = 5,
         title = "Chương 5: Cấu tạo và sửa chữa",
         icon = { FaIcon(faIcon = FaIcons.FirstAid, size = 24.dp, tint = Color(0xFF9B20E7)) },
       ),
       ErpInterface.OptionScreenData(
-        id = 7,
+        id = 6,
         title = "Chương 6: Biển báo đường bộ",
         icon = { FaIcon(faIcon = FaIcons.Sign, size = 24.dp, tint = Color(0xFFF75F19)) },
       ),
       ErpInterface.OptionScreenData(
-        id = 8,
+        id = 7,
         title = "Chương 7: Sa hình",
         icon = { FaIcon(faIcon = FaIcons.Cross, size = 24.dp, tint = Color(0xFF2D47D8)) },
       ),
@@ -514,73 +503,12 @@ class GplxComponents {
               )
             )
             .clickable {
-              when(option.id) {
-                0 -> {
-                  navController.navigate("detailscreen") {
-                    popUpTo("detailscreen") {
-                      inclusive = true
-                    }
-                  }
-
+              navController.navigate("detailscreen") {
+                popUpTo("detailscreen") {
+                  inclusive = true
                 }
-                1 -> {
-                  navController.navigate("wrongquestions") {
-                    popUpTo("wrongquestions") {
-                      inclusive = true
-                    }
-                  }
-                }
-                2 -> {
-                  navController.navigate("chapter1") {
-                    popUpTo("chapter1") {
-                      inclusive = true
-                    }
-                  }
-                }
-                 3 -> {
-                  navController.navigate("chapter1") {
-                    popUpTo("chapter1") {
-                      inclusive = true
-                    }
-                  }
-                }
-                 4 -> {
-                  navController.navigate("chapter1") {
-                    popUpTo("chapter1") {
-                      inclusive = true
-                    }
-                  }
-                }
-                 5 -> {
-                  navController.navigate("chapter1") {
-                    popUpTo("chapter1") {
-                      inclusive = true
-                    }
-                  }
-                }
-                 6 -> {
-                  navController.navigate("chapter1") {
-                    popUpTo("chapter1") {
-                      inclusive = true
-                    }
-                  }
-                }
-                 7 -> {
-                  navController.navigate("chapter1") {
-                    popUpTo("chapter1") {
-                      inclusive = true
-                    }
-                  }
-                }
-                 8 -> {
-                  navController.navigate("chapter1") {
-                    popUpTo("chapter1") {
-                      inclusive = true
-                    }
-                  }
-                }
-
               }
+              globalVar.changeTopic(option.id)
             }
         ) {
           //show icon and title

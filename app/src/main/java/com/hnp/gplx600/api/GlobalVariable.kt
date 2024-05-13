@@ -1,6 +1,7 @@
 package com.hnp.gplx600.api
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.LiveData
@@ -19,8 +20,13 @@ class GlobalVariable: ViewModel() {
   var onDialogCancel: (() -> Unit)? = null
   var token: String by mutableStateOf("reset")
   var currentLicense: String by mutableStateOf("B2")
+  var currentTopic: Int by mutableIntStateOf(0)
+
   fun changeLicense(newLicense: String) {
     currentLicense = newLicense
+  }
+  fun changeTopic(newTopic: Int) {
+    currentTopic = newTopic
   }
 
   var userData: ErpInterface.Employee by mutableStateOf(ErpInterface.Employee(
