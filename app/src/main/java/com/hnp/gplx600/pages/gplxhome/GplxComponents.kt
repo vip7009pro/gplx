@@ -401,7 +401,7 @@ class GplxComponents {
       //add each answer to answerList
       answerList.add(jsonArray.getJSONObject(i))
     }
-    var showCorrect by remember { mutableStateOf(false) }
+    var showCorrect by remember { mutableStateOf(question.currentAnswer != -1) }
     var showTip by remember { mutableStateOf(false) }
 
     Column(

@@ -21,13 +21,16 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
@@ -66,38 +69,42 @@ import com.guru.fontawesomecomposelib.FaIcons
 import kotlinx.coroutines.launch
 import androidx.compose.ui.text.*;
 import androidx.compose.ui.text.font.FontWeight
+import com.hnp.gplx600.roomdb.QuestionViewModel
 
 @Suppress("UNUSED_EXPRESSION")
 class GplxHome {
   @RequiresApi(Build.VERSION_CODES.O)
   @OptIn(ExperimentalMaterial3Api::class)
   @Composable
-  fun MyHome(navController: NavController, globalVar: GlobalVariable) {
+  fun MyHome(navController: NavController, globalVar: GlobalVariable, vm: QuestionViewModel) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     //val globalVar = viewModel<GlobalVariable>()
     val currentContext = LocalContext.current
     val menuData = listOf(
       ErpInterface.MenuData(route = "nhansubophan",
-        title = "Nhân sự bộ phận",
+        title = "Setting",
         icon = {
           Icon(
             Icons.Default.Person,
-            contentDescription = "Nhansubophan",
+            contentDescription = "Setting",
             modifier = Modifier.size(30.dp),
             tint = Color.Red
           )
         },
         subMenu = listOf(
-          ErpInterface.SubMenuData(route = "diemdanhnhom", title = "Điểm danh nhóm", icon = {
+          ErpInterface.SubMenuData(route = "resetdapan", title = "Reset đáp án bạn đã chọn", icon = {
             Spacer(modifier = Modifier.width(5.dp))
-            FaIcon(faIcon = FaIcons.Check, size = 20.dp, tint = Color.Green)
+            Box(modifier = Modifier.size(25.dp), contentAlignment = Alignment.Center ) {
+              Icon(
+                Icons.Default.Delete,
+                contentDescription = "resetdapan",
+                modifier = Modifier.size(25.dp),
+                tint = Color(0xFFFF0303)
+              )
+            }
           }, onClick = {
-            /*navController.navigate("diemdanhnhom") {
-              popUpTo("diemdanhnhom") {
-                inclusive = true
-              }
-            }*/
+            vm.resetAnswer()
           }),
           ErpInterface.SubMenuData(route = "dieuchuyenteam", title = "Điều chuyển team", icon = {
             Icon(

@@ -77,7 +77,7 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
       Components().LoginScreen(navController = navController, globalVar = globalVar)
     }
     composable("home") {
-      GplxHome().MyHome(navController = navController, globalVar = globalVar)
+      GplxHome().MyHome(navController = navController, globalVar = globalVar, vm = vm)
     }
     composable("detailscreen") {
       GplxComponents().DetailScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)

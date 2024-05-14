@@ -25,4 +25,10 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
       dao.deleteAllQuestion()
     }
   }
+  fun resetAnswer() {
+    viewModelScope.launch {
+      dao.resetAnswer()
+    }
+
+  }
 }

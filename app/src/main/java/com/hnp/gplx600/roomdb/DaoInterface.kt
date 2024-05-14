@@ -29,4 +29,6 @@ interface DaoInterface {
   fun deleteQuestion(question: ErpInterface.Question)
   @Query("UPDATE question_table SET currentAnswer = :answer WHERE `index`=:index")
   suspend  fun updateAnswerByIndex(index: Int, answer: Int)
+  @Query("UPDATE question_table SET currentAnswer = -1")
+  suspend fun resetAnswer()
 }
