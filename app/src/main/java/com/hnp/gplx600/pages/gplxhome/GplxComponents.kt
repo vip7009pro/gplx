@@ -2,6 +2,7 @@ package com.hnp.gplx600.pages.gplxhome
 
 import android.annotation.SuppressLint
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -158,53 +159,139 @@ class GplxComponents {
     var filteredList: List<ErpInterface.Question> = emptyList()
     when (globalVar.currentLicense) {
       "A1" -> {
-        filteredList = dataList.value.filter {
-          if (globalVar.currentTopic == -1) (it.a1 != 0) else  (it.a1 != 0 && it.topic == globalVar.currentTopic)
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.a1 != 0
+            }
+          }
+          0 -> {
+            dataList.value.filter {
+              it.a1 != 0 && it.required == 1
+            }
+          }
+          else -> {
+            dataList.value.filter {
+              it.a1 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
         }
       }
 
       "A2" -> {
-        filteredList = dataList.value.filter {
-          it.a2 != 0 &&  (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.a2 != 0
+            }
+          }
+          0 -> {
+            dataList.value.filter {
+              it.a2 != 0 && it.required == 1
+            }
+          }
+          else -> {
+            dataList.value.filter {
+              it.a2 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
         }
       }
 
       "A3" -> {
-        filteredList = dataList.value.filter {
-          it.a3 != 0 &&  (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.a3 != 0
+            }
+          }
+          0 -> {
+            dataList.value.filter {
+              it.a3 != 0 && it.required == 1
+            }
+          }
+          else -> {
+            dataList.value.filter {
+              it.a3 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
         }
       }
 
       "A4" -> {
-        filteredList = dataList.value.filter {
-          it.a4 != 0 &&  (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.a4 != 0
+            }
+          }
+          0 -> {
+            dataList.value.filter {
+              it.a4 != 0 && it.required == 1
+            }
+          }
+          else -> {
+            dataList.value.filter {
+              it.a4 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
         }
       }
 
       "B1" -> {
-        filteredList = dataList.value.filter {
-          it.b1 != 0 &&  (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.b1 != 0
+            }
+          }
+          0 -> {
+            dataList.value.filter {
+              it.b1 != 0 && it.required == 1
+            }
+          }
+          else -> {
+            dataList.value.filter {
+              it.b1 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
         }
       }
 
       else -> {
-        filteredList = dataList.value.filter {
-          (if (globalVar.currentTopic == -1) true else it.topic == globalVar.currentTopic)
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value
+          }
+          0 -> {
+            dataList.value.filter {
+              it.required == 1
+            }
+          }
+          else -> {
+            dataList.value.filter {
+              it.topic == globalVar.currentTopic
+            }
+          }
         }
       }
+
     }
+    LaunchedEffect(key1 = true) {
+
+    }
+
     Scaffold(
       topBar = {
         TopAppBar(
           modifier = Modifier
-            .height(35.dp)
+            .height(50.dp)
             .background(color = Color.Green),
           title = {
             Row(
               modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp)
-                .background(color = Color.White),
+                .height(40.dp),
               horizontalArrangement = Arrangement.Start,
               verticalAlignment = Alignment.CenterVertically
             ){
@@ -224,7 +311,9 @@ class GplxComponents {
           .fillMaxSize()
           .padding(paddingValues)
       ) {
-        if(filteredList.size != 0) HorizontalPagerWithBottomNavigation(filteredList) else Text(text = "Không có câu hỏi nào")
+        if (filteredList.isNotEmpty()) HorizontalPagerWithBottomNavigation(filteredList, vm) else Text(
+          text = "Không có câu hỏi nào"
+        )
       }
     }
   }
@@ -240,7 +329,7 @@ class GplxComponents {
 
   @OptIn(ExperimentalPagerApi::class)
   @Composable
-  fun HorizontalPagerWithBottomNavigation(questionList: List<ErpInterface.Question>) {
+  fun HorizontalPagerWithBottomNavigation(questionList: List<ErpInterface.Question>, vm: QuestionViewModel) {
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
     var currentPageIndex by remember { mutableIntStateOf(0) }
@@ -279,7 +368,7 @@ class GplxComponents {
           .padding(paddingValues)
           .fillMaxSize()
       ) { page ->
-        QuestionPage(question = questionList[page])
+        QuestionPage(question = questionList[page], vm = vm)
       }
     }
   }
@@ -304,7 +393,7 @@ class GplxComponents {
 
   @SuppressLint("DiscouragedApi")
   @Composable
-  fun QuestionPage(question: ErpInterface.Question) {
+  fun QuestionPage(question: ErpInterface.Question, vm: QuestionViewModel) {
     //create jsonarray from answer array string
     val jsonArray = JSONArray(question.answers)
     val answerList = mutableListOf<JSONObject>()
@@ -349,6 +438,7 @@ class GplxComponents {
               .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
               .clickable {
                 showCorrect = true
+                vm.updateAnswer(question.index, index)
               }
               .shadow(1.dp),
           ) {
@@ -357,7 +447,6 @@ class GplxComponents {
               fontSize = 18.sp,
               style = TextStyle(color = if (showCorrect) if (correct) Color(0xFF0A9204) else Color.Red else Color.Black),
               modifier = Modifier.padding(8.dp)
-
             )
           }
         }
@@ -426,17 +515,18 @@ class GplxComponents {
       }
     }
   }
+  @OptIn(ExperimentalMaterial3Api::class)
   @Composable
   fun GPLXOptionScreen(navController: NavController, globalVar: GlobalVariable) {
     //Add a list of options using Lazy Colum
     val options = listOf(
       ErpInterface.OptionScreenData(
-        id = 0,
+        id = -1,
         title = "Tất cả câu hỏi",
         icon = { FaIcon(faIcon = FaIcons.Question, size = 24.dp, tint = Color.Blue) },
       ),
       ErpInterface.OptionScreenData(
-        id = -1,
+        id = 0,
         title = "Các câu điểm liệt",
         icon = { FaIcon(faIcon = FaIcons.Ban, size = 24.dp, tint = Color.Red) },
       ),
@@ -476,51 +566,80 @@ class GplxComponents {
         icon = { FaIcon(faIcon = FaIcons.Cross, size = 24.dp, tint = Color(0xFF2D47D8)) },
       ),
     )
-    LazyColumn(
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(5.dp),
-      verticalArrangement = Arrangement.Top,
-      horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-      items(options) { option ->
-        Row(
-          horizontalArrangement= Arrangement.Start,
-          verticalAlignment = Alignment.CenterVertically,
+    Scaffold(
+      topBar = {
+        TopAppBar(
           modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 2.dp, vertical = 3.dp)
-            .height(80.dp)
-            .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
-            //border radius
-            .clip(RoundedCornerShape(10.dp))
-            .background(
-              brush = Brush.verticalGradient(
-                colors = listOf(
-                  Color(0xFFE7F375), // Start color
-                  Color(0xFFB7D7F1)  // End color
+            .height(50.dp)
+            .background(color = Color.Green),
+          title = {
+            Row(
+              modifier = Modifier
+                .fillMaxWidth()
+                .height(40.dp),
+              horizontalArrangement = Arrangement.Start,
+              verticalAlignment = Alignment.CenterVertically
+            ){
+              Text(text = "Chọn option")
+            }
+          },
+          navigationIcon = {
+            IconButton(onClick = { navController.navigateUp() }) {
+              Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+            }
+          })
+      },
+    ) {
+        paddingValues ->
+      LazyColumn(
+        modifier = Modifier
+          .fillMaxSize()
+          .padding(paddingValues),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+      ) {
+        items(options) { option ->
+          Row(
+            horizontalArrangement= Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+              .fillMaxWidth()
+              .padding(horizontal = 2.dp, vertical = 3.dp)
+              .height(80.dp)
+              .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
+              //border radius
+              .clip(RoundedCornerShape(10.dp))
+              .background(
+                brush = Brush.verticalGradient(
+                  colors = listOf(
+                    Color(0xFFE7F375), // Start color
+                    Color(0xFFB7D7F1)  // End color
+                  )
                 )
               )
-            )
-            .clickable {
-              navController.navigate("detailscreen") {
-                popUpTo("detailscreen") {
-                  inclusive = true
+              .clickable {
+                navController.navigate("detailscreen") {
+                  popUpTo("detailscreen") {
+                    inclusive = true
+                  }
                 }
+                globalVar.changeTopic(option.id)
               }
-              globalVar.changeTopic(option.id)
-            }
-        ) {
-          //show icon and title
-          Spacer(modifier = Modifier.width(10.dp))
-          option.icon()
-          Text(text = option.title, fontSize = 20.sp, modifier = Modifier
-            .padding(16.dp), color = Color(0xFF1380B9)
-          )
-        }
+          ) {
+            //show icon and title
+            Spacer(modifier = Modifier.width(10.dp))
+            option.icon()
+            Text(text = option.title, fontSize = 20.sp, modifier = Modifier
+              .padding(16.dp), color = Color(0xFF1380B9)
+            )
+          }
 
+        }
       }
+
+
     }
+
   }
 
 

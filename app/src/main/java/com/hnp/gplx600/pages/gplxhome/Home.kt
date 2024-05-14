@@ -209,7 +209,7 @@ class GplxHome {
           Row(
             modifier = Modifier
               .fillMaxWidth()
-              .height(40.dp)
+              .height(50.dp)
               .background(color = Color(0xFFE5EDF7)),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
@@ -234,7 +234,7 @@ class GplxHome {
         Column(
           modifier = Modifier
             .fillMaxSize()
-            .padding(top = 40.dp),
+            .padding(paddingValues),
           verticalArrangement = Arrangement.SpaceEvenly,
           horizontalAlignment = Alignment.CenterHorizontally
         ) {

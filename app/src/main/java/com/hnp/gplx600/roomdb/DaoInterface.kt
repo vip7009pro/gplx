@@ -27,14 +27,6 @@ interface DaoInterface {
   fun updateQuestion(question: ErpInterface.Question)
   @Delete
   fun deleteQuestion(question: ErpInterface.Question)
-  @Query("SELECT * FROM question_table WHERE a1 != 0")
-  fun getAllA1Question(): Flow<List<ErpInterface.Question>>
-   @Query("SELECT * FROM question_table WHERE a2 != 0")
-  fun getAllA2Question(): Flow<List<ErpInterface.Question>>
-   @Query("SELECT * FROM question_table WHERE a3 != 0")
-  fun getAllA3Question(): Flow<List<ErpInterface.Question>>
-   @Query("SELECT * FROM question_table WHERE a4 != 0")
-  fun getAllA4Question(): Flow<List<ErpInterface.Question>>
-   @Query("SELECT * FROM question_table WHERE b1 != 0")
-  fun getAllB1Question(): Flow<List<ErpInterface.Question>>
+  @Query("UPDATE question_table SET currentAnswer = :answer WHERE `index`=:index")
+  suspend  fun updateAnswerByIndex(index: Int, answer: Int)
 }

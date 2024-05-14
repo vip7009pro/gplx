@@ -94,6 +94,7 @@ class ErpInterface
         val a3: Int,
         val a4: Int,
         val b1: Int,
+        val currentAnswer: Int = -1
     )
 
 }

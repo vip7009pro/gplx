@@ -15,10 +15,14 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
       dao.addQuestion(question)
     }
   }
+  fun updateAnswer(index: Int, answer: Int) {
+    viewModelScope.launch {
+      dao.updateAnswerByIndex(index, answer)
+    }
+  }
   fun deleteAllQuestion() {
     viewModelScope.launch {
       dao.deleteAllQuestion()
     }
-
   }
 }
