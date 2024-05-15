@@ -27,6 +27,7 @@ import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.Person
@@ -74,7 +75,6 @@ import com.hnp.gplx600.roomdb.QuestionViewModel
 @Suppress("UNUSED_EXPRESSION")
 class GplxHome {
   @RequiresApi(Build.VERSION_CODES.O)
-  @OptIn(ExperimentalMaterial3Api::class)
   @Composable
   fun MyHome(navController: NavController, globalVar: GlobalVariable, vm: QuestionViewModel) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -82,31 +82,35 @@ class GplxHome {
     //val globalVar = viewModel<GlobalVariable>()
     val currentContext = LocalContext.current
     val menuData = listOf(
-      ErpInterface.MenuData(route = "nhansubophan",
+      ErpInterface.MenuData(
+        route = "nhansubophan",
         title = "Setting",
         icon = {
           Icon(
-            Icons.Default.Person,
+            Icons.Default.Settings,
             contentDescription = "Setting",
             modifier = Modifier.size(30.dp),
-            tint = Color.Red
+            tint = Color(0xFF000000)
           )
         },
         subMenu = listOf(
-          ErpInterface.SubMenuData(route = "resetdapan", title = "Reset đáp án bạn đã chọn", icon = {
-            Spacer(modifier = Modifier.width(5.dp))
-            Box(modifier = Modifier.size(25.dp), contentAlignment = Alignment.Center ) {
-              Icon(
-                Icons.Default.Delete,
-                contentDescription = "resetdapan",
-                modifier = Modifier.size(25.dp),
-                tint = Color(0xFFFF0303)
-              )
-            }
-          }, onClick = {
-            vm.resetAnswer()
-          }),
-          ErpInterface.SubMenuData(route = "dieuchuyenteam", title = "Điều chuyển team", icon = {
+          ErpInterface.SubMenuData(route = "resetdapan",
+            title = "Reset đáp án bạn đã chọn",
+            icon = {
+              Spacer(modifier = Modifier.width(5.dp))
+              Box(modifier = Modifier.size(25.dp), contentAlignment = Alignment.Center) {
+                Icon(
+                  Icons.Default.Delete,
+                  contentDescription = "resetdapan",
+                  modifier = Modifier.size(25.dp),
+                  tint = Color(0xFFFF0303)
+                )
+              }
+            },
+            onClick = {
+              vm.resetAnswer()
+            }),
+          /*ErpInterface.SubMenuData(route = "dieuchuyenteam", title = "Điều chuyển team", icon = {
             Icon(
               Icons.Default.Refresh,
               contentDescription = "dieuchuyenteam",
@@ -156,27 +160,8 @@ class GplxHome {
               Spacer(modifier = Modifier.width(5.dp))
               FaIcon(faIcon = FaIcons.Male, size = 20.dp, tint = Color("#00BFB7".toColorInt()))
             },
-            onClick = { Log.d("xxx", "click 3") }),
+            onClick = { Log.d("xxx", "click 3") }),*/
 
-          )
-      ),
-      ErpInterface.MenuData(
-        route = "nhansubophan",
-        title = "Nhân sự bộ phận",
-        icon = { FaIcon(faIcon = FaIcons.Home, size = 30.dp, tint = Color.Gray) },
-        subMenu = listOf(
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 1") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 2") }),
-          ErpInterface.SubMenuData(route = "nhansubophan",
-            title = "Nhân sự bộ phận",
-            icon = { FaIcon(faIcon = FaIcons.Home, size = 24.dp, tint = Color.Gray) },
-            onClick = { Log.d("xxx", "click 3") }),
         )
       ),
     )
@@ -217,7 +202,7 @@ class GplxHome {
             modifier = Modifier
               .fillMaxWidth()
               .height(50.dp)
-              .background(color = Color(0xFFE5EDF7)),
+              .background(color = Color(0xFFFFFFFF)),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
           ) {
@@ -241,17 +226,22 @@ class GplxHome {
         Column(
           modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues),
+            .padding(paddingValues)
+            .background(color = Color(0xFFFFFFFF)),
           verticalArrangement = Arrangement.SpaceEvenly,
           horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+          GplxComponents().BannerAd()
           Row(
             modifier = Modifier
               .height(140.dp)
-              .fillMaxSize(),
+              .fillMaxSize()
+              .background(color = Color(0xFFFFFFFF)),
             horizontalArrangement = Arrangement.SpaceEvenly
           ) {
-            GplxComponents().HomeCard("A1",
+            GplxComponents().HomeCard(
+              "A1",
               "200 câu",
               Color(0xFFB7D7F1),
               Color(0xFF40DA6B),
@@ -261,7 +251,8 @@ class GplxHome {
                 navController.navigate("optionscreen") {}
                 globalVar.changeLicense("A1")
               })
-            GplxComponents().HomeCard("A2",
+            GplxComponents().HomeCard(
+              "A2",
               "450 câu",
               Color(0xFFB7D7F1),
               Color(0xFF416AFF),
@@ -277,7 +268,8 @@ class GplxHome {
               .fillMaxSize(),
             horizontalArrangement = Arrangement.SpaceEvenly
           ) {
-            GplxComponents().HomeCard("A3",
+            GplxComponents().HomeCard(
+              "A3",
               "500 câu",
               Color(0xFFF7CB44),
               Color(0xFFF9FFFB),
@@ -286,7 +278,8 @@ class GplxHome {
                 navController.navigate("optionscreen") {}
                 globalVar.changeLicense("A3")
               })
-            GplxComponents().HomeCard("A4",
+            GplxComponents().HomeCard(
+              "A4",
               "500 câu",
               Color(0xFFFFFFFF),
               Color(0xFFFD4848),
@@ -302,7 +295,8 @@ class GplxHome {
               .fillMaxSize(),
             horizontalArrangement = Arrangement.SpaceEvenly
           ) {
-            GplxComponents().HomeCard("B1",
+            GplxComponents().HomeCard(
+              "B1",
               "574 câu",
               Color(0xFFF2F9FF),
               Color(0xFF00BCD4),
@@ -310,9 +304,9 @@ class GplxHome {
               onClick = {
                 navController.navigate("optionscreen") {}
                 globalVar.changeLicense("B1")
-
               })
-            GplxComponents().HomeCard("B2",
+            GplxComponents().HomeCard(
+              "B2",
               "600 câu",
               Color(0xFFC1FFEC),
               Color(0xFFFFEB3B),
@@ -328,7 +322,8 @@ class GplxHome {
               .fillMaxSize(),
             horizontalArrangement = Arrangement.SpaceEvenly
           ) {
-            GplxComponents().HomeCard("C",
+            GplxComponents().HomeCard(
+              "C",
               "600 câu",
               Color(0xFFE76CA5),
               Color(0xFFC2C7C4),
@@ -337,7 +332,8 @@ class GplxHome {
                 navController.navigate("optionscreen") {}
                 globalVar.changeLicense("C")
               })
-            GplxComponents().HomeCard("D",
+            GplxComponents().HomeCard(
+              "D",
               "600 câu",
               Color(0xFFFFB15E),
               Color(0xFFFEFFFE),
@@ -353,7 +349,8 @@ class GplxHome {
               .fillMaxSize(),
             horizontalArrangement = Arrangement.SpaceEvenly
           ) {
-            GplxComponents().HomeCard("E",
+            GplxComponents().HomeCard(
+              "E",
               "600 câu",
               Color(0xFF2341FF),
               Color(0xFFE9E9E9),
@@ -362,7 +359,8 @@ class GplxHome {
                 navController.navigate("optionscreen") {}
                 globalVar.changeLicense("E")
               })
-            GplxComponents().HomeCard("F",
+            GplxComponents().HomeCard(
+              "F",
               "600 câu",
               Color(0xFF76DA8D),
               Color(0xFF40DA6B),

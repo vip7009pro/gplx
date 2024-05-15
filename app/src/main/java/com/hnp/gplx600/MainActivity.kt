@@ -1,6 +1,5 @@
 package com.hnp.gplx600
 
-
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -33,22 +32,18 @@ import com.hnp.gplx600.theme.GPLXTheme
 
 @Suppress("UNCHECKED_CAST")
 class MainActivity : ComponentActivity() {
-   private val db by lazy {
+  private val db by lazy {
     Room.databaseBuilder(
-      context = applicationContext,
-      klass = AppDataBase::class.java,
-      name = "gplx_database.db"
+      context = applicationContext, klass = AppDataBase::class.java, name = "gplx_database.db"
     ).build()
   }
-   private val viewModel by viewModels<QuestionViewModel>(
-    factoryProducer = {
-      object : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-          return QuestionViewModel(db.questionDao) as T
-        }
+  private val viewModel by viewModels<QuestionViewModel>(factoryProducer = {
+    object : ViewModelProvider.Factory {
+      override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return QuestionViewModel(db.questionDao) as T
       }
     }
-  )
+  })
 
   @RequiresApi(Build.VERSION_CODES.Q)
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
@@ -80,7 +75,9 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
       GplxHome().MyHome(navController = navController, globalVar = globalVar, vm = vm)
     }
     composable("detailscreen") {
-      GplxComponents().DetailScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)
+      GplxComponents().DetailScreen(
+        navController = navController, globalVar = globalVar, db = db, vm = vm
+      )
     }
     composable("optionscreen") {
       GplxComponents().GPLXOptionScreen(navController = navController, globalVar = globalVar)

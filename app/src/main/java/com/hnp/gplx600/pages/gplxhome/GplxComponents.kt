@@ -25,7 +25,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -52,7 +51,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -62,12 +60,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 import com.hnp.gplx600.R
@@ -78,7 +80,6 @@ import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.launch
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -521,6 +522,11 @@ class GplxComponents {
     //Add a list of options using Lazy Colum
     val options = listOf(
       ErpInterface.OptionScreenData(
+        id = -2,
+        title = "Vào thi ngay",
+        icon = { FaIcon(faIcon = FaIcons.Check, size = 24.dp, tint = Color.Blue) },
+      ),
+      ErpInterface.OptionScreenData(
         id = -1,
         title = "Tất cả câu hỏi",
         icon = { FaIcon(faIcon = FaIcons.Question, size = 24.dp, tint = Color.Blue) },
@@ -580,7 +586,7 @@ class GplxComponents {
               horizontalArrangement = Arrangement.Start,
               verticalAlignment = Alignment.CenterVertically
             ){
-              Text(text = "Chọn option")
+              Text(text = "Chọn option (${globalVar.currentLicense})")
             }
           },
           navigationIcon = {
@@ -618,6 +624,7 @@ class GplxComponents {
                 )
               )
               .clickable {
+
                 navController.navigate("detailscreen") {
                   popUpTo("detailscreen") {
                     inclusive = true
@@ -642,7 +649,21 @@ class GplxComponents {
 
   }
 
-
+@Composable
+fun BannerAd(
+  modifier: Modifier = Modifier,
+  bannerAdUnitId: String = "ca-app-pub-3940256099942544/9214589741"
+) {
+  AndroidView(
+    modifier = modifier,
+    factory = { context ->
+      AdView(context).apply {
+        setAdSize(AdSize.BANNER)
+        adUnitId = bannerAdUnitId
+        loadAd(AdRequest.Builder().build())
+      }
+    })
+}
 
 }
 

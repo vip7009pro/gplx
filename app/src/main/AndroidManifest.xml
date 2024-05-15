@@ -14,7 +14,10 @@
         android:theme="@style/Theme.GPLXTheme"
         android:usesCleartextTraffic="true"
         android:enableOnBackInvokedCallback="true"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2965911381053768~4067346639"/>
         <activity
             android:name="com.hnp.gplx600.MainActivity"
             android:exported="true"
