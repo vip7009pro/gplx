@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -394,7 +395,6 @@ class GplxComponents {
             // You can customize image loading options here if needed
           }).build()
       )
-
     Image(
       painter = painter,
       contentDescription = null, // You can provide a content description here if needed
@@ -596,7 +596,7 @@ class GplxComponents {
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
           ) {
-            Text(text = "Chọn option (${globalVar.currentLicense})")
+            Text(text = "Chọn option (Hạng ${globalVar.currentLicense})")
           }
         }, navigationIcon = {
           IconButton(onClick = { navController.navigateUp() }) {
@@ -640,6 +640,7 @@ class GplxComponents {
                       }
                     }
                   }
+
                   else -> {
                     navController.navigate("detailscreen") {
                       popUpTo("detailscreen") {
@@ -663,19 +664,65 @@ class GplxComponents {
 
         }
       }
-
     }
+  }
 
+  @OptIn(ExperimentalMaterial3Api::class)
+  @Composable
+  fun GPLXExamSelectScreen(
+    navController: NavController,
+    globalVar: GlobalVariable,
+    vm: QuestionViewModel,
+  ) {
+    val items: List<Int> = (0..10).toList()
+    Scaffold(
+      topBar = {
+        TopAppBar(modifier = Modifier
+          .height(50.dp)
+          .background(color = Color.Green), title = {
+          Row(
+            modifier = Modifier
+              .fillMaxWidth()
+              .height(40.dp),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
+          ) {
+            Text(text = "Chọn đề thi")
+          }
+        }, navigationIcon = {
+          IconButton(onClick = { navController.navigateUp() }) {
+            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+          }
+        })
+      },
+      ) { paddingValues ->
+      LazyColumn(modifier = Modifier.padding(paddingValues)) {
+        itemsIndexed(items) { index, item ->
+          Column(modifier = Modifier.fillMaxWidth()) {
+            ExamWidget(examNo = item)
+            Spacer(modifier = Modifier.height(10.dp))
+          }
+        }
+      }
+    }
   }
 
   @Composable
-  fun GPLXExamSelectScreen(navController: NavController, globalVar: GlobalVariable, vm: QuestionViewModel) {
+  fun ExamWidget(examNo: Int) {
+    Box(modifier = Modifier
+      .fillMaxWidth()
+      .height(60.dp)
+      .background(color = Color.Gray)
+      .clickable {
 
-
-
-
+      }) {
+      if(examNo == 0){
+        Text(text = "Đề thi ngẫu nhiên")
+      }
+       else
+      Text(text = "Đề thi số $examNo")
+    }
   }
-
 
   @Composable
   fun BannerAd(
