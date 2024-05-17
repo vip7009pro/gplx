@@ -96,6 +96,13 @@ class ErpInterface
         val b1: Int,
         val currentAnswer: Int = -1
     )
+    @Entity(tableName = "test_table")
+    data class Test(
+        @PrimaryKey(autoGenerate = true)
+        val autoId: Int,
+        val index: Int,
+        val answer: Int = -1,
+    )
 
 }
 

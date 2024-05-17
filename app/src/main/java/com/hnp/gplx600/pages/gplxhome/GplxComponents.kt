@@ -166,11 +166,13 @@ class GplxComponents {
               it.a1 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.a1 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.a1 != 0 && it.topic == globalVar.currentTopic
@@ -186,11 +188,13 @@ class GplxComponents {
               it.a2 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.a2 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.a2 != 0 && it.topic == globalVar.currentTopic
@@ -206,11 +210,13 @@ class GplxComponents {
               it.a3 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.a3 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.a3 != 0 && it.topic == globalVar.currentTopic
@@ -226,11 +232,13 @@ class GplxComponents {
               it.a4 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.a4 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.a4 != 0 && it.topic == globalVar.currentTopic
@@ -246,11 +254,13 @@ class GplxComponents {
               it.b1 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.b1 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.b1 != 0 && it.topic == globalVar.currentTopic
@@ -264,11 +274,13 @@ class GplxComponents {
           -1 -> {
             dataList.value
           }
+
           0 -> {
             dataList.value.filter {
               it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.topic == globalVar.currentTopic
@@ -282,37 +294,33 @@ class GplxComponents {
 
     }
 
-    Scaffold(
-      topBar = {
-        TopAppBar(
+    Scaffold(topBar = {
+      TopAppBar(modifier = Modifier
+        .height(50.dp)
+        .background(color = Color.Green), title = {
+        Row(
           modifier = Modifier
-            .height(50.dp)
-            .background(color = Color.Green),
-          title = {
-            Row(
-              modifier = Modifier
-                .fillMaxWidth()
-                .height(40.dp),
-              horizontalArrangement = Arrangement.Start,
-              verticalAlignment = Alignment.CenterVertically
-            ){
-              Text(text = "Bài thi chi tiết")
-            }
-        },
-          navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() }) {
-              Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-            }
-          })
-      }
-    ) {
-      paddingValues ->
+            .fillMaxWidth()
+            .height(40.dp),
+          horizontalArrangement = Arrangement.Start,
+          verticalAlignment = Alignment.CenterVertically
+        ) {
+          Text(text = "Bài thi chi tiết")
+        }
+      }, navigationIcon = {
+        IconButton(onClick = { navController.navigateUp() }) {
+          Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+        }
+      })
+    }) { paddingValues ->
       Column(
         modifier = Modifier
           .fillMaxSize()
           .padding(paddingValues)
       ) {
-        if (filteredList.isNotEmpty()) HorizontalPagerWithBottomNavigation(filteredList, vm) else Text(
+        if (filteredList.isNotEmpty()) HorizontalPagerWithBottomNavigation(
+          filteredList, vm
+        ) else Text(
           text = "Không có câu hỏi nào"
         )
       }
@@ -330,7 +338,10 @@ class GplxComponents {
 
   @OptIn(ExperimentalPagerApi::class)
   @Composable
-  fun HorizontalPagerWithBottomNavigation(questionList: List<ErpInterface.Question>, vm: QuestionViewModel) {
+  fun HorizontalPagerWithBottomNavigation(
+    questionList: List<ErpInterface.Question>,
+    vm: QuestionViewModel,
+  ) {
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
     var currentPageIndex by remember { mutableIntStateOf(0) }
@@ -485,6 +496,7 @@ class GplxComponents {
 
     }
   }
+
   @Composable
   fun BottomNavigation(
     currentPageIndex: Int,
@@ -510,12 +522,12 @@ class GplxComponents {
         onClick = onNextClick, enabled = true //currentPageIndex < pageSize - 1
       ) {
         Icon(
-          imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-          contentDescription = null
+          imageVector = Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null
         )
       }
     }
   }
+
   @OptIn(ExperimentalMaterial3Api::class)
   @Composable
   fun GPLXOptionScreen(navController: NavController, globalVar: GlobalVariable) {
@@ -524,7 +536,7 @@ class GplxComponents {
       ErpInterface.OptionScreenData(
         id = -2,
         title = "Vào thi ngay",
-        icon = { FaIcon(faIcon = FaIcons.Check, size = 24.dp, tint = Color.Blue) },
+        icon = { FaIcon(faIcon = FaIcons.Telegram, size = 24.dp, tint = Color(0xFF0088CC)) },
       ),
       ErpInterface.OptionScreenData(
         id = -1,
@@ -574,29 +586,25 @@ class GplxComponents {
     )
     Scaffold(
       topBar = {
-        TopAppBar(
-          modifier = Modifier
-            .height(50.dp)
-            .background(color = Color.Green),
-          title = {
-            Row(
-              modifier = Modifier
-                .fillMaxWidth()
-                .height(40.dp),
-              horizontalArrangement = Arrangement.Start,
-              verticalAlignment = Alignment.CenterVertically
-            ){
-              Text(text = "Chọn option (${globalVar.currentLicense})")
-            }
-          },
-          navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() }) {
-              Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-            }
-          })
+        TopAppBar(modifier = Modifier
+          .height(50.dp)
+          .background(color = Color.Green), title = {
+          Row(
+            modifier = Modifier
+              .fillMaxWidth()
+              .height(40.dp),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
+          ) {
+            Text(text = "Chọn option (${globalVar.currentLicense})")
+          }
+        }, navigationIcon = {
+          IconButton(onClick = { navController.navigateUp() }) {
+            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+          }
+        })
       },
-    ) {
-        paddingValues ->
+    ) { paddingValues ->
       LazyColumn(
         modifier = Modifier
           .fillMaxSize()
@@ -605,8 +613,7 @@ class GplxComponents {
         horizontalAlignment = Alignment.CenterHorizontally
       ) {
         items(options) { option ->
-          Row(
-            horizontalArrangement= Arrangement.Start,
+          Row(horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
               .fillMaxWidth()
@@ -624,46 +631,65 @@ class GplxComponents {
                 )
               )
               .clickable {
+                globalVar.changeTopic(option.id)
+                when (option.id) {
+                  -2 -> {
+                    navController.navigate("examselectionscreen") {
+                      popUpTo("examselectionscreen") {
+                        inclusive = true
+                      }
+                    }
+                  }
+                  else -> {
+                    navController.navigate("detailscreen") {
+                      popUpTo("detailscreen") {
+                        inclusive = true
+                      }
+                    }
 
-                navController.navigate("detailscreen") {
-                  popUpTo("detailscreen") {
-                    inclusive = true
                   }
                 }
-                globalVar.changeTopic(option.id)
-              }
-          ) {
+              }) {
             //show icon and title
             Spacer(modifier = Modifier.width(10.dp))
             option.icon()
-            Text(text = option.title, fontSize = 20.sp, modifier = Modifier
-              .padding(16.dp), color = Color(0xFF1380B9)
+            Text(
+              text = option.title,
+              fontSize = 20.sp,
+              modifier = Modifier.padding(16.dp),
+              color = Color(0xFF1380B9)
             )
           }
 
         }
       }
 
-
     }
 
   }
 
-@Composable
-fun BannerAd(
-  modifier: Modifier = Modifier,
-  bannerAdUnitId: String = "ca-app-pub-3940256099942544/9214589741"
-) {
-  AndroidView(
-    modifier = modifier,
-    factory = { context ->
+  @Composable
+  fun GPLXExamSelectScreen(navController: NavController, globalVar: GlobalVariable, vm: QuestionViewModel) {
+
+
+
+
+  }
+
+
+  @Composable
+  fun BannerAd(
+    modifier: Modifier = Modifier,
+    bannerAdUnitId: String = "ca-app-pub-3940256099942544/9214589741",
+  ) {
+    AndroidView(modifier = modifier, factory = { context ->
       AdView(context).apply {
         setAdSize(AdSize.BANNER)
         adUnitId = bannerAdUnitId
         loadAd(AdRequest.Builder().build())
       }
     })
-}
+  }
 
 }
 
