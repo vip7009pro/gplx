@@ -25,6 +25,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
@@ -146,6 +147,63 @@ class GplxComponents {
         }
       }
     }
+  }
+  @OptIn(ExperimentalMaterial3Api::class)
+  @Composable
+  fun ExamListScreen(navController: NavController, db: AppDataBase, vm: QuestionViewModel, globalVar: GlobalVariable) {
+    val examList = vm.getExamWithQuestionByLicense(globalVar.currentLicense).collectAsState(initial = emptyList())
+    LaunchedEffect(key1 = true) {
+
+    }
+    Scaffold(
+      topBar = {
+        TopAppBar(
+          modifier = Modifier
+            .height(50.dp)
+            .background(color = Color.Green),
+          title = {
+            Row(
+              modifier = Modifier
+                .fillMaxWidth()
+                .height(40.dp),
+              horizontalArrangement = Arrangement.Start,
+              verticalAlignment = Alignment.CenterVertically
+            ){
+              Text(text = "Danh sách đề thi")
+            }
+          },
+          navigationIcon = {
+            IconButton(onClick = { navController.navigateUp() }) {
+              Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+            }
+          })
+      }
+    ) {
+        paddingValues ->
+      Button(onClick = {
+
+      }) {
+        Text(text = "Create Exam",  modifier = Modifier
+          .fillMaxSize()
+          .padding(paddingValues))
+      }
+      LazyColumn(
+        modifier = Modifier
+          .fillMaxSize()
+          .padding(paddingValues)
+      ) {
+        items(examList.value) {
+          //create card show exam name and exam id, and the number of question
+          Card {
+            Text("Exam Name: ${it.exam.license} - Exam ID: ${it.exam.examIndex}")
+          }
+        }
+
+
+      }
+
+    }
+
   }
 
   @OptIn(DelicateCoroutinesApi::class, ExperimentalMaterial3Api::class)
@@ -618,16 +676,24 @@ class GplxComponents {
               .background(
                 brush = Brush.verticalGradient(
                   colors = listOf(
-                    Color(0xFFE7F375), // Start color
+                    Color(0xFFB7D7F1), // Start color
                     Color(0xFFB7D7F1)  // End color
                   )
                 )
               )
               .clickable {
-
-                navController.navigate("detailscreen") {
-                  popUpTo("detailscreen") {
-                    inclusive = true
+                if (option.id == -2) {
+                  navController.navigate("examlistscreen") {
+                    popUpTo("examlistscreen") {
+                      inclusive = true
+                    }
+                  }
+                }
+                else {
+                  navController.navigate("detailscreen") {
+                    popUpTo("detailscreen") {
+                      inclusive = true
+                    }
                   }
                 }
                 globalVar.changeTopic(option.id)
@@ -640,11 +706,8 @@ class GplxComponents {
               .padding(16.dp), color = Color(0xFF1380B9)
             )
           }
-
         }
       }
-
-
     }
 
   }

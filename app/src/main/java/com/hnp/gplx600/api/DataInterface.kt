@@ -1,8 +1,10 @@
 package com.hnp.gplx600.api
 
 import androidx.compose.runtime.Composable
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Relation
 
 class ErpInterface
 {
@@ -95,6 +97,23 @@ class ErpInterface
         val a4: Int,
         val b1: Int,
         val currentAnswer: Int = -1
+    )
+    @Entity(tableName = "test_table")
+    data class Exam(
+        @PrimaryKey(autoGenerate = true)
+        val examIndex: Int,
+        val license: String,
+        val examNo: Int,
+        val index: Int,
+        val currentQuestion: Int,
+    )
+    data class  ExamWithQuestion(
+        @Embedded val exam: Exam,
+        @Relation(
+            parentColumn = "index",
+            entityColumn = "index"
+        )
+        val questions: Question?
     )
 
 }

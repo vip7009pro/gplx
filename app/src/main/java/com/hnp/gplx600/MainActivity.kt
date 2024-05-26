@@ -34,8 +34,8 @@ import com.hnp.gplx600.theme.GPLXTheme
 class MainActivity : ComponentActivity() {
   private val db by lazy {
     Room.databaseBuilder(
-      context = applicationContext, klass = AppDataBase::class.java, name = "gplx_database.db"
-    ).build()
+      context = applicationContext, klass = AppDataBase::class.java, name = "gplx_database"
+    ).fallbackToDestructiveMigration().build()
   }
   private val viewModel by viewModels<QuestionViewModel>(factoryProducer = {
     object : ViewModelProvider.Factory {
@@ -81,6 +81,9 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
     }
     composable("optionscreen") {
       GplxComponents().GPLXOptionScreen(navController = navController, globalVar = globalVar)
+    }
+    composable("examlistscreen") {
+      GplxComponents().ExamListScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)
     }
   }
 }

@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.hnp.gplx600.api.ErpInterface
 
-@Database(entities = [ErpInterface.Question::class],version = 1, exportSchema = false)
+@Database(entities = [ErpInterface.Question::class, ErpInterface.Exam::class],version = 1, exportSchema = false)
 abstract class AppDataBase: RoomDatabase() {
 abstract val questionDao: DaoInterface
 }
