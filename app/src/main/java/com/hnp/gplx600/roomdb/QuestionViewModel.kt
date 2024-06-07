@@ -47,5 +47,10 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
   fun getExamWithQuestionByLicense(license: String): Flow<List<ErpInterface.ExamWithQuestion>> {
     return dao.getExamWithQuestionByLicense(license)
   }
-  //
+  //delete all exams
+  fun deleteAllExam() {
+    viewModelScope.launch {
+      dao.deleteAllExam()
+    }
+  }
 }

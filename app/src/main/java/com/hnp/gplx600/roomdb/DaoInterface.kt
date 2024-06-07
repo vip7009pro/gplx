@@ -23,7 +23,6 @@ interface DaoInterface {
   //get only exam without question of a specific license
   @Query("SELECT * FROM test_table WHERE license=:license")
   fun getExamByLicense(license: String): Flow<List<ErpInterface.Exam>>
-
   @Query("SELECT * FROM question_table")
   fun loadQuestion():List<ErpInterface.Question>
   @Query("SELECT * FROM question_table")
@@ -44,4 +43,7 @@ interface DaoInterface {
   suspend fun resetAnswer()
   @Query("SELECT * FROM test_table WHERE examIndex = :examIndex")
   fun getExamWithQuestion(examIndex: Int): Flow<List<ErpInterface.ExamWithQuestion>>
+  //delete all exams
+  @Query("DELETE FROM test_table")
+  suspend fun deleteAllExam()
 }

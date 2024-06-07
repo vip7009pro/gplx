@@ -79,7 +79,6 @@ class ErpInterface
         var icon: @Composable () -> Unit,
         var subMenu: List<SubMenuData>?
     )
-
     @Entity(tableName = "question_table")
     data class Question(
         @PrimaryKey(autoGenerate = false)
@@ -105,7 +104,7 @@ class ErpInterface
         val license: String,
         val examNo: Int,
         val index: Int,
-        val currentQuestion: Int,
+        val examAnswer: Int = -1
     )
     data class  ExamWithQuestion(
         @Embedded val exam: Exam,

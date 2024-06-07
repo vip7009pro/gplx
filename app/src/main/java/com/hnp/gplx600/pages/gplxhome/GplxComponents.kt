@@ -148,57 +148,97 @@ class GplxComponents {
       }
     }
   }
+
   @OptIn(ExperimentalMaterial3Api::class)
   @Composable
-  fun ExamListScreen(navController: NavController, db: AppDataBase, vm: QuestionViewModel, globalVar: GlobalVariable) {
-    val examList = vm.getExamWithQuestionByLicense(globalVar.currentLicense).collectAsState(initial = emptyList())
+  fun ExamListScreen(
+    navController: NavController,
+    db: AppDataBase,
+    vm: QuestionViewModel,
+    globalVar: GlobalVariable,
+  ) {
+    val examList = vm.getExamWithQuestionByLicense(globalVar.currentLicense)
+      .collectAsState(initial = emptyList())
     LaunchedEffect(key1 = true) {
 
     }
-    Scaffold(
-      topBar = {
-        TopAppBar(
+    Scaffold(topBar = {
+      TopAppBar(modifier = Modifier
+        .height(50.dp)
+        .background(color = Color.Green), title = {
+        Row(
           modifier = Modifier
-            .height(50.dp)
-            .background(color = Color.Green),
-          title = {
-            Row(
-              modifier = Modifier
-                .fillMaxWidth()
-                .height(40.dp),
-              horizontalArrangement = Arrangement.Start,
-              verticalAlignment = Alignment.CenterVertically
-            ){
-              Text(text = "Danh sách đề thi")
-            }
-          },
-          navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() }) {
-              Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-            }
-          })
-      }
-    ) {
-        paddingValues ->
-      Button(onClick = {
-
-      }) {
-        Text(text = "Create Exam",  modifier = Modifier
-          .fillMaxSize()
-          .padding(paddingValues))
-      }
-      LazyColumn(
+            .fillMaxWidth()
+            .height(40.dp),
+          horizontalArrangement = Arrangement.Start,
+          verticalAlignment = Alignment.CenterVertically
+        ) {
+          Text(text = "Danh sách đề thi")
+        }
+      }, navigationIcon = {
+        IconButton(onClick = { navController.navigateUp() }) {
+          Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+        }
+      })
+    }) { paddingValues ->
+      Column(
         modifier = Modifier
           .fillMaxSize()
-          .padding(paddingValues)
+          .padding(paddingValues),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
       ) {
-        items(examList.value) {
-          //create card show exam name and exam id, and the number of question
-          Card {
-            Text("Exam Name: ${it.exam.license} - Exam ID: ${it.exam.examIndex}")
+        Column(
+          modifier = Modifier
+            .padding(paddingValues)
+            .height(250.dp)
+            .width(250.dp)
+        ) {
+          Button( modifier = Modifier
+            .height(50.dp)
+            .width(250.dp), onClick = {
+              Log.d("examlist", examList.toString())
+            val exam = ErpInterface.Exam(
+              examIndex = 0,
+              license = globalVar.currentLicense,
+              examNo = 0,
+              index = 0,
+              examAnswer = -1
+            )
+            vm.addExam(exam)
+          }) {
+            Text(
+              text = "Create Exam", modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+            )
           }
+          Button(modifier = Modifier
+            .height(50.dp),onClick = {
+            vm.deleteAllExam()
+          }) {
+            Text(
+              text = "Delete Exam", modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+            )
+          }
+
         }
 
+        LazyColumn(
+          modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
+        ) {
+          items(examList.value) {
+            //create card show exam name and exam id, and the number of question
+            Card {
+              Text("Exam Name: ${it.exam.license} - Exam ID: ${it.exam.examIndex}")
+            }
+          }
+
+        }
 
       }
 
@@ -224,11 +264,13 @@ class GplxComponents {
               it.a1 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.a1 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.a1 != 0 && it.topic == globalVar.currentTopic
@@ -244,11 +286,13 @@ class GplxComponents {
               it.a2 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.a2 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.a2 != 0 && it.topic == globalVar.currentTopic
@@ -264,11 +308,13 @@ class GplxComponents {
               it.a3 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.a3 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.a3 != 0 && it.topic == globalVar.currentTopic
@@ -284,11 +330,13 @@ class GplxComponents {
               it.a4 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.a4 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.a4 != 0 && it.topic == globalVar.currentTopic
@@ -304,11 +352,13 @@ class GplxComponents {
               it.b1 != 0
             }
           }
+
           0 -> {
             dataList.value.filter {
               it.b1 != 0 && it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.b1 != 0 && it.topic == globalVar.currentTopic
@@ -322,11 +372,13 @@ class GplxComponents {
           -1 -> {
             dataList.value
           }
+
           0 -> {
             dataList.value.filter {
               it.required == 1
             }
           }
+
           else -> {
             dataList.value.filter {
               it.topic == globalVar.currentTopic
@@ -340,37 +392,33 @@ class GplxComponents {
 
     }
 
-    Scaffold(
-      topBar = {
-        TopAppBar(
+    Scaffold(topBar = {
+      TopAppBar(modifier = Modifier
+        .height(50.dp)
+        .background(color = Color.Green), title = {
+        Row(
           modifier = Modifier
-            .height(50.dp)
-            .background(color = Color.Green),
-          title = {
-            Row(
-              modifier = Modifier
-                .fillMaxWidth()
-                .height(40.dp),
-              horizontalArrangement = Arrangement.Start,
-              verticalAlignment = Alignment.CenterVertically
-            ){
-              Text(text = "Bài thi chi tiết")
-            }
-        },
-          navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() }) {
-              Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-            }
-          })
-      }
-    ) {
-      paddingValues ->
+            .fillMaxWidth()
+            .height(40.dp),
+          horizontalArrangement = Arrangement.Start,
+          verticalAlignment = Alignment.CenterVertically
+        ) {
+          Text(text = "Bài thi chi tiết")
+        }
+      }, navigationIcon = {
+        IconButton(onClick = { navController.navigateUp() }) {
+          Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+        }
+      })
+    }) { paddingValues ->
       Column(
         modifier = Modifier
           .fillMaxSize()
           .padding(paddingValues)
       ) {
-        if (filteredList.isNotEmpty()) HorizontalPagerWithBottomNavigation(filteredList, vm) else Text(
+        if (filteredList.isNotEmpty()) HorizontalPagerWithBottomNavigation(
+          filteredList, vm
+        ) else Text(
           text = "Không có câu hỏi nào"
         )
       }
@@ -388,7 +436,10 @@ class GplxComponents {
 
   @OptIn(ExperimentalPagerApi::class)
   @Composable
-  fun HorizontalPagerWithBottomNavigation(questionList: List<ErpInterface.Question>, vm: QuestionViewModel) {
+  fun HorizontalPagerWithBottomNavigation(
+    questionList: List<ErpInterface.Question>,
+    vm: QuestionViewModel,
+  ) {
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
     var currentPageIndex by remember { mutableIntStateOf(0) }
@@ -543,6 +594,7 @@ class GplxComponents {
 
     }
   }
+
   @Composable
   fun BottomNavigation(
     currentPageIndex: Int,
@@ -568,12 +620,12 @@ class GplxComponents {
         onClick = onNextClick, enabled = true //currentPageIndex < pageSize - 1
       ) {
         Icon(
-          imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-          contentDescription = null
+          imageVector = Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null
         )
       }
     }
   }
+
   @OptIn(ExperimentalMaterial3Api::class)
   @Composable
   fun GPLXOptionScreen(navController: NavController, globalVar: GlobalVariable) {
@@ -632,29 +684,25 @@ class GplxComponents {
     )
     Scaffold(
       topBar = {
-        TopAppBar(
-          modifier = Modifier
-            .height(50.dp)
-            .background(color = Color.Green),
-          title = {
-            Row(
-              modifier = Modifier
-                .fillMaxWidth()
-                .height(40.dp),
-              horizontalArrangement = Arrangement.Start,
-              verticalAlignment = Alignment.CenterVertically
-            ){
-              Text(text = "Chọn option (${globalVar.currentLicense})")
-            }
-          },
-          navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() }) {
-              Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-            }
-          })
+        TopAppBar(modifier = Modifier
+          .height(50.dp)
+          .background(color = Color.Green), title = {
+          Row(
+            modifier = Modifier
+              .fillMaxWidth()
+              .height(40.dp),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
+          ) {
+            Text(text = "Chọn option (${globalVar.currentLicense})")
+          }
+        }, navigationIcon = {
+          IconButton(onClick = { navController.navigateUp() }) {
+            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+          }
+        })
       },
-    ) {
-        paddingValues ->
+    ) { paddingValues ->
       LazyColumn(
         modifier = Modifier
           .fillMaxSize()
@@ -663,8 +711,7 @@ class GplxComponents {
         horizontalAlignment = Alignment.CenterHorizontally
       ) {
         items(options) { option ->
-          Row(
-            horizontalArrangement= Arrangement.Start,
+          Row(horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
               .fillMaxWidth()
@@ -688,8 +735,7 @@ class GplxComponents {
                       inclusive = true
                     }
                   }
-                }
-                else {
+                } else {
                   navController.navigate("detailscreen") {
                     popUpTo("detailscreen") {
                       inclusive = true
@@ -697,13 +743,15 @@ class GplxComponents {
                   }
                 }
                 globalVar.changeTopic(option.id)
-              }
-          ) {
+              }) {
             //show icon and title
             Spacer(modifier = Modifier.width(10.dp))
             option.icon()
-            Text(text = option.title, fontSize = 20.sp, modifier = Modifier
-              .padding(16.dp), color = Color(0xFF1380B9)
+            Text(
+              text = option.title,
+              fontSize = 20.sp,
+              modifier = Modifier.padding(16.dp),
+              color = Color(0xFF1380B9)
             )
           }
         }
@@ -712,21 +760,19 @@ class GplxComponents {
 
   }
 
-@Composable
-fun BannerAd(
-  modifier: Modifier = Modifier,
-  bannerAdUnitId: String = "ca-app-pub-3940256099942544/9214589741"
-) {
-  AndroidView(
-    modifier = modifier,
-    factory = { context ->
+  @Composable
+  fun BannerAd(
+    modifier: Modifier = Modifier,
+    bannerAdUnitId: String = "ca-app-pub-3940256099942544/9214589741",
+  ) {
+    AndroidView(modifier = modifier, factory = { context ->
       AdView(context).apply {
         setAdSize(AdSize.BANNER)
         adUnitId = bannerAdUnitId
         loadAd(AdRequest.Builder().build())
       }
     })
-}
+  }
 
 }
 
