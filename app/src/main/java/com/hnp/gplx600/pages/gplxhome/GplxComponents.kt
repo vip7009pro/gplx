@@ -80,6 +80,7 @@ import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import com.hnp.gplx600.theme.GPLXTheme
 import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
@@ -157,142 +158,73 @@ class GplxComponents {
     vm: QuestionViewModel,
     globalVar: GlobalVariable,
   ) {
+    //get lastest exam no from database of the current license
+
     val examList = vm.getExamWithQuestionByLicense(globalVar.currentLicense)
       .collectAsState(initial = emptyList())
     val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
     var filteredList: List<ErpInterface.Question> = emptyList()
     when (globalVar.currentLicense) {
       "A1" -> {
-        filteredList = when (globalVar.currentTopic) {
-          -1 -> {
-            dataList.value.filter {
-              it.a1 != 0
-            }
-          }
-
-          0 -> {
-            dataList.value.filter {
-              it.a1 != 0 && it.required == 1
-            }
-          }
-
-          else -> {
-            dataList.value.filter {
-              it.a1 != 0 && it.topic == globalVar.currentTopic
-            }
-          }
+        filteredList = dataList.value.filter {
+          it.a1 != 0
         }
       }
 
       "A2" -> {
-        filteredList = when (globalVar.currentTopic) {
-          -1 -> {
-            dataList.value.filter {
-              it.a2 != 0
-            }
-          }
-
-          0 -> {
-            dataList.value.filter {
-              it.a2 != 0 && it.required == 1
-            }
-          }
-
-          else -> {
-            dataList.value.filter {
-              it.a2 != 0 && it.topic == globalVar.currentTopic
-            }
-          }
+        filteredList = dataList.value.filter {
+          it.a2 != 0
         }
       }
 
       "A3" -> {
-        filteredList = when (globalVar.currentTopic) {
-          -1 -> {
-            dataList.value.filter {
-              it.a3 != 0
-            }
-          }
-
-          0 -> {
-            dataList.value.filter {
-              it.a3 != 0 && it.required == 1
-            }
-          }
-
-          else -> {
-            dataList.value.filter {
-              it.a3 != 0 && it.topic == globalVar.currentTopic
-            }
-          }
+        filteredList = dataList.value.filter {
+          it.a3 != 0
         }
       }
 
       "A4" -> {
-        filteredList = when (globalVar.currentTopic) {
-          -1 -> {
-            dataList.value.filter {
-              it.a4 != 0
-            }
-          }
-
-          0 -> {
-            dataList.value.filter {
-              it.a4 != 0 && it.required == 1
-            }
-          }
-
-          else -> {
-            dataList.value.filter {
-              it.a4 != 0 && it.topic == globalVar.currentTopic
-            }
-          }
+        filteredList = dataList.value.filter {
+          it.a4 != 0
         }
       }
 
       "B1" -> {
-        filteredList = when (globalVar.currentTopic) {
-          -1 -> {
-            dataList.value.filter {
-              it.b1 != 0
-            }
-          }
-
-          0 -> {
-            dataList.value.filter {
-              it.b1 != 0 && it.required == 1
-            }
-          }
-
-          else -> {
-            dataList.value.filter {
-              it.b1 != 0 && it.topic == globalVar.currentTopic
-            }
-          }
+        filteredList = dataList.value.filter {
+          it.b1 != 0
         }
       }
 
       else -> {
-        filteredList = when (globalVar.currentTopic) {
-          -1 -> {
-            dataList.value
-          }
-
-          0 -> {
-            dataList.value.filter {
-              it.required == 1
-            }
-          }
-
-          else -> {
-            dataList.value.filter {
-              it.topic == globalVar.currentTopic
-            }
-          }
-        }
+        filteredList = dataList.value
       }
-
     }
+    val requiredQuestionList = filteredList.filter {
+      it.required == 1 && it.topic == 1
+    }
+    val examDefinition = mapOf(
+      "A1" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
+      "A2" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
+      "A3" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
+      "A4" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
+      "B1" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 1, 9, 9),
+      "B2" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 10, 10),
+      "C" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 14, 11),
+      "D" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
+      "E" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
+      "F" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
+    )
+
+    val currentExamDefinition = examDefinition[globalVar.currentLicense]
+
+    //generate random question list of 30 questions
+    val randomQuestionList = filteredList.shuffled().take(30)
+    val randomQuestionList2 = filteredList.shuffled().take(30)
+    //join two list above to one list
+    val randomQuestionList3 = randomQuestionList + randomQuestionList2
+
+
+
     LaunchedEffect(key1 = true) {
 
     }
@@ -328,18 +260,54 @@ class GplxComponents {
             .height(250.dp)
             .width(250.dp)
         ) {
-          Button( modifier = Modifier
+          Button(modifier = Modifier
             .height(50.dp)
             .width(250.dp), onClick = {
-              Log.d("examlist", examList.toString())
-            val exam = ErpInterface.Exam(
-              examIndex = 0,
-              license = globalVar.currentLicense,
-              examNo = 0,
-              index = 0,
-              examAnswer = -1
-            )
-            vm.addExam(exam)
+            //val examNo = vm.getExamNo(globalVar.currentLicense).
+
+            val part1 = requiredQuestionList.shuffled().take(1)
+            val part2 = filteredList.filter {
+              !part1.contains(it) && (it.index in 1..16)
+            }.shuffled().take(currentExamDefinition!!.part2)
+            val part3 = filteredList.filter {
+              !part1.contains(it) && (it.index in 17..123)
+            }.shuffled().take(currentExamDefinition.part3)
+            val part4 = filteredList.filter {
+              !part1.contains(it) && (it.index in 124..166)
+            }.shuffled().take(currentExamDefinition.part4)
+            val part5 = filteredList.filter {
+              !part1.contains(it) && (it.index in 167..192)
+            }.shuffled().take(currentExamDefinition.part5)
+            val part6 = filteredList.filter {
+              !part1.contains(it) && (it.index in 193..213)
+            }.shuffled().take(currentExamDefinition.part6)
+            val part7 = filteredList.filter {
+              !part1.contains(it) && (it.index in 214..269)
+            }.shuffled().take(currentExamDefinition.part7)
+            val part8 = filteredList.filter {
+              !part1.contains(it) && (it.index in 270..304)
+            }.shuffled().take(currentExamDefinition.part8)
+            val part9 = filteredList.filter {
+              !part1.contains(it) && (it.index in 305..486)
+            }.shuffled().take(currentExamDefinition.part9)
+            val part10 = filteredList.filter {
+              !part1.contains(it) && (it.index in 487..600)
+            }.shuffled().take(currentExamDefinition.part10)
+
+            val finalExamList =
+              part1 + part2 + part3 + part4 + part5 + part6 + part7 + part8 + part9 + part10
+            //insert every exam from final Exam list to database
+            for (exam in finalExamList) {
+              vm.addExam(
+                ErpInterface.Exam(
+                  examIndex = exam.index,
+                  license = globalVar.currentLicense,
+                  examNo =  1,
+                  index = 0,
+                  examAnswer = -1
+                )
+              )
+            }
           }) {
             Text(
               text = "Create Exam", modifier = Modifier
@@ -347,8 +315,7 @@ class GplxComponents {
                 .padding(paddingValues)
             )
           }
-          Button(modifier = Modifier
-            .height(50.dp),onClick = {
+          Button(modifier = Modifier.height(50.dp), onClick = {
             vm.deleteAllExam()
           }) {
             Text(

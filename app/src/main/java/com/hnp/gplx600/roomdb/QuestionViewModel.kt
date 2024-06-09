@@ -53,4 +53,10 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
       dao.deleteAllExam()
     }
   }
+  //get lastest exam no of a license from test_table
+  fun getExamNo(license: String): Flow<Int> {
+    return dao.getLastestExamNo(license)
+  }
+
+
 }

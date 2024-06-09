@@ -46,4 +46,8 @@ interface DaoInterface {
   //delete all exams
   @Query("DELETE FROM test_table")
   suspend fun deleteAllExam()
+//get lastest exam no of a license from test_table
+  @Query("SELECT MAX(examNo) FROM test_table WHERE license = :license")
+  fun getLastestExamNo(license: String): Flow<Int>
+
 }
