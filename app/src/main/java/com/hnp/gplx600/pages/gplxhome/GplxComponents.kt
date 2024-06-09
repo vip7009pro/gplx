@@ -159,6 +159,140 @@ class GplxComponents {
   ) {
     val examList = vm.getExamWithQuestionByLicense(globalVar.currentLicense)
       .collectAsState(initial = emptyList())
+    val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
+    var filteredList: List<ErpInterface.Question> = emptyList()
+    when (globalVar.currentLicense) {
+      "A1" -> {
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.a1 != 0
+            }
+          }
+
+          0 -> {
+            dataList.value.filter {
+              it.a1 != 0 && it.required == 1
+            }
+          }
+
+          else -> {
+            dataList.value.filter {
+              it.a1 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
+        }
+      }
+
+      "A2" -> {
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.a2 != 0
+            }
+          }
+
+          0 -> {
+            dataList.value.filter {
+              it.a2 != 0 && it.required == 1
+            }
+          }
+
+          else -> {
+            dataList.value.filter {
+              it.a2 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
+        }
+      }
+
+      "A3" -> {
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.a3 != 0
+            }
+          }
+
+          0 -> {
+            dataList.value.filter {
+              it.a3 != 0 && it.required == 1
+            }
+          }
+
+          else -> {
+            dataList.value.filter {
+              it.a3 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
+        }
+      }
+
+      "A4" -> {
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.a4 != 0
+            }
+          }
+
+          0 -> {
+            dataList.value.filter {
+              it.a4 != 0 && it.required == 1
+            }
+          }
+
+          else -> {
+            dataList.value.filter {
+              it.a4 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
+        }
+      }
+
+      "B1" -> {
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value.filter {
+              it.b1 != 0
+            }
+          }
+
+          0 -> {
+            dataList.value.filter {
+              it.b1 != 0 && it.required == 1
+            }
+          }
+
+          else -> {
+            dataList.value.filter {
+              it.b1 != 0 && it.topic == globalVar.currentTopic
+            }
+          }
+        }
+      }
+
+      else -> {
+        filteredList = when (globalVar.currentTopic) {
+          -1 -> {
+            dataList.value
+          }
+
+          0 -> {
+            dataList.value.filter {
+              it.required == 1
+            }
+          }
+
+          else -> {
+            dataList.value.filter {
+              it.topic == globalVar.currentTopic
+            }
+          }
+        }
+      }
+
+    }
     LaunchedEffect(key1 = true) {
 
     }
