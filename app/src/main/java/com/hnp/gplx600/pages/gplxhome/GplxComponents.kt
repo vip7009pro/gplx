@@ -326,7 +326,13 @@ class GplxComponents {
         ) {
           items(examNoList) {
             //create card show exam name and exam id, and the number of question
-            Card(modifier = Modifier.padding(5.dp), onClick = {}) {
+            Card(modifier = Modifier.padding(5.dp), onClick = {
+              navController.navigate("detailscreen") {
+                popUpTo("detailscreen") {
+                  inclusive = true
+                }
+              }
+            }) {
               Text(
                 "Bằng: ${it.exam.license} - Đề thi số: ${it.exam.examNo}  ",
                 modifier = Modifier
@@ -521,7 +527,7 @@ class GplxComponents {
   }
 
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-  @Preview(showBackground = true, showSystemUi = true, apiLevel = 33)
+  @Preview(showBackground = true, showSystemUi = true, apiLevel = 34)
   @Composable
   fun GreetingPreview() {
     GPLXTheme {
