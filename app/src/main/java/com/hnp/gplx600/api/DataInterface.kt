@@ -119,6 +119,10 @@ class ErpInterface
         val part6: Int, val part7: Int, val part8: Int, val part9: Int, val part10: Int
     )
 
+    data class MaxExam
+    (
+        val maxExamNo: Int
+    )
 }
 
 

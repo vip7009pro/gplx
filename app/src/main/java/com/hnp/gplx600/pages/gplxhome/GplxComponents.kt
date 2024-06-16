@@ -159,7 +159,8 @@ class GplxComponents {
     globalVar: GlobalVariable,
   ) {
     //get lastest exam no from database of the current license
-
+    val examNo = vm.getExamNo(globalVar.currentLicense).collectAsState(initial = emptyList())
+    val latest_exam_no = if (examNo.value.isNotEmpty()) examNo.value[0].maxExamNo else 0
     val examList = vm.getExamWithQuestionByLicense(globalVar.currentLicense)
       .collectAsState(initial = emptyList())
     val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
@@ -214,17 +215,8 @@ class GplxComponents {
       "E" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
       "F" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
     )
-
     val currentExamDefinition = examDefinition[globalVar.currentLicense]
-
-    //generate random question list of 30 questions
-    val randomQuestionList = filteredList.shuffled().take(30)
-    val randomQuestionList2 = filteredList.shuffled().take(30)
-    //join two list above to one list
-    val randomQuestionList3 = randomQuestionList + randomQuestionList2
-
-
-
+    val examNoList = examList.value.distinctBy { it.exam.examNo }.sortedBy { it.exam.examNo }
     LaunchedEffect(key1 = true) {
 
     }
@@ -254,17 +246,17 @@ class GplxComponents {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
       ) {
-        Column(
+        Row(
           modifier = Modifier
-            .padding(paddingValues)
-            .height(250.dp)
-            .width(250.dp)
+            .fillMaxWidth()
+            .padding(10.dp),
+          horizontalArrangement = Arrangement.SpaceBetween,
+          verticalAlignment = Alignment.CenterVertically
+
         ) {
           Button(modifier = Modifier
-            .height(50.dp)
-            .width(250.dp), onClick = {
-            //val examNo = vm.getExamNo(globalVar.currentLicense).
-
+            .height(40.dp)
+            .fillMaxWidth(0.5f), onClick = {
             val part1 = requiredQuestionList.shuffled().take(1)
             val part2 = filteredList.filter {
               !part1.contains(it) && (it.index in 1..16)
@@ -302,47 +294,49 @@ class GplxComponents {
                 ErpInterface.Exam(
                   examIndex = exam.index,
                   license = globalVar.currentLicense,
-                  examNo =  1,
-                  index = 0,
+                  examNo = latest_exam_no + 1,
+                  index = exam.index,
                   examAnswer = -1
                 )
               )
             }
           }) {
             Text(
-              text = "Create Exam", modifier = Modifier
+              text = "Create Exam",
+              modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
+                .align(Alignment.CenterVertically)
             )
           }
-          Button(modifier = Modifier.height(50.dp), onClick = {
+          Button(modifier = Modifier
+            .height(40.dp)
+            .fillMaxWidth(), onClick = {
             vm.deleteAllExam()
           }) {
             Text(
-              text = "Delete Exam", modifier = Modifier
+              text = "Delete Exam",
+              modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues)
+                .align(Alignment.CenterVertically)
             )
           }
-
         }
-
         LazyColumn(
-          modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingValues)
+          modifier = Modifier.fillMaxSize()
         ) {
-          items(examList.value) {
+          items(examNoList) {
             //create card show exam name and exam id, and the number of question
-            Card {
-              Text("Exam Name: ${it.exam.license} - Exam ID: ${it.exam.examIndex}")
+            Card(modifier = Modifier.padding(5.dp), onClick = {}) {
+              Text(
+                "Bằng: ${it.exam.license} - Đề thi số: ${it.exam.examNo}  ",
+                modifier = Modifier
+                  .padding(all = 20.dp)
+                  .fillMaxWidth()
+              )
             }
           }
-
         }
-
       }
-
     }
 
   }

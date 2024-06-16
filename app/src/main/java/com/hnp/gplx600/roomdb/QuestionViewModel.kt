@@ -54,7 +54,7 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
     }
   }
   //get lastest exam no of a license from test_table
-  fun getExamNo(license: String): Flow<Int> {
+  fun getExamNo(license: String): Flow<List<ErpInterface.MaxExam>> {
     return dao.getLastestExamNo(license)
   }
 

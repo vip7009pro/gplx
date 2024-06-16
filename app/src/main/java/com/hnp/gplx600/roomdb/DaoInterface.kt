@@ -18,7 +18,7 @@ interface DaoInterface {
   suspend fun addExam(exam: ErpInterface.Exam)
   //load exam of specific license
   @Transaction
-  @Query("SELECT * FROM test_table WHERE license=:license")
+  @Query("SELECT * FROM test_table WHERE license=:license ORDER BY examNo ASC")
   fun getExamWithQuestionByLicense(license: String): Flow<List<ErpInterface.ExamWithQuestion>>
   //get only exam without question of a specific license
   @Query("SELECT * FROM test_table WHERE license=:license")
@@ -41,13 +41,13 @@ interface DaoInterface {
   suspend  fun updateAnswerByIndex(index: Int, answer: Int)
   @Query("UPDATE question_table SET currentAnswer = -1")
   suspend fun resetAnswer()
-  @Query("SELECT * FROM test_table WHERE examIndex = :examIndex")
+  @Query("SELECT * FROM test_table WHERE examIndex = :examIndex ORDER BY examNo ASC")
   fun getExamWithQuestion(examIndex: Int): Flow<List<ErpInterface.ExamWithQuestion>>
   //delete all exams
   @Query("DELETE FROM test_table")
   suspend fun deleteAllExam()
 //get lastest exam no of a license from test_table
-  @Query("SELECT MAX(examNo) FROM test_table WHERE license = :license")
-  fun getLastestExamNo(license: String): Flow<Int>
+  @Query("SELECT MAX(examNo) AS maxExamNo FROM test_table WHERE license = :license")
+  fun getLastestExamNo(license: String): Flow<List<ErpInterface.MaxExam>>
 
 }
