@@ -26,7 +26,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.pages.gplxhome.components.CountDownTimer
 import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation
+import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation2
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -39,140 +41,8 @@ fun ExamScreen(
   db: AppDataBase,
   vm: QuestionViewModel,
 ) {
-  val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
-  var filteredList: List<ErpInterface.Question> = emptyList()
-  when (globalVar.currentLicense) {
-    "A1" -> {
-      filteredList = when (globalVar.currentTopic) {
-        -1 -> {
-          dataList.value.filter {
-            it.a1 != 0
-          }
-        }
+  val dataList = vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo).collectAsState(initial = emptyList())
 
-        0 -> {
-          dataList.value.filter {
-            it.a1 != 0 && it.required == 1
-          }
-        }
-
-        else -> {
-          dataList.value.filter {
-            it.a1 != 0 && it.topic == globalVar.currentTopic
-          }
-        }
-      }
-    }
-
-    "A2" -> {
-      filteredList = when (globalVar.currentTopic) {
-        -1 -> {
-          dataList.value.filter {
-            it.a2 != 0
-          }
-        }
-
-        0 -> {
-          dataList.value.filter {
-            it.a2 != 0 && it.required == 1
-          }
-        }
-
-        else -> {
-          dataList.value.filter {
-            it.a2 != 0 && it.topic == globalVar.currentTopic
-          }
-        }
-      }
-    }
-
-    "A3" -> {
-      filteredList = when (globalVar.currentTopic) {
-        -1 -> {
-          dataList.value.filter {
-            it.a3 != 0
-          }
-        }
-
-        0 -> {
-          dataList.value.filter {
-            it.a3 != 0 && it.required == 1
-          }
-        }
-
-        else -> {
-          dataList.value.filter {
-            it.a3 != 0 && it.topic == globalVar.currentTopic
-          }
-        }
-      }
-    }
-
-    "A4" -> {
-      filteredList = when (globalVar.currentTopic) {
-        -1 -> {
-          dataList.value.filter {
-            it.a4 != 0
-          }
-        }
-
-        0 -> {
-          dataList.value.filter {
-            it.a4 != 0 && it.required == 1
-          }
-        }
-
-        else -> {
-          dataList.value.filter {
-            it.a4 != 0 && it.topic == globalVar.currentTopic
-          }
-        }
-      }
-    }
-
-    "B1" -> {
-      filteredList = when (globalVar.currentTopic) {
-        -1 -> {
-          dataList.value.filter {
-            it.b1 != 0
-          }
-        }
-
-        0 -> {
-          dataList.value.filter {
-            it.b1 != 0 && it.required == 1
-          }
-        }
-
-        else -> {
-          dataList.value.filter {
-            it.b1 != 0 && it.topic == globalVar.currentTopic
-          }
-        }
-      }
-    }
-
-    else -> {
-      filteredList = when (globalVar.currentTopic) {
-        -1 -> {
-          dataList.value
-        }
-
-        0 -> {
-          dataList.value.filter {
-            it.required == 1
-          }
-        }
-
-        else -> {
-          dataList.value.filter {
-            it.topic == globalVar.currentTopic
-          }
-        }
-      }
-    }
-
-  }
   LaunchedEffect(key1 = true) {
 
   }
@@ -188,7 +58,7 @@ fun ExamScreen(
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
       ) {
-        Text(text = "Bài thi chi tiết")
+        CountDownTimer(1200)
       }
     }, navigationIcon = {
       IconButton(onClick = { navController.navigateUp() }) {
@@ -202,8 +72,8 @@ fun ExamScreen(
         .fillMaxSize()
         .padding(paddingValues)
     ) {
-      if (filteredList.isNotEmpty()) HorizontalPagerWithBottomNavigation(
-        filteredList, vm
+      if (dataList.value.isNotEmpty()) HorizontalPagerWithBottomNavigation2(
+        dataList.value, vm
       ) else Text(
         text = "Không có câu hỏi nào"
       )

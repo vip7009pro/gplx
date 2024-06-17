@@ -67,3 +67,52 @@ fun HorizontalPagerWithBottomNavigation(
     }
   }
 }
+
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun HorizontalPagerWithBottomNavigation2(
+  questionList: List<ErpInterface.ExamQuestionByLicenseAndExamNo>,
+  vm: QuestionViewModel,
+) {
+  val pagerState = rememberPagerState()
+  val scope = rememberCoroutineScope()
+  var currentPageIndex by remember { mutableIntStateOf(0) }
+
+  LaunchedEffect(pagerState) {
+    snapshotFlow { pagerState.currentPage }.collect { page ->
+      currentPageIndex = page
+    }
+  }
+
+  Scaffold(bottomBar = {
+    BottomNavigation(currentPageIndex = currentPageIndex, onPreviousClick = {
+      scope.launch {
+        if (currentPageIndex > 0) {
+          pagerState.animateScrollToPage(currentPageIndex - 1)
+        } else {
+          pagerState.animateScrollToPage(questionList.size - 1)
+        }
+      }
+    }, onNextClick = {
+      scope.launch {
+        if (currentPageIndex < questionList.size - 1) {
+          pagerState.animateScrollToPage(currentPageIndex + 1)
+        } else {
+          pagerState.animateScrollToPage(0)
+        }
+      }
+    }, pageSize = questionList.size
+
+    )
+  }) { paddingValues ->
+    HorizontalPager(
+      count = questionList.size,
+      state = pagerState,
+      modifier = Modifier
+        .padding(paddingValues)
+        .fillMaxSize()
+    ) { page ->
+      QuestionPage2(question = questionList[page], vm = vm)
+    }
+  }
+}

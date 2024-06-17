@@ -103,6 +103,7 @@ class ErpInterface
         val examIndex: Int,
         val license: String,
         val examNo: Int,
+        val questionNo: Int,
         val index: Int,
         val examAnswer: Int = -1
     )
@@ -113,6 +114,20 @@ class ErpInterface
             entityColumn = "index"
         )
         val questions: Question?
+    )
+    data class ExamQuestionByLicenseAndExamNo(
+        val examIndex: Int,
+        val license: String,
+        val examNo: Int,
+        val questionNo: Int,
+        val index: Int,
+        val examAnswer: Int,
+        val image: String,
+        val text: String,
+        val tip: String,
+        val answers: String,
+        val required: Int,
+        val topic: Int
     )
     data class PartObject(
         val part1: Int, val part2: Int, val part3: Int, val part4: Int, val part5: Int,

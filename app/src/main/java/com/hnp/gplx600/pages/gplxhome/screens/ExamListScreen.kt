@@ -172,20 +172,21 @@ fun ExamListScreen(
           val finalExamList =
             part1 + part2 + part3 + part4 + part5 + part6 + part7 + part8 + part9 + part10
           //insert every exam from final Exam list to database
-          for (exam in finalExamList) {
+          finalExamList.forEachIndexed {index, element ->
             vm.addExam(
               ErpInterface.Exam(
-                examIndex = exam.index,
+                examIndex = 0,
                 license = globalVar.currentLicense,
                 examNo = latest_exam_no + 1,
-                index = exam.index,
-                examAnswer = -1
+                questionNo = index + 1,
+                index = element.index
               )
             )
           }
+
         }) {
           Text(
-            text = "Create Exam",
+            text = "Tạo đề",
             modifier = Modifier
               .fillMaxSize()
               .align(Alignment.CenterVertically)
@@ -197,7 +198,7 @@ fun ExamListScreen(
           vm.deleteAllExam()
         }) {
           Text(
-            text = "Delete Exam",
+            text = "Xóa đề",
             modifier = Modifier
               .fillMaxSize()
               .align(Alignment.CenterVertically)
@@ -210,6 +211,7 @@ fun ExamListScreen(
         items(examNoList) {
           //create card show exam name and exam id, and the number of question
           Card(modifier = Modifier.padding(5.dp), onClick = {
+            globalVar.currentExamNo = it.exam.examNo
             navController.navigate("examscreen") {
               popUpTo("examscreen") {
                 inclusive = true
