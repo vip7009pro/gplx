@@ -18,31 +18,24 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.pages.gplxhome.components.CountDownTimer
-import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation
-import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation2
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
-import kotlinx.coroutines.DelicateCoroutinesApi
 
-@OptIn(DelicateCoroutinesApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ExamScreen(
+fun ExamFinishScreen(
   navController: NavController,
   globalVar: GlobalVariable,
   db: AppDataBase,
   vm: QuestionViewModel,
 ) {
-  val dataList = vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo).collectAsState(initial = emptyList())
-
   LaunchedEffect(key1 = true) {
 
   }
@@ -58,7 +51,7 @@ fun ExamScreen(
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
       ) {
-        CountDownTimer(startTime = 10, navController=navController, globalVar = globalVar)
+
       }
     }, navigationIcon = {
       IconButton(onClick = { navController.navigateUp() }) {
@@ -72,11 +65,8 @@ fun ExamScreen(
         .fillMaxSize()
         .padding(paddingValues)
     ) {
-      if (dataList.value.isNotEmpty()) HorizontalPagerWithBottomNavigation2(
-        dataList.value, vm
-      ) else Text(
-        text = "Không có câu hỏi nào"
-      )
+      Text(text = "Exam Finish")
     }
   }
+
 }

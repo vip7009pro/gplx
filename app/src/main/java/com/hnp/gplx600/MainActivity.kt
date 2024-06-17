@@ -29,6 +29,7 @@ import com.hnp.gplx600.api.GlobalFunction
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.components.Components
 import com.hnp.gplx600.pages.gplxhome.screens.DetailScreen
+import com.hnp.gplx600.pages.gplxhome.screens.ExamFinishScreen
 import com.hnp.gplx600.pages.gplxhome.screens.ExamListScreen
 import com.hnp.gplx600.pages.gplxhome.screens.ExamScreen
 import com.hnp.gplx600.pages.gplxhome.screens.GPLXOptionScreen
@@ -120,6 +121,14 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
       popExitTransition = { slideOutHorizontally(targetOffsetX = { 1000 }, animationSpec = tween(700)) }
     )  {
       ExamScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)
+    }
+    composable("examfinishscreen",
+      enterTransition = { slideInHorizontally(initialOffsetX = { 1000 }, animationSpec = tween(700)) },
+      exitTransition = { slideOutHorizontally(targetOffsetX = { -1000 }, animationSpec = tween(700)) },
+      popEnterTransition = { slideInHorizontally(initialOffsetX = { -1000 }, animationSpec = tween(700)) },
+      popExitTransition = { slideOutHorizontally(targetOffsetX = { 1000 }, animationSpec = tween(700)) }
+    )  {
+      ExamFinishScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)
     }
   }
 }

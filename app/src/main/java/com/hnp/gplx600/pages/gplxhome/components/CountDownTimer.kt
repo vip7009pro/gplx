@@ -23,11 +23,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import com.hnp.gplx600.api.GlobalVariable
 
 @Composable
-fun CountDownTimer(startTime: Int)
-{
- var timeLeft by remember { mutableIntStateOf(startTime) }
+fun CountDownTimer(
+  startTime: Int, navController: NavController,
+  globalVar: GlobalVariable,
+) {
+  var timeLeft by remember { mutableIntStateOf(startTime) }
   LaunchedEffect(Unit) {
     while (timeLeft > 0) {
       delay(1000L)
@@ -36,24 +41,37 @@ fun CountDownTimer(startTime: Int)
   }
   val minutes = TimeUnit.SECONDS.toMinutes(timeLeft.toLong())
   val seconds = timeLeft % 60
+  if (timeLeft == 0) {
+    navController.navigate("examfinishscreen") {
+      popUpTo("examfinishscreen") {
+        inclusive = true
+      }
+    }
+  }
 
-  Box(contentAlignment = Alignment.Center,
-    modifier = Modifier.fillMaxSize()) {
-    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceAround) {
-      Text(text = "Thời gian còn lại: $minutes: $seconds", style = MaterialTheme.typography.bodyLarge, modifier = Modifier.padding(0.dp))
-      Spacer (modifier = Modifier.width(16.dp))
-      Button(modifier = Modifier
-        .padding(0.dp)
-        ,
-        contentPadding = PaddingValues(
-          start = 0.dp,
-          top = 0.dp,
-          end = 0.dp,
-          bottom = 0.dp
-        ),
-        onClick = {
+  Box(
+    contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()
+  ) {
+    Row(
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.SpaceAround
+    ) {
+      Text(
+        text = "Thời gian còn lại: $minutes: $seconds",
+        style = MaterialTheme.typography.bodyLarge,
+        modifier = Modifier.padding(0.dp)
+      )
+      Spacer(modifier = Modifier.width(16.dp))
+      Button(modifier = Modifier.padding(0.dp), contentPadding = PaddingValues(
+        start = 0.dp, top = 0.dp, end = 0.dp, bottom = 0.dp
+      ), onClick = {
+        navController.navigate("examfinishscreen") {
+          popUpTo("examfinishscreen") {
+            inclusive = true
+          }
+        }
 
-        }) {
+      }) {
         Text(text = "Nộp bài", fontSize = 12.sp, modifier = Modifier.padding(0.dp))
       }
     }
