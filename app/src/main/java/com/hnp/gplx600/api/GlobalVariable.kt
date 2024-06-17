@@ -21,6 +21,7 @@ class GlobalVariable: ViewModel() {
   var token: String by mutableStateOf("reset")
   var currentLicense: String by mutableStateOf("B2")
   var currentTopic: Int by mutableIntStateOf(0)
+  var currentExamNo: Int by mutableIntStateOf(0)
 
   fun changeLicense(newLicense: String) {
     currentLicense = newLicense
