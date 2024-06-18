@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.pages.gplxhome.components.CountDownTimer
+import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation2
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 
@@ -36,6 +38,10 @@ fun ExamFinishScreen(
   db: AppDataBase,
   vm: QuestionViewModel,
 ) {
+  val dataList =
+    vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo)
+      .collectAsState(initial = emptyList())
+
   LaunchedEffect(key1 = true) {
 
   }
@@ -51,21 +57,21 @@ fun ExamFinishScreen(
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
       ) {
-
+        Text(text = "Kết quả bài thi")
       }
     }, navigationIcon = {
       IconButton(onClick = { navController.navigateUp() }) {
         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
       }
     })
-  }) {
-      paddingValues ->
+  }) { paddingValues ->
     Column(
       modifier = Modifier
         .fillMaxSize()
         .padding(paddingValues)
     ) {
-      Text(text = "Exam Finish")
+      if (dataList.value.isNotEmpty()) ExamSummary(dataList.value, vm)
+      else Text(text = "Không có câu hỏi nào")
     }
   }
 

@@ -1,4 +1,4 @@
-package com.hnp.gplx600.pages.gplxhome.components
+package com.hnp.gplx600.pages.gplxhome.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -36,39 +37,40 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hnp.gplx600.api.ErpInterface
+import com.hnp.gplx600.pages.gplxhome.components.QuestionPage2
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import org.json.JSONArray
 import org.json.JSONObject
 
 @SuppressLint("DiscouragedApi")
 @Composable
-fun QuestionPage(question: ErpInterface.Question, vm: QuestionViewModel) {
-  //create jsonarray from answer array string
+fun QuestionPage3(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: QuestionViewModel) {
   val jsonArray = JSONArray(question.answers)
   val answerList = mutableListOf<JSONObject>()
   for (i in 0 until jsonArray.length()) {
     //add each answer to answerList
     answerList.add(jsonArray.getJSONObject(i))
   }
-  var showCorrect by remember { mutableStateOf(question.currentAnswer != -1) }
+  var showCorrect by remember { mutableStateOf(question.examAnswer != -1) }
   var showTip by remember { mutableStateOf(false) }
 
   Column(
     modifier = Modifier
-      .fillMaxSize()
+      .fillMaxWidth()
+      .height(100.dp)
       .background(color = Color(0xFFF8EFE0)),
     verticalArrangement = Arrangement.Top,
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     Text(
-      text = "Câu ${question.index} ",
-      fontSize = 25.sp,
-      modifier = Modifier.padding(16.dp),
+      text = "Câu ${question.questionNo} ",
+      fontSize = 20.sp,
+      modifier = Modifier.padding(0.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
     )
     Text(
       text = question.text,
-      fontSize = 20.sp,
+      fontSize = 15.sp,
       modifier = Modifier.padding(16.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
     )
@@ -134,96 +136,18 @@ fun QuestionPage(question: ErpInterface.Question, vm: QuestionViewModel) {
   }
 }
 
-@SuppressLint("DiscouragedApi")
 @Composable
-fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: QuestionViewModel) {
-  //create jsonarray from answer array string
-  val jsonArray = JSONArray(question.answers)
-  val answerList = mutableListOf<JSONObject>()
-  for (i in 0 until jsonArray.length()) {
-    //add each answer to answerList
-    answerList.add(jsonArray.getJSONObject(i))
-  }
-  var showCorrect by remember { mutableStateOf(question.examAnswer != -1) }
-  var showTip by remember { mutableStateOf(false) }
-
-  Column(
-    modifier = Modifier
-      .fillMaxSize()
-      .background(color = Color(0xFFF8EFE0)),
-    verticalArrangement = Arrangement.Top,
-    horizontalAlignment = Alignment.CenterHorizontally
-  ) {
-    Text(
-      text = "Câu ${question.questionNo} ",
-      fontSize = 25.sp,
-      modifier = Modifier.padding(16.dp),
-      style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
-    )
-    Text(
-      text = question.text,
-      fontSize = 20.sp,
-      modifier = Modifier.padding(16.dp),
-      style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
-    )
-    //show answer
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-      items(answerList) { answer ->
-        //get answer index
-        val index = answerList.indexOf(answer) + 1
-        val correct = answer.getBoolean("correct")
-        //show answer
-        Box(
-          modifier = Modifier
-            .padding(5.dp)
-            .background(color = Color.White)
-            .fillMaxSize()
-            .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
-            .clickable {
-              showCorrect = true
-              vm.updateAnswerByExamIndex(question.index, index)
-            }
-            .shadow(1.dp),
-        ) {
-          Text(
-            text = "$index. ${answer.getString("text")}",
-            fontSize = 18.sp,
-            style = TextStyle(color = if (showCorrect) if (correct) Color(0xFF0A9204) else Color.Red else Color.Black),
-            modifier = Modifier.padding(8.dp)
-          )
-        }
+fun ExamSummary(questionList: List<ErpInterface.ExamQuestionByLicenseAndExamNo>,vm: QuestionViewModel)
+{
+  Box(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(modifier = Modifier.fillMaxHeight()) {
+      //indexed items
+      items(questionList.size) { index ->
+        QuestionPage3(question = questionList[index], vm = vm)
+        Spacer(modifier = Modifier.height(10.dp))
+        //Text(text = "Question $index")
       }
     }
-    if (showTip && question.tip.isNotEmpty()) Text(
-      text = question.tip,
-      fontSize = 18.sp,
-      modifier = Modifier.padding(16.dp),
-      style = TextStyle(color = Color.Blue, fontStyle = FontStyle.Italic),
-    )
-    if (question.tip.isNotEmpty()) Text(
-      text = "Show Tip", fontSize = 15.sp, modifier = Modifier
-        .padding(0.dp)
-        .clickable {
-          showTip = true
-        }, style = TextStyle(fontStyle = FontStyle.Italic)
-    )
-    Spacer(modifier = Modifier.height(30.dp))
-    val context = LocalContext.current
-    val res = context.resources
-    val packageName = context.packageName
-    //val drawableName = question.image
-    val drawableName = question.image.split(".").first()
-    val resourceId = res.getIdentifier(drawableName, "drawable", packageName)
-    if (question.image.isNotEmpty()) Image(
-      painter = painterResource(id = resourceId),
-      contentDescription = null,
-      modifier = Modifier
-        .fillMaxWidth()
-        .padding(all = 8.dp)
-        .clip(RoundedCornerShape(5.dp)),
-      contentScale = ContentScale.Crop
-    )
-//      if (question.image.isNotEmpty()) ImageFromUrl(imageUrl = "https://gplx.app/images/questions/" + question.image)
-
   }
+
 }
