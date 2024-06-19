@@ -1,6 +1,7 @@
 package com.hnp.gplx600.pages.gplxhome.components
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -144,27 +145,45 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
     //add each answer to answerList
     answerList.add(jsonArray.getJSONObject(i))
   }
+  //Log.d("answer list", answerList.toString())
   var showCorrect by remember { mutableStateOf(question.examAnswer != -1) }
   var showTip by remember { mutableStateOf(false) }
 
+
   Column(
     modifier = Modifier
-      .fillMaxSize()
-      .background(color = Color(0xFFF8EFE0)),
+      .fillMaxWidth()
+      .background(color = Color(0x72C8F0AD)),
     verticalArrangement = Arrangement.Top,
     horizontalAlignment = Alignment.CenterHorizontally
   ) {
     Text(
       text = "Câu ${question.questionNo} ",
       fontSize = 25.sp,
-      modifier = Modifier.padding(16.dp),
+      modifier = Modifier.padding(5.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
     )
     Text(
       text = question.text,
       fontSize = 20.sp,
-      modifier = Modifier.padding(16.dp),
+      modifier = Modifier.padding(5.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
+    )
+    val context = LocalContext.current
+    val res = context.resources
+    val packageName = context.packageName
+    //val drawableName = question.image
+    val drawableName = question.image.split(".").first()
+    Log.d("image",drawableName)
+    val resourceId = res.getIdentifier(drawableName, "drawable", packageName)
+    if (question.image.isNotEmpty()) Image(
+      painter = painterResource(id = resourceId),
+      contentDescription = null,
+      modifier = Modifier
+        .fillMaxWidth()
+        .padding(all = 8.dp)
+        .clip(RoundedCornerShape(5.dp)),
+      contentScale = ContentScale.Crop
     )
     //show answer
     LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -176,7 +195,7 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
         Box(
           modifier = Modifier
             .padding(5.dp)
-            .background(color = Color.White)
+            .background(color = if (index == question.examAnswer)  Color.Green else Color.White)
             .fillMaxSize()
             .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
             .clickable {
@@ -188,7 +207,7 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
           Text(
             text = "$index. ${answer.getString("text")}",
             fontSize = 18.sp,
-            style = TextStyle(color = if (showCorrect) if (correct) Color(0xFF0A9204) else Color.Red else Color.Black),
+            color =  Color.Black,
             modifier = Modifier.padding(8.dp)
           )
         }
@@ -207,22 +226,9 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
           showTip = true
         }, style = TextStyle(fontStyle = FontStyle.Italic)
     )
-    Spacer(modifier = Modifier.height(30.dp))
-    val context = LocalContext.current
-    val res = context.resources
-    val packageName = context.packageName
-    //val drawableName = question.image
-    val drawableName = question.image.split(".").first()
-    val resourceId = res.getIdentifier(drawableName, "drawable", packageName)
-    if (question.image.isNotEmpty()) Image(
-      painter = painterResource(id = resourceId),
-      contentDescription = null,
-      modifier = Modifier
-        .fillMaxWidth()
-        .padding(all = 8.dp)
-        .clip(RoundedCornerShape(5.dp)),
-      contentScale = ContentScale.Crop
-    )
+    //Spacer(modifier = Modifier.height(30.dp))
+
+
 //      if (question.image.isNotEmpty()) ImageFromUrl(imageUrl = "https://gplx.app/images/questions/" + question.image)
 
   }

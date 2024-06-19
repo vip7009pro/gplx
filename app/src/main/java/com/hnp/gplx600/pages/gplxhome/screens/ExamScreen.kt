@@ -24,10 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.pages.gplxhome.components.CountDownTimer
-import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation
 import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation2
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
@@ -42,7 +40,7 @@ fun ExamScreen(
   vm: QuestionViewModel,
 ) {
   val dataList = vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo).collectAsState(initial = emptyList())
-
+  globalVar.currentDataList = dataList.value
   LaunchedEffect(key1 = true) {
 
   }
@@ -58,7 +56,7 @@ fun ExamScreen(
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
       ) {
-        CountDownTimer(startTime = 10, navController=navController, globalVar = globalVar)
+        CountDownTimer(startTime = 1200, navController=navController, globalVar = globalVar)
       }
     }, navigationIcon = {
       IconButton(onClick = { navController.navigateUp() }) {
@@ -72,11 +70,8 @@ fun ExamScreen(
         .fillMaxSize()
         .padding(paddingValues)
     ) {
-      if (dataList.value.isNotEmpty()) HorizontalPagerWithBottomNavigation2(
-        dataList.value, vm
-      ) else Text(
-        text = "Không có câu hỏi nào"
-      )
+      if (dataList.value.isNotEmpty()) HorizontalPagerWithBottomNavigation2(globalVar.currentDataList, vm)
+      else Text(text = "Không có câu hỏi nào")
     }
   }
 }

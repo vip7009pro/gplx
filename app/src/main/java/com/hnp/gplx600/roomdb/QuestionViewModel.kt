@@ -67,5 +67,11 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
     return dao.getExamWithQuestionByLicenseAndExamNo(license, examNo)
   }
 
+  //reset exam answer
+  fun resetExamAnswer(license: String, examNo: Int) {
+    viewModelScope.launch {
+      dao.resetExamAnswerByLicenseAndExamNo(license, examNo)
+    }
+  }
 
 }

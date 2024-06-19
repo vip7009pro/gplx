@@ -55,5 +55,10 @@ interface DaoInterface {
   @Transaction
   @Query("SELECT test_table.examIndex AS examIndex, test_table.license, test_table.examNo, test_table.`index`, test_table.examAnswer, question_table.image, question_table.dapAn, question_table.text, question_table.tip, question_table.answers, question_table.required, question_table.topic, test_table.questionNo  FROM test_table LEFT JOIN question_Table ON test_table.`index` = question_table.`index` WHERE test_table.license = :license AND test_table.examNo = :examNo order by test_table.questionNo asc")
   fun getExamWithQuestionByLicenseAndExamNo(license: String, examNo: Int): Flow<List<ErpInterface.ExamQuestionByLicenseAndExamNo>>
+//reset exam answer by license and exam no
+  @Query("UPDATE test_table SET examAnswer = -1 WHERE license = :license AND examNo = :examNo")
+  suspend fun resetExamAnswerByLicenseAndExamNo(license: String, examNo: Int)
+
+
 
 }

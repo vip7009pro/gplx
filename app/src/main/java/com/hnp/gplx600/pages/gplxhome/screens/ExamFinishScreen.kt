@@ -24,10 +24,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.GlobalVariable
-import com.hnp.gplx600.pages.gplxhome.components.CountDownTimer
-import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation2
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 
@@ -39,10 +38,7 @@ fun ExamFinishScreen(
   db: AppDataBase,
   vm: QuestionViewModel,
 ) {
-  val dataList =
-    vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo)
-      .collectAsState(initial = emptyList())
-
+  val dataList = vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo).collectAsState(initial = emptyList())
   LaunchedEffect(key1 = true) {
 
   }
@@ -53,12 +49,11 @@ fun ExamFinishScreen(
       .background(color = Color.Green), title = {
       Row(
         modifier = Modifier
-          .fillMaxWidth()
-          .height(40.dp),
-        horizontalArrangement = Arrangement.Start,
+          .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
       ) {
-        Text(text = "Kết quả bài thi")
+        Text(text = "Kết quả bài thi", fontSize = 18.sp)
       }
     }, navigationIcon = {
       IconButton(onClick = { navController.navigateUp() }) {

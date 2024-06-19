@@ -135,6 +135,18 @@ class ErpInterface
         val part1: Int, val part2: Int, val part3: Int, val part4: Int, val part5: Int,
         val part6: Int, val part7: Int, val part8: Int, val part9: Int, val part10: Int
     )
+    data class RequiredScore(
+        val A1: Int,
+        val A2: Int,
+        val A3: Int,
+        val A4: Int,
+        val B1: Int,
+        val B2: Int,
+        val C: Int,
+        val D: Int,
+        val E: Int,
+        val F: Int
+    )
 
     data class MaxExam
     (

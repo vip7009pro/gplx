@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.GlobalVariable
 

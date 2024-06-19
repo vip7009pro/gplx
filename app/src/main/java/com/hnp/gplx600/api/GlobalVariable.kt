@@ -22,6 +22,7 @@ class GlobalVariable: ViewModel() {
   var currentLicense: String by mutableStateOf("B2")
   var currentTopic: Int by mutableIntStateOf(0)
   var currentExamNo: Int by mutableIntStateOf(0)
+  var currentDataList: List<ErpInterface. ExamQuestionByLicenseAndExamNo> by mutableStateOf(emptyList())
 
   fun changeLicense(newLicense: String) {
     currentLicense = newLicense
