@@ -39,7 +39,10 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.hnp.gplx600.api.ErpInterface
+import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.components.MyDialog
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import org.json.JSONArray
 import org.json.JSONObject
@@ -150,12 +153,12 @@ fun QuestionPage3(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
                 .padding(2.dp)
                 .background(
                   color = if (index == question.examAnswer) {
-                    if (correct) Color(0xFF55E04F) else Color.Red
+                    if (correct) Color(0xFF55E04F) else Color(0xFFF05252)
                   } else if (index == question.dapAn) Color(0xFF55E04F)
                   else Color.White
                 )
                 .fillMaxSize()
-                .clip(RoundedCornerShape(5.dp))
+                .clip(RoundedCornerShape(10.dp))
 
             ) {
               Row(
@@ -185,7 +188,6 @@ fun QuestionPage3(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
           style = TextStyle(color = Color.Blue, fontStyle = FontStyle.Italic),
         )
 
-
       }
 
       //      if (question.image.isNotEmpty()) ImageFromUrl(imageUrl = "https://gplx.app/images/questions/" + question.image)
@@ -198,6 +200,8 @@ fun QuestionPage3(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
 fun ExamSummary(
   questionList: List<ErpInterface.ExamQuestionByLicenseAndExamNo>,
   vm: QuestionViewModel,
+  navController: NavController,
+  globalVar: GlobalVariable
 ) {
   //summary exam score with number of correct and incorrect answer
   val correctAnswer = questionList.count { it.examAnswer == it.dapAn }
@@ -206,16 +210,15 @@ fun ExamSummary(
   val requiredQuestionFailed =
     questionList.count { it.required == 1 && it.examAnswer != -1 && it.dapAn != it.examAnswer }
   val totalQuestion = questionList.size
-  val requiredCorrectAnswerByLicense  =
-    when (questionList[0].license) {
-      "A1" -> 21
-      "A2" -> 23
-      "A3" -> 23
-      "A4" -> 21
-      "B1" -> 27
-      "B2" -> 32
-      else -> 36
-    }
+  val requiredCorrectAnswerByLicense = when (questionList[0].license) {
+    "A1" -> 21
+    "A2" -> 23
+    "A3" -> 23
+    "A4" -> 21
+    "B1" -> 27
+    "B2" -> 32
+    else -> 36
+  }
   //println("required correct=$requiredCorrectAnswerByLicense")
   Box(modifier = Modifier.fillMaxSize()) {
     Column(
@@ -230,12 +233,14 @@ fun ExamSummary(
           .fillMaxWidth()
           .padding(all = 2.dp)
           .clip(RoundedCornerShape(10.dp))
-          .background(brush = Brush.verticalGradient(
-            colors = listOf(
-              Color(0xFF97F353), // Start color
-              Color(0xFFEEF8F8)  // End color
+          .background(
+            brush = Brush.verticalGradient(
+              colors = listOf(
+                Color(0xFF97F353), // Start color
+                Color(0xFFEEF8F8)  // End color
+              )
             )
-          )),
+          ),
       ) {
         Row(
           modifier = Modifier
@@ -257,14 +262,24 @@ fun ExamSummary(
               fontSize = 25.sp
             )
             else Text(
-              text = "Thi trượt",
-              color = Color.Red,
-              fontWeight = FontWeight.Bold,
-              fontSize = 20.sp
+              text = "Thi trượt", color = Color.Red, fontWeight = FontWeight.Bold, fontSize = 20.sp
             )
           }
           Text(text = "Thi lại", color = Color.Blue, modifier = Modifier.clickable {
-            vm.resetExamAnswer(questionList[0].license, questionList[0].examNo)
+
+            globalVar.showDialog(
+              dialogTitle = "Thông báo",
+              dialogText = "Bạn có chắc chắn muốn thi lại?",
+              dialogCat = "",
+              dlConfirm = {
+                vm.resetExamAnswer(questionList[0].license, questionList[0].examNo)
+                navController.navigateUp()
+              },
+              dlCancel = {
+                //navController.navigateUp()
+              }
+            )
+
           })
         }
         Row(//align center
@@ -298,5 +313,6 @@ fun ExamSummary(
     }
 
   }
+  MyDialog().FNDialog(globalVar = globalVar)
 
 }

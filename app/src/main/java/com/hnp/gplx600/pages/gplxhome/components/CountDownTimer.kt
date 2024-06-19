@@ -69,7 +69,6 @@ fun CountDownTimer(
             inclusive = true
           }
         }
-
       }) {
         Text(text = "Nộp bài", fontSize = 12.sp, modifier = Modifier.padding(0.dp))
       }

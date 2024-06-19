@@ -49,20 +49,21 @@ fun ExamFinishScreen(
       .background(color = Color.Green), title = {
       Row(
         modifier = Modifier
-          .fillMaxWidth(),
+          .fillMaxWidth()
+          .background(Color.Transparent),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
       ) {
         Text(text = "Kết quả bài thi", fontSize = 18.sp)
       }
-    }, navigationIcon = {
+    }/*, navigationIcon = {
       IconButton(onClick = { navController.navigateUp() }) {
         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
       }
-    })
+    }*/)
   }) { paddingValues ->
     Box(modifier = Modifier.padding(paddingValues).fillMaxSize()) {
-      if (dataList.value.isNotEmpty()) ExamSummary(dataList.value, vm)
+      if (dataList.value.isNotEmpty()) ExamSummary(dataList.value, vm, navController, globalVar)
       else Text(text = "Không có câu hỏi nào")
     }
   }
