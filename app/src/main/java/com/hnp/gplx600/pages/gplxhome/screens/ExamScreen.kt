@@ -59,7 +59,20 @@ fun ExamScreen(
         CountDownTimer(startTime = 1200, navController=navController, globalVar = globalVar)
       }
     }, navigationIcon = {
-      IconButton(onClick = { navController.navigateUp() }) {
+      IconButton(onClick = {
+        globalVar.showDialog(
+          dialogTitle = "Thông báo",
+          dialogText = "Chưa hết giờ, Bạn có chắc chắn muốn thoát?",
+          dialogCat = "",
+          dlConfirm = {
+            navController.navigateUp()
+          },
+          dlCancel = {
+            //navController.navigateUp()
+          }
+        )
+
+      }) {
         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
       }
     })

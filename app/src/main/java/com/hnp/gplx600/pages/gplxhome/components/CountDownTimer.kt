@@ -25,6 +25,8 @@ import kotlinx.coroutines.delay
 import java.util.concurrent.TimeUnit
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.components.Components
+import com.hnp.gplx600.components.MyDialog
 
 @Composable
 fun CountDownTimer(
@@ -64,15 +66,29 @@ fun CountDownTimer(
       Button(modifier = Modifier.padding(0.dp), contentPadding = PaddingValues(
         start = 0.dp, top = 0.dp, end = 0.dp, bottom = 0.dp
       ), onClick = {
-        navController.navigate("examfinishscreen") {
-          popUpTo("examfinishscreen") {
-            inclusive = true
+        globalVar.showDialog(
+          dialogTitle = "Thông báo",
+          dialogText = "Chưa hết giờ, Bạn có chắc chắn muốn nộp bài?",
+          dialogCat = "",
+          dlConfirm = {
+            navController.navigate("examfinishscreen") {
+              popUpTo("examfinishscreen") {
+                inclusive = true
+              }
+            }
+          },
+          dlCancel = {
+            //navController.navigateUp()
           }
-        }
+        )
+
+
       }) {
         Text(text = "Nộp bài", fontSize = 12.sp, modifier = Modifier.padding(0.dp))
       }
     }
 
   }
+  MyDialog().FNDialog(globalVar = globalVar)
+
 }

@@ -174,7 +174,6 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
     val packageName = context.packageName
     //val drawableName = question.image
     val drawableName = question.image.split(".").first()
-    Log.d("image",drawableName)
     val resourceId = res.getIdentifier(drawableName, "drawable", packageName)
     if (question.image.isNotEmpty()) Image(
       painter = painterResource(id = resourceId),
@@ -195,9 +194,9 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
         Box(
           modifier = Modifier
             .padding(5.dp)
-            .background(color = if (index == question.examAnswer)  Color.Green else Color.White)
+            .background(color = if (index == question.examAnswer)  Color(0xFF8CC7F5) else Color.White)
             .fillMaxSize()
-            .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
+//            .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
             .clickable {
               showCorrect = true
               vm.updateAnswerByExamIndex(question.index, index)

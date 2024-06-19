@@ -82,7 +82,7 @@ fun QuestionPage3(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
     ) {
       val isCorrect = question.dapAn == question.examAnswer
       Row(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp)),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
       ) {
@@ -158,13 +158,13 @@ fun QuestionPage3(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
                   else Color.White
                 )
                 .fillMaxSize()
-                .clip(RoundedCornerShape(10.dp))
+                .clip(RoundedCornerShape(10.dp)
+                )
 
             ) {
               Row(
                 modifier = Modifier
-                  .fillMaxSize()
-                  .clip(RoundedCornerShape(5.dp)),
+                  .fillMaxSize(),
                 horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically
 
