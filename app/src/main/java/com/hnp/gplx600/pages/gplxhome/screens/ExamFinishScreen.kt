@@ -2,6 +2,7 @@ package com.hnp.gplx600.pages.gplxhome.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -65,11 +66,7 @@ fun ExamFinishScreen(
       }
     })
   }) { paddingValues ->
-    Column(
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(paddingValues)
-    ) {
+    Box(modifier = Modifier.padding(paddingValues).fillMaxSize()) {
       if (dataList.value.isNotEmpty()) ExamSummary(dataList.value, vm)
       else Text(text = "Không có câu hỏi nào")
     }

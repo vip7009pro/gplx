@@ -18,10 +18,6 @@
       {
          "text": "Phần đường xe cơ giới.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -51,10 +47,6 @@
       {
          "text": "Là một phần của phần đường xe chạy được chia theo chiều dọc của đường, có đủ bề rộng cho xe ô tô chạy an toàn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -84,10 +76,6 @@
       {
          "text": "Là khoảng trống có kích thước giới hạn về chiều cao của cầu, bến phà, hầm trên đường bộ để các xe đi qua được an toàn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -117,10 +105,6 @@
       {
          "text": "Là bộ phận của đường để phân chia mặt đường thành hai chiều xe chạy riêng biệt hoặc để phân chia phần đường của xe cơ giới và xe thô sơ.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -150,10 +134,6 @@
       {
          "text": "Dải phân cách gồm giá long môn và biển báo hiệu đường bộ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -183,10 +163,6 @@
       {
          "text": "Là người điều khiển xe có súc vật kéo.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -245,14 +221,6 @@
       {
          "text": "Gồm xe ô tô; máy kéo; rơ moóc hoặc sơ mi rơ moóc được kéo bởi xe ô tô, máy kéo; xe mô tô hai bánh; xe mô tô ba bánh, xe gắn máy (kể cả xe máy điện) và các loại xe tương tự.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -282,10 +250,6 @@
       {
          "text": "Gồm xe ô tô, máy kéo, rơ moóc hoặc sơ mi rơ moóc được kéo bởi xe ô tô, máy kéo.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -315,10 +279,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -348,10 +308,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -381,10 +337,6 @@
       {
          "text": "Cả ý 1 và ý 2",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -414,10 +366,6 @@
       {
          "text": "Là người tham gia giao thông tại nơi thi công, nơi ùn tắc giao thông, ở bến phà, tại cầu đường bộ đi chung với đường sắt.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -447,10 +395,6 @@
       {
          "text": "Là trạng thái đứng yên của phương tiện giao thông không giới hạn thời gian giữa 02 lần vận chuyển hàng hóa hoặc hành khách.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -476,14 +420,6 @@
       {
          "text": "Là trạng thái đứng yên của phương tiện giao thông không giới hạn thời gian.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -612,10 +548,6 @@
       {
          "text": "Được cơ quan có thẩm quyền cấp phép.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -645,10 +577,6 @@
       {
          "text": "Không bị nghiêm cấm, nếu có chất ma túy ở mức nhẹ, có thể điều khiển phương tiện tham gia giao thông.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -678,10 +606,6 @@
       {
          "text": "Chỉ được lái nếu trong cơ thể có nồng độ cồn thấp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -711,10 +635,6 @@
       {
          "text": "Không bị nghiêm cấm, nếu nồng độ cồn trong máu ở mức nhẹ, có thể điều khiển phương tiện tham gia giao thông.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -744,10 +664,6 @@
       {
          "text": "Không bị xử lý hình sự.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -843,10 +759,6 @@
       {
          "text": "Bị nghiêm cấm.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -876,10 +788,6 @@
       {
          "text": "Không vượt quá tốc độ cho phép.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -909,10 +817,6 @@
       {
          "text": "Đi ở giữa.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1008,10 +912,6 @@
       {
          "text": "Từ 23 giờ đêm đến 5 giờ sáng hôm sau.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -1074,10 +974,6 @@
       {
          "text": "Được phép tùy từng trường hợp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1107,10 +1003,6 @@
       {
          "text": "Phải là xe đăng ký và hoạt động tại các khu vực có địa hình phức tạp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -1140,10 +1032,6 @@
       {
          "text": "Nghiêm cấm sản xuất, mua bán, sử dụng trái phép.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1173,10 +1061,6 @@
       {
          "text": "Trên đường có 2 làn đường được phân chia làn bằng vạch kẻ nét đứt.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1206,10 +1090,6 @@
       {
          "text": "Tùy từng trường hợp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1305,10 +1185,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1404,10 +1280,6 @@
       {
          "text": "Được dừng xe, không được đỗ xe.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1503,10 +1375,6 @@
       {
          "text": "Không được phép.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1701,10 +1569,6 @@
       {
          "text": "Không được phép.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1734,10 +1598,6 @@
       {
          "text": "Chỉ được vận chuyển vật cồng kềnh trên xe máy nếu khoảng cách về nhà ngắn hơn 2 km.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -1767,10 +1627,6 @@
       {
          "text": "20 tuổi.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -1800,10 +1656,6 @@
       {
          "text": "17 tuổi.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -1965,10 +1817,6 @@
       {
          "text": "Xe mô tô có dung tích xi-lanh 100 cm3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -1998,10 +1846,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2031,10 +1875,6 @@
       {
          "text": "Các loại máy kéo nhỏ có trọng tải đến 1.000 kg.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2064,10 +1904,6 @@
       {
          "text": "Các loại máy kéo nhỏ có trọng tải đến 1.000 kg.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2097,10 +1933,6 @@
       {
          "text": "Ô tô chở người đến 9 chỗ ngồi, kể cả chỗ ngồi cho người lái xe; ô tô tải, kể cả ô tô tải chuyên dùng có trọng tải thiết kế dưới 3.500 kg; ô tô dùng cho người khuyết tật.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2130,10 +1962,6 @@
       {
          "text": "Ô tô số tự động chở người đến 9 chỗ ngồi, kể cả chỗ ngồi cho người lái xe; ô tô tải, kể cả ô tô tải chuyên dùng số tự động có trọng tải thiết kế trên 3.500 kg; ô tô dùng cho người khuyết tật.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2163,10 +1991,6 @@
       {
          "text": "Xe ô tô chở người từ 10 đến 30 chỗ ngồi; xe ô tô tải; máy kéo có trọng tải trên 3.500 kg.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2196,10 +2020,6 @@
       {
          "text": "Xe ô tô chở người đến 9 chỗ ngồi; xe ô tô tải; máy kéo có trọng tải trên 3.500 kg.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2229,10 +2049,6 @@
       {
          "text": "Xe kéo rơ moóc, ô tô đầu kéo kéo sơ mi rơ moóc và được điều khiển các loại xe theo quy định cho giấy phép lái xe hạng B1, B2, C và FB2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2262,10 +2078,6 @@
       {
          "text": "Xe kéo rơ moóc và được điều khiển các loại xe; ô tô chở khách nối toa và các loại xe quy định cho giấy phép lái xe hạng B1, B2, C, D, FB2, FD.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2328,10 +2140,6 @@
       {
          "text": "Tất cả các loại xe nêu trên.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2526,10 +2334,6 @@
       {
          "text": "Phải mang theo giấy chứng nhận Giáo viên dạy thực hành lái xe, biên lai thu phí bảo trì đường bộ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2559,10 +2363,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2592,10 +2392,6 @@
       {
          "text": "Tại các trung tâm sát hạch lái xe có đủ điều kiện hoạt động và phải bảo đảm công khai, minh bạch.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2625,10 +2421,6 @@
       {
          "text": "Giấy phép lái xe phù hợp với loại xe đó, đăng ký xe, giấy chứng nhận kiểm định kỹ thuật và bảo vệ môi trường, giấy chứng nhận bảo hiểm trách nhiệm dân sự của chủ xe cơ giới và giấy phép vận chuyển (nếu loại xe đó cần phải có), các giấy tờ phải còn giá trị sử dụng.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2786,14 +2578,6 @@
       {
          "text": "Báo hiệu tạm thời.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2823,10 +2607,6 @@
       {
          "text": "Phải cho xe đi trong một làn đường, khi cần thiết phải chuyển làn đường, người lái xe phải quan sát xe phía trước để bảo đảm an toàn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2856,10 +2636,6 @@
       {
          "text": "Xe thô sơ đi trên làn đường phù hợp không gây cản trở giao thông, xe cơ giới, xe máy chuyên dùng đi trên làn đường bên phải.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2922,10 +2698,6 @@
       {
          "text": "Cho xe tránh về bên trái mình và ra hiệu cho xe sau vượt; nếu có chướng ngại vật phía trước hoặc thiếu điều kiện an toàn chưa cho vượt được phải ra hiệu cho xe sau biết; cấm gây trở ngại cho xe xin vượt.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2955,10 +2727,6 @@
       {
          "text": "Ở bất kỳ nơi nào.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -2988,10 +2756,6 @@
       {
          "text": "Lợi dụng chỗ rộng có thể quay đầu được để quay đầu xe cho an toàn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -3021,10 +2785,6 @@
       {
          "text": "Quan sát gương, tăng tốc độ, ra tín hiệu và chuyển hướng.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3054,10 +2814,6 @@
       {
          "text": "Phải quan sát phía sau, có tín hiệu cần thiết và chỉ nào thấy không nguy hiểm mới được lùi.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3153,10 +2909,6 @@
       {
          "text": "Chỉ nhường đường khi xe lên dốc nháy đèn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3186,10 +2938,6 @@
       {
          "text": "Nhường đường cho xe đi trên đường ưu tiên hoặc đường chính từ bất kỳ hướng nào tới.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3219,10 +2967,6 @@
       {
          "text": "Phải nhường đường cho xe đi đến từ bên trái.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3252,10 +2996,6 @@
       {
          "text": "Phương tiện giao thông đường sắt.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -3285,10 +3025,6 @@
       {
          "text": "4 mét.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3314,14 +3050,6 @@
       {
          "text": "Phải có tín hiệu xin vào và phải nhanh chóng vượt xe đang chạy trên đường để nhập vào dòng xe ở làn đường sát mép ngoài; nếu có làn đường tăng tốc thì phải cho xe chạy qua làn đường đó để vào làn đường của đường cao tốc.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -3351,10 +3079,6 @@
       {
          "text": "Chỉ được dừng xe, đỗ xe ở nơi đường rộng; trường hợp dừng xe, đỗ xe tại nơi đường hẹp phải đặt các chướng ngại vật trên đường để yêu cầu người lái xe khác giảm tốc độ để bảo đảm an toàn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3384,10 +3108,6 @@
       {
          "text": "Người đi bộ, xe thô sơ, xe gắn máy và xe ô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3417,10 +3137,6 @@
       {
          "text": "Xe máy chuyên dùng phải bật đèn ngay cả khi đường hầm sáng; phải cho xe chạy trên một làn đường và chỉ chuyển làn ở nơi được phép; được quay đầu xe, lùi xe khi cần thiết.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3483,10 +3199,6 @@
       {
          "text": "Dùng thanh nối cứng.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3516,10 +3228,6 @@
       {
          "text": "Phải được lắp phanh phụ theo quy định để đảm bảo an toàn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3549,10 +3257,6 @@
       {
          "text": "Được kéo theo một xe ô tô và xe máy chuyên dùng khác khi xe này không tự chạy được và hệ thống phanh bị hỏng, xe kéo nhau phải nối bằng dây cáp có độ dài phù hợp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3582,10 +3286,6 @@
       {
          "text": "Khi tham gia giao thông trên đường tỉnh lộ hoặc quốc lộ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -3615,10 +3315,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3648,10 +3344,6 @@
       {
          "text": "Điều khiển phương tiện tham gia giao thông trên đường tỉnh lộ hoặc quốc lộ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3681,10 +3373,6 @@
       {
          "text": "Được phép tùy từng hoàn cảnh, điều kiện cụ thể.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -3747,10 +3435,6 @@
       {
          "text": "Báo hiệu từ từ cho xe đi cắt qua để bảo đảm an toàn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -3780,10 +3464,6 @@
       {
          "text": "Không phải nhường đường.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3813,10 +3493,6 @@
       {
          "text": "Sau khi thay đổi làn đường.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3879,10 +3555,6 @@
       {
          "text": "Sử dụng một ít rượu hoặc bia để hết buồn ngủ và đi tiếp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -3912,10 +3584,6 @@
       {
          "text": "Tiếp tục chạy đến lối ra tiếp theo.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -3945,10 +3613,6 @@
       {
          "text": "Nếu đủ điều kiện an toàn, người lái xe phải tăng tốc độ, đi sát về bên phải của phần đường xe chạy cho đến khi xe sau đã vượt qua.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -3978,10 +3642,6 @@
       {
          "text": "Liên hệ ngay với đơn vị cứu hộ để đưa ô tô hỏng ra khỏi phạm vi an toàn đường sắt.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4011,10 +3671,6 @@
       {
          "text": "Phải đội mũ bảo hiểm khi cảm thấy mất an toàn giao thông hoặc khi chuẩn bị di chuyển quãng đường xa.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4044,10 +3700,6 @@
       {
          "text": "Là đoạn đường nằm ngoài khu vực nội thành phố, nội thị xã có đông người và phương tiện tham gia giao thông và được xác định cụ thể bằng biển chỉ dẫn địa giới.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4077,10 +3729,6 @@
       {
          "text": "60 km/h.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4110,10 +3758,6 @@
       {
          "text": "40 km/h.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4143,10 +3787,6 @@
       {
          "text": "40 km/h.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4176,10 +3816,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4209,10 +3845,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4242,10 +3874,6 @@
       {
          "text": "Ô tô buýt, ô tô đầu kéo kéo sơ mi rơ moóc, ô tô chuyên dùng, xe mô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4341,10 +3969,6 @@
       {
          "text": "Xe ô tô con, xe ô tô chở người đến 30 chỗ (trừ xe buýt), ô tô tải có trọng tải nhỏ hơn hoặc bằng 3.500 kg.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4374,10 +3998,6 @@
       {
          "text": "Xe ô tô con, xe ô tô chở người đến 30 chỗ (trừ xe buýt), ô tô tải có trọng tải nhỏ hơn hoặc bằng 3.500 kg.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4407,10 +4027,6 @@
       {
          "text": "Xe ô tô con, xe ô tô chở người đến 30 chỗ (trừ xe buýt), ô tô tải có trọng tải nhỏ hơn hoặc bằng 3.500 kg.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4440,10 +4056,6 @@
       {
          "text": "Ô tô buýt, ô tô đầu kéo kéo sơ mi rơ moóc, xe mô tô, ô tô chuyên dùng (trừ ô tô trộn vữa, ô tô trộn bê tông).",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4473,10 +4085,6 @@
       {
          "text": "Ô tô kéo rơ moóc, ô tô kéo xe khác, ô tô trộn vữa, ô tô trộn bê tông, ô tô xi téc.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4506,10 +4114,6 @@
       {
          "text": "70 m.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4539,10 +4143,6 @@
       {
          "text": "70 m.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4572,10 +4172,6 @@
       {
          "text": "100 m.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4605,10 +4201,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4770,10 +4362,6 @@
       {
          "text": "Được phép tùy từng hoàn cảnh và điều kiện cụ thể.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -4836,10 +4424,6 @@
       {
          "text": "Lạng lách, đánh võng trên đường bộ.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -4869,10 +4453,6 @@
       {
          "text": "Xe ô tô, xe máy, đoàn xe đang diễu hành có tổ chức có báo tín hiệu xin vượt bằng còi và đèn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4902,10 +4482,6 @@
       {
          "text": "Nhường đường cho xe đi trên đường ưu tiên từ bất kỳ hướng nào tới.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -4968,10 +4544,6 @@
       {
          "text": "Cho xe đi sát bên phải làn đường, bật tín hiệu báo hiệu để vượt bên phải xe khác.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5001,10 +4573,6 @@
       {
          "text": "Tăng tốc độ để vượt qua trước người đi bộ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5067,10 +4635,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -5100,10 +4664,6 @@
       {
          "text": "Người điều khiển phương tiện tham gia giao thông phải nghiêm chỉnh chấp hành quy định về tốc độ, khoảng cách an toàn tối thiểu giữa hai xe.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5133,10 +4693,6 @@
       {
          "text": "Tuân thủ tốc độ tối đa, tốc độ tối thiểu ghi trên biển báo hiệu đường bộ, sơn kẻ mặt đường trên các làn xe chỉ vào ban đêm.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5232,10 +4788,6 @@
       {
          "text": "Bạn phải có báo hiệu bằng đèn hoặc còi.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5265,10 +4817,6 @@
       {
          "text": "Được dừng, đỗ nhưng phải đảm bảo an toàn",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5298,10 +4846,6 @@
       {
          "text": "Bật đèn tín hiệu khẩn cấp, khi đủ điều kiện an toàn nhanh chóng đưa xe vào làn dừng đỗ khẩn cấp, đặt biển báo hiệu nguy hiểm để cảnh báo cho các xe khác",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -5397,10 +4941,6 @@
       {
          "text": "Chỉ được phép dừng, đỗ khi đường vắng.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5463,10 +5003,6 @@
       {
          "text": "Yêu cầu phải dừng lại phía sau xe buýt chờ xe rời bến mới đi tiếp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5492,14 +5028,6 @@
       {
          "text": "Luôn có ý thức về tính tổ chức, kỷ luật, thực hiện linh hoạt biểu đồ xe chạy được phân công để tiết kiệm chi phí; thực hiện đúng hành trình, lịch trình khi có khách đi xe, đón trả khách ở những nơi thuận tiện cho hành khách đi xe.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5529,10 +5057,6 @@
       {
          "text": "Vận chuyển hàng cấm lưu thông; vận chuyển trái phép hàng nguy hiểm, động vật hoang dã.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5727,10 +5251,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5756,14 +5276,6 @@
       {
          "text": "Được vận chuyển theo hợp đồng vận tải, cam kết của người kinh doanh về vận tải; được miễn cước hành lý với trọng lượng không quá 50 kg và với kích thước không quá cồng kềnh; được từ chối chuyến đi trước khi phương tiện khởi hành và được trả lại tiền vé.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5793,10 +5305,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5826,10 +5334,6 @@
       {
          "text": "Yêu cầu xếp hàng hóa vượt tải trọng 10%.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5859,10 +5363,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5888,14 +5388,6 @@
       {
          "text": "Từ chối xếp hàng hóa lên phương tiện khi thấy phương tiện đó không phù hợp với yêu cầu; yêu cầu người kinh doanh vận tải giao hàng trước thời hạn đã thỏa thuận trong hợp đồng; yêu cầu người kinh doanh vận tải bồi thường thiệt hại khi người kinh doanh vận tải gây thiệt hại.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5925,10 +5417,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5958,10 +5446,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -5991,10 +5475,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6024,10 +5504,6 @@
       {
          "text": "Là hàng có kích thước hoặc trọng lượng vượt quá giới hạn quy định nhưng không thể tháo rời ra được.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6057,10 +5533,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6090,10 +5562,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6119,14 +5587,6 @@
       {
          "text": "Người lái xe buýt, xe chở hàng đón, trả khách, hàng hóa theo thỏa thuận giữa hành khách, chủ hàng và người lái xe.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6156,10 +5616,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6189,10 +5645,6 @@
       {
          "text": "Hình 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6218,14 +5670,6 @@
       {
          "text": "Hình 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6251,14 +5695,6 @@
       {
          "text": "Hình 2",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6288,10 +5724,6 @@
       {
          "text": "Hình 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6317,14 +5749,6 @@
       {
          "text": "Hình 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6354,10 +5778,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6383,14 +5803,6 @@
       {
          "text": "Thực hiện nghiêm chỉnh những nội dung hợp đồng giữa chủ hàng với khách hàng trong việc vận chuyển và bảo quản hàng hóa trong quá trình vận chuyển; trong trường hợp cần thiết có thể xếp hàng quá trọng tải của xe, quá trọng tải cho phép của cầu theo yêu cầu của chủ hàng; khi vận chuyển hàng quá khổ, quá tải, hàng nguy hiểm, hàng siêu trường, siêu trọng phải được chủ hàng cho phép.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6420,10 +5832,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6486,10 +5894,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6519,10 +5923,6 @@
       {
          "text": "Giảm tốc độ cho xe chạy qua làn đường dành cho mô tô để tránh vũng nước.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6552,10 +5952,6 @@
       {
          "text": "Là có văn hóa giao thông.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -6581,14 +5977,6 @@
       {
          "text": "Thực hiện cầm máu không trực tiếp (chặn động mạch).",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -6618,10 +6006,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6651,10 +6035,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6684,10 +6064,6 @@
       {
          "text": "Đội mũ bảo hiểm ở nơi có biển báo bắt buộc đội mũ bảo hiểm",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6717,10 +6093,6 @@
       {
          "text": "Dừng và đỗ xe ở nơi thuận tiện cho việc giao nhận hành khách và hàng hóa; sử dụng ít rượu, bia thì có thể lái xe.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6750,10 +6122,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6783,10 +6151,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6816,10 +6180,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6849,10 +6209,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6882,10 +6238,6 @@
       {
          "text": "Bị nghiêm cấm.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -6915,10 +6267,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -6948,10 +6296,6 @@
       {
          "text": "Sơ cứu người gây tai nạn khi cơ quan có thẩm quyền chưa cho phép.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -6981,10 +6325,6 @@
       {
          "text": "Kiên nhẫn tuân thủ hướng dẫn của người điều khiển giao thông hoặc tín hiệu giao thông, di chuyển trên đúng phần đường bên phải theo chiều đi, nhường đường cho các phương tiện đi ngược chiều để nút tắc nhanh chóng được giải tỏa.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7047,10 +6387,6 @@
       {
          "text": "Sử dụng phanh trước để giảm tốc độ kết hợp với tắt chìa khóa điện của xe.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -7076,14 +6412,6 @@
       {
          "text": "Đạp bàn đạp để tăng ga với mức độ phù hợp, vào số và kiểm tra lại xem có bị nhầm số không rồi mới cho xe lăn bánh.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7113,10 +6441,6 @@
       {
          "text": "Dùng lực tay phải đẩy cần phanh tay về phía trước hết hành trình; nếu khóa hãm bị kẹt cứng phải đẩy mạnh cần phanh tay về phía trước, sau đó bóp khóa hãm.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7142,14 +6466,6 @@
       {
          "text": "Kiểm tra an toàn xung quanh xe ô tô; đạp ly hợp (côn) hết hành trình; vào số 1; nhả hết phanh tay, báo hiệu bằng còi, đèn trước khi xuất phát; tăng ga đủ để xuất phát; nhả từ từ đến 1/2 hành trình bàn đạp ly hợp và giữ trong khoảng 3 giây, sau đó vừa tăng ga vừa nhả hết ly hợp (côn) để cho xe ô tô chuyển động.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7175,14 +6491,6 @@
       {
          "text": "Quan sát biển báo hiệu để biết nơi được phép quay đầu; quan sát kỹ địa hình nơi chọn để quay đầu; lựa chọn quỹ đạo quay đầu xe; quay đầu xe với tốc độ tối đa; thường xuyên báo tín hiệu để người, các phương tiện xung quanh được biết; nếu quay đầu xe ở nơi nguy hiểm thì đưa đuôi xe về phía nguy hiểm và đầu xe về phía an toàn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7241,14 +6549,6 @@
       {
          "text": "Về số thấp từ chân dốc, điều chỉnh ga cho xe từ từ lên dốc; đến gần đỉnh dốc phải đi chậm, đi sát về phía bên phải đường, có tín hiệu (còi, đèn) để báo cho người lái xe đi ngược chiều biết.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7278,10 +6578,6 @@
       {
          "text": "Về số không (N), nhả bàn đạp ga ở mức độ phù hợp, kết hợp với phanh chân để khống chế tốc độ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -7311,10 +6607,6 @@
       {
          "text": "Có tín hiệu rẽ trái, điều khiển xe sát vào lề đường bên phải; đạp phanh sớm và mạnh hơn lúc dừng xe trên đường bằng để xe đi với tốc độ chậm đến mức dễ dàng dừng lại được; về số không (N) để xe đi đến chỗ dừng, khi xe đã dừng, kéo phanh tay.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7340,14 +6632,6 @@
       {
          "text": "Quan sát cẩn thận các chướng ngại vật và báo hiệu bằng còi, đèn; tăng tốc để nhanh chóng qua đường vòng và giảm tốc độ sau khi qua đường vòng.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7377,10 +6661,6 @@
       {
          "text": "Cách chỗ rẽ một khoảng cách an toàn có tín hiệu rẽ phải; quan sát an toàn phía sau; điều khiển xe bám sát vào phía phải đường; tăng tốc độ và quan sát an toàn phía bên trái để điều khiển xe qua chỗ đường giao nhau.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7406,14 +6686,6 @@
       {
          "text": "Cách chỗ rẽ một khoảng cách an toàn có tín hiệu rẽ trái, tăng tốc độ để xe nhanh chóng qua chỗ đường giao nhau; có tín hiệu xin đổi làn đường; quan sát an toàn xung quanh đặc biệt là bên trái; đổi làn đường sang phải để mở rộng vòng cua.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7443,10 +6715,6 @@
       {
          "text": "Gài số một (1) và từ từ cho hai bánh xe trước xuống rãnh, tăng ga cho hai bánh xe trước vượt lên khỏi rãnh, tiếp tục để bánh xe sau từ từ xuống rãnh rồi tăng dần ga cho xe ô tô lên khỏi rãnh.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7476,10 +6744,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -7538,14 +6802,6 @@
       {
          "text": "Nhìn xuống buồng lái để biết chính xác vị trí các tay số, cần phải tăng thứ tự từ thấp đến cao, phối hợp các động tác phải nhịp nhàng, vù ga phải phù hợp với tốc độ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7571,14 +6827,6 @@
       {
          "text": "Không được nhìn xuống buồng lái, cần phải giảm thứ tự từ cao đến thấp, phối hợp các động tác phải nhịp nhàng chính xác, vù ga phải phù hợp với tốc độ.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7608,10 +6856,6 @@
       {
          "text": "Nhả bàn đạp ga, tăng lên số cao, đạp phanh chân với mức độ phù hợp để giảm tốc độ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -7641,10 +6885,6 @@
       {
          "text": "Quan sát, ước lượng độ ngập nước mà xe ôtô có thể vượt qua an toàn, về số thấp, giữ đều ga và giữ vững tay lái để ô tô vượt qua đoạn đường ngập nước.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7674,10 +6914,6 @@
       {
          "text": "Chuyển từ đèn chiếu xa sang đèn chiếu gần; nhìn thẳng vào đèn của xe chạy ngược chiều để tránh xe đảm bảo an toàn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7703,14 +6939,6 @@
       {
          "text": "Giữ vững tay lái cho xe đi đúng vệt bánh xe đi trước, sử dụng số thấp đi chậm (số L hoặc 1, 2 đối với xe số tự động), gài cầu (nếu có), giữ đều ga, không lấy nhiều lái, không đánh lái ngoặt và phanh gấp.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7740,10 +6968,6 @@
       {
          "text": "Cửa xe đang mở.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7905,10 +7129,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7938,10 +7158,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -7971,10 +7187,6 @@
       {
          "text": "Mở cánh cửa hết hành trình và nhanh chóng ra khỏi xe ô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -8000,14 +7212,6 @@
       {
          "text": "Tại vị trí cách đường sắt tối thiểu 5 mét quan sát phía trước, nếu tàu còn cách xa, tăng số cao, tăng ga để cho xe nhanh chóng vượt qua đường sắt.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8037,10 +7241,6 @@
       {
          "text": "Không cần thiết, vì nếu nhìn thấy tàu còn cách xa, người lái xe có thể tăng số cao, tăng ga để cho xe nhanh chóng vượt qua đường sắt.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8070,10 +7270,6 @@
       {
          "text": "Về số N (số 0), kết hợp phanh chân để giảm tốc độ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -8103,10 +7299,6 @@
       {
          "text": "Vị trí R.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8136,10 +7328,6 @@
       {
          "text": "Không sử dụng chân phải; chân trái điều khiển bàn đạp phanh và bàn đạp ga.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8169,10 +7357,6 @@
       {
          "text": "Tăng tốc độ, bật đèn pha vượt qua xe chạy trước.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -8202,10 +7386,6 @@
       {
          "text": "Tăng tốc độ, bật đèn pha đối diện xe phía trước.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8235,10 +7415,6 @@
       {
          "text": "Giảm hết ga; sử dụng đồng thời cả phanh sau và phanh trước.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8268,10 +7444,6 @@
       {
          "text": "Tăng tốc độ, đánh lái liên tục để tránh “ổ gà”.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8301,10 +7473,6 @@
       {
          "text": "Tăng tốc độ, bật đèn pha vượt qua xe chạy phía trước.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8334,10 +7502,6 @@
       {
          "text": "Bật đèn chiếu xa, tăng tốc độ điều khiển ô tô qua khỏi khu vực mưa.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8367,10 +7531,6 @@
       {
          "text": "Quan sát bên trái và phía trước của xe và lùi xe với tốc độ nhanh.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8400,10 +7560,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8433,10 +7589,6 @@
       {
          "text": "Phát tín hiệu và lái xe nhập vào làn đường tăng tốc, quan sát các xe phía sau đang chạy trên đường cao tốc, khi đủ điều kiện an toàn thì giảm tốc độ, từ từ cho xe nhập vào làn đường cao tốc.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8462,14 +7614,6 @@
       {
          "text": "Quan sát về phía trước để tìm biển báo chỉ dẫn “Lối ra đường cao tốc”, trường hợp vượt qua “Lối ra đường cao tốc” thì phát tín hiệu, di chuyển sang làn đường giảm tốc và lùi xe quay trở lại.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8499,10 +7643,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -8561,14 +7701,6 @@
       {
          "text": "Nhả bàn đạp ga, về số không (N) đạp phanh chân và kéo phanh tay để giảm tốc độ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -8598,10 +7730,6 @@
       {
          "text": "Quan sát xe đang đi trên đường chính, nếu là xe có kích thước lớn hơn thì nhường đường, xe có kích thước nhỏ hơn thì tăng tốc độ cho xe đi ra đường chính.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -8631,10 +7759,6 @@
       {
          "text": "Tăng tốc độ để cách xa xe phía sau và sử dụng điện thoại để liên lạc.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 1,
@@ -8664,10 +7788,6 @@
       {
          "text": "Chỉ sử dụng phanh trước.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8693,14 +7813,6 @@
       {
          "text": "Quan sát tình hình giao thông phía trước, không cần quan sát phía sau và bên mở cửa; mở cánh cửa hết hành trình và nhanh chóng ra khỏi xe ô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8862,10 +7974,6 @@
       {
          "text": "Ngồi lệch sang bên trái hoặc bên phải để lấy thăng bằng qua đoạn đường gồ ghề.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8895,10 +8003,6 @@
       {
          "text": "Tùy từng loại phương tiện cơ giới đường bộ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8928,10 +8032,6 @@
       {
          "text": "Cả ý 1 và ý 2",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -8961,10 +8061,6 @@
       {
          "text": "Tùy từng trường hợp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9023,14 +8119,6 @@
       {
          "text": "Là loại kính trong suốt, đúng quy cách, không rạn nứt, đảm bảo tầm nhìn cho người điều khiển về phía trước mặt và hai bên.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9060,10 +8148,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9093,10 +8177,6 @@
       {
          "text": "Không nhỏ hơn 70 dB (A), không lớn hơn 90 dB (A).",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9126,10 +8206,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9159,10 +8235,6 @@
       {
          "text": "Hết nhiên liệu, lõi lọc nhiên liệu bị tắc, lọc khí bị tắc, nhiên liệu lẫn không khí và nước, không có tia lửa điện.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9192,10 +8264,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9225,10 +8293,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9254,14 +8318,6 @@
       {
          "text": "Là loại động cơ: để hoàn thành một chu trình công tác của động cơ, pít tông thực hiện 4 (bốn) hành trình, trong đó có một lần sinh công.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9291,10 +8347,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9324,10 +8376,6 @@
       {
          "text": "25 năm.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9357,10 +8405,6 @@
       {
          "text": "25 năm.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9390,10 +8434,6 @@
       {
          "text": "Cả ý 1 và ý 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9423,10 +8463,6 @@
       {
          "text": "Dùng để làm giảm tốc độ, dừng chuyển động của ô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9456,10 +8492,6 @@
       {
          "text": "Dùng để truyền truyền động từ hộp số đến bánh xe chủ động của ô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9489,10 +8521,6 @@
       {
          "text": "Truyền và thay đổi mô men từ động cơ đến bánh xe chủ động, cắt truyền động từ động cơ đến bánh xe chủ động, đảm bảo cho ô tô chuyển động lùi.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9522,10 +8550,6 @@
       {
          "text": "Dùng để thay đổi hướng chuyển động hoặc giữ cho ô tô chuyển động ổn định theo hướng xác định.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9555,10 +8579,6 @@
       {
          "text": "Dùng để truyền hoặc ngắt truyền động từ động cơ đến bánh xe chủ động của ô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9588,10 +8608,6 @@
       {
          "text": "Cả ý 1 và ý 2",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9753,10 +8769,6 @@
       {
          "text": "Tùy từng trường hợp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -9852,10 +8864,6 @@
       {
          "text": "Để tích trữ điện năng và cung cấp điện cho các phụ tải làm việc.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10149,10 +9157,6 @@
       {
          "text": "Biển 2 và 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10182,10 +9186,6 @@
       {
          "text": "Cả hai biển.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10215,10 +9215,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10314,10 +9310,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10380,10 +9372,6 @@
       {
          "text": "Cả hai biển.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10409,14 +9397,6 @@
       {
          "text": "Biển 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10479,10 +9459,6 @@
       {
          "text": "Cả hai biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10512,10 +9488,6 @@
       {
          "text": "Không biển nào.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10545,10 +9517,6 @@
       {
          "text": "Cả hai biển.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10710,10 +9678,6 @@
       {
          "text": "Không biển nào",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10743,10 +9707,6 @@
       {
          "text": "Không biển nào.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10776,10 +9736,6 @@
       {
          "text": "Cả 2 biển.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10809,10 +9765,6 @@
       {
          "text": "Cả 2 biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10842,10 +9794,6 @@
       {
          "text": "Cả ba biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10875,10 +9823,6 @@
       {
          "text": "Biển 1 và 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -10974,10 +9918,6 @@
       {
          "text": "Cả ba biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11007,10 +9947,6 @@
       {
          "text": "Cả hai biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11040,10 +9976,6 @@
       {
          "text": "Biển 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11106,10 +10038,6 @@
       {
          "text": "Biển 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11139,10 +10067,6 @@
       {
          "text": "Đường cấm súc vật vận tải hàng hóa hoặc hành khách dù kéo xe hay chở trên lưng đi qua.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11168,14 +10092,6 @@
       {
          "text": "Tốc độ tối thiểu cho phép về ban đêm cho các phương tiện là 70 km/h.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11201,14 +10117,6 @@
       {
          "text": "Không được phép.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11238,10 +10146,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11267,14 +10171,6 @@
       {
          "text": "Cho phép ô tô có tải trọng trên trục xe từ 7 tấn trở xuống đi qua.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11304,10 +10200,6 @@
       {
          "text": "Hạn chế tải trọng trên trục xe.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11337,10 +10229,6 @@
       {
          "text": "Cả hai biển.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11366,14 +10254,6 @@
       {
          "text": "Không được đi vào.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11465,14 +10345,6 @@
       {
          "text": "Không được phép.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11498,14 +10370,6 @@
       {
          "text": "Không.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11535,10 +10399,6 @@
       {
          "text": "Hướng trái và phải không cấm xe cơ giới.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11568,10 +10428,6 @@
       {
          "text": "Báo cấm dùng còi có độ vang xa 500 m.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11597,14 +10453,6 @@
       {
          "text": "Không được phép.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11634,10 +10482,6 @@
       {
          "text": "Biển 2 và 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11667,10 +10511,6 @@
       {
          "text": "Biển 3",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11696,14 +10536,6 @@
       {
          "text": "Cấm các loại xe cơ giới đi vào trừ loại xe ở biển phụ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11733,10 +10565,6 @@
       {
          "text": "Cả hai biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11766,10 +10594,6 @@
       {
          "text": "Cả hai biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11799,10 +10623,6 @@
       {
          "text": "Được phép đỗ xe và dừng xe theo hướng bên phải.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11828,14 +10648,6 @@
       {
          "text": "Được phép.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11861,14 +10673,6 @@
       {
          "text": "Được phép.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11894,14 +10698,6 @@
       {
          "text": "Được phép",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11931,10 +10727,6 @@
       {
          "text": "Cấm ô tô con.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11964,10 +10756,6 @@
       {
          "text": "Hạn chế chiều dài của xe và hàng.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -11997,10 +10785,6 @@
       {
          "text": "Cả 2 biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12026,14 +10810,6 @@
       {
          "text": "Biển 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12059,14 +10835,6 @@
       {
          "text": "Biển 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12096,10 +10864,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12125,14 +10889,6 @@
       {
          "text": "Tốc độ tối thiểu các xe cơ giới được phép chạy.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12162,10 +10918,6 @@
       {
          "text": "Cả biển 1 và biển 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12191,14 +10943,6 @@
       {
          "text": "Báo hiệu tốc độ tối thiểu cho phép các xe cơ giới chạy.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12294,10 +11038,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12360,10 +11100,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12525,10 +11261,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12558,10 +11290,6 @@
       {
          "text": "Nơi đường sắt giao nhau với đường bộ.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12624,10 +11352,6 @@
       {
          "text": "Để báo trước sắp đến vị trí đường sắt giao không vuông góc với đường bộ, không có người gác và không có rào chắn.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12657,10 +11381,6 @@
       {
          "text": "Biển 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12756,10 +11476,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12888,10 +11604,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12921,10 +11633,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12954,10 +11662,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -12987,10 +11691,6 @@
       {
          "text": "Biển 3",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13053,10 +11753,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13086,10 +11782,6 @@
       {
          "text": "Biển 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13119,10 +11811,6 @@
       {
          "text": "Biển 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13152,10 +11840,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13185,10 +11869,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13218,10 +11898,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13251,10 +11927,6 @@
       {
          "text": "Cả ba biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13284,10 +11956,6 @@
       {
          "text": "Cả hai biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13317,10 +11985,6 @@
       {
          "text": "Biển 2 và 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13350,10 +12014,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13383,10 +12043,6 @@
       {
          "text": "Biển 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13416,10 +12072,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13482,10 +12134,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13515,10 +12163,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13548,10 +12192,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13614,10 +12254,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13676,14 +12312,6 @@
       {
          "text": "Biển 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13713,10 +12341,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13779,10 +12403,6 @@
       {
          "text": "Cả hai biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13808,14 +12428,6 @@
       {
          "text": "Biển 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13841,14 +12453,6 @@
       {
          "text": "Biển 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13874,14 +12478,6 @@
       {
          "text": "Chỗ ngoặt nguy hiểm có nguy cơ lật xe bên trái khi đường cong vòng bên phải.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13911,10 +12507,6 @@
       {
          "text": "Báo trước sắp đến bến phà.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13940,14 +12532,6 @@
       {
          "text": "Báo hiệu đường có gờ giảm tốc phía trước.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -13973,14 +12557,6 @@
       {
          "text": "Báo hiệu đường có gờ giảm tốc phía trước.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14010,10 +12586,6 @@
       {
          "text": "Để cảnh báo những đoạn nền đường yếu, đoạn đường đang theo dõi lún mà việc vận hành xe ở tốc độ cao có thể gây nguy hiểm.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14043,10 +12615,6 @@
       {
          "text": "Để cảnh báo những đoạn nền đường yếu, đoạn đường đang theo dõi lún mà việc vận hành xe ở tốc độ cao có thể gây nguy hiểm.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14076,10 +12644,6 @@
       {
          "text": "Để cảnh báo những đoạn nền đường yếu, đoạn đường đang theo dõi lún mà việc vận hành xe ở tốc độ cao có thể gây nguy hiểm.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14105,14 +12669,6 @@
       {
          "text": "Bấm còi to để gia súc tránh đường và nhanh chóng di chuyển qua đoạn đường có gia súc.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14138,14 +12694,6 @@
       {
          "text": "Báo hiệu khu vực có đường dây điện cắt ngang phía trên tuyến đường.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14175,10 +12723,6 @@
       {
          "text": "Cả hai biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14208,10 +12752,6 @@
       {
          "text": "Cả hai biển.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14237,14 +12777,6 @@
       {
          "text": "Biển 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14270,14 +12802,6 @@
       {
          "text": "Biển 2.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14303,14 +12827,6 @@
       {
          "text": "Biển 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14340,10 +12856,6 @@
       {
          "text": "Chỉ hướng đường phải theo.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14373,10 +12885,6 @@
       {
          "text": "Không biển nào",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14402,14 +12910,6 @@
       {
          "text": "Biển 2.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14439,10 +12939,6 @@
       {
          "text": "Cả hai biển.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14736,10 +13232,6 @@
       {
          "text": "Cả 2 biển",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14802,10 +13294,6 @@
       {
          "text": "Biển chỉ dẫn khu vực đỗ xe trên các tuyến đường đối ngoại.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14868,10 +13356,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14901,10 +13385,6 @@
       {
          "text": "Biển 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -14934,10 +13414,6 @@
       {
          "text": "Không biển nào.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15033,10 +13509,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15066,10 +13538,6 @@
       {
          "text": "Đỗ ½ thân xe trở lên trên hè phố.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15099,10 +13567,6 @@
       {
          "text": "Phải giảm tốc độ đến mức an toàn và không được vượt khi đi qua khu vực này.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15128,14 +13592,6 @@
       {
          "text": "Không bắt buộc.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15165,10 +13621,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15231,10 +13683,6 @@
       {
          "text": "Báo hiệu cầu vượt liên thông.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15264,10 +13712,6 @@
       {
          "text": "Biển 2 và 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15326,14 +13770,6 @@
       {
          "text": "Không được phép chuyển sang làn khác, chỉ được đi trong làn quy định theo biển",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15359,14 +13795,6 @@
       {
          "text": "Không.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15392,14 +13820,6 @@
       {
          "text": "Không.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15429,10 +13849,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15462,10 +13878,6 @@
       {
          "text": "Chỉ dẫn vị trí nhập làn cách trạm thu phí 250 m.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15528,10 +13940,6 @@
       {
          "text": "Xăng dầu, ăn uống, cấp cứu, sửa chữa xe.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15561,10 +13969,6 @@
       {
          "text": "Chỉ dẫn khoảng cách đến trạm kiểm tra tải trọng xe cách 750 m.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15594,10 +13998,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15627,10 +14027,6 @@
       {
          "text": "Biển 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15660,10 +14056,6 @@
       {
          "text": "Biển 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15854,14 +14246,6 @@
       {
          "text": "Phân chia các làn xe chạy cùng chiều nhau.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15887,14 +14271,6 @@
       {
          "text": "Phân chia các làn xe chạy cùng chiều nhau.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15957,10 +14333,6 @@
       {
          "text": "Dùng để xác định khoảng cách giữa các phương tiện trên đường.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -15990,10 +14362,6 @@
       {
          "text": "Dùng để xác định khoảng cách giữa các phương tiện trên đường.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16023,10 +14391,6 @@
       {
          "text": "Dùng để xác định vị trí giữa các phương tiện trên đường.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16184,14 +14548,6 @@
       {
          "text": "Xe tải.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16217,14 +14573,6 @@
       {
          "text": "Xe con.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16254,10 +14602,6 @@
       {
          "text": "Xe con (B), xe con (A), xe cứu thương.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16287,10 +14631,6 @@
       {
          "text": "Xe cứu thương, xe con, xe cứu hỏa.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16316,14 +14656,6 @@
       {
          "text": "Xe cứu thương.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16353,10 +14685,6 @@
       {
          "text": "Xe con.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16382,14 +14710,6 @@
       {
          "text": "Xe tải.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16415,14 +14735,6 @@
       {
          "text": "Xe chữa cháy.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16448,14 +14760,6 @@
       {
          "text": "Mô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16485,10 +14789,6 @@
       {
          "text": "Xe tải, mô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16514,14 +14814,6 @@
       {
          "text": "Xe quân sự.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16584,10 +14876,6 @@
       {
          "text": "Xe khách, xe con, mô tô.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16683,10 +14971,6 @@
       {
          "text": "Xe con (A).",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16716,10 +15000,6 @@
       {
          "text": "Chỉ hướng 1.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16811,14 +15091,6 @@
       {
          "text": "Không đúng.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16844,14 +15116,6 @@
       {
          "text": "Chỉ hướng 1.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16914,10 +15178,6 @@
       {
          "text": "Xe khách.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16947,10 +15207,6 @@
       {
          "text": "Hướng 1 và 3.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -16976,14 +15232,6 @@
       {
          "text": "Vi phạm.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17009,14 +15257,6 @@
       {
          "text": "Xe tải.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17042,14 +15282,6 @@
       {
          "text": "Xe mô tô.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17075,14 +15307,6 @@
       {
          "text": "Đúng.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17207,14 +15431,6 @@
       {
          "text": "Hướng 2 và 3.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17306,14 +15522,6 @@
       {
          "text": "Xe con.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17339,14 +15547,6 @@
       {
          "text": "Vi phạm.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17409,10 +15609,6 @@
       {
          "text": "Tất cả các xe phải dừng lại trước ngã tư, trừ những xe đã ở trong ngã tư được phép tiếp tục đi.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17471,14 +15667,6 @@
       {
          "text": "Không đúng.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17508,10 +15696,6 @@
       {
          "text": "Xe con.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17541,10 +15725,6 @@
       {
          "text": "Cả hai xe.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17574,10 +15754,6 @@
       {
          "text": "Xe tải, xe khách, xe con.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17607,10 +15783,6 @@
       {
          "text": "Xe con, xe khách, xe tải.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17640,10 +15812,6 @@
       {
          "text": "Trừ hướng 4.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17739,10 +15907,6 @@
       {
          "text": "Không xe nào chấp hành đúng quy tắc giao thông.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17805,10 +15969,6 @@
       {
          "text": "Xe mô tô + xe con, xe quân sự, xe công an.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17834,14 +15994,6 @@
       {
          "text": "Xe B.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17867,14 +16019,6 @@
       {
          "text": "Vi phạm.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17933,14 +16077,6 @@
       {
          "text": "Đi thẳng không nhường.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -17999,14 +16135,6 @@
       {
          "text": "Xe con (B).",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18036,10 +16164,6 @@
       {
          "text": "Nhường đường cho xe buýt và xe tải.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18098,14 +16222,6 @@
       {
          "text": "Xe tải.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18135,10 +16251,6 @@
       {
          "text": "Cấm quay đầu.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18201,10 +16313,6 @@
       {
          "text": "Đánh lái sang làn bên trái và tăng tốc cho xe chạy vượt qua.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18234,10 +16342,6 @@
       {
          "text": "Xe con, xe tải.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18267,10 +16371,6 @@
       {
          "text": "Xe con.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18296,14 +16396,6 @@
       {
          "text": "Cấm vượt.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18329,14 +16421,6 @@
       {
          "text": "Không được vượt.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18465,10 +16549,6 @@
       {
          "text": "Xe con, xe tải.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18498,10 +16578,6 @@
       {
          "text": "Xe khách, xe tải.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18597,10 +16673,6 @@
       {
          "text": "Cấm vượt.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18696,10 +16768,6 @@
       {
          "text": "Mô tô, xe con, xe của bạn.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18729,10 +16797,6 @@
       {
          "text": "Mô tô, xe con, xe của bạn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18762,10 +16826,6 @@
       {
          "text": "Cả hai xe.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18828,10 +16888,6 @@
       {
          "text": "Dừng lại trước vạch dừng và đi thẳng hoặc rẽ trái khi đèn xanh.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18861,10 +16917,6 @@
       {
          "text": "Tăng tốc độ, rẽ phải trước xe đạp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18894,10 +16946,6 @@
       {
          "text": "Giảm tốc độ, để người đi bộ qua đường và rẽ phải sau xe con màu xanh.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18927,10 +16975,6 @@
       {
          "text": "Nhường đường cho xe đạp và xe khách.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18960,10 +17004,6 @@
       {
          "text": "Xe của bạn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -18989,14 +17029,6 @@
       {
          "text": "Xe của bạn.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19022,14 +17054,6 @@
       {
          "text": "Không được vượt những người đi xe đạp.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19092,10 +17116,6 @@
       {
          "text": "Giảm tốc độ, dừng lại nhường đường.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19125,10 +17145,6 @@
       {
          "text": "Phanh xe giảm tốc độ và đi sát lề đường bên trái.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19158,10 +17174,6 @@
       {
          "text": "Bấm còi báo hiệu và vượt qua xe tải trên làn đường của mình.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19191,10 +17203,6 @@
       {
          "text": "Giảm tốc độ và đi thẳng qua ngã tư.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19224,10 +17232,6 @@
       {
          "text": "Xe đạp, xe mô tô, xe của bạn.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19286,14 +17290,6 @@
       {
          "text": "Xe con.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19319,14 +17315,6 @@
       {
          "text": "Xe của bạn.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19356,10 +17344,6 @@
       {
          "text": "Giảm tốc độ, để người đi bộ sang đường trước, sau đó cho xe đi qua vạch người đi bộ sang đường.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19385,14 +17369,6 @@
       {
          "text": "Xe của bạn.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19422,10 +17398,6 @@
       {
          "text": "Xe tải, xe của bạn, xe con.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19455,10 +17427,6 @@
       {
          "text": "Giảm tốc độ cho xe đi sát phần đường bên phải.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19484,14 +17452,6 @@
       {
          "text": "Xe của bạn.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19521,10 +17481,6 @@
       {
          "text": "Cả 2 xe đều sai.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19554,10 +17510,6 @@
       {
          "text": "Xe của bạn, xe tải, xe đạp.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19587,10 +17539,6 @@
       {
          "text": "Cả 02 hướng đều được.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19620,10 +17568,6 @@
       {
          "text": "Giữ nguyên đèn chiếu gần, tăng tốc độ vượt xe cùng chiều.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19653,10 +17597,6 @@
       {
          "text": "Ra tín hiệu, yêu cầu người gác chắn tàu kéo chậm Barie để xe bạn qua.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19682,14 +17622,6 @@
       {
          "text": "Sai.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19715,14 +17647,6 @@
       {
          "text": "Không được vượt.",
          "correct": true
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19748,14 +17672,6 @@
       {
          "text": "Không đúng.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
@@ -19785,10 +17701,6 @@
       {
          "text": "Vượt về phía bên trái để đi tiếp.",
          "correct": false
-      },
-      {
-         "text": "",
-         "correct": null
       }
    ],
    "required": 0,
