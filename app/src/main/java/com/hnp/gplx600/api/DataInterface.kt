@@ -131,6 +131,13 @@ class ErpInterface
         val required: Int,
         val topic: Int
     )
+    data class ExamListStatus(
+        val examNo: Int,
+        val correctAns: Int,
+        val incorrectAns: Int,
+        val notAnswer: Int,
+        val totalQuestion: Int
+    )
     data class PartObject(
         val part1: Int, val part2: Int, val part3: Int, val part4: Int, val part5: Int,
         val part6: Int, val part7: Int, val part8: Int, val part9: Int, val part10: Int

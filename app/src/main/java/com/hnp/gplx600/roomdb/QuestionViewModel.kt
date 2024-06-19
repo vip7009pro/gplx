@@ -28,6 +28,7 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
   }
   fun updateAnswerByExamIndex(examIndex: Int, answer: Int) {
     viewModelScope.launch {
+      print(examIndex)
       dao.updateAnswerByExamIndex(examIndex, answer)
     }
   }
@@ -49,7 +50,7 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
     return dao.getExamByLicense(license)
   }
   //getExamWithQuestionByLicense
-  fun getExamWithQuestionByLicense(license: String): Flow<List<ErpInterface.ExamWithQuestion>> {
+  fun getExamWithQuestionByLicense(license: String): Flow<List<ErpInterface.ExamListStatus>> {
     return dao.getExamWithQuestionByLicense(license)
   }
   //delete all exams

@@ -199,7 +199,8 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
 //            .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
             .clickable {
               showCorrect = true
-              vm.updateAnswerByExamIndex(question.index, index)
+              Log.d("examIndex", question.examIndex.toString())
+              vm.updateAnswerByExamIndex(question.examIndex, index)
             }
             .shadow(1.dp),
         ) {

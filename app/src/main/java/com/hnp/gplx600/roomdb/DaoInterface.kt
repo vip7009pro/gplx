@@ -18,8 +18,8 @@ interface DaoInterface {
   suspend fun addExam(exam: ErpInterface.Exam)
   //load exam of specific license
   @Transaction
-  @Query("SELECT * FROM test_table WHERE license=:license ORDER BY examNo ASC")
-  fun getExamWithQuestionByLicense(license: String): Flow<List<ErpInterface.ExamWithQuestion>>
+  @Query("SELECT test_table.examNo, COUNT(test_table.license) AS totalQuestion, SUM(CASE WHEN test_table.examAnswer = question_table.dapAn THEN 1 ELSE 0 END) AS correctAns, SUM(CASE WHEN test_table.examAnswer <> question_table.dapAn AND test_table.examAnswer<> -1  THEN 1 ELSE 0 END) AS incorrectAns, SUM(CASE WHEN test_table.examAnswer = -1 THEN 1 ELSE 0 END) AS notAnswer   FROM test_table LEFT JOIN question_table ON test_table.`index` = question_table.`index` WHERE test_table.license=:license GROUP BY test_table.examNo ORDER BY test_table.examNo ASC")
+  fun getExamWithQuestionByLicense(license: String): Flow<List<ErpInterface.ExamListStatus>>
   //get only exam without question of a specific license
   @Query("SELECT * FROM test_table WHERE license=:license")
   fun getExamByLicense(license: String): Flow<List<ErpInterface.Exam>>
@@ -39,7 +39,7 @@ interface DaoInterface {
   fun deleteQuestion(question: ErpInterface.Question)
   @Query("UPDATE question_table SET currentAnswer = :answer WHERE `index`=:index")
   suspend  fun updateAnswerByIndex(index: Int, answer: Int)
-  @Query("UPDATE test_table SET examAnswer = :answer WHERE `index`=:examIndex")
+  @Query("UPDATE test_table SET examAnswer = :answer WHERE `examIndex`=:examIndex")
   suspend  fun updateAnswerByExamIndex(examIndex: Int, answer: Int)
   @Query("UPDATE question_table SET currentAnswer = -1")
   suspend fun resetAnswer()

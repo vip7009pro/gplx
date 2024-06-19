@@ -1,17 +1,23 @@
 package com.hnp.gplx600.pages.gplxhome.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -26,7 +32,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
@@ -99,7 +108,9 @@ fun ExamListScreen(
     "F" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
   )
   val currentExamDefinition = examDefinition[globalVar.currentLicense]
-  val examNoList = examList.value.distinctBy { it.exam.examNo }.sortedBy { it.exam.examNo }
+  val examNoList = examList.value.distinctBy { it.examNo }.sortedBy { it.examNo }
+//  print(examNoList)
+//  Log.d("examNoList", "$examNoList")
   LaunchedEffect(key1 = true) {
 
   }
@@ -211,19 +222,49 @@ fun ExamListScreen(
         items(examNoList) {
           //create card show exam name and exam id, and the number of question
           Card(modifier = Modifier.padding(5.dp), onClick = {
-            globalVar.currentExamNo = it.exam.examNo
+            globalVar.currentExamNo = it.examNo
             navController.navigate("examscreen") {
               popUpTo("examscreen") {
                 inclusive = true
               }
             }
           }) {
-            Text(
-              "Bằng: ${it.exam.license} - Đề thi số: ${it.exam.examNo}  ",
+            Row(
               modifier = Modifier
-                .padding(all = 20.dp)
                 .fillMaxWidth()
-            )
+                .padding(all = 20.dp),
+              horizontalArrangement = Arrangement.SpaceBetween,
+              verticalAlignment = Alignment.CenterVertically
+            ) {
+              Text(text = " Đề số ${it.examNo} ", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+              Spacer(modifier = Modifier.width(20.dp))
+              Row {
+                Icon(Icons.Default.CheckCircle, contentDescription = "Close", tint = Color(0xFF0A9204))
+
+                Text(text = "${it.correctAns}",
+                  fontSize = 20.sp,
+                  style = TextStyle(color = Color(0xFF0A9204), fontWeight = FontWeight.Bold),
+                )
+              }
+
+
+
+              Row {
+                Icon(Icons.Default.Close, contentDescription = "Close", tint = Color.Red)
+                Text(text = "${it.incorrectAns}",
+                  fontSize = 20.sp,
+                  style = TextStyle(color = Color.Red, fontWeight = FontWeight.Bold),
+                )
+
+              }
+
+              Text(text = "-- ${it.notAnswer}",
+                fontSize = 20.sp,
+                style = TextStyle(color = Color.Gray, fontWeight = FontWeight.Bold),
+                )
+              Text(text = "/${it.totalQuestion}", fontWeight = FontWeight.Bold, color = Color.Blue, fontSize = 20.sp)
+            }
+
           }
         }
       }
