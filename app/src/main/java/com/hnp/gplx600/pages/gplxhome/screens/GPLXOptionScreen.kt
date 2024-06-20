@@ -101,7 +101,7 @@ fun GPLXOptionScreen(navController: NavController, globalVar: GlobalVariable) {
         .background(color = Color.Green), title = {
         Row(
           modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .height(40.dp),
           horizontalArrangement = Arrangement.Start,
           verticalAlignment = Alignment.CenterVertically

@@ -70,7 +70,10 @@ fun QuestionPage3(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
             Color(0xFFEEF8F8)  // End color
           )
         )
-      ),
+      )
+      .clickable {
+        showAnswer = !showAnswer
+      },
   ) {
     Column(
       modifier = Modifier

@@ -1,5 +1,6 @@
 package com.hnp.gplx600.pages.gplxhome.screens
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,17 +18,22 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.pages.gplxhome.components.BannerAd
@@ -42,8 +48,15 @@ fun ExamFinishScreen(
   db: AppDataBase,
   vm: QuestionViewModel,
 ) {
-  val dataList = vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo).collectAsState(initial = emptyList())
+  val dataList =
+    vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo)
+      .collectAsState(initial = emptyList())
+
+
   LaunchedEffect(key1 = true) {
+
+  }
+  SideEffect {
 
   }
 
@@ -57,48 +70,51 @@ fun ExamFinishScreen(
       }
     }
   }
-  Scaffold(topBar = {
-    TopAppBar(modifier = Modifier
-      .height(50.dp)
-      .background(color = Color.Green), title = {
-      Row(
-        modifier = Modifier
-          .fillMaxSize()
-          .background(Color.Transparent),
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-      ) {
+  Surface(modifier = Modifier.fillMaxSize(), color = Color.Green) {
+    Scaffold(topBar = {
+      TopAppBar(modifier = Modifier
+        .height(50.dp)
+        .background(color = Color.Red), title = {
+        Row(
+          modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Transparent),
+          horizontalArrangement = Arrangement.Center,
+          verticalAlignment = Alignment.CenterVertically
+        ) {
           Text(text = "Kết quả bài thi", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-      }
-    }, navigationIcon = {
-      IconButton(onClick = {
-        navController.navigate("examlistscreen") {
-          popUpTo("examlistscreen") {
-            inclusive = true
-          }
         }
-      }) {
-        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
-      }
-    })
-  },
-    bottomBar =  {
+      }, navigationIcon = {
+        IconButton(onClick = {
+          navController.navigate("examlistscreen") {
+            popUpTo("examlistscreen") {
+              inclusive = true
+            }
+          }
+        }) {
+          Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+        }
+      })
+    }, bottomBar = {
       Box(
         modifier = Modifier
           .fillMaxWidth()
           .height(50.dp)
           .background(color = Color(0xFFFFFFFF)),
-        contentAlignment =  Alignment.Center
+        contentAlignment = Alignment.Center
       ) {
 
         BannerAd()
       }
     }) { paddingValues ->
-    Box(modifier = Modifier
-      .padding(paddingValues)
-      .fillMaxSize()) {
-      if (dataList.value.isNotEmpty()) ExamSummary(dataList.value, vm, navController, globalVar)
-      else Text(text = "Không có câu hỏi nào")
+      Box(
+        modifier = Modifier
+          .padding(paddingValues)
+          .fillMaxSize()
+      ) {
+        if (dataList.value.isNotEmpty()) ExamSummary(dataList.value, vm, navController, globalVar)
+        else Text(text = "Không có câu hỏi nào")
+      }
     }
   }
 
