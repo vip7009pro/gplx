@@ -1,7 +1,10 @@
 package com.hnp.gplx600.pages.gplxhome.screens
 
+import android.content.Context
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.pages.gplxhome.components.CountDownTimer
 import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation2
 import com.hnp.gplx600.roomdb.AppDataBase
@@ -38,6 +42,7 @@ fun ExamScreen(
   globalVar: GlobalVariable,
   db: AppDataBase,
   vm: QuestionViewModel,
+  context: Context
 ) {
   val dataList = vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo).collectAsState(initial = emptyList())
   globalVar.currentDataList = dataList.value
@@ -45,18 +50,39 @@ fun ExamScreen(
 
   }
 
+  BackHandler {
+    // Handle the back button press here
+    // For example, show a dialog, perform a custom action, etc.
+    //navController.popBackStack()
+    globalVar.showDialog(
+      dialogTitle = "Thông báo",
+      dialogText = "Chưa hết giờ, Bạn có chắc chắn muốn thoát?",
+      dialogCat = "",
+      dlConfirm = {
+        navController.navigate("examfinishscreen") {
+          popUpTo("examfinishscreen") {
+            inclusive = true
+          }
+        }
+      },
+      dlCancel = {
+        //navController.navigateUp()
+      }
+    )
+  }
+
   Scaffold(topBar = {
     TopAppBar(modifier = Modifier
-      .height(30.dp)
+      .height(50.dp)
       .background(color = Color.Green), title = {
       Row(
         modifier = Modifier
-          .fillMaxWidth()
-          .height(40.dp),
+          .fillMaxSize(),
+
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
       ) {
-        CountDownTimer(startTime = 1200, navController=navController, globalVar = globalVar)
+        CountDownTimer(startTime = 1200, navController=navController, globalVar = globalVar, ct = context)
       }
     }, navigationIcon = {
       IconButton(onClick = {
@@ -65,7 +91,11 @@ fun ExamScreen(
           dialogText = "Chưa hết giờ, Bạn có chắc chắn muốn thoát?",
           dialogCat = "",
           dlConfirm = {
-            navController.navigateUp()
+            navController.navigate("examfinishscreen") {
+              popUpTo("examfinishscreen") {
+                inclusive = true
+              }
+            }
           },
           dlCancel = {
             //navController.navigateUp()
@@ -75,7 +105,19 @@ fun ExamScreen(
       }) {
         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
       }
-    })
+    },
+      )
+  }, bottomBar =  {
+    Box(
+      modifier = Modifier
+        .fillMaxWidth()
+        .height(50.dp)
+        .background(color = Color(0xFFFFFFFF)),
+      contentAlignment =  Alignment.Center
+    ) {
+
+      BannerAd()
+    }
   }) {
       paddingValues ->
     Column(

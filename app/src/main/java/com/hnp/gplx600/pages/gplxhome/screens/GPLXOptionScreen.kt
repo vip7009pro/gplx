@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -35,6 +36,7 @@ import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -112,6 +114,18 @@ fun GPLXOptionScreen(navController: NavController, globalVar: GlobalVariable) {
         }
       })
     },
+    bottomBar = {
+      Box(
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(50.dp)
+          .background(color = Color(0xFFFFFFFF)),
+        contentAlignment =  Alignment.Center
+      ) {
+
+        BannerAd()
+      }
+    }
   ) { paddingValues ->
     LazyColumn(
       modifier = Modifier

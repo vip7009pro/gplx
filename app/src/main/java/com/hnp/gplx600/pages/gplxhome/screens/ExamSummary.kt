@@ -249,7 +249,7 @@ fun ExamSummary(
           horizontalArrangement = Arrangement.SpaceAround,
           verticalAlignment = Alignment.CenterVertically
         ) {
-          Text(text = "Kết quả cuối cùng:", color = Color.Blue)
+          Text(text = "Kết quả:", color = Color.Blue)
           if (requiredQuestionFailed > 0) {
             Text(
               text = "Thi trượt", color = Color.Red, fontWeight = FontWeight.Bold, fontSize = 25.sp
@@ -309,6 +309,7 @@ fun ExamSummary(
           //Text(text = "Question $index")
         }
       }
+
 
     }
 

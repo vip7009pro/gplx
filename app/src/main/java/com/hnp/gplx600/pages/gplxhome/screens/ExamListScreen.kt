@@ -1,9 +1,13 @@
 package com.hnp.gplx600.pages.gplxhome.screens
 
+import android.app.Activity
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,9 +18,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -29,18 +36,30 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.components.MyDialog
+import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -49,12 +68,13 @@ fun ExamListScreen(
   db: AppDataBase,
   vm: QuestionViewModel,
   globalVar: GlobalVariable,
+  ct: Context
 ) {
   //get lastest exam no from database of the current license
   val examNo = vm.getExamNo(globalVar.currentLicense).collectAsState(initial = emptyList())
   val latest_exam_no = if (examNo.value.isNotEmpty()) examNo.value[0].maxExamNo else 0
-  val examList = vm.getExamWithQuestionByLicense(globalVar.currentLicense)
-    .collectAsState(initial = emptyList())
+  val examList =
+    vm.getExamWithQuestionByLicense(globalVar.currentLicense).collectAsState(initial = emptyList())
   val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
   var filteredList: List<ErpInterface.Question> = emptyList()
   when (globalVar.currentLicense) {
@@ -111,6 +131,42 @@ fun ExamListScreen(
   val examNoList = examList.value.distinctBy { it.examNo }.sortedBy { it.examNo }
 //  print(examNoList)
 //  Log.d("examNoList", "$examNoList")
+  var mInterstitialAd: InterstitialAd? = null
+  fun loadInterstitialAd(context: Context) {
+    InterstitialAd.load(context, "ca-app-pub-3940256099942544/1033173712", AdRequest.Builder().build(),
+      object : InterstitialAdLoadCallback() {
+        override fun onAdFailedToLoad(adError: LoadAdError) {
+          mInterstitialAd = null
+        }
+
+        override fun onAdLoaded(interstitialAd: InterstitialAd) {
+          mInterstitialAd = interstitialAd
+        }
+      }
+    )
+  }
+  fun showInterstitialAd(context: Context, onAdDismissed: () -> Unit, onAddNull: ()-> Unit) {
+    if (mInterstitialAd != null) {
+      mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
+        override fun onAdFailedToShowFullScreenContent(e: AdError) {
+          mInterstitialAd = null
+        }
+
+        override fun onAdDismissedFullScreenContent() {
+          mInterstitialAd = null
+          loadInterstitialAd(context)
+          onAdDismissed()
+        }
+      }
+      mInterstitialAd?.show(context as Activity)
+    }
+    else {
+      onAddNull()
+    }
+  }
+  loadInterstitialAd(LocalContext.current)
+  val coroutineScope = rememberCoroutineScope()
+
   LaunchedEffect(key1 = true) {
 
   }
@@ -132,7 +188,20 @@ fun ExamListScreen(
         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
       }
     })
-  }) { paddingValues ->
+  },
+    bottomBar = {
+      Box(
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(50.dp)
+          .background(color = Color(0xFFFFFFFF)),
+        contentAlignment =  Alignment.Center
+      ) {
+
+        BannerAd()
+      }
+    }
+    ) { paddingValues ->
     Column(
       modifier = Modifier
         .fillMaxSize()
@@ -150,7 +219,7 @@ fun ExamListScreen(
       ) {
         Button(modifier = Modifier
           .height(40.dp)
-          .fillMaxWidth(0.5f), onClick = {
+          .fillMaxWidth(), onClick = {
           val part1 = requiredQuestionList.shuffled().take(1)
           val part2 = filteredList.filter {
             !part1.contains(it) && (it.index in 1..16)
@@ -183,7 +252,7 @@ fun ExamListScreen(
           val finalExamList =
             part1 + part2 + part3 + part4 + part5 + part6 + part7 + part8 + part9 + part10
           //insert every exam from final Exam list to database
-          finalExamList.forEachIndexed {index, element ->
+          finalExamList.forEachIndexed { index, element ->
             vm.addExam(
               ErpInterface.Exam(
                 examIndex = 0,
@@ -196,24 +265,12 @@ fun ExamListScreen(
           }
 
         }) {
-          Text(
-            text = "Tạo đề",
-            modifier = Modifier
-              .fillMaxSize()
-              .align(Alignment.CenterVertically)
-          )
-        }
-        Button(modifier = Modifier
-          .height(40.dp)
-          .fillMaxWidth(), onClick = {
-          vm.deleteAllExam()
-        }) {
-          Text(
-            text = "Xóa đề",
-            modifier = Modifier
-              .fillMaxSize()
-              .align(Alignment.CenterVertically)
-          )
+
+          Box(
+            modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
+          ) {
+            Text(text = "Tạo đề mới")
+          }
         }
       }
       LazyColumn(
@@ -223,11 +280,23 @@ fun ExamListScreen(
           //create card show exam name and exam id, and the number of question
           Card(modifier = Modifier.padding(5.dp), onClick = {
             globalVar.currentExamNo = it.examNo
-            navController.navigate("examscreen") {
-              popUpTo("examscreen") {
-                inclusive = true
-              }
+            coroutineScope.launch {
+              showInterstitialAd(ct, {
+                navController.navigate("examscreen") {
+                  popUpTo("examscreen") {
+                    inclusive = true
+                  }
+                }
+                //Toast.makeText(ct, "Interstitial Ad Shown!", Toast.LENGTH_SHORT).show()
+              }, {
+                navController.navigate("examscreen") {
+                  popUpTo("examscreen") {
+                    inclusive = true
+                  }
+                }
+              })
             }
+
           }) {
             Row(
               modifier = Modifier
@@ -236,39 +305,71 @@ fun ExamListScreen(
               horizontalArrangement = Arrangement.SpaceBetween,
               verticalAlignment = Alignment.CenterVertically
             ) {
-              Text(text = " Đề số ${it.examNo} ", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-              Spacer(modifier = Modifier.width(20.dp))
+              Column {
+                Text(
+                  text = " Đề số ${it.examNo} ", fontWeight = FontWeight.Bold, fontSize = 15.sp
+                )
+                Text(
+                  text = "Tến độ: ${(100 - it.notAnswer * 1.0f / it.totalQuestion * 100).toInt()}%",
+                  fontWeight = FontWeight.Bold,
+                  fontSize = 12.sp,
+                )
+              }
+              Spacer(modifier = Modifier.width(10.dp))
               Row {
-                Icon(Icons.Default.CheckCircle, contentDescription = "Close", tint = Color(0xFF0A9204))
-
-                Text(text = "${it.correctAns}",
-                  fontSize = 20.sp,
+                //Icon(Icons.Default.CheckCircle, contentDescription = "Close", tint = Color(0xFF0A9204))
+                Text(
+                  text = "Đúng: ${it.correctAns}",
+                  fontSize = 15.sp,
                   style = TextStyle(color = Color(0xFF0A9204), fontWeight = FontWeight.Bold),
                 )
               }
 
-
-
               Row {
-                Icon(Icons.Default.Close, contentDescription = "Close", tint = Color.Red)
-                Text(text = "${it.incorrectAns}",
-                  fontSize = 20.sp,
+                //Icon(Icons.Default.Close, contentDescription = "Close", tint = Color.Red)
+                Text(
+                  text = "Sai: ${it.incorrectAns}",
+                  fontSize = 15.sp,
                   style = TextStyle(color = Color.Red, fontWeight = FontWeight.Bold),
                 )
 
               }
 
-              Text(text = "-- ${it.notAnswer}",
-                fontSize = 20.sp,
+              Text(
+                text = "N/A: ${it.notAnswer}",
+                fontSize = 15.sp,
                 style = TextStyle(color = Color.Gray, fontWeight = FontWeight.Bold),
-                )
-              Text(text = "/${it.totalQuestion}", fontWeight = FontWeight.Bold, color = Color.Blue, fontSize = 20.sp)
+              )
+              Text(
+                text = "Total: ${it.totalQuestion}",
+                fontWeight = FontWeight.Bold,
+                color = Color.Blue,
+                fontSize = 15.sp
+              )
+
+              IconButton(onClick = {
+
+                //confirm delete exam
+                globalVar.showDialog(dialogTitle = "Thông báo",
+                  dialogText = "Bạn có chắc chắn muốn xóa đề không?",
+                  dialogCat = "",
+                  dlConfirm = {
+                    vm.deleteExam(it.examNo, globalVar.currentLicense)
+                  },
+                  dlCancel = {
+
+                  })
+
+              }) {
+                Icon(Icons.Default.Clear, contentDescription = "Close", tint = Color.Black)
+              }
             }
 
           }
         }
       }
     }
+    MyDialog().FNDialog(globalVar = globalVar)
   }
 
 }

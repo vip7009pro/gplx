@@ -1,6 +1,8 @@
 package com.hnp.gplx600.pages.gplxhome.screens
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,10 +25,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 
@@ -43,26 +47,56 @@ fun ExamFinishScreen(
 
   }
 
+  BackHandler {
+    // Handle the back button press here
+    // For example, show a dialog, perform a custom action, etc.
+    //navController.popBackStack()
+    navController.navigate("examlistscreen") {
+      popUpTo("examlistscreen") {
+        inclusive = true
+      }
+    }
+  }
   Scaffold(topBar = {
     TopAppBar(modifier = Modifier
-      .height(30.dp)
+      .height(50.dp)
       .background(color = Color.Green), title = {
       Row(
         modifier = Modifier
-          .fillMaxWidth()
+          .fillMaxSize()
           .background(Color.Transparent),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
       ) {
-        Text(text = "Kết quả bài thi", fontSize = 18.sp)
+          Text(text = "Kết quả bài thi", fontSize = 18.sp, fontWeight = FontWeight.Bold)
       }
-    }/*, navigationIcon = {
-      IconButton(onClick = { navController.navigateUp() }) {
+    }, navigationIcon = {
+      IconButton(onClick = {
+        navController.navigate("examlistscreen") {
+          popUpTo("examlistscreen") {
+            inclusive = true
+          }
+        }
+      }) {
         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
       }
-    }*/)
-  }) { paddingValues ->
-    Box(modifier = Modifier.padding(paddingValues).fillMaxSize()) {
+    })
+  },
+    bottomBar =  {
+      Box(
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(50.dp)
+          .background(color = Color(0xFFFFFFFF)),
+        contentAlignment =  Alignment.Center
+      ) {
+
+        BannerAd()
+      }
+    }) { paddingValues ->
+    Box(modifier = Modifier
+      .padding(paddingValues)
+      .fillMaxSize()) {
       if (dataList.value.isNotEmpty()) ExamSummary(dataList.value, vm, navController, globalVar)
       else Text(text = "Không có câu hỏi nào")
     }

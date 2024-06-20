@@ -1,5 +1,6 @@
 package com.hnp.gplx600
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -25,6 +26,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.room.Room
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.google.android.gms.ads.MobileAds
 import com.hnp.gplx600.api.GlobalFunction
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.components.Components
@@ -53,14 +55,17 @@ class MainActivity : ComponentActivity() {
     }
   })
 
+
+
   @RequiresApi(Build.VERSION_CODES.Q)
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    MobileAds.initialize(this)
     setContent {
       GPLXTheme(darkTheme = false) {
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {
-          MainApp(db = db, vm = viewModel)
+          MainApp(db = db, vm = viewModel,context = this)
         }
       }
     }
@@ -71,7 +76,7 @@ class MainActivity : ComponentActivity() {
 @RequiresApi(Build.VERSION_CODES.Q)
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
-fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
+fun MainApp(db: AppDataBase, vm: QuestionViewModel, context: Context) {
   val navController = rememberAnimatedNavController()
   val globalVar = viewModel<GlobalVariable>()
   val lct = LocalContext.current
@@ -112,7 +117,7 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
       popEnterTransition = { slideInHorizontally(initialOffsetX = { -1000 }, animationSpec = tween(700)) },
       popExitTransition = { slideOutHorizontally(targetOffsetX = { 1000 }, animationSpec = tween(700)) }
     )  {
-      ExamListScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)
+      ExamListScreen(navController = navController, globalVar = globalVar, db = db, vm = vm, ct = context)
     }
     composable("examscreen",
       enterTransition = { slideInHorizontally(initialOffsetX = { 1000 }, animationSpec = tween(700)) },
@@ -120,7 +125,7 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel) {
       popEnterTransition = { slideInHorizontally(initialOffsetX = { -1000 }, animationSpec = tween(700)) },
       popExitTransition = { slideOutHorizontally(targetOffsetX = { 1000 }, animationSpec = tween(700)) }
     )  {
-      ExamScreen(navController = navController, globalVar = globalVar, db = db, vm = vm)
+      ExamScreen(navController = navController, globalVar = globalVar, db = db, vm = vm, context= context)
     }
     composable("examfinishscreen",
       enterTransition = { slideInHorizontally(initialOffsetX = { 1000 }, animationSpec = tween(700)) },

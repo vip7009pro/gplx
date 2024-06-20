@@ -200,6 +200,18 @@ fun MyHome(navController: NavController, globalVar: GlobalVariable, vm: Question
           Icon(Icons.Default.Menu, contentDescription = "Menu", modifier = Modifier.size(30.dp))
         }
       },
+      bottomBar = {
+        Box(
+          modifier = Modifier
+            .fillMaxWidth()
+            .height(50.dp)
+            .background(color = Color(0xFFFFFFFF)),
+          contentAlignment =  Alignment.Center
+        ) {
+
+        BannerAd()
+        }
+      }
 //        floatingActionButtonPosition = FabPosition.End,
     ) { paddingValues ->
 
@@ -212,7 +224,7 @@ fun MyHome(navController: NavController, globalVar: GlobalVariable, vm: Question
         horizontalAlignment = Alignment.CenterHorizontally
       ) {
 
-        BannerAd()
+
         Row(
           modifier = Modifier
             .height(140.dp)
