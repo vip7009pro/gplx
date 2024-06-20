@@ -310,7 +310,7 @@ fun ExamListScreen(
                   text = " Đề số ${it.examNo} ", fontWeight = FontWeight.Bold, fontSize = 15.sp
                 )
                 Text(
-                  text = "Tến độ: ${(100 - it.notAnswer * 1.0f / it.totalQuestion * 100).toInt()}%",
+                  text = "Tiến độ: ${(100 - it.notAnswer * 1.0f / it.totalQuestion * 100).toInt()}%",
                   fontWeight = FontWeight.Bold,
                   fontSize = 12.sp,
                 )
