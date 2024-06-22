@@ -2,6 +2,7 @@ package com.hnp.gplx600.pages.gplxhome.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
@@ -195,7 +197,19 @@ fun DetailScreen(
         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
       }
     })
-  }) { paddingValues ->
+  },
+    bottomBar = {
+      Box(
+        modifier = Modifier
+          .fillMaxWidth()
+          .height(50.dp)
+          .background(color = Color(0xFFFFFFFF)),
+        contentAlignment = Alignment.Center
+      ) {
+
+        BannerAd()
+      }
+    }) { paddingValues ->
     Column(
       modifier = Modifier
         .fillMaxSize()
