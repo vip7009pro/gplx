@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -216,8 +217,7 @@ fun MyHome(navController: NavController, globalVar: GlobalVariable, vm: Question
         }
         //        floatingActionButtonPosition = FabPosition.End,
       ) { paddingValues ->
-
-        Column(
+        LazyColumn(
           modifier = Modifier
             .fillMaxSize()
             .padding(paddingValues)
@@ -225,146 +225,150 @@ fun MyHome(navController: NavController, globalVar: GlobalVariable, vm: Question
           verticalArrangement = Arrangement.SpaceEvenly,
           horizontalAlignment = Alignment.CenterHorizontally
         ) {
+          item {
+            Row(
+              modifier = Modifier
+                .height(140.dp)
+                .fillMaxSize()
+                .background(color = Color(0xFFFFFFFF)),
+              horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+              HomeCard(
+                "A1",
+                "200 câu",
+                Color(0xFFB7D7F1),
+                Color(0xFF40DA6B),
+                R.drawable.a1,
+                onClick = {
+                  //                navController.navigate("detailscreen") {}
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("A1")
+                })
+              HomeCard(
+                "A2",
+                "450 câu",
+                Color(0xFFB7D7F1),
+                Color(0xFF416AFF),
+                R.drawable.a2,
+                onClick = {
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("A2")
+                })
+            }
+            Row(
+              modifier = Modifier
+                .height(140.dp)
+                .fillMaxSize(),
+              horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+              HomeCard(
+                "A3",
+                "500 câu",
+                Color(0xFFF7CB44),
+                Color(0xFFF9FFFB),
+                R.drawable.a3,
+                onClick = {
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("A3")
+                })
+              HomeCard(
+                "A4",
+                "500 câu",
+                Color(0xFFFFFFFF),
+                Color(0xFFFD4848),
+                R.drawable.a4,
+                onClick = {
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("A4")
+                })
+            }
+            Row(
+              modifier = Modifier
+                .height(140.dp)
+                .fillMaxSize(),
+              horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+              HomeCard(
+                "B1",
+                "574 câu",
+                Color(0xFFF2F9FF),
+                Color(0xFF00BCD4),
+                R.drawable.b1,
+                onClick = {
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("B1")
+                })
+              HomeCard(
+                "B2",
+                "600 câu",
+                Color(0xFFC1FFEC),
+                Color(0xFFFFEB3B),
+                R.drawable.b22,
+                onClick = {
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("B2")
+                })
+            }
+            Row(
+              modifier = Modifier
+                .height(140.dp)
+                .fillMaxSize(),
+              horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+              HomeCard(
+                "C",
+                "600 câu",
+                Color(0xFFE76CA5),
+                Color(0xFFC2C7C4),
+                R.drawable.c,
+                onClick = {
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("C")
+                })
+              HomeCard(
+                "D",
+                "600 câu",
+                Color(0xFFFFB15E),
+                Color(0xFFFEFFFE),
+                R.drawable.d,
+                onClick = {
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("D")
+                })
+            }
+            Row(
+              modifier = Modifier
+                .height(140.dp)
+                .fillMaxSize(),
+              horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+              HomeCard(
+                "E",
+                "600 câu",
+                Color(0xFF2341FF),
+                Color(0xFFE9E9E9),
+                R.drawable.e,
+                onClick = {
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("E")
+                })
+              HomeCard(
+                "F",
+                "600 câu",
+                Color(0xFF76DA8D),
+                Color(0xFF40DA6B),
+                R.drawable.f,
+                onClick = {
+                  navController.navigate("optionscreen") {}
+                  globalVar.changeLicense("F")
+                })
+            }
 
-          Row(
-            modifier = Modifier
-              .height(140.dp)
-              .fillMaxSize()
-              .background(color = Color(0xFFFFFFFF)),
-            horizontalArrangement = Arrangement.SpaceEvenly
-          ) {
-            HomeCard(
-              "A1",
-              "200 câu",
-              Color(0xFFB7D7F1),
-              Color(0xFF40DA6B),
-              R.drawable.a1,
-              onClick = {
-                //                navController.navigate("detailscreen") {}
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("A1")
-              })
-            HomeCard(
-              "A2",
-              "450 câu",
-              Color(0xFFB7D7F1),
-              Color(0xFF416AFF),
-              R.drawable.a2,
-              onClick = {
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("A2")
-              })
           }
-          Row(
-            modifier = Modifier
-              .height(140.dp)
-              .fillMaxSize(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-          ) {
-            HomeCard(
-              "A3",
-              "500 câu",
-              Color(0xFFF7CB44),
-              Color(0xFFF9FFFB),
-              R.drawable.a3,
-              onClick = {
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("A3")
-              })
-            HomeCard(
-              "A4",
-              "500 câu",
-              Color(0xFFFFFFFF),
-              Color(0xFFFD4848),
-              R.drawable.a4,
-              onClick = {
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("A4")
-              })
-          }
-          Row(
-            modifier = Modifier
-              .height(140.dp)
-              .fillMaxSize(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-          ) {
-            HomeCard(
-              "B1",
-              "574 câu",
-              Color(0xFFF2F9FF),
-              Color(0xFF00BCD4),
-              R.drawable.b1,
-              onClick = {
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("B1")
-              })
-            HomeCard(
-              "B2",
-              "600 câu",
-              Color(0xFFC1FFEC),
-              Color(0xFFFFEB3B),
-              R.drawable.b22,
-              onClick = {
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("B2")
-              })
-          }
-          Row(
-            modifier = Modifier
-              .height(140.dp)
-              .fillMaxSize(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-          ) {
-            HomeCard(
-              "C",
-              "600 câu",
-              Color(0xFFE76CA5),
-              Color(0xFFC2C7C4),
-              R.drawable.c,
-              onClick = {
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("C")
-              })
-            HomeCard(
-              "D",
-              "600 câu",
-              Color(0xFFFFB15E),
-              Color(0xFFFEFFFE),
-              R.drawable.d,
-              onClick = {
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("D")
-              })
-          }
-          Row(
-            modifier = Modifier
-              .height(140.dp)
-              .fillMaxSize(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-          ) {
-            HomeCard(
-              "E",
-              "600 câu",
-              Color(0xFF2341FF),
-              Color(0xFFE9E9E9),
-              R.drawable.e,
-              onClick = {
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("E")
-              })
-            HomeCard(
-              "F",
-              "600 câu",
-              Color(0xFF76DA8D),
-              Color(0xFF40DA6B),
-              R.drawable.f,
-              onClick = {
-                navController.navigate("optionscreen") {}
-                globalVar.changeLicense("F")
-              })
-          }
+
+
         }
-        paddingValues
+
 
       }
     }

@@ -140,7 +140,7 @@ fun GPLXOptionScreen(navController: NavController, globalVar: GlobalVariable) {
           modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 2.dp, vertical = 3.dp)
-            .height(80.dp)
+            .height(60.dp)
             .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
             //border radius
             .clip(RoundedCornerShape(10.dp))
@@ -173,8 +173,8 @@ fun GPLXOptionScreen(navController: NavController, globalVar: GlobalVariable) {
           option.icon()
           Text(
             text = option.title,
-            fontSize = 20.sp,
-            modifier = Modifier.padding(16.dp),
+            fontSize = 18.sp,
+            modifier = Modifier.padding(8.dp),
             color = Color(0xFF1380B9)
           )
         }

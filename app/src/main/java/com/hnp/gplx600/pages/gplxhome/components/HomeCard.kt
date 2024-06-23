@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -38,7 +39,8 @@ fun HomeCard(
   onClick: () -> Unit,
 ) {
   Card(modifier = Modifier
-    .width(200.dp)
+    .width(180.dp)
+    .fillMaxHeight()
     .padding(all = 8.dp),
     shape = RoundedCornerShape(20.dp),
     elevation = CardDefaults.cardElevation(

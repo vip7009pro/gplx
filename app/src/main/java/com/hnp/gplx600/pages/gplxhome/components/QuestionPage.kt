@@ -35,6 +35,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.roomdb.QuestionViewModel
@@ -63,58 +64,17 @@ fun QuestionPage(question: ErpInterface.Question, vm: QuestionViewModel) {
   ) {
     Text(
       text = "Câu ${question.index} ",
-      fontSize = 25.sp,
-      modifier = Modifier.padding(16.dp),
+      fontSize = 15.sp,
+      modifier = Modifier.padding(2.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
     )
     Text(
       text = question.text,
-      fontSize = 20.sp,
-      modifier = Modifier.padding(16.dp),
+      fontSize = 15.sp,
+      modifier = Modifier.padding(2.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
     )
-    //show answer
-    LazyColumn(modifier = Modifier.fillMaxWidth()) {
-      items(answerList) { answer ->
-        //get answer index
-        val index = answerList.indexOf(answer) + 1
-        val correct = answer.getBoolean("correct")
-        //show answer
-        Box(
-          modifier = Modifier
-            .padding(5.dp)
-            .background(color = Color.White)
-            .fillMaxSize()
-            .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
-            .clickable {
-              showCorrect = true
-              vm.updateAnswer(question.index, index)
-            }
-            .shadow(1.dp),
-        ) {
-          Text(
-            text = "$index. ${answer.getString("text")}",
-            fontSize = 18.sp,
-            style = TextStyle(color = if (showCorrect) if (correct) Color(0xFF0A9204) else Color.Red else Color.Black),
-            modifier = Modifier.padding(8.dp)
-          )
-        }
-      }
-    }
-    if (showTip && question.tip.isNotEmpty()) Text(
-      text = question.tip,
-      fontSize = 18.sp,
-      modifier = Modifier.padding(16.dp),
-      style = TextStyle(color = Color.Blue, fontStyle = FontStyle.Italic),
-    )
-    if (question.tip.isNotEmpty()) Text(
-      text = "Show Tip", fontSize = 15.sp, modifier = Modifier
-        .padding(0.dp)
-        .clickable {
-          showTip = true
-        }, style = TextStyle(fontStyle = FontStyle.Italic)
-    )
-    Spacer(modifier = Modifier.height(30.dp))
+
     val context = LocalContext.current
     val res = context.resources
     val packageName = context.packageName
@@ -126,10 +86,54 @@ fun QuestionPage(question: ErpInterface.Question, vm: QuestionViewModel) {
       contentDescription = null,
       modifier = Modifier
         .fillMaxWidth()
+        .height(200.dp)
         .padding(all = 8.dp)
         .clip(RoundedCornerShape(5.dp)),
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Fit
     )
+    //show answer
+    LazyColumn(modifier = Modifier.fillMaxWidth()) {
+      items(answerList) { answer ->
+        //get answer index
+        val index = answerList.indexOf(answer) + 1
+        val correct = answer.getBoolean("correct")
+        //show answer
+        Box(
+          modifier = Modifier
+            .padding(2.dp)
+            .background(color = Color.White)
+            .fillMaxSize()
+            .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(8.dp))
+            .clickable {
+              showCorrect = true
+              vm.updateAnswer(question.index, index)
+            }
+            .shadow(1.dp),
+        ) {
+          Text(
+            text = "$index. ${answer.getString("text")}",
+            fontSize = 14.sp,
+            style = TextStyle(color = if (showCorrect) if (correct) Color(0xFF0A9204) else Color.Red else Color.Black),
+            modifier = Modifier.padding(8.dp)
+          )
+        }
+      }
+    }
+    if (showTip && question.tip.isNotEmpty()) Text(
+      text = question.tip,
+      fontSize = 15.sp,
+      modifier = Modifier.padding(16.dp),
+      style = TextStyle(color = Color.Blue, fontStyle = FontStyle.Italic),
+    )
+    if (question.tip.isNotEmpty()) Text(
+      text = "Show Tip", fontSize = 15.sp, modifier = Modifier
+        .padding(0.dp)
+        .clickable {
+          showTip = true
+        }, style = TextStyle(fontStyle = FontStyle.Italic)
+    )
+    Spacer(modifier = Modifier.height(30.dp))
+
 //      if (question.image.isNotEmpty()) ImageFromUrl(imageUrl = "https://gplx.app/images/questions/" + question.image)
 
   }
@@ -159,13 +163,13 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
   ) {
     Text(
       text = "Câu ${question.questionNo} ",
-      fontSize = 25.sp,
+      fontSize = 18.sp,
       modifier = Modifier.padding(5.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
     )
     Text(
       text = question.text,
-      fontSize = 20.sp,
+      fontSize = 18.sp,
       modifier = Modifier.padding(5.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
     )
@@ -180,9 +184,10 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
       contentDescription = null,
       modifier = Modifier
         .fillMaxWidth()
-        .padding(all = 8.dp)
+        .height(200.dp)
+        .padding(all = 2.dp)
         .clip(RoundedCornerShape(5.dp)),
-      contentScale = ContentScale.Crop
+      contentScale = ContentScale.Fit
     )
     //show answer
     LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -206,9 +211,10 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
         ) {
           Text(
             text = "$index. ${answer.getString("text")}",
-            fontSize = 18.sp,
+            fontSize = 15.sp,
             color =  Color.Black,
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(2.dp),
+            lineHeight = 18.sp
           )
         }
       }

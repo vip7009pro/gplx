@@ -316,30 +316,46 @@ fun ExamListScreen(
                 )
               }
               Spacer(modifier = Modifier.width(10.dp))
-              Row {
-                //Icon(Icons.Default.CheckCircle, contentDescription = "Close", tint = Color(0xFF0A9204))
+              Column {
                 Text(
-                  text = "Đúng: ${it.correctAns}",
+                  text = "Câu đúng:",
                   fontSize = 15.sp,
                   style = TextStyle(color = Color(0xFF0A9204), fontWeight = FontWeight.Bold),
                 )
-              }
-
-              Row {
-                //Icon(Icons.Default.Close, contentDescription = "Close", tint = Color.Red)
                 Text(
-                  text = "Sai: ${it.incorrectAns}",
+                  text = "Câu sai:",
                   fontSize = 15.sp,
                   style = TextStyle(color = Color.Red, fontWeight = FontWeight.Bold),
+                )
+                Text(
+                  text = "Chưa làm:",
+                  fontSize = 15.sp,
+                  style = TextStyle(color = Color.Gray, fontWeight = FontWeight.Bold),
+                )
+
+              }
+              Spacer(modifier = Modifier.width(10.dp))
+              Column {
+                Text(
+                  text = "${it.correctAns}",
+                  fontSize = 15.sp,
+                  style = TextStyle(color = Color(0xFF0A9204), fontWeight = FontWeight.Bold),
+                )
+                Text(
+                  text = "${it.incorrectAns}",
+                  fontSize = 15.sp,
+                  style = TextStyle(color = Color.Red, fontWeight = FontWeight.Bold),
+                )
+                Text(
+                  text = "${it.notAnswer}",
+                  fontSize = 15.sp,
+                  style = TextStyle(color = Color.Gray, fontWeight = FontWeight.Bold),
                 )
 
               }
 
-              Text(
-                text = "N/A: ${it.notAnswer}",
-                fontSize = 15.sp,
-                style = TextStyle(color = Color.Gray, fontWeight = FontWeight.Bold),
-              )
+
+
               Text(
                 text = "Total: ${it.totalQuestion}",
                 fontWeight = FontWeight.Bold,
