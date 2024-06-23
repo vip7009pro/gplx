@@ -2,10 +2,7 @@ package com.hnp.gplx600.pages.gplxhome.screens
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,13 +15,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,7 +32,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
@@ -72,11 +64,11 @@ fun ExamListScreen(
 ) {
   //get lastest exam no from database of the current license
   val examNo = vm.getExamNo(globalVar.currentLicense).collectAsState(initial = emptyList())
-  val latest_exam_no = if (examNo.value.isNotEmpty()) examNo.value[0].maxExamNo else 0
-  val examList =
-    vm.getExamWithQuestionByLicense(globalVar.currentLicense).collectAsState(initial = emptyList())
   val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
+  val latestExamNo = if (examNo.value.isNotEmpty()) examNo.value[0].maxExamNo else 0
+  val examList = vm.getExamWithQuestionByLicense(globalVar.currentLicense).collectAsState(initial = emptyList())
   var filteredList: List<ErpInterface.Question> = emptyList()
+
   when (globalVar.currentLicense) {
     "A1" -> {
       filteredList = dataList.value.filter {
@@ -164,11 +156,10 @@ fun ExamListScreen(
       onAddNull()
     }
   }
-  loadInterstitialAd(LocalContext.current)
+  val ct = LocalContext.current
   val coroutineScope = rememberCoroutineScope()
-
   LaunchedEffect(key1 = true) {
-
+    loadInterstitialAd(ct)
   }
   Scaffold(topBar = {
     TopAppBar(modifier = Modifier
@@ -257,7 +248,7 @@ fun ExamListScreen(
               ErpInterface.Exam(
                 examIndex = 0,
                 license = globalVar.currentLicense,
-                examNo = latest_exam_no + 1,
+                examNo = latestExamNo + 1,
                 questionNo = index + 1,
                 index = element.index
               )
