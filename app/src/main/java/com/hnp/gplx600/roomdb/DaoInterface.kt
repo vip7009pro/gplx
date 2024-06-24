@@ -20,6 +20,9 @@ interface DaoInterface {
   @Transaction
   @Query("SELECT test_table.examNo, COUNT(test_table.license) AS totalQuestion, SUM(CASE WHEN test_table.examAnswer = question_table.dapAn THEN 1 ELSE 0 END) AS correctAns, SUM(CASE WHEN test_table.examAnswer <> question_table.dapAn AND test_table.examAnswer<> -1  THEN 1 ELSE 0 END) AS incorrectAns, SUM(CASE WHEN test_table.examAnswer = -1 THEN 1 ELSE 0 END) AS notAnswer   FROM test_table LEFT JOIN question_table ON test_table.`index` = question_table.`index` WHERE test_table.license=:license GROUP BY test_table.examNo ORDER BY test_table.examNo ASC")
   fun getExamWithQuestionByLicense(license: String): Flow<List<ErpInterface.ExamListStatus>>
+  @Query("SELECT test_table.examNo, COUNT(test_table.license) AS totalQuestion, SUM(CASE WHEN test_table.examAnswer = question_table.dapAn THEN 1 ELSE 0 END) AS correctAns, SUM(CASE WHEN test_table.examAnswer <> question_table.dapAn AND test_table.examAnswer<> -1  THEN 1 ELSE 0 END) AS incorrectAns, SUM(CASE WHEN test_table.examAnswer = -1 THEN 1 ELSE 0 END) AS notAnswer   FROM test_table LEFT JOIN question_table ON test_table.`index` = question_table.`index` WHERE test_table.license=:license GROUP BY test_table.examNo ORDER BY test_table.examNo ASC")
+  fun getExamWithQuestionByLicense1(license: String): List<ErpInterface.ExamListStatus>
+
   //get only exam without question of a specific license
   @Query("SELECT * FROM test_table WHERE license=:license")
   fun getExamByLicense(license: String): Flow<List<ErpInterface.Exam>>
@@ -27,6 +30,8 @@ interface DaoInterface {
   fun loadQuestion():List<ErpInterface.Question>
   @Query("SELECT * FROM question_table")
   fun getAllQuestion(): Flow<List<ErpInterface.Question>>
+  @Query("SELECT * FROM question_table")
+  fun getAllQuestion1(): List<ErpInterface.Question>
   @Query("SELECT * FROM question_table WHERE `index`=:index")
   fun loadQuestionByIndex(index:Int): ErpInterface.Question
   @Query("DELETE FROM question_table WHERE `index`=:index")
@@ -54,10 +59,15 @@ interface DaoInterface {
 //get lastest exam no of a license from test_table
   @Query("SELECT MAX(examNo) AS maxExamNo FROM test_table WHERE license = :license")
   fun getLastestExamNo(license: String): Flow<List<ErpInterface.MaxExam>>
+  @Query("SELECT MAX(examNo) AS maxExamNo FROM test_table WHERE license = :license")
+  fun getLastestExamNo1(license: String): List<ErpInterface.MaxExam>
   //select exam by license and exam no from test_table join with question_table to get question contents
   @Transaction
   @Query("SELECT test_table.examIndex AS examIndex, test_table.license, test_table.examNo, test_table.`index`, test_table.examAnswer, question_table.image, question_table.dapAn, question_table.text, question_table.tip, question_table.answers, question_table.required, question_table.topic, test_table.questionNo  FROM test_table LEFT JOIN question_Table ON test_table.`index` = question_table.`index` WHERE test_table.license = :license AND test_table.examNo = :examNo order by test_table.questionNo asc")
   fun getExamWithQuestionByLicenseAndExamNo(license: String, examNo: Int): Flow<List<ErpInterface.ExamQuestionByLicenseAndExamNo>>
+  @Query("SELECT test_table.examIndex AS examIndex, test_table.license, test_table.examNo, test_table.`index`, test_table.examAnswer, question_table.image, question_table.dapAn, question_table.text, question_table.tip, question_table.answers, question_table.required, question_table.topic, test_table.questionNo  FROM test_table LEFT JOIN question_Table ON test_table.`index` = question_table.`index` WHERE test_table.license = :license AND test_table.examNo = :examNo order by test_table.questionNo asc")
+  fun getExamWithQuestionByLicenseAndExamNo1(license: String, examNo: Int): List<ErpInterface.ExamQuestionByLicenseAndExamNo>
+
 //reset exam answer by license and exam no
   @Query("UPDATE test_table SET examAnswer = -1 WHERE license = :license AND examNo = :examNo")
   suspend fun resetExamAnswerByLicenseAndExamNo(license: String, examNo: Int)

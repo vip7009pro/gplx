@@ -10,6 +10,9 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
   fun getAllQuestion(): Flow<List<ErpInterface.Question>> {
     return dao.getAllQuestion()
   }
+  fun getAllQuestion1(): List<ErpInterface.Question> {
+      return dao.getAllQuestion1()
+    }
 
   fun addQuestion(question: ErpInterface.Question) {
     viewModelScope.launch {
@@ -53,6 +56,10 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
   fun getExamWithQuestionByLicense(license: String): Flow<List<ErpInterface.ExamListStatus>> {
     return dao.getExamWithQuestionByLicense(license)
   }
+  fun getExamWithQuestionByLicense1(license: String): List<ErpInterface.ExamListStatus> {
+    return dao.getExamWithQuestionByLicense1(license)
+  }
+
   //delete all exams
   fun deleteAllExam() {
     viewModelScope.launch {
@@ -70,10 +77,17 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
     println("re-run getExamNo")
     return dao.getLastestExamNo(license)
   }
+  fun getExamNo1(license: String): List<ErpInterface.MaxExam> {
+    println("re-run getExamNo")
+    return dao.getLastestExamNo1(license)
+  }
   //getExamWithQuestionByLicenseAndExamNo
   fun getExamWithQuestionByLicenseAndExamNo(license: String, examNo: Int): Flow<List<ErpInterface.ExamQuestionByLicenseAndExamNo>> {
     return dao.getExamWithQuestionByLicenseAndExamNo(license, examNo)
   }
+  fun getExamWithQuestionByLicenseAndExamNo1(license: String, examNo: Int): List<ErpInterface.ExamQuestionByLicenseAndExamNo> {
+      return dao.getExamWithQuestionByLicenseAndExamNo1(license, examNo)
+    }
 
   //reset exam answer
   fun resetExamAnswer(license: String, examNo: Int) {
