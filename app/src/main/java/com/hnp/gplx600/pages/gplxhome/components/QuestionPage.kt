@@ -213,7 +213,7 @@ fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: Que
             text = "$index. ${answer.getString("text")}",
             fontSize = 15.sp,
             color =  Color.Black,
-            modifier = Modifier.padding(2.dp),
+            modifier = Modifier.padding(10.dp),
             lineHeight = 18.sp
           )
         }

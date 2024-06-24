@@ -1,5 +1,6 @@
 package com.hnp.gplx600.roomdb
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hnp.gplx600.api.ErpInterface
@@ -7,6 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
+
   fun getAllQuestion(): Flow<List<ErpInterface.Question>> {
     return dao.getAllQuestion()
   }
@@ -78,8 +80,11 @@ class QuestionViewModel(private val dao: DaoInterface): ViewModel() {
     return dao.getLastestExamNo(license)
   }
   fun getExamNo1(license: String): List<ErpInterface.MaxExam> {
-    println("re-run getExamNo")
-    return dao.getLastestExamNo1(license)
+    var examNoList = mutableListOf<ErpInterface.MaxExam>()
+    viewModelScope.launch {
+      examNoList  = dao.getLastestExamNo1(license).toMutableList()
+    }
+    return examNoList
   }
   //getExamWithQuestionByLicenseAndExamNo
   fun getExamWithQuestionByLicenseAndExamNo(license: String, examNo: Int): Flow<List<ErpInterface.ExamQuestionByLicenseAndExamNo>> {

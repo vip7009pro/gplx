@@ -4,6 +4,7 @@ package com.hnp.gplx600.pages.gplxhome.screens
 
 import android.app.Activity
 import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -59,6 +60,7 @@ import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -69,24 +71,50 @@ fun ExamListScreen(
   globalVar: GlobalVariable,
   ct: Context
 ) {
-  //get lastest exam no from database of the current license
-  //val examNo = vm.getExamNo(globalVar.currentLicense).collectAsState(initial = emptyList())
-  //val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
-  //val latestExamNo = if (examNo.value.isNotEmpty()) examNo.value[0].maxExamNo else 0
+  val examNo = vm.getExamNo(globalVar.currentLicense).collectAsState(initial = emptyList())
+  val dataList = vm.getAllQuestion().collectAsState(initial = emptyList())
+  val latestExamNo = if (examNo.value.isNotEmpty()) examNo.value[0].maxExamNo else 0
   val examList = vm.getExamWithQuestionByLicense(globalVar.currentLicense).collectAsState(initial = emptyList())
-  var filteredList: List<ErpInterface.Question> = emptyList()
+  var filteredList by remember { mutableStateOf(emptyList<ErpInterface.Question>()) }
+  var requiredQuestionList by remember { mutableStateOf(emptyList<ErpInterface.Question>()) }
+  when (globalVar.currentLicense) {
+    "A1" -> {
+      filteredList = dataList.value.filter {
+        it.a1 != 0
+      }
+    }
 
-  var examNo1 by remember { mutableStateOf(emptyList<ErpInterface.MaxExam>()) }
-  var dataList1 by remember { mutableStateOf(emptyList<ErpInterface.Question>()) }
-  var latestExamNo1 by remember { mutableIntStateOf(0) }
-  var examList1 by remember { mutableStateOf(emptyList<ErpInterface.ExamListStatus>()) }
-  var requiredQuestionList1 by remember { mutableStateOf(emptyList<ErpInterface.Question>()) }
-  var examDefinition1 by remember { mutableStateOf(mapOf<String, ErpInterface.PartObject>()) }
-  var currentExamDefinition1 by remember { mutableStateOf(mapOf<String, ErpInterface.PartObject>()) }
+    "A2" -> {
+      filteredList = dataList.value.filter {
+        it.a2 != 0
+      }
+    }
 
+    "A3" -> {
+      filteredList = dataList.value.filter {
+        it.a3 != 0
+      }
+    }
 
+    "A4" -> {
+      filteredList = dataList.value.filter {
+        it.a4 != 0
+      }
+    }
 
+    "B1" -> {
+      filteredList = dataList.value.filter {
+        it.b1 != 0
+      }
+    }
 
+    else -> {
+      filteredList = dataList.value
+    }
+  }
+  requiredQuestionList = filteredList.filter { ele->
+    ele.required == 1 && ele.topic == 1
+  }
   val examDefinition = mapOf(
     "A1" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
     "A2" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
@@ -99,15 +127,9 @@ fun ExamListScreen(
     "E" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
     "F" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
   )
-
-
-
-
-
   val currentExamDefinition = examDefinition[globalVar.currentLicense]
-  val examNoList = examList.value.distinctBy { it.examNo }.sortedBy { it.examNo }
-//  print(examNoList)
-//  Log.d("examNoList", "$examNoList")
+  val examNoList = examList.value.sortedBy { it.examNo }
+
   var mInterstitialAd: InterstitialAd? = null
   fun loadInterstitialAd(context: Context) {
     InterstitialAd.load(context, "ca-app-pub-3940256099942544/1033173712", AdRequest.Builder().build(),
@@ -141,80 +163,84 @@ fun ExamListScreen(
       onAddNull()
     }
   }
-  fun loadExamNo()
+/*  suspend fun loadExamNo()
   {
-    examNo1 = vm.getExamNo1(globalVar.currentLicense)
-    latestExamNo1 = examNo1[0].maxExamNo
-  }
-  fun loadDataList()
-  {
-    dataList1 = vm.getAllQuestion1()
-    when (globalVar.currentLicense) {
-      "A1" -> {
-        filteredList = dataList1.filter {
-          it.a1 != 0
-        }
-      }
-
-      "A2" -> {
-        filteredList = dataList1.filter {
-          it.a2 != 0
-        }
-      }
-
-      "A3" -> {
-        filteredList = dataList1.filter {
-          it.a3 != 0
-        }
-      }
-
-      "A4" -> {
-        filteredList = dataList1.filter {
-          it.a4 != 0
-        }
-      }
-
-      "B1" -> {
-        filteredList = dataList1.filter {
-          it.b1 != 0
-        }
-      }
-
-      else -> {
-        filteredList = dataList1
-      }
-    }
-    requiredQuestionList1 = filteredList.filter {
-      it.required == 1 && it.topic == 1
+    vm.getExamNo(globalVar.currentLicense).collect {
+      examNo1 = it
+      latestExamNo1 = if (examNo1.isNotEmpty()) examNo1[0].maxExamNo else 0
     }
   }
-  fun loadExamList()
+  suspend fun loadDataList()
   {
-    examList1 = vm.getExamWithQuestionByLicense1(globalVar.currentLicense)
+    Log.d("xxx","vao day r")
+    vm.getAllQuestion().collect { data ->
+      dataList1 = data
+      Log.d("dataList1", dataList1.toString())
+      when (globalVar.currentLicense) {
+        "A1" -> {
+          filteredList = dataList1.filter {
+            it.a1 != 0
+          }
+        }
+
+        "A2" -> {
+          filteredList = dataList1.filter {
+            it.a2 != 0
+          }
+        }
+
+        "A3" -> {
+          filteredList = dataList1.filter {
+            it.a3 != 0
+          }
+        }
+
+        "A4" -> {
+          filteredList = dataList1.filter {
+            it.a4 != 0
+          }
+        }
+
+        "B1" -> {
+          filteredList = dataList1.filter {
+            it.b1 != 0
+          }
+        }
+
+        else -> {
+          filteredList = dataList1
+        }
+      }
+      requiredQuestionList1 = filteredList.filter { ele->
+        ele.required == 1 && ele.topic == 1
+      }
+    }
+
+
   }
+  suspend fun loadExamList()
+  {
+    vm.getExamWithQuestionByLicense(globalVar.currentLicense).collect { ele ->
+      examList1 = ele
+      examNoList1 = ele.sortedBy { it.examNo }
+    }
+  }*/
 
   val ct = LocalContext.current
   val coroutineScope = rememberCoroutineScope()
-  LaunchedEffect(key1 = true) {
-    loadInterstitialAd(ct)
-    loadExamNo()
-    loadDataList()
-    loadExamList()
 
-    examDefinition1 = mapOf(
-      "A1" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
-      "A2" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
-      "A3" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
-      "A4" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 0, 7, 7),
-      "B1" to ErpInterface.PartObject(1, 1, 6, 1, 0, 1, 1, 1, 9, 9),
-      "B2" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 10, 10),
-      "C" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 14, 11),
-      "D" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
-      "E" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
-      "F" to ErpInterface.PartObject(1, 1, 7, 1, 1, 1, 2, 1, 16, 14),
-    )
+  LaunchedEffect(Unit) {
+   /* try {
+      loadInterstitialAd(ct)
+      loadExamNo()
+      loadDataList()
+      loadExamList()
 
-
+    }
+    catch (e: Exception)
+    {
+      Log.d("xxx",e.toString())
+    }*/
   }
   Scaffold(topBar = {
     TopAppBar(modifier = Modifier
@@ -266,7 +292,7 @@ fun ExamListScreen(
         Button(modifier = Modifier
           .height(40.dp)
           .fillMaxWidth(), onClick = {
-          val part1 = requiredQuestionList1.shuffled().take(1)
+          val part1 = requiredQuestionList.shuffled().take(1)
           val part2 = filteredList.filter {
             !part1.contains(it) && (it.index in 1..16)
           }.shuffled().take(currentExamDefinition!!.part2)
@@ -298,12 +324,13 @@ fun ExamListScreen(
           val finalExamList =
             part1 + part2 + part3 + part4 + part5 + part6 + part7 + part8 + part9 + part10
           //insert every exam from final Exam list to database
+
           finalExamList.forEachIndexed { index, element ->
             vm.addExam(
               ErpInterface.Exam(
                 examIndex = 0,
                 license = globalVar.currentLicense,
-                examNo = latestExamNo1 + 1,
+                examNo = latestExamNo + 1,
                 questionNo = index + 1,
                 index = element.index
               )

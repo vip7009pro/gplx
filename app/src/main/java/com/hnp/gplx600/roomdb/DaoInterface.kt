@@ -60,7 +60,7 @@ interface DaoInterface {
   @Query("SELECT MAX(examNo) AS maxExamNo FROM test_table WHERE license = :license")
   fun getLastestExamNo(license: String): Flow<List<ErpInterface.MaxExam>>
   @Query("SELECT MAX(examNo) AS maxExamNo FROM test_table WHERE license = :license")
-  fun getLastestExamNo1(license: String): List<ErpInterface.MaxExam>
+  suspend fun getLastestExamNo1(license: String): List<ErpInterface.MaxExam>
   //select exam by license and exam no from test_table join with question_table to get question contents
   @Transaction
   @Query("SELECT test_table.examIndex AS examIndex, test_table.license, test_table.examNo, test_table.`index`, test_table.examAnswer, question_table.image, question_table.dapAn, question_table.text, question_table.tip, question_table.answers, question_table.required, question_table.topic, test_table.questionNo  FROM test_table LEFT JOIN question_Table ON test_table.`index` = question_table.`index` WHERE test_table.license = :license AND test_table.examNo = :examNo order by test_table.questionNo asc")
