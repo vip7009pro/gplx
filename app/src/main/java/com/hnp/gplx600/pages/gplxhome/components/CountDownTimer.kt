@@ -40,6 +40,7 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.trungGianID1
 import com.hnp.gplx600.components.Components
 import com.hnp.gplx600.components.MyDialog
 import kotlinx.coroutines.launch
@@ -63,7 +64,7 @@ fun CountDownTimer(
 
   var mInterstitialAd: InterstitialAd? = null
   fun loadInterstitialAd(context: Context) {
-    InterstitialAd.load(context, "ca-app-pub-3940256099942544/1033173712", AdRequest.Builder().build(),
+    InterstitialAd.load(context, trungGianID1, AdRequest.Builder().build(),
       object : InterstitialAdLoadCallback() {
         override fun onAdFailedToLoad(adError: LoadAdError) {
           mInterstitialAd = null

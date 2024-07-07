@@ -51,6 +51,7 @@ import com.hnp.gplx600.components.MyDialog
 import com.hnp.gplx600.components.NavigationDrawerMenu
 import kotlinx.coroutines.launch
 import androidx.compose.ui.text.font.FontWeight
+import com.hnp.gplx600.api.bannerID5
 import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.pages.gplxhome.components.HomeCard
 import com.hnp.gplx600.roomdb.QuestionViewModel
@@ -212,7 +213,7 @@ fun MyHome(navController: NavController, globalVar: GlobalVariable, vm: Question
             contentAlignment = Alignment.Center
           ) {
 
-            BannerAd()
+            BannerAd(bannerAdUnitId = bannerID5)
           }
         }
         //        floatingActionButtonPosition = FabPosition.End,

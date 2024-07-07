@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.bannerID4
 import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.pages.gplxhome.components.CountDownTimer
 import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation2
@@ -116,7 +117,7 @@ fun ExamScreen(
       contentAlignment =  Alignment.Center
     ) {
 
-      BannerAd()
+      BannerAd(bannerAdUnitId = bannerID4)
     }
   }) {
       paddingValues ->

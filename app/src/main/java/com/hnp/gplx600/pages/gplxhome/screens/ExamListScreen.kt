@@ -55,6 +55,8 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.bannerID3
+import com.hnp.gplx600.api.trungGianID1
 import com.hnp.gplx600.components.MyDialog
 import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.roomdb.AppDataBase
@@ -132,7 +134,7 @@ fun ExamListScreen(
 
   var mInterstitialAd: InterstitialAd? = null
   fun loadInterstitialAd(context: Context) {
-    InterstitialAd.load(context, "ca-app-pub-3940256099942544/1033173712", AdRequest.Builder().build(),
+    InterstitialAd.load(context, trungGianID1, AdRequest.Builder().build(),
       object : InterstitialAdLoadCallback() {
         override fun onAdFailedToLoad(adError: LoadAdError) {
           mInterstitialAd = null
@@ -270,7 +272,7 @@ fun ExamListScreen(
         contentAlignment =  Alignment.Center
       ) {
 
-        BannerAd()
+        BannerAd(bannerAdUnitId = bannerID3)
       }
     }
     ) { paddingValues ->

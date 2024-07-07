@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.bannerID2
 import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.roomdb.AppDataBase
 import com.hnp.gplx600.roomdb.QuestionViewModel
@@ -104,7 +105,7 @@ fun ExamFinishScreen(
         contentAlignment = Alignment.Center
       ) {
 
-        BannerAd()
+        BannerAd(bannerAdUnitId = bannerID2)
       }
     }) { paddingValues ->
       Box(

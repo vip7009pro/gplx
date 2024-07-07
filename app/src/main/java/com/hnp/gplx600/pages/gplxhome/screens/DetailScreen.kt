@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.bannerID1
 import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 import com.hnp.gplx600.pages.gplxhome.components.HorizontalPagerWithBottomNavigation
 import com.hnp.gplx600.roomdb.AppDataBase
@@ -207,7 +208,7 @@ fun DetailScreen(
         contentAlignment = Alignment.Center
       ) {
 
-        BannerAd()
+        BannerAd(bannerAdUnitId = bannerID1)
       }
     }) { paddingValues ->
     Column(

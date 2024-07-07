@@ -12,7 +12,7 @@ android {
     applicationId = "com.hnp.gplx600"
     minSdk = 24
     targetSdk = 34
-    versionCode = 3
+    versionCode = 5
     versionName = "1.0"
     vectorDrawables {
       useSupportLibrary = true
@@ -51,7 +51,7 @@ android {
 
 dependencies {
   implementation("androidx.core:core-ktx:1.13.1")
-  implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.2")
+  implementation("androidx.lifecycle:lifecycle-runtime-ktx: 2.8.2")
   implementation("androidx.activity:activity-compose:1.9.0")
   implementation(platform("androidx.compose:compose-bom:2024.06.00"))
   implementation("androidx.compose.ui:ui")
@@ -61,7 +61,7 @@ dependencies {
   implementation("com.squareup.retrofit2:retrofit:2.10.0")
   implementation("com.squareup.retrofit2:converter-gson:2.10.0")
   implementation ("com.github.farhanroy:compose-awesome-dialog:1.0.1")
-  implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
+  implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
   implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
   implementation("androidx.navigation:navigation-compose:2.7.7")
   implementation ("com.github.Gurupreet:FontAwesomeCompose:1.1.0")
@@ -80,7 +80,7 @@ dependencies {
   implementation ("com.google.accompanist:accompanist-navigation-animation:0.20.2")
 
   implementation("androidx.room:room-ktx:2.6.1")
-  implementation ("com.google.android.gms:play-services-ads:23.1.0")
+  implementation ("com.google.android.gms:play-services-ads:23.2.0")
   testImplementation("androidx.room:room-testing:2.6.1")
   implementation("com.google.accompanist:accompanist-pager:0.28.0")
   debugImplementation("androidx.compose.ui:ui-tooling")

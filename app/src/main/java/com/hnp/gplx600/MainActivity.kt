@@ -27,6 +27,7 @@ import androidx.navigation.compose.composable
 import androidx.room.Room
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.android.gms.ads.MobileAds
+import com.hnp.gplx600.adsmanager.AppOpenManager
 import com.hnp.gplx600.api.GlobalFunction
 import com.hnp.gplx600.api.GlobalVariable
 import com.hnp.gplx600.components.Components
@@ -42,6 +43,8 @@ import com.hnp.gplx600.theme.GPLXTheme
 
 @Suppress("UNCHECKED_CAST")
 class MainActivity : ComponentActivity() {
+  private lateinit var appOpenManager: AppOpenManager
+
   private val db by lazy {
     Room.databaseBuilder(
       context = applicationContext, klass = AppDataBase::class.java, name = "gplx_database"
@@ -61,7 +64,8 @@ class MainActivity : ComponentActivity() {
   @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    MobileAds.initialize(this)
+    //MobileAds.initialize(this)
+    appOpenManager = AppOpenManager(application as MyApplication)
     setContent {
       GPLXTheme(darkTheme = false) {
         Surface(modifier = Modifier.fillMaxSize(), color = Color.White) {

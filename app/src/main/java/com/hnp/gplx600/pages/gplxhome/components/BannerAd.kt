@@ -10,7 +10,7 @@ import com.google.android.gms.ads.AdView
 @Composable
 fun BannerAd(
   modifier: Modifier = Modifier,
-  bannerAdUnitId: String = "ca-app-pub-3940256099942544/9214589741",
+  bannerAdUnitId: String = "ca-app-pub-2965911381053768/2031307245",
 ) {
   AndroidView(modifier = modifier, factory = { context ->
     AdView(context).apply {

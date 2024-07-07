@@ -42,6 +42,7 @@ import com.guru.fontawesomecomposelib.FaIcon
 import com.guru.fontawesomecomposelib.FaIcons
 import com.hnp.gplx600.api.ErpInterface
 import com.hnp.gplx600.api.GlobalVariable
+import com.hnp.gplx600.api.bannerID4
 import com.hnp.gplx600.pages.gplxhome.components.BannerAd
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -132,7 +133,7 @@ fun GPLXOptionScreen(navController: NavController, globalVar: GlobalVariable) {
         contentAlignment =  Alignment.Center
       ) {
 
-        BannerAd()
+        BannerAd(bannerAdUnitId = bannerID4)
       }
     }
   ) { paddingValues ->
