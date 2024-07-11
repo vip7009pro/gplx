@@ -1,8 +1,10 @@
 package com.hnp.gplx600.pages.gplxhome.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -25,7 +27,9 @@ fun HorizontalPagerWithBottomNavigation(
   questionList: List<ErpInterface.Question>,
   vm: QuestionViewModel,
 ) {
-  val pagerState = rememberPagerState()
+  val pagerState = rememberPagerState(
+    initialPage = 0,
+  )
   val scope = rememberCoroutineScope()
   var currentPageIndex by remember { mutableIntStateOf(0) }
 
@@ -74,7 +78,10 @@ fun HorizontalPagerWithBottomNavigation2(
   questionList: List<ErpInterface.ExamQuestionByLicenseAndExamNo>,
   vm: QuestionViewModel,
 ) {
-  val pagerState = rememberPagerState()
+  Log.d("xxx","dau xanh nha may")
+  val pagerState = rememberPagerState(
+    initialPage = 0,
+  )
   val scope = rememberCoroutineScope()
   var currentPageIndex by remember { mutableIntStateOf(0) }
 
@@ -111,8 +118,7 @@ fun HorizontalPagerWithBottomNavigation2(
       modifier = Modifier
         .padding(paddingValues)
         .fillMaxSize()
-    ) { page ->
-      QuestionPage2(question = questionList[page], vm = vm)
+    ) { page ->  QuestionPage2(question = questionList[page], vm = vm)
     }
   }
 }

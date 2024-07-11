@@ -143,7 +143,7 @@ fun QuestionPage(question: ErpInterface.Question, vm: QuestionViewModel) {
 @Composable
 fun QuestionPage2(question: ErpInterface.ExamQuestionByLicenseAndExamNo, vm: QuestionViewModel) {
   //create jsonarray from answer array string
-  val jsonArray = JSONArray(question.answers)
+  val jsonArray =  JSONArray(question.answers)
   val answerList = mutableListOf<JSONObject>()
   for (i in 0 until jsonArray.length()) {
     //add each answer to answerList

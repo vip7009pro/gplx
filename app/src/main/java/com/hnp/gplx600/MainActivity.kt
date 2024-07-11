@@ -15,6 +15,7 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -84,7 +85,10 @@ fun MainApp(db: AppDataBase, vm: QuestionViewModel, context: Context) {
   val navController = rememberAnimatedNavController()
   val globalVar = viewModel<GlobalVariable>()
   val lct = LocalContext.current
-  GlobalFunction().initDatabase(lct, vm)
+
+  LaunchedEffect(key1 = true) {
+    GlobalFunction().initDatabase(lct, vm)
+  }
   NavHost(navController = navController, startDestination = "home") {
     composable("login") {
       Components().LoginScreen(navController = navController, globalVar = globalVar)

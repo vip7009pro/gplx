@@ -1,6 +1,7 @@
 package com.hnp.gplx600.pages.gplxhome.screens
 
 import android.content.Context
+import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -47,6 +48,7 @@ fun ExamScreen(
 ) {
   val dataList = vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo).collectAsState(initial = emptyList())
   globalVar.currentDataList = dataList.value
+  Log.d("xxx","re render tai day")
   LaunchedEffect(key1 = true) {
 
   }

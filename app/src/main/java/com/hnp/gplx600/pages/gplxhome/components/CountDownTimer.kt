@@ -53,6 +53,7 @@ fun CountDownTimer(
   ct: Context
 ) {
 
+  val lct: Context = LocalContext.current
   var timeLeft by remember { mutableIntStateOf(startTime) }
   LaunchedEffect(Unit) {
     while (timeLeft > 0) {
@@ -95,7 +96,10 @@ fun CountDownTimer(
       onAdNull()
     }
   }
-  loadInterstitialAd(LocalContext.current)
+
+  LaunchedEffect(key1 = true) {
+    loadInterstitialAd(lct)
+  }
   val coroutineScope = rememberCoroutineScope()
 
   val minutes = TimeUnit.SECONDS.toMinutes(timeLeft.toLong())
@@ -141,34 +145,36 @@ fun CountDownTimer(
       }
 
       Spacer(modifier = Modifier.width(16.dp))
-        Text(text = "Nộp bài", fontSize = 15.sp, color = Color(0xFF048B16), fontWeight = FontWeight.Bold, modifier = Modifier.padding(0.dp).clickable {
-          globalVar.showDialog(
-            dialogTitle = "Thông báo",
-            dialogText = "Chưa hết giờ, Bạn có chắc chắn muốn nộp bài?",
-            dialogCat = "",
-            dlConfirm = {
-              coroutineScope.launch {
-                showInterstitialAd(ct, {
-                  navController.navigate("examfinishscreen") {
-                    popUpTo("examfinishscreen") {
-                      inclusive = true
+        Text(text = "Nộp bài", fontSize = 15.sp, color = Color(0xFF048B16), fontWeight = FontWeight.Bold, modifier = Modifier
+          .padding(0.dp)
+          .clickable {
+            globalVar.showDialog(
+              dialogTitle = "Thông báo",
+              dialogText = "Chưa hết giờ, Bạn có chắc chắn muốn nộp bài?",
+              dialogCat = "",
+              dlConfirm = {
+                coroutineScope.launch {
+                  showInterstitialAd(ct, {
+                    navController.navigate("examfinishscreen") {
+                      popUpTo("examfinishscreen") {
+                        inclusive = true
+                      }
                     }
-                  }
-                  //Toast.makeText(ct, "Interstitial Ad Shown!", Toast.LENGTH_SHORT).show()
-                }, {
-                  navController.navigate("examfinishscreen") {
-                    popUpTo("examfinishscreen") {
-                      inclusive = true
+                    //Toast.makeText(ct, "Interstitial Ad Shown!", Toast.LENGTH_SHORT).show()
+                  }, {
+                    navController.navigate("examfinishscreen") {
+                      popUpTo("examfinishscreen") {
+                        inclusive = true
+                      }
                     }
-                  }
-                })
+                  })
+                }
+              },
+              dlCancel = {
+                //navController.navigateUp()
               }
-            },
-            dlCancel = {
-              //navController.navigateUp()
-            }
-          )
-        })
+            )
+          })
 
     }
 
