@@ -70,7 +70,7 @@ class AppOpenManager(private val myApplication: MyApplication) : Application.Act
   }
 
   private fun isAdAvailable(): Boolean {
-    return appOpenAd != null /*&& wasLoadTimeLessThanNHoursAgo(1)*/
+    return appOpenAd != null && wasLoadTimeLessThanNHoursAgo(1)
   }
 
   private fun wasLoadTimeLessThanNHoursAgo(numHours: Long): Boolean {

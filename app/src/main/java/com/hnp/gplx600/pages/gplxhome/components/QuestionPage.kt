@@ -64,13 +64,13 @@ fun QuestionPage(question: ErpInterface.Question, vm: QuestionViewModel) {
   ) {
     Text(
       text = "Câu ${question.index} ",
-      fontSize = 15.sp,
+      fontSize = 18.sp,
       modifier = Modifier.padding(2.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
     )
     Text(
       text = question.text,
-      fontSize = 15.sp,
+      fontSize = 18.sp,
       modifier = Modifier.padding(2.dp),
       style = TextStyle(color = Color.Black, fontWeight = FontWeight.Bold)
     )
@@ -112,9 +112,9 @@ fun QuestionPage(question: ErpInterface.Question, vm: QuestionViewModel) {
         ) {
           Text(
             text = "$index. ${answer.getString("text")}",
-            fontSize = 14.sp,
+            fontSize = 16.sp,
             style = TextStyle(color = if (showCorrect) if (correct) Color(0xFF0A9204) else Color.Red else Color.Black),
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(10.dp)
           )
         }
       }

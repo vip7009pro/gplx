@@ -48,7 +48,6 @@ fun ExamScreen(
 ) {
   val dataList = vm.getExamWithQuestionByLicenseAndExamNo(globalVar.currentLicense, globalVar.currentExamNo).collectAsState(initial = emptyList())
   globalVar.currentDataList = dataList.value
-  Log.d("xxx","re render tai day")
   LaunchedEffect(key1 = true) {
 
   }

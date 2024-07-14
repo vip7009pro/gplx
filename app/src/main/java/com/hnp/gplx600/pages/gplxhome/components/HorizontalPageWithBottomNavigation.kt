@@ -78,7 +78,6 @@ fun HorizontalPagerWithBottomNavigation2(
   questionList: List<ErpInterface.ExamQuestionByLicenseAndExamNo>,
   vm: QuestionViewModel,
 ) {
-  Log.d("xxx","dau xanh nha may")
   val pagerState = rememberPagerState(
     initialPage = 0,
   )
