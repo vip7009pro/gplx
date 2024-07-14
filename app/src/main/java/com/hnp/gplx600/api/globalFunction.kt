@@ -12,7 +12,6 @@ class GlobalFunction {
   @SuppressLint("SuspiciousIndentation")
   fun initDatabase(ct: Context, vm: QuestionViewModel){
     val questionList: JSONArray = JsonFileReader.loadJSONArrayFromAsset(context = ct , fileName = "600cau.json") as JSONArray
-    print("questionList length:" +questionList.length())
     if(questionList.length()>0)
     {
       for (i in 0..<questionList.length()) {
